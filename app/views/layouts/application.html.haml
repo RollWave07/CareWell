@@ -1,0 +1,35 @@
+!!!
+%html
+  %head
+    %title Carewell
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+      .container
+        .navbar-header
+          %ul.nav.navbar-nav
+            %li
+              = link_to 'Root', root_url
+            %li
+              = link_to 'Groups', groups_path
+            %li
+              = link_to 'Tasks', tasks_path
+            %li
+              = link_to 'Updates', updates_path
+            %li
+              = link_to 'Locations', locations_path
+            -if user_signed_in?
+              %li
+                = link_to 'Sign out', destroy_user_session_path, method: :delete
+            -else
+              %li
+                = link_to "Sign up", new_user_registration_path
+              %li
+                = link_to "Sign in", new_user_session_path
+      .container         
+        %p.notice= notice unless notice.blank?
+        %p.alert= alert unless alert.blank?
+      .container 
+        = yield
+        = javascript_include_tag "application"
