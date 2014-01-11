@@ -1,18 +1,22 @@
-<h2>Creating an account? You made the right choice.</h2>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Creating an account? You made the right choice.</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
 
-  <%= render "devise/registrations/form", f: f %>
-  
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+      <%= render "devise/registrations/form", f: f %>
+      
+      <div><%= f.label :password %><br />
+      <%= f.password_field :password %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-  
-  <div><%= f.submit "Sign up" %></div>  
+      <div><%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %></div>
+      
+      <div><%= f.submit "Sign up" %></div>  
 
-<% end %>
+    <% end %>
 
-<%= render "devise/shared/links" %>
+    <%= render "devise/shared/links" %>
+  <div>
+</div>
