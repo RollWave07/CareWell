@@ -14,16 +14,17 @@
 
 html {
   background-color: #faf2e6;
+  }
+
+.navbar {
+  margin-top: 10px;
+  margin-bottom:10px;
 }
 
-#navbar {
-  /*margin-top: 20px;
-  margin-bottom: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;*/
-}
+li.navbar-links{
+    margin-top:25px;
+  }
 
-.navbar .nav > li > a {
-  margin-top: 30px;
-  margin-bottom: 30px;
+.nav .pull-right {
+  
 }

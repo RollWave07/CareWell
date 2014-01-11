@@ -1,4 +1,8 @@
 class GroupsController < ApplicationController
+  protect_from_forgery with: :exception
+
+  end
+
   def index
   end
 

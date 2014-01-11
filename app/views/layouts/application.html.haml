@@ -10,19 +10,20 @@
         .navbar-header
           %ul.nav.navbar-nav.head
             %li.navbar-brand
-              = link_to image_tag('carewell-logo.gif'), root_url
+              = link_to image_tag('carewell-logo.gif'), root_url 
             -if current_user
+              %li.navbar-links
               = link_to 'Groups', groups_path
-              = link_to 'Tasks', tasks_path
+              / = link_to 'Tasks', tasks_path
               = link_to 'Updates', updates_path
               = link_to 'Locations', locations_path
             -if user_signed_in?
-              %li
+              %li.navbar-links
                 = link_to 'Sign out', destroy_user_session_path, method: :delete
             -else
-              %li
+              %li.navbar-links
                 = link_to "Sign up", new_user_registration_path
-              %li
+              %li.navbar-links
                 = link_to "Sign in", new_user_session_path
       .container
         - unless notice.blank?
