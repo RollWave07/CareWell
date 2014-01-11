@@ -1,2 +1,14 @@
-%h1 Tasks#index
-%p Find me in app/views/tasks/index.html.haml
+%h1 Upcoming Tasks
+
+-if @tasks.empty?
+  =link_to "Add New", new_group_task(@group)
+
+-else
+  -@tasks.each do |task|
+    %p
+      =task.category
+  =link_to "Add New", new_group_task_path(@group)
+
+
+
+
