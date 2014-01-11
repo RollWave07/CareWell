@@ -1,10 +1,7 @@
 class GroupsController < ApplicationController
   protect_from_forgery with: :exception
 
-  end
-
   before_action :set_group, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
 
   def index
     @groups = Group.all
@@ -24,7 +21,8 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     respond_to do |format|
       if @group.save
-        format.html { redirect_to groups_path, notice: 'group was successfully created.' }
+        current_user.group = @group
+        format.html { redirect_to group_tasks_path(@group), notice: 'group was successfully created.' }
         format.js { render layout: false }
       else
         format.html { render action: 'new' }
