@@ -14,15 +14,43 @@
 
 @import "bootstrap";
 
+@font-face {
+    font-family: 'Lato';
+    src: url(font-path('lato-light-webfont.eot') + "?#iefix") format('embedded-opentype'),
+         url(font-path('lato-light-webfont.woff')) format('woff'), 
+         url(font-path('lato-light-webfont.ttf'))  format('truetype'),
+         url(font-path('lato-light-webfont.svg') + "Lato") format('svg');
+}
+
 .navbar {
   background-color: #faf2e6;
   border-bottom-color: #faf2e6;
-  }
+}
 
-li.navbar-links{
-  margin-top:40px;
-    a:hover { 
-    color:black;
+a {
+  text-decoration: none
+}
+
+.navbar-right {
+  font-family: 'Lato', sans-serif;
+  margin-top:60px;
+  margin-left: 15px;
+  margin-right: 15px;
+  float: right;
+  list-style-type: none;
+  font-size: 1.5em;
+    a:link {
+      color: #333333;
     }
-   }
+    a:visited {
+      color: #333333;
+    }
+    a:hover {
+      color: #00b2d2;
+      text-decoration: none;
+    }
+    a:active {
+      color: #333333;
+    }
+}
 

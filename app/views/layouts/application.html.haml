@@ -8,32 +8,32 @@
     .container 
       %nav.navbar-inverse.navbar-top{:role=>"navigation"}
         %ul.nav.navbar-nav
-          %li.navbar-brand.nav-links-right
+          %li.navbar-brand
             = link_to image_tag('carewell-logo.gif'), root_url 
-          -if user_signed_in?
-            %li.navbar-links
-              = link_to 'Groups', root_url
-            %li.navbar-links
-              = link_to 'Tasks', root_url
-            %li.navbar-links
-              = link_to 'Updates', root_url
-            %li.navbar-links
-              = link_to 'Locations', root_url
-            %li.navbar-links  
-              = link_to 'Sign out', destroy_user_session_path, method: :delete
-          -else
-            %li.navbar-links
-              = link_to "Sign in", new_user_session_path
-            %li.navbar-links
-              = link_to "Sign up", new_user_registration_path
+            
+        -if user_signed_in?
+          / %li.navbar-link
+          /   = link_to 'Groups', root_url
+          %li.navbar-link.navbar-right  
+            = link_to 'Sign out', destroy_user_session_path, method: :delete
+          %li.navbar-link.navbar-right
+            = link_to 'Updates', root_url
+          %li.navbar-link.navbar-right
+            = link_to 'Tasks', root_url
+          / %li.navbar-link.navbar-right
+          /   = link_to 'Locations', root_url
+        -else
+          %li.navbar-link.navbar-right
+            = link_to "Sign up", new_user_registration_path
+          %li.navbar-link.navbar-right
+            = link_to "Sign in", new_user_session_path
     .container
       - unless notice.blank?
         .notice
           %p= notice
       - unless alert.blank?
         .alert
-          %p= alert
-    .container  
+          %p= alert  
       = yield
       = javascript_include_tag "application"
 / .navbar-nav
