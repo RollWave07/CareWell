@@ -5,3 +5,14 @@
 .add {
 
 }
+
+.task_category, .task_title {
+  display: inline-block;
+}
+
+.task_category {
+  font-weight: bold;
+}
+.task_title {
+  padding-left: 20px;
+}
