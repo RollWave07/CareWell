@@ -11,4 +11,15 @@ class Task < ActiveRecord::Base
   #   Task.joins(:user).where(:users => {group_id: 1})
   # end
 
+  ## potential model method
+  # def needs_assignee
+  #   if self.assignee_id.nil? && self.user_id == current_user.id
+  #   return "Invite A Helper"
+  #   elsif self.assignee_id.nil?
+  #   return "I can do this!"
+  #   else
+  #   return "This is assigned to you."
+  #   end
+  # end
+
 end
