@@ -10,15 +10,15 @@ group :development do
   gem 'figaro'
   gem 'hirb'
 end
+
+
+
 # Use HAML
 gem 'haml-rails'
 gem 'haml'
 gem 'pry'
 
 gem 'devise'
-
-
-
 
 gem 'acts_as_votable', '~> 0.8.0'
 
@@ -31,7 +31,6 @@ gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
-gem 'bootstrap-sass', '~> 3.0.3.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 

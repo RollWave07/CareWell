@@ -11,3 +11,18 @@
  *= require_self
  *= require_tree .
  */
+
+@import "bootstrap";
+
+html {
+  background-color: #faf2e6;
+  }
+.navbar {
+  background-color: #faf2e6;
+  border-bottom-color: #faf2e6;
+  }
+
+li.navbar-links{
+    margin-top:40px;
+  }
+

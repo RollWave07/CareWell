@@ -153,7 +153,7 @@ DEPENDENCIES
   acts_as_votable (~> 0.8.0)
   better_errors
   binding_of_caller
-  bootstrap-sass (~> 3.0.3.0)
+  bootstrap-sass
   coffee-rails (~> 4.0.0)
   devise
   figaro
