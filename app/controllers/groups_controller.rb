@@ -1,8 +1,6 @@
 class GroupsController < ApplicationController
   protect_from_forgery with: :exception
 
-  end
-
   before_action :set_group, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
