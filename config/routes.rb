@@ -1,10 +1,11 @@
 Carewell::Application.routes.draw do
   root 'pages#welcome'
-
   devise_for :users
+
+  resources :groups do
+    resources :tasks
+  end
   
-  resources :groups
-  resources :tasks
   resources :updates
   resources :locations
   
