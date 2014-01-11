@@ -11,12 +11,6 @@
           %ul.nav.navbar-nav
             %li
               = link_to 'Root', root_url
-            %li
-              = link_to 'Groups', groups_path
-            %li
-              = link_to 'Updates', updates_path
-            %li
-              = link_to 'Locations', locations_path
             -if user_signed_in?
               %li
                 = link_to 'Sign out', destroy_user_session_path, method: :delete

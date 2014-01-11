@@ -4,9 +4,10 @@ Carewell::Application.routes.draw do
 
   resources :groups do
     resources :tasks
+    resources :updates
+    resources :locations
   end
-  resources :updates
-  resources :locations
+  
   
   get "likes/index"
   get "likes/show"
