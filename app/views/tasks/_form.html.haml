@@ -1,18 +1,32 @@
 =form_for [@group, @task] do |task|
   %p
     =task.label :category
+    %br
     =task.select(:category, options_for_select([['getting places', 'getting places'],['around the home', 'around the home'],['shopping', 'shopping'], ['meals', 'meals'], ['personal care', 'personal care'], ['odds & ends', 'odds & ends'], ['visits & outings', 'visits & outings']]))
   %p
     =task.label :title
+    %br
     =task.text_field :title
 
   %p
-    =task.label :instructions
-    =task.text_field :instructions
+    =task.label :information
+    %br
+    =task.text_field :information
 
   %p
-    =task.label :instructions
-    =task.text_field :instructions
+    =task.label :start_time
+    %br
+    =task.time_field :start_time
+
+  %p
+    =task.label :duration
+    %br
+    =task.text_field :duration
+
+  %p
+    =task.label :task_date
+    %br
+    =task.date_field :task_date
 
   %p
     =task.submit
