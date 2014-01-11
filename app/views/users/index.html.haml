@@ -1,2 +1,16 @@
 %h1 Users#index
 %p Find me in app/views/users/index.html.haml
+
+-if @users
+  - @users.each do |user|
+    =user.first_name
+    %br
+    =user.last_name
+    %br
+    =user.phone
+    %br
+-else
+  ="there are no users"
+%br
+%br
+=link_to "My Account", edit_user_registration_path   
