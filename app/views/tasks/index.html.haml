@@ -1,8 +1,7 @@
 %h1 Upcoming Tasks
 
 -if @tasks.empty?
-  =link_to "Add New", new_group_task(@group)
-
+  ="Add New"
 -else
   -@tasks.each do |task|
     .task

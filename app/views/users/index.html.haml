@@ -2,12 +2,15 @@
 %p Find me in app/views/users/index.html.haml
 
 -if @users
-  - @users.each do |user|
+  - @users.reverse.each do |user|
     =user.first_name
     %br
     =user.last_name
     %br
+    ="Group: #{user.group}"
+    %br
     =user.phone
+    %br
     %br
 -else
   ="there are no users"
