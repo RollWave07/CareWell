@@ -8,7 +8,6 @@ Carewell::Application.routes.draw do
     resources :locations
   end
   
-  
   get "likes/index"
   get "likes/show"
   get "pages/welcome" => 'pages#welcome', as: 'welcome'
