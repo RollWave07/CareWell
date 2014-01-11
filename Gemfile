@@ -10,6 +10,9 @@ group :development do
   gem 'figaro'
   gem 'hirb'
 end
+
+
+
 # Use HAML
 gem 'haml-rails'
 gem 'haml'
@@ -17,7 +20,9 @@ gem 'pry'
 
 gem 'devise'
 
-gem 'twitter-bootstrap-rails'
+# gem 'twitter-bootstrap-rails'
+
+gem 'bootstrap-sass'
 
 gem 'acts_as_votable', '~> 0.8.0'
 

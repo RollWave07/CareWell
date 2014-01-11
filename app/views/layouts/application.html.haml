@@ -13,11 +13,10 @@
               = link_to image_tag('carewell-logo.gif'), root_url 
             -if current_user
               %li.navbar-links
-              = link_to 'Groups', groups_path
-              / = link_to 'Tasks', tasks_path
-              %li
-              = link_to 'Updates', updates_path
-              = link_to 'Locations', locations_path
+                = link_to 'Groups', groups_path
+                / = link_to 'Tasks', tasks_path
+                = link_to 'Updates', updates_path
+                = link_to 'Locations', locations_path
             -if user_signed_in?
               %li.navbar-links
                 = link_to 'Sign out', destroy_user_session_path, method: :delete
@@ -29,13 +28,10 @@
       .container
         - unless notice.blank?
           .notice
-            .container
-              %p= notice
-
+            %p= notice
         - unless alert.blank?
           .alert
-            .container
-              %p= alert
+            %p= alert
       .container  
         = yield
         = javascript_include_tag "application"
