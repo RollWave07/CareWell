@@ -8,16 +8,13 @@
     .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
       .container
         .navbar-header
-          %ul.nav.navbar-nav
-            %li
-              = link_to 'Root', root_url
-            %li
+          %ul.nav.navbar-nav.head
+            %li.navbar-brand
+              = link_to image_tag('carewell-logo.gif'), root_url
+            -if current_user
               = link_to 'Groups', groups_path
-            %li
               = link_to 'Tasks', tasks_path
-            %li
               = link_to 'Updates', updates_path
-            %li
               = link_to 'Locations', locations_path
             -if user_signed_in?
               %li
