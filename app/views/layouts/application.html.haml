@@ -24,9 +24,16 @@
                 = link_to "Sign up", new_user_registration_path
               %li
                 = link_to "Sign in", new_user_session_path
-      .container         
-        %p.notice= notice unless notice.blank?
-        %p.alert= alert unless alert.blank?
-      .container 
+      .container
+        - unless notice.blank?
+          .notice
+            .container
+              %p= notice
+
+        - unless alert.blank?
+          .alert
+            .container
+              %p= alert
+      .container  
         = yield
         = javascript_include_tag "application"
