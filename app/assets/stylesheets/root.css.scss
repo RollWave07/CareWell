@@ -1,0 +1,16 @@
+body {
+  background: url('train-tracks.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.jumbotron {
+  h1 {
+    color: #333333;
+    opacity: 1;
+  }
+  background-color: #eeeeee;
+  opacity: .6;
+}

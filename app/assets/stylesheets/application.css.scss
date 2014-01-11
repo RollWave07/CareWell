@@ -14,15 +14,15 @@
 
 @import "bootstrap";
 
-body {
-  background-color: #faf2e6;
-  }
 .navbar {
   background-color: #faf2e6;
   border-bottom-color: #faf2e6;
   }
 
 li.navbar-links{
-    margin-top:40px;
-  }
+  margin-top:40px;
+    a:hover { 
+    color:black;
+    }
+   }
 

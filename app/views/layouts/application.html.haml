@@ -6,9 +6,9 @@
     = csrf_meta_tags
   %body
     .container 
-      %nav.navbar
-        %ul.nav
-          %li.navbar-brand.navbar-links
+      %nav.navbar-inverse.navbar-top{:role=>"navigation"}
+        %ul.nav.navbar-nav
+          %li.navbar-brand.nav-links-right
             = link_to image_tag('carewell-logo.gif'), root_url 
           -if user_signed_in?
             %li.navbar-links
@@ -19,13 +19,13 @@
               = link_to 'Updates', root_url
             %li.navbar-links
               = link_to 'Locations', root_url
-            %li.navbar-links.navbar-text.navbar-right  
+            %li.navbar-links  
               = link_to 'Sign out', destroy_user_session_path, method: :delete
           -else
-            %li.navbar-links.navbar-text.navbar-right
-              = link_to "Sign up", new_user_registration_path
-            %li.navbar-links.navbar-text.navbar-right
+            %li.navbar-links
               = link_to "Sign in", new_user_session_path
+            %li.navbar-links
+              = link_to "Sign up", new_user_registration_path
     .container
       - unless notice.blank?
         .notice
