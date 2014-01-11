@@ -15,7 +15,9 @@
               %li.navbar-links
                 = link_to 'Groups', groups_path
                 / = link_to 'Tasks', tasks_path
+              %li.navbar-links
                 = link_to 'Updates', updates_path
+              %li.navbar-links  
                 = link_to 'Locations', locations_path
             -if user_signed_in?
               %li.navbar-links
@@ -35,3 +37,10 @@
       .container  
         = yield
         = javascript_include_tag "application"
+      .footer
+        .row
+        .col-md-2
+        .col-md-3
+        .col-md-3
+        .col-md-3
+        .col-md-2
