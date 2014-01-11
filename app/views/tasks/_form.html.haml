@@ -1,0 +1,7 @@
+=form_for [@group, @task] do |task|
+  %p
+    =task.label :category
+    =task.text_field :category
+  %p
+    =task.label :title
+    =task.text_field :title
