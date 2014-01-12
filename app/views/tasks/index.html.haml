@@ -8,9 +8,10 @@
 
 -if @tasks
   -@tasks.each do |task|
-    .row
-      .col-md-2
-      %ul.col-md-8.task
+
+    .task.row
+      .col-md-3
+      %ul.col-md-6
         %li=task.task_date.strftime("%A, %m/%d/%Y")
         / =task.task_date.strftime("%b") unless task_date.nil?
         / =task.task_date.strftime("%m/%d/%Y") unless task_date.nil?
@@ -24,7 +25,7 @@
           %li=link_to "Sign-Up", edit_group_task_path(@group, task.id), class: 'sign-up'
 
         %li=link_to "Edit", edit_group_task_path(@group, task.id)
-      .col-md-2
+      .col-md-3
     .updates
       -task.ordered_updates.each do |update|
         =render "updates/update", update: update
@@ -33,10 +34,6 @@
       .col-md-6
         =render "updates/form", update: Update.new, task: task
       .col-md-3
-
-
-
-
 
 =link_to "Add New Task", new_group_task_path(@group)
 
@@ -52,8 +49,3 @@
 /       = @commenter_name
 /     .commenter-photo
 /       = image_tag(@commenter_picture)
-
-
-
-
-
