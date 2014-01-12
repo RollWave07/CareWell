@@ -12,6 +12,7 @@ class UpdatesController < ApplicationController
   end
 
   def new
+    @update = Update.new
   end
 
   def create
@@ -21,6 +22,7 @@ class UpdatesController < ApplicationController
       if @update.save
         format.html { redirect_to group_tasks_path(@group), notice: 'update was successfully created.' }
         format.json { render action: 'show', status: :created, location: @update }
+        format.js { render layout: false }
       else
         format.html { render action: 'new' }
         format.json { render json: @update.errors, status: :unprocessable_entity }

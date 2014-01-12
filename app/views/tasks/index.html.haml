@@ -8,9 +8,9 @@
 
 -if @tasks
   -@tasks.each do |task|
-    .task.row
+    .row
       .col-md-2
-      %ul.col-md-8
+      %ul.col-md-8.task
         %li=task.task_date.strftime("%A, %m/%d/%Y")
         / =task.task_date.strftime("%b") unless task_date.nil?
         / =task.task_date.strftime("%m/%d/%Y") unless task_date.nil?
@@ -25,29 +25,13 @@
 
         %li=link_to "Edit", edit_group_task_path(@group, task.id)
       .col-md-2
-    -task.ordered_updates.each do |update|
-      .updates.row
-        .col-md-3
-        .picture.col-md-2=image_tag(update.task.user.picture)
-        .comment.col-md-4=update.comment
-        .col-md-3
-      .row
-        .col-md-3
-        .name.col-md-2=update.user.first_name
-        .info.col-md-4=update.created_at.strftime("at %I:%M%p")
-        .col-md-3
-      %br
+    .updates
+      -task.ordered_updates.each do |update|
+        =render "updates/update", update: update
     .row
       .col-md-3
       .col-md-6
-        =form_for [@group, @update] do |f|
-          .field
-            =f.label :comment
-            =f.text_field :comment, size: '60'
-          .field
-            =f.hidden_field(:task_id, value: task.id)
-          .action
-            =f.submit "Add Update"
+        =render "updates/form", update: Update.new, task: task
       .col-md-3
 
 

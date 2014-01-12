@@ -1,0 +1,10 @@
+.row
+  .col-md-3
+  .picture.col-md-2=image_tag(update.user.picture)
+  .comment.col-md-4=update.comment
+  .col-md-3
+.row
+  .col-md-3
+  .name.col-md-2=update.user.first_name
+  .info.col-md-4=update.created_at.strftime("at %I:%M%p")
+  .col-md-3
