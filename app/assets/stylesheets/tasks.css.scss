@@ -2,12 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+* {
+  border: 1px solid red;
+}
+
 body {
   font-size: 18px;
 }
 
 .task {
   margin: 30px;
+  li {
+  list-style: none;
+  display: inline-block;
+  padding-right: 20px;
+  }
+}
+
+.update {
+  div {
+  .picture, .comment, .name, .info {
+    display: inline-block;
+    }
+  }
 }
 .task_category, .task_title, .task_action {
   display: inline-block;
@@ -23,3 +40,4 @@ body {
 .name_form {
   display: inline-block;
 }
+

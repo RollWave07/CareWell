@@ -24,6 +24,10 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.joins(:user).where(:users => {group_id: @group})
+    @commenter_name = current_user.first_name
+    @commenter_picture = current_user.picture
+    @group_name = Group.find(current_user.group_id).name
+    # @user_id = Update.user_id
   end
 
   def show
@@ -58,6 +62,7 @@ class TasksController < ApplicationController
       if @task.update(task_params)
         format.html { redirect_to group_tasks_path(@group), notice: 'task was successfully updated.' }
         format.json { head :no_content }
+        format.js { render layout: false }
       else
         format.html { render action: 'edit' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -76,6 +81,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-      params.require(:task).permit(:category, :title, :information, :start_time, :duration, :task_date, :user_id)
+      params.require(:task).permit(:category, :title, :information, :start_time, :duration, :task_date, :user_id, :assignee_id)
     end
 end
