@@ -1,15 +1,15 @@
-%h1 All Updates for #{@group_name}
-%p Scroll down to see each individual update
+/ %h1 All Updates for #{@group_name}
+/ %p Scroll down to see each individual update
 
--@updates.each do |update|
-  .update
-    .update-comment
-      =update.comment
-    .update-photo
-      = image_tag(update.picture)
-    .commenter-name
-      = @commenter_name
-    .commenter-photo
-      = image_tag(@commenter_picture)
+/ -@updates.each do |update|
+/   .update
+/     .update-comment
+/       =update.comment
+/     .update-photo
+/       = image_tag(update.picture)
+/     .commenter-name
+/       = @commenter_name
+/     .commenter-photo
+/       = image_tag(@commenter_picture)
 
-  =link_to "Add New Comment", new_group_update_path(params:[:group_id, @update])
+  / =link_to "Add New Comment", new_group_update_path(params:[:group_id], @update)

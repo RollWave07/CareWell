@@ -1,7 +1,7 @@
 %h1
   / can add glyphicons like so below:
   / %span{:class => "glyphicon glyphicon-saved"}
-  Upcoming Tasks
+  Upcoming Tasks for #{@group_name}
 
 -if @tasks.empty?
   ="Add New"
@@ -26,6 +26,13 @@
         -else task.assignee_id.nil?
           I can do this!
         =link_to "Edit", edit_group_task_path(@group, task.id)
+        -task.updates.each do |update|
+          %p=update.comment
+          %p=image_tag(update.picture)
+          %p=@commenter_name
+          %p=image_tag(@commenter_picture)
+
+
 
   =link_to "Add New", new_group_update_path(@group)
 
