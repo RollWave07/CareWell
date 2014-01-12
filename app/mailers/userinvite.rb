@@ -6,9 +6,9 @@ class Userinvite < ActionMailer::Base
   #
   #   en.userinvite.invite.subject
   #
-  def invite(user)
+  def invite(user, invitee)
     @greeting = "Hi"
     @groupid = user.group.id
-    mail( to: "briansisney@gmail.com", subject: "Test")
+    mail( to: invitee, subject: "Test")
   end
 end
