@@ -19,9 +19,10 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    current_user.group = @group
     respond_to do |format|
       if @group.save
+        current_user.group = @group
+        current_user.save
         format.html { redirect_to group_tasks_path(@group), notice: 'group was successfully created.' }
         format.js { render layout: false }
       else

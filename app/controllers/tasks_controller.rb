@@ -49,7 +49,11 @@ class TasksController < ApplicationController
   private
 
   def find_group
-    @group = current_user.group
+    if current_user.group
+      @group = current_user.group
+    else
+      @group = Group.find(params[:group_id])
+    end
   end
 
   def task_params
