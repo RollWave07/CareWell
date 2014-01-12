@@ -12,6 +12,7 @@ class Userinvite < ActionMailer::Base
     @first_name = first_name
     @last_name = last_name
     @task = task
+    @email = email
     
     mail( to: email, subject: task)
   end
