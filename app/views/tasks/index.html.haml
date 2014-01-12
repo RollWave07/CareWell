@@ -17,7 +17,9 @@
         %li=task.category
         %li=task.title
         -if task.assignee_id.nil? && task.user_id == current_user.id
-          %li= render 'tasks/invite'
+
+          = render 'tasks/modal', task: task
+
         -else task.assignee_id.nil?
           %li=link_to "Sign-Up", edit_group_task_path(@group, task.id), class: 'sign-up'
 

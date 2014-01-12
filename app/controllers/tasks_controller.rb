@@ -1,7 +1,26 @@
 class TasksController < ApplicationController
 
-  before_action :authenticate_user!
-  before_filter :find_group #maybe before_filter
+  before_action :authenticate_user!, :find_group
+
+  def send_email
+    group_id = params[:group_id]
+    inviter = current_user.first_name
+    first_name = params[:first_name]
+    last_name = params[:last_name]
+    email = params[:email]
+    task= params[:task]
+    # binding.pry
+    result = Userinvite.invite(group_id, inviter, first_name, last_name, email, task).deliver
+    respond_to do |format|
+      if result
+        format.html { redirect_to group_tasks_path(group_id), notice: 'Message sent successfully' }
+      else
+        format.html { redirect_to group_tasks_path(group_id), notice: 'Message NOT sent successfully' }
+      end
+    end
+      
+    # format.html { notice: 'Message sent successfully' }
+  end
 
   def index
     @tasks = Task.joins(:user).where(:users => {group_id: @group})

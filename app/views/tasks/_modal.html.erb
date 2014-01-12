@@ -10,7 +10,7 @@
         <h4 class="modal-title" id="myModalLabel">Invite Your People</h4>
       </div>
       <div class="modal-body">
-        <%= form_tag do %>
+        <%= form_tag send_email_path(@group.id) do %>
           <div class="name_form">
            <%= label_tag(:first_name, "First Name") %><br>
            <%= text_field_tag(:first_name) %>
@@ -23,6 +23,13 @@
             <%= label_tag(:email, "Email") %><br>
             <%= text_field_tag(:email) %>
           </div>
+          <div>
+            <%= hidden_field_tag 'task', task.title %>
+            <%= hidden_field_tag 'inviter', current_user %>
+          </div>
+          <div>
+            <%= submit_tag "submit" %>
+          </div>
         <%end%>
 
       </div>
@@ -33,3 +40,4 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+

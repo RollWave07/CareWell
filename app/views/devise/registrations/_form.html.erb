@@ -1,8 +1,8 @@
 <div><%= f.label :first_name %><br />
-<%= f.text_field :first_name, :autofocus => true %></div>
+<%= f.text_field :first_name, :autofocus => true, value: params[:first_name] %></div>
 
 <div><%= f.label :last_name %><br />
-<%= f.text_field :last_name, :autofocus => true %></div>
+<%= f.text_field :last_name, :autofocus => true, value: params[:last_name] %></div>
 
 <div><%= f.label :phone %><br />
 <%= f.text_field :phone, :autofocus => true %></div>
@@ -20,7 +20,7 @@
 <%= f.text_field :notes, :autofocus => true %></div>
 
 <div><%= f.label :email %><br />
-<%= f.text_field :email, :autofocus => true %></div>
+<%= f.text_field :email, :autofocus => true, value: params[:email] %></div>
 
 
   

@@ -18,7 +18,7 @@ gem 'haml-rails'
 gem 'haml'
 gem 'pry'
 
-gem 'devise'
+gem 'devise' 
 
 gem 'acts_as_votable', '~> 0.8.0'
 
