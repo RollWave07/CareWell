@@ -1,2 +1,13 @@
-%h1 Updates#index
-%p Find me in app/views/updates/index.html.haml
+%h1 All Updates
+%p These are all of the updates
+
+-@updates.each do |update|
+  .update
+    .update-comment
+      =update.comment
+    .update-photo
+      =update.picture
+    .commenter-photo
+      %p TO-DO
+    .commenter-name
+      %p TO-DO
