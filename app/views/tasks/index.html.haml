@@ -17,8 +17,11 @@
         -if task.assignee_id.nil? && task.user_id == current_user.id
           %li= render 'tasks/invite'
         -else task.assignee_id.nil?
-          %li=link_to "Sign-Up", edit_group_task_path(@group, task.id)
-          %li=link_to "Edit", edit_group_task_path(@group, task.id)
+          %li=link_to "Sign-Up", edit_group_task_path(@group, task.id), :class => 'sign-up'
+
+        %li=link_to "Edit", edit_group_task_path(@group, task.id)
+
+
 
   =link_to "Add New", new_group_task_path(@group)
 
