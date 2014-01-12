@@ -3,9 +3,7 @@
   / %span{:class => "glyphicon glyphicon-saved"}
   Upcoming Tasks
 
--if @tasks.empty?
-  ="Add New"
--else
+-if @tasks
   -@tasks.each do |task|
     .task
       .task_date
@@ -27,7 +25,7 @@
           I can do this!
         =link_to "Edit", edit_group_task_path(@group, task.id)
 
-  =link_to "Add New", new_group_task_path(@group)
+=link_to "Add New", new_group_task_path(@group)
 
 
 
