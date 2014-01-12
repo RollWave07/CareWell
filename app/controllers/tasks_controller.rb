@@ -42,6 +42,7 @@ class TasksController < ApplicationController
       if @task.update(task_params)
         format.html { redirect_to group_tasks_path(@group), notice: 'task was successfully updated.' }
         format.json { head :no_content }
+        format.js { render layout: false }
       else
         format.html { render action: 'edit' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -52,10 +53,14 @@ class TasksController < ApplicationController
   private
 
   def find_group
-    @group = Group.find(params[:group_id])
+    if current_user.group
+      @group = current_user.group
+    else
+      @group = Group.find(params[:group_id])
+    end
   end
 
   def task_params
-      params.require(:task).permit(:category, :title, :information, :start_time, :duration, :task_date, :user_id)
+      params.require(:task).permit(:category, :title, :information, :start_time, :duration, :task_date, :user_id, :assignee_id)
     end
 end

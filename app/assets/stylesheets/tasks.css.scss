@@ -8,6 +8,11 @@ body {
 
 .task {
   margin: 30px;
+  li {
+  list-style: none;
+  display: inline-block;
+  padding-right: 20px;
+  }
 }
 .task_category, .task_title, .task_action {
   display: inline-block;

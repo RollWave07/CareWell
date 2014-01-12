@@ -7,7 +7,8 @@
     %br
     =user.last_name
     %br
-    ="Group: #{user.group}"
+    -if user.group
+      ="Group: #{user.group.id}"
     %br
     =user.phone
     %br

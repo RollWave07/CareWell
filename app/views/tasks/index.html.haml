@@ -3,25 +3,21 @@
   / %span{:class => "glyphicon glyphicon-saved"}
   Upcoming Tasks for #{@group_name}
 
--if @tasks.empty?
-  ="Add New"
--else
+-if @tasks
   -@tasks.each do |task|
     .task
-      .task_date
+      %ul
+        %li=task.task_date.strftime("%A, %m/%d/%Y")
         / =task.task_date.strftime("%b") unless task_date.nil?
         / =task.task_date.strftime("%m/%d/%Y") unless task_date.nil?
-
-      .task_category
-        =task.category
-      .task_title
-        =task.title
-      .task_action
-
+        %li=task.category
+        %li=task.title
         -if task.assignee_id.nil? && task.user_id == current_user.id
-          Unassigned.
+          %li= render 'tasks/invite'
+        -else task.assignee_id.nil?
+          %li=link_to "Sign-Up", edit_group_task_path(@group, task.id), :class => 'sign-up'
 
-          = render 'tasks/modal'
+        %li=link_to "Edit", edit_group_task_path(@group, task.id)
 
         -else task.assignee_id.nil?
           I can do this!
@@ -32,9 +28,8 @@
           %p=@commenter_name
           %p=image_tag(@commenter_picture)
 
+=link_to "Add New", new_group_task_path(@group)
 
-
-  =link_to "Add New", new_group_update_path(@group)
 
 
 
