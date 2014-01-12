@@ -12,6 +12,10 @@ class Task < ActiveRecord::Base
   #   Task.joins(:user).where(:users => {group_id: 1})
   # end
 
+  def ordered_updates
+    self.updates.order("created_at")
+  end
+
   ## potential model method
   # def needs_assignee
   #   if self.assignee_id.nil? && self.user_id == current_user.id

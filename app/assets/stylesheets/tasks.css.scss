@@ -26,6 +26,11 @@ body {
     }
   }
 }
+
+.action {
+  text-align: right;
+}
+
 .task_category, .task_title, .task_action {
   display: inline-block;
 }

@@ -1,5 +1,7 @@
 class UpdatesController < ApplicationController
   before_action :authenticate_user!
+  before_filter :find_group #maybe before_filter
+
   def index
   end
 
@@ -11,4 +13,33 @@ class UpdatesController < ApplicationController
 
   def new
   end
+
+  def create
+    @update = Update.new(update_params)
+    @update.user_id = current_user.id
+    respond_to do |format|
+      if @update.save
+        format.html { redirect_to group_tasks_path(@group), notice: 'update was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @update }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @update.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  private
+
+  def find_group
+    if current_user.group
+      @group = current_user.group
+    else
+      @group = Group.find(params[:group_id])
+    end
+  end
+
+  def update_params
+          params.require(:update).permit(:comment, :picture, :task_id, :user_id)
+  end
+
 end
