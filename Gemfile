@@ -10,7 +10,10 @@ group :development do
   gem 'hirb'
 end
 
+# Use RMagick to manipulate images
+gem 'rmagick'
 
+# For obfuscation of API key
 gem 'figaro'
 
 # Use HAML
