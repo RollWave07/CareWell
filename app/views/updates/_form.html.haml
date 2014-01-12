@@ -1,0 +1,11 @@
+=form_for [@task, @update] do |update|
+  %p
+    =update.label :comment
+    %br
+    =update.text_field :comment
+  %p
+    =update.label :picture
+    %br
+    =update.text_field :picture
+  %p
+    =update.submit

@@ -1,13 +1,13 @@
-%h1 All Updates
-%p These are all of the updates
+%h1 All Updates for #{@group_name}
+%p Scroll down to see each individual update
 
 -@updates.each do |update|
   .update
     .update-comment
       =update.comment
     .update-photo
-      =update.picture
-    .commenter-photo
-      %p TO-DO
+      = image_tag(update.picture)
     .commenter-name
-      %p TO-DO
+      = @commenter_name
+    .commenter-photo
+      = image_tag(@commenter_picture)
