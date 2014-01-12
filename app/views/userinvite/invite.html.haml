@@ -3,5 +3,5 @@ Userinvite#invite
 = @greeting + ", find me in app/views/userinvite/invite.text.haml"
 
 %p For more information, click the link below:
-= link_to "URL", new_user_registration_path()
+= link_to "URL", new_user_registration_url(params: {group_id: @groupid} )
 %br

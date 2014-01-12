@@ -1,14 +1,14 @@
 class Userinvite < ActionMailer::Base
-  default from: "hello@carewelldesign.com"
+  default from: "eric@carewelldesign.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
   #   en.userinvite.invite.subject
   #
-  def invite
+  def invite(user)
     @greeting = "Hi"
-
-    mail to: "briansisney@gmail.com", subject: "Test"
+    @groupid = user.group.id
+    mail( to: "briansisney@gmail.com", subject: "Test")
   end
 end
