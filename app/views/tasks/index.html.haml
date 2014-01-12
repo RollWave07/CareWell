@@ -6,24 +6,20 @@
 -if @tasks
   -@tasks.each do |task|
     .task
-      .task_date
+      %ul
+        %li=task.task_date.strftime("%A, %m/%d/%Y")
         / =task.task_date.strftime("%b") unless task_date.nil?
         / =task.task_date.strftime("%m/%d/%Y") unless task_date.nil?
-
-      .task_category
-        =task.category
-      .task_title
-        =task.title
-      .task_action
-
+        %li=task.category
+        %li=task.title
         -if task.assignee_id.nil? && task.user_id == current_user.id
-          Unassigned.
-
-          = render 'tasks/modal'
-
+          %li= render 'tasks/invite'
         -else task.assignee_id.nil?
-          I can do this!
-        =link_to "Edit", edit_group_task_path(@group, task.id)
+          %li=link_to "Sign-Up", edit_group_task_path(@group, task.id), :class => 'sign-up'
+
+        %li=link_to "Edit", edit_group_task_path(@group, task.id)
+
+
 
 =link_to "Add New", new_group_task_path(@group)
 
