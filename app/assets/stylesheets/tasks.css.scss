@@ -47,3 +47,20 @@ $bgc: #ded8ce;
   display: inline-block;
 }
 
+.commenter-info {
+  font-family: "Lato", sans-serif;
+  font-size: 1.75em;
+}
+
+.individual-update {
+  font-family: "Lato", sans-serif;
+  background-color: white;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  font-size: 1.75em;
+  padding: 20px;
+  li {
+    list-style: none;
+    display: inline-block;
+  }
+}

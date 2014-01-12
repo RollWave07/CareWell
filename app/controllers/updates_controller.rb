@@ -3,7 +3,7 @@ class UpdatesController < ApplicationController
   before_filter :find_group #maybe before_filter
   
   #Carrierwave - Add support for uploaded images
-  mount_uploader :profile_pic, ImageUploader
+  # mount_uploader :profile_pic, ImageUploader
 
 
   def index
