@@ -1,7 +1,5 @@
-Userinvite#invite
-
-= @greeting + ", find me in app/views/userinvite/invite.text.haml"
+= "Hi #{@first_name}, #{@inviter} would like your help with #{@task}. If you would like to help out, please click on the link below to register:"
 
 %p For more information, click the link below:
-= link_to "URL", new_user_registration_url(params: {group_id: @groupid} )
+= link_to "Register", new_user_registration_url(params: {group_id: @group_id, first_name: @first_name, last_name: @last_name, email: @email} )
 %br

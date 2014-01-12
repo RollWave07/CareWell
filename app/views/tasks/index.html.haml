@@ -19,7 +19,7 @@
         -if task.assignee_id.nil? && task.user_id == current_user.id
           Unassigned.
 
-          = render 'tasks/modal'
+          = render 'tasks/modal', task: task
 
         -else task.assignee_id.nil?
           I can do this!
