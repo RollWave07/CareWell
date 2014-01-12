@@ -1,12 +1,16 @@
+
 %h1
   / can add glyphicons like so below:
   / %span{:class => "glyphicon glyphicon-saved"}
   Upcoming Tasks
 
+%p Hi, #{@commenter_name}.  These are tasks and updates for #{@group_name}.
+
 -if @tasks
   -@tasks.each do |task|
-    .task
-      %ul
+    .task.row
+      .col-md-2
+      %ul.col-md-8
         %li=task.task_date.strftime("%A, %m/%d/%Y")
         / =task.task_date.strftime("%b") unless task_date.nil?
         / =task.task_date.strftime("%m/%d/%Y") unless task_date.nil?
@@ -18,10 +22,36 @@
           %li=link_to "Sign-Up", edit_group_task_path(@group, task.id), :class => 'sign-up'
 
         %li=link_to "Edit", edit_group_task_path(@group, task.id)
+      .col-md-2
+    -task.updates.each do |update|
+      .updates.row
+        .col-md-3
+        .picture.col-md-2=image_tag(update.task.user.picture)
+        .comment.col-md-4=update.comment
+        .col-md-3
+      .row
+        .col-md-3
+        .name.col-md-2=update.task.user.first_name
+        .info.col-md-4=update.created_at.strftime("at %I:%M%p")
+        .col-md-3
 
 
 
-=link_to "Add New", new_group_task_path(@group)
+
+=link_to "Add New Task", new_group_task_path(@group)
+
+/ %h1 All Updates for #{@group_name}
+
+/ -@updates.each do |update|
+/   .update
+/     .update-comment
+/       =update.comment
+/     .update-photo
+/       = image_tag(update.picture)
+/     .commenter-name
+/       = @commenter_name
+/     .commenter-photo
+/       = image_tag(@commenter_picture)
 
 
 
