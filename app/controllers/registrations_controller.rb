@@ -8,8 +8,8 @@ class RegistrationsController < Devise::RegistrationsController
     end 
   end
 
-  def after_sign_in_path_for(user)
-    group_tasks_path(user.group)
+  def after_sign_in_path_for(resource)
+    group_tasks_path(current_user.group.id)
   end
 
 end 

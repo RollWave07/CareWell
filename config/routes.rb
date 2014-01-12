@@ -1,5 +1,5 @@
 Carewell::Application.routes.draw do
-  root 'pages#welcome'
+  root 'tasks#index'
   devise_for :users, :controllers => {:registrations => "registrations"}
 
   resources :groups do

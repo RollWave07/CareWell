@@ -1,8 +1,6 @@
 %h1 Upcoming Tasks
 
--if @tasks.empty?
-  ="Add New"
--else
+-if @tasks
   -@tasks.each do |task|
     .task
       .task_category
@@ -15,7 +13,7 @@
           Unassigned.
           =link_to "Send Invite", new_group_task_path(@group)
 
-  =link_to "Add New", new_group_task_path(@group)
+=link_to "Add New", new_group_task_path(@group)
 
 
 
