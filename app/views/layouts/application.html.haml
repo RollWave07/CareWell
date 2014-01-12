@@ -3,29 +3,26 @@
   %head
     %title Carewell
     = stylesheet_link_tag "application", media: "all"
+    = csrf_meta_tags
   %body
     .container
       %nav.navbar-inverse.navbar-top{:role=>"navigation"}
+        %div.navbar-brand
+          = link_to image_tag('carewell-logo.gif'), root_url
         %ul.nav.navbar-nav
-          %li.navbar-brand
-            = link_to image_tag('carewell-logo.gif'), root_url
-
-        -if user_signed_in?
-          / %li.navbar-link
-          /   = link_to 'Groups', root_url
-          %li.navbar-link.navbar-right
-            = link_to 'Sign out', destroy_user_session_path, method: :delete
-          %li.navbar-link.navbar-right
-            = link_to 'Updates', root_url
-          %li.navbar-link.navbar-right
-            = link_to 'Tasks', root_url
-          / %li.navbar-link.navbar-right
-          /   = link_to 'Locations', root_url
-        -else
-          %li.navbar-link.navbar-right
-            = link_to "Sign up", new_user_registration_path
-          %li.navbar-link.navbar-right
-            = link_to "Sign in", new_user_session_path
+          -if params[:group_id] && user_signed_in?
+            %li.navbar-link.navbar-right
+              = link_to 'Tasks', group_tasks_path(params[:group_id])
+            %li.navbar-link.navbar-right
+              = link_to 'Updates', group_updates_path(params[:group_id])
+          -if user_signed_in?
+            %li.navbar-links.navbar-right
+              = link_to 'Sign out', destroy_user_session_path, method: :delete
+          -else
+            %li.navbar-links.navbar-right
+              = link_to "Create New Group", new_user_registration_path
+            %li.navbar-links.navbar-right
+              = link_to "Sign in", new_user_session_path
     .container
       - unless notice.blank?
         .notice
@@ -35,8 +32,3 @@
           %p= alert
       = yield
       = javascript_include_tag "application"
-/ .navbar-nav
-/ .container
-/ .clearfix
-/ .navbar-header
-/ .navbar-fixed-top{:role => "navigation"}
