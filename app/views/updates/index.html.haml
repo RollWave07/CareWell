@@ -11,3 +11,5 @@
       = @commenter_name
     .commenter-photo
       = image_tag(@commenter_picture)
+
+  =link_to "Add New Comment", new_group_update_path(params:[:group_id, @update])
