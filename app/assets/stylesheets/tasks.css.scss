@@ -2,11 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.add {
-
+body {
+  font-size: 18px;
 }
 
-.task_category, .task_title {
+.task {
+  margin: 30px;
+}
+.task_category, .task_title, .task_action {
   display: inline-block;
 }
 
@@ -15,4 +18,8 @@
 }
 .task_title {
   padding-left: 20px;
+}
+
+.name_form {
+  display: inline-block;
 }

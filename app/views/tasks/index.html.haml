@@ -1,21 +1,34 @@
-%h1 Upcoming Tasks
+%h1
+  / can add glyphicons like so below:
+  / %span{:class => "glyphicon glyphicon-saved"}
+  Upcoming Tasks
 
 -if @tasks.empty?
   ="Add New"
 -else
   -@tasks.each do |task|
     .task
+      .task_date
+        / =task.task_date.strftime("%b") unless task_date.nil?
+        / =task.task_date.strftime("%m/%d/%Y") unless task_date.nil?
+
       .task_category
         =task.category
       .task_title
         =task.title
       .task_action
-        =link_to "Edit", edit_group_task_path(@group, task.id)
+
         -if task.assignee_id.nil? && task.user_id == current_user.id
           Unassigned.
-          =link_to "Send Invite", new_group_task_path(@group)
+
+          = render 'tasks/modal'
+
+        -else task.assignee_id.nil?
+          I can do this!
+        =link_to "Edit", edit_group_task_path(@group, task.id)
 
   =link_to "Add New", new_group_task_path(@group)
+
 
 
 

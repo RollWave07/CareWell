@@ -2,21 +2,21 @@
 %html
   %head
     %title Carewell
-    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag "application", media: "all"
     = csrf_meta_tags
   %body
-    .container 
+    .container
       %nav.navbar-inverse.navbar-top{:role=>"navigation"}
         %div.navbar-brand
-          = link_to image_tag('carewell-logo.gif'), root_url  
+          = link_to image_tag('carewell-logo.gif'), root_url
         %ul.nav.navbar-nav
-          -if params[:group_id] && user_signed_in? 
+          -if params[:group_id] && user_signed_in?
             %li.navbar-link.navbar-right
               = link_to 'Tasks', group_tasks_path(params[:group_id])
             %li.navbar-link.navbar-right
-              = link_to 'Updates', group_updates_path(params[:group_id]) 
-          -if user_signed_in? 
-            %li.navbar-links.navbar-right   
+              = link_to 'Updates', group_updates_path(params[:group_id])
+          -if user_signed_in?
+            %li.navbar-links.navbar-right
               = link_to 'Sign out', destroy_user_session_path, method: :delete
           -else
             %li.navbar-links.navbar-right
@@ -29,6 +29,6 @@
           %p= notice
       - unless alert.blank?
         .alert
-          %p= alert  
+          %p= alert
       = yield
       = javascript_include_tag "application"
