@@ -1,7 +1,7 @@
 // Place all the styles related to the Tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$bgc: #484747;
+$bgc: #ded8ce;
 
 body {
   font-size: 18px;
@@ -10,6 +10,7 @@ body {
 .task {
   margin: 30px;
   background-color: $bgc;
+  border-left: 10px solid #aee239;
   // border-top-left-radius: 1.5em;
   // border-top-right-radius: 1.5em;
   padding: 10px;
