@@ -8,6 +8,7 @@ class TasksController < ApplicationController
     @commenter_name = current_user.first_name
     @commenter_picture = current_user.picture
     @group_name = Group.find(current_user.group_id).name
+    
   end
 
   def show
