@@ -1,6 +1,10 @@
 class UpdatesController < ApplicationController
   before_action :authenticate_user!
   before_filter :find_group #maybe before_filter
+  
+  #Carrierwave - Add support for uploaded images
+  # mount_uploader :profile_pic, ImageUploader
+
 
   def index
   end
