@@ -18,7 +18,7 @@ class TasksController < ApplicationController
         format.html { redirect_to group_tasks_path(group_id), notice: 'Message NOT sent successfully' }
       end
     end
-      
+
     # format.html { notice: 'Message sent successfully' }
   end
 
@@ -57,7 +57,9 @@ class TasksController < ApplicationController
   end
 
   def update
+
     @task = Task.find(params[:id])
+    @task.assignee_id = params[:assignee_id]
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to group_tasks_path(@group), notice: 'task was successfully updated.' }
@@ -68,6 +70,7 @@ class TasksController < ApplicationController
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   private
@@ -81,6 +84,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-      params.require(:task).permit(:category, :title, :information, :start_time, :duration, :task_date, :user_id, :assignee_id)
+      params.fetch(:task, {}).permit(:category, :title, :information, :start_time, :duration, :task_date, :user_id, :assignee_id)
     end
 end
