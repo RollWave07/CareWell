@@ -5,6 +5,6 @@
     =update.user.first_name
   .individual-update.col-md-3
     %span=update.comment
-    %div=image_tag(update.picture)
+    %div=image_tag(update.picture_url(:medium))
     =update.created_at.strftime("at %I:%M%p")
   .col-md-4

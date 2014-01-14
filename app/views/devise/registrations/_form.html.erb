@@ -8,7 +8,8 @@
 <%= f.text_field :phone, placeholder: "858-886-9929", :autofocus => true %></div>
 
 <%= f.label :picture %><br>
-<%= f.file_field :picture, :required => true %><br><br>
+<!-- Removing require -->
+<%= f.file_field :picture %><br><br>
 
 <div><%= f.label :email %><br />
 <%= f.text_field :email, :autofocus => true, value: params[:email] %></div>
