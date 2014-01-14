@@ -21,7 +21,8 @@
         -else task.assignee_id.nil?
           %li=link_to "Sign-Up", group_task_path(@group, task.id, params: {assignee_id: current_user.id}), method: :put, data: {confirm: "Are you sure?"}, remote: true
 
-        %li=link_to "Edit", edit_group_task_path(@group, task.id)
+        -if current_user == task.user
+          %li=link_to "Edit", edit_group_task_path(@group, task.id)
       .col-md-2
     .updates
       -task.ordered_updates.each do |update|
