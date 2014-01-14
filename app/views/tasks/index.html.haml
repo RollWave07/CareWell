@@ -11,9 +11,7 @@
     .row
       .col-md-2
       %ul.col-md-8.task
-        %li=task.task_date.strftime("%A, %m/%d/%Y")
-        / =task.task_date.strftime("%b") unless task_date.nil?
-        / =task.task_date.strftime("%m/%d/%Y") unless task_date.nil?
+        / %li=task.task_date.strftime("%A, %m/%d/%Y")
         %li=task.category
         %li=task.title
         -if task.assignee_id.nil? && task.user_id == current_user.id
@@ -21,7 +19,7 @@
           = render 'tasks/modal', task: task
 
         -else task.assignee_id.nil?
-          %li=link_to "Sign-Up", edit_group_task_path(@group, task.id), class: 'sign-up'
+          %li=link_to "Sign-Up", group_task_path(@group, task.id, params: {assignee_id: current_user.id}), method: :put, data: {confirm: "Are you sure?"}, remote: true
 
         %li=link_to "Edit", edit_group_task_path(@group, task.id)
       .col-md-2
@@ -35,3 +33,4 @@
       .col-md-3
 
 =link_to "Add New Task", new_group_task_path(@group)
+
