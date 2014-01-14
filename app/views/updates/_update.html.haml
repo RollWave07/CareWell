@@ -7,6 +7,6 @@
     %span=update.comment
     %div=image_tag(update.picture)
     =update.created_at.strftime("at %I:%M%p")
-  .col-md-1= "Likes: #{update.votes.size}"
+  .col-md-1.like-counter= "Likes: #{update.votes.count}"
   .col-md-2
-    =button_to "Like"
+    %button.btn.like-button= link_to "Like", vote_group_task_update_path(@group, update.task, update), method: "post"

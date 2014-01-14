@@ -4,7 +4,11 @@ class UpdatesController < ApplicationController
   
   #Carrierwave - Add support for uploaded images
   # mount_uploader :profile_pic, ImageUploader
-
+  def vote
+    @update = Update.find(params[:id])
+    @update.vote :voter => current_user, :vote => 'like'
+    redirect_to :back, notice: "Thank you for voting!"
+  end
 
   def index
   end
@@ -45,7 +49,7 @@ class UpdatesController < ApplicationController
   end
 
   def update_params
-          params.require(:update).permit(:comment, :picture, :task_id, :user_id)
+    params.require(:update).permit(:comment, :picture, :task_id, :user_id)
   end
 
 end

@@ -25,7 +25,7 @@ gem 'pry'
 
 gem 'devise' 
 
-# gem 'acts_as_votable', '~> 0.8.0'
+gem 'acts_as_votable', '~> 0.8.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'

@@ -13,8 +13,6 @@
           -if params[:group_id] && user_signed_in?
             %li.navbar-link.navbar-right
               = link_to 'Tasks', group_tasks_path(params[:group_id])
-            %li.navbar-link.navbar-right
-              = link_to 'Updates', group_updates_path(params[:group_id])
           -if user_signed_in?
             %li.navbar-links.navbar-right
               = link_to 'Sign out', destroy_user_session_path, method: :delete

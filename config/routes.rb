@@ -3,8 +3,11 @@ Carewell::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
 
   resources :groups do
-    resources :tasks
-    resources :updates
+    resources :tasks do
+      resources :updates do
+        member { post :vote }
+      end
+    end
     resources :locations
   end
   post "/groups/:group_id/tasks/send_email" => 'tasks#send_email', as: 'send_email'
