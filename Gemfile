@@ -13,7 +13,7 @@ end
 # Use RMagick to manipulate images
 gem 'rmagick'
 # Use Carrierwave to allow Rmagick to manipulate images
-# gem 'carrierwave'
+gem 'carrierwave'
 
 # For obfuscation of API key
 gem 'figaro'

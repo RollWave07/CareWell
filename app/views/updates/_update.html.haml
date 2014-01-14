@@ -1,7 +1,7 @@
 .row
   .col-md-4
   .commenter-info.col-md-1
-    =image_tag(update.user.picture)
+    =image_tag(update.user.picture_url(:sq_thumb))
     =update.user.first_name
   .individual-update.col-md-3
     %span=update.comment
