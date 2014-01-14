@@ -6,8 +6,6 @@
     =f.label :picture
     =f.file_field :picture
   .field
-    =f.hidden_field(:task_id, value: task.id)
-  .field
-    =f.hidden_field(:picture)  
+    =f.hidden_field(:task_id, value: task.id) 
   .action
     =f.submit "Add Update"

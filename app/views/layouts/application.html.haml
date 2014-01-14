@@ -10,17 +10,17 @@
         %div.navbar-brand
           = link_to image_tag('carewell-logo.gif'), root_url
         %ul.nav.navbar-nav
-          -if current_user.group && user_signed_in?
-            %li.navbar-links.navbar-right
-              = link_to 'Sign out', destroy_user_session_path, method: :delete
-            %li.navbar-link.navbar-right
-              = link_to 'Edit Profile', edit_user_registration_path
-          -if user_signed_in?
-          -else
-            %li.navbar-links.navbar-right
-              = link_to "Create New Group", new_user_registration_path
-            %li.navbar-links.navbar-right
-              = link_to "Sign in", new_user_session_path
+          -if current_user
+            -if current_user.group != nil && user_signed_in?
+              %li.navbar-links.navbar-right
+                = link_to 'Sign out', destroy_user_session_path, method: :delete
+              %li.navbar-link.navbar-right
+                = link_to 'Edit Profile', edit_user_registration_path
+            -else
+              %li.navbar-links.navbar-right
+                = link_to "Create New Group", new_user_registration_path
+              %li.navbar-links.navbar-right
+                = link_to "Sign in", new_user_session_path
     .container
       - unless notice.blank?
         .notice

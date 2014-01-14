@@ -10,13 +10,17 @@ group :development do
   gem 'hirb'
 end
 
+# Rmagick - Unf for image manipulation
 # Use RMagick to manipulate images
 gem 'rmagick'
 # Use Carrierwave to allow Rmagick to manipulate images
 gem 'carrierwave'
-
 # Use for uploading picture in Ajax request in form with 'remote: true'
 gem 'remotipart'
+# Use for Amazon S3 image storage
+gem 'fog'
+# Use for silencing warning message on starting rails server (from fog)
+gem 'unf' 
 
 # For obfuscation of API key
 gem 'figaro'
