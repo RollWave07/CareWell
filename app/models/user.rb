@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :group
+  mount_uploader :picture, ImageUploader
 
   has_many :tasks
   has_many :updates

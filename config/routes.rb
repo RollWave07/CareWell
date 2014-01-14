@@ -7,6 +7,7 @@ Carewell::Application.routes.draw do
     resources :updates
     resources :locations
   end
+
   post "/groups/:group_id/tasks/send_email" => 'tasks#send_email', as: 'send_email'
   get "likes/index"
   get "likes/show"

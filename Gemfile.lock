@@ -36,6 +36,10 @@ GEM
     bootstrap-sass (3.0.3.0)
       sass (~> 3.2)
     builder (3.1.4)
+    carrierwave (0.9.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -111,6 +115,7 @@ GEM
     rake (10.1.1)
     rdoc (4.1.1)
       json (~> 1.4)
+    remotipart (1.2.1)
     rmagick (2.13.2)
     sass (3.2.13)
     sass-rails (4.0.1)
@@ -153,6 +158,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  carrierwave
   coffee-rails (~> 4.0.0)
   devise
   figaro
@@ -165,6 +171,7 @@ DEPENDENCIES
   pry
   rails (= 4.0.2)
   rails_12factor
+  remotipart
   rmagick
   sass-rails (~> 4.0.0)
   sdoc
