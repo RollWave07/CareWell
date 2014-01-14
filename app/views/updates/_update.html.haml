@@ -7,4 +7,6 @@
     %span=update.comment
     %div=image_tag(update.picture)
     =update.created_at.strftime("at %I:%M%p")
-  .col-md-4
+  .col-md-1= "Likes: #{update.votes.size}"
+  .col-md-2
+    =button_to "Like"

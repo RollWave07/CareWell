@@ -7,5 +7,6 @@ class User < ActiveRecord::Base
 
   has_many :tasks
   has_many :updates
-
+  
+  acts_as_voter
 end
