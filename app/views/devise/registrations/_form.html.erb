@@ -7,7 +7,8 @@
 <div><%= f.label :phone %><span class="phone_info">Why this?</span><br />
 <%= f.text_field :phone, placeholder: "858-886-9929", :autofocus => true %></div>
 
-<!-- removed the picture field as a user won't be likely to add a picture at this stage without understanding more -->
+<%= f.label :picture %><br>
+<%= f.file_field :picture, :required => true %><br><br>
 
 <div><%= f.label :email %><br />
 <%= f.text_field :email, :autofocus => true, value: params[:email] %></div>
