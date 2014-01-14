@@ -63,3 +63,11 @@ $bgc: #ded8ce;
     display: inline-block;
   }
 }
+
+.new_task {
+  background-color: white;
+  padding: 20px;
+  input[type='radio'] {
+    margin-left: 15px;
+  }
+}

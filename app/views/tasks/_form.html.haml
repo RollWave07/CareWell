@@ -2,7 +2,21 @@
   %p
     =task.label :category
     %br
-    =task.select(:category, options_for_select([['getting places', 'getting places'],['around the home', 'around the home'],['shopping', 'shopping'], ['meals', 'meals'], ['personal care', 'personal care'], ['odds & ends', 'odds & ends'], ['visits & outings', 'visits & outings']]))
+    =task.radio_button(:category, "getting places")
+    =task.label(:getting_places, "getting places")
+    =task.radio_button(:category, "around the home")
+    =task.label(:around_home, "around the home")
+    =task.radio_button(:category, "shopping")
+    =task.label(:shopping, "shopping")
+    =task.radio_button(:category, "meals")
+    =task.label(:meals, "meals")
+    =task.radio_button(:category, "personal care")
+    =task.label(:personal_care, "peronal care")
+    =task.radio_button(:category, "odds & ends")
+    =task.label(:odds_and_ends, "odds & ends")
+    =task.radio_button(:category, "visits & outings")
+    =task.label(:visits_and_outings, "visits & outings")
+
   %p
     =task.label :title
     %br
@@ -11,7 +25,7 @@
   %p
     =task.label :information
     %br
-    =task.text_field :information
+    =task.text_area :information
 
   %p
     =task.label :start_time
