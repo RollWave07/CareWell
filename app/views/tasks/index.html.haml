@@ -23,7 +23,7 @@
 
         %li=link_to "Edit", edit_group_task_path(@group, task.id)
       .col-md-2
-    .updates
+    .updates{"data-id" => "#{task.id}"}
       -task.ordered_updates.each do |update|
         =render "updates/update", update: update
     .row
