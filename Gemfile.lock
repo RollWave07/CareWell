@@ -115,6 +115,7 @@ GEM
     rake (10.1.1)
     rdoc (4.1.1)
       json (~> 1.4)
+    remotipart (1.2.1)
     rmagick (2.13.2)
     sass (3.2.13)
     sass-rails (4.0.1)
@@ -170,6 +171,7 @@ DEPENDENCIES
   pry
   rails (= 4.0.2)
   rails_12factor
+  remotipart
   rmagick
   sass-rails (~> 4.0.0)
   sdoc

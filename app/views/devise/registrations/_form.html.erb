@@ -8,7 +8,8 @@
 <%= f.text_field :phone, :autofocus => true %></div>
 
 <%= f.label :picture %><br>
-<%= f.file_field :picture, :required => true %><br><br>
+<!-- Removing require -->
+<%= f.file_field :picture %><br><br>
 
 <div><%= f.label :role %><br />
 <%= f.text_field :role, :autofocus => true %></div>

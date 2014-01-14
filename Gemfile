@@ -15,6 +15,9 @@ gem 'rmagick'
 # Use Carrierwave to allow Rmagick to manipulate images
 gem 'carrierwave'
 
+# Use for uploading picture in Ajax request in form with 'remote: true'
+gem 'remotipart'
+
 # For obfuscation of API key
 gem 'figaro'
 
