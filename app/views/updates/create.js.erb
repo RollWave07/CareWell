@@ -1,4 +1,5 @@
+
 (function () {
   var commentHtml = "<%= j render(partial: 'update', locals: {update: @update})%>";
-  $('.updates').append(commentHtml);
+  $('.updates[data-id="<%=@update.task.id%>"]').append(commentHtml);
 })();
