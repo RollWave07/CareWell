@@ -4,23 +4,30 @@
 <div><%= f.label :last_name %><br />
 <%= f.text_field :last_name, :autofocus => true, value: params[:last_name] %></div>
 
-<div><%= f.label :phone %><br />
-<%= f.text_field :phone, :autofocus => true %></div>
+<div><%= f.label :phone %><span class="phone_info">Why this?</span><br />
+<%= f.text_field :phone, placeholder: "858-886-9929", :autofocus => true %></div>
 
-<div><%= f.label :picture %><br />
-<%= f.text_field :picture, :autofocus => true %></div>
-
-<div><%= f.label :role %><br />
-<%= f.text_field :role, :autofocus => true %></div>
-
-<div><%= f.label :admin %><br />
-<%= f.text_field :admin, :autofocus => true %></div>  
-
-<div><%= f.label :notes %><br />
-<%= f.text_field :notes, :autofocus => true %></div>
+<!-- removed the picture field as a user won't be likely to add a picture at this stage without understanding more -->
 
 <div><%= f.label :email %><br />
 <%= f.text_field :email, :autofocus => true, value: params[:email] %></div>
 
+<!-- Added hidden fields so user doesn't have to fill them in. -->
+<%= f.hidden_field :role, value: 'caregiver' %>
+<%= f.hidden_field :admin, value: true %>
 
-  
+<!-- Add some styles for the phone information hover.  Not sure where to put this given it being a devise controller (which css file touches this?) -->
+<style>
+  div {
+    margin-bottom: 15px;
+  }
+  .phone_info {
+    text-decoration: underline;
+    color: blue;
+    padding-left: 40px;
+  }
+
+</style>
+
+
+
