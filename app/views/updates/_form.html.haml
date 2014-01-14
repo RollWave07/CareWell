@@ -4,5 +4,7 @@
     =f.text_field :comment, size: '60'
   .field
     =f.hidden_field(:task_id, value: task.id)
+  .field
+    =f.hidden_field(:picture)  
   .action
     =f.submit "Add Update"
