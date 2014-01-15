@@ -1,4 +1,7 @@
 Carewell::Application.routes.draw do
+  get "receivetexts/index"
+  get "sendtexts/index"
+  get "sendtexts/send_text_message"
   root 'tasks#index'
   devise_for :users, :controllers => {:registrations => "registrations"}
 

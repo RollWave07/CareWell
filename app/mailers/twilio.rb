@@ -1,7 +1,7 @@
 
 
-require 'rubygems' #may not need this in ruby 2.0
-require 'twilio-ruby'
+# require 'rubygems' #may not need this in ruby 2.0
+# require 'twilio-ruby'
 
 # def Twiliotext
    #Get your Account Sid and Auth Token from twilio.com/user/account
