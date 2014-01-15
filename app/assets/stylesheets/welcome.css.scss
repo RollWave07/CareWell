@@ -1,5 +1,5 @@
 // body {
-//   background: url('train-tracks.jpg') no-repeat center center fixed; 
+//   background: url('train-tracks.jpg') no-repeat center center fixed;
 //   -webkit-background-size: cover;
 //   -moz-background-size: cover;
 //   -o-background-size: cover;
@@ -13,9 +13,16 @@ body {
 h1 {
     font-family: 'Lato', sans-serif;
     color: #333333;
-    font-size: 6em;
+    font-size: 4em;
 }
 
 .main-welcome {
-  margin-top: 6em;
+  margin-top: 2em;
+  img {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .btn-large {
+    padding: 15px 30px;
+  }
 }
