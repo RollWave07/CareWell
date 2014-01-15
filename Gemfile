@@ -8,6 +8,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'hirb'
+  gem 'pry'
 end
 
 # Rmagick - Unf for image manipulation
@@ -20,7 +21,7 @@ gem 'remotipart'
 # Use for Amazon S3 image storage
 gem 'fog'
 # Use for silencing warning message on starting rails server (from fog)
-gem 'unf' 
+gem 'unf'
 
 # For obfuscation of API key
 gem 'figaro'
@@ -28,9 +29,8 @@ gem 'figaro'
 # Use HAML
 gem 'haml-rails'
 gem 'haml'
-gem 'pry'
 
-gem 'devise' 
+gem 'devise'
 
 gem 'acts_as_votable', '~> 0.8.0'
 
