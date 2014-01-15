@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.0.0'
-
+gem 'twilio-ruby'
 gem 'rails_12factor', group: :production
 
 group :development do
