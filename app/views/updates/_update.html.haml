@@ -7,6 +7,8 @@
     %span=update.comment
     %div=image_tag(update.picture_url(:medium))
     =update.created_at.strftime("at %I:%M%p")
-  .col-md-1.like-counter= "Likes: #{update.votes.count}"
+    = "Likes: #{update.votes.count}"
+    = button_to "Like", vote_group_task_update_path(@group, update.task, update), method: "post", class: 'btn btn-primary', remote: true
   .col-md-2
-    %button.btn.like-button= link_to "Like", vote_group_task_update_path(@group, update.task, update), method: "post"
+    -if current_user == update.user
+      =link_to "delete", group_task_update_path(@group, update.task, update), method: :delete, data: { confirm: 'Are you sure?' }

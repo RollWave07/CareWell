@@ -2,5 +2,12 @@
 (function () {
   var commentHtml = "<%= j render(partial: 'update', locals: {update: @update})%>";
   $('.updates[data-id="<%=@update.task.id%>"]').append(commentHtml);
+  $('#update_comment').val('');
+  // $(".like-button").on("click", function (e) {
+  //   e.preventDefault();
+  //   console.log("click");
+  //   $(".like-counter").text("Likes: @update.votes.count");
+  // });
 })();
+
 

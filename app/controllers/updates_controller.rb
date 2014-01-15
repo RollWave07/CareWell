@@ -39,6 +39,15 @@ class UpdatesController < ApplicationController
     end
   end
 
+  def destroy
+    @update = Update.find(params[:id])
+    @update.destroy
+    respond_to do |format|
+      format.html { redirect_to root_url }
+    end
+    
+  end
+
   private
 
   def find_group
