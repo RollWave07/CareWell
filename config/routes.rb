@@ -17,5 +17,5 @@ Carewell::Application.routes.draw do
   get "pages/welcome" => 'pages#welcome', as: 'welcome'
   get "pages/about_us"
   get "users/index"
-
+  
 end
