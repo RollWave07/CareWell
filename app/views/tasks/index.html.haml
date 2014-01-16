@@ -10,7 +10,7 @@
   -@tasks.each do |task|
     .row
       .col-md-2
-      %ul.col-md-8.task
+      %ul.col-md-8.col-xs-12.task
         / %li=task.task_date.strftime("%A, %m/%d/%Y")
         %li=task.category
         %li=task.title
