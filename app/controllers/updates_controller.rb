@@ -6,11 +6,11 @@ class UpdatesController < ApplicationController
   # mount_uploader :profile_pic, ImageUploader
 
 
-  def receive_twilio_text
-    group_id = params[:group_id]
-    task_id = params[:task_id]
-    # update_id = params[:update_id]
-  end
+  # def receive_twilio_text
+  #   group_id = params[:group_id]
+  #   task_id = params[:task_id]
+  #   # update_id = params[:update_id]
+  # end
 
   def vote
     @update = Update.find(params[:id])

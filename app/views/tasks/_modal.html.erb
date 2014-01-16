@@ -27,16 +27,11 @@
             <%= hidden_field_tag 'task', task.title %>
             <%= hidden_field_tag 'inviter', current_user %>
           </div>
-          <div class="btn btn-primary">
-            <%= submit_tag "submit" %>
+          <div class="modal-footer">
+            <%= submit_tag "Invite", class: 'btn btn-primary' %>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         <%end%>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <!-- <button type="button" class="btn btn-primary">Send Invitation</button> -->
-      </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
