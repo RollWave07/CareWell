@@ -1,3 +1,12 @@
+
+<%if params[:group_id] %>
+ <h3> Welcome to your group, <%= Group.find(params[:group_id]).name %></h3>
+<%else%>
+<div><%=label_tag "Group Name" %>
+   <%=text_field_tag :group_name %>
+ </div>
+ <%end%>
+
 <div><%= f.label :first_name %><br />
 <%= f.text_field :first_name, :autofocus => true, value: params[:first_name] %></div>
 
