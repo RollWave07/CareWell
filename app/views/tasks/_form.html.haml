@@ -16,33 +16,31 @@
           %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseTwo"} (Optional): Would you like to add a time and date?
       #collapseTwo.panel-collapse.collapse
         .panel-body
-          %br
           =task.label :start_time
           =task.time_field :start_time
           =task.label :duration
           =task.text_field :duration
           =task.label :task_date
           =task.date_field :task_date
-      .panel.panel-default  
-        .panel-heading
-          %h4.panel-title
-            %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseThree"} (Optional): Would you like to add a category?
-        #collapseThree.panel-collapse.collapse
-          .panel-body    
-            =task.label :category
-            %br
-            =task.radio_button(:category, "getting places")
-            =task.label(:getting_places, "getting places")
-            =task.radio_button(:category, "around the home")
-            =task.label(:around_home, "around the home")
-            =task.radio_button(:category, "shopping")
-            =task.label(:shopping, "shopping")
-            =task.radio_button(:category, "meals")
-            =task.label(:meals, "meals")
-            =task.radio_button(:category, "personal care")
-            =task.label(:personal_care, "personal care")
-            =task.radio_button(:category, "odds & ends")
-            =task.label(:odds_and_ends, "odds & ends")
-            =task.radio_button(:category, "visits & outings")
-            =task.label(:visits_and_outings, "visits & outings")
+    .panel.panel-default  
+      .panel-heading
+        %h4.panel-title
+          %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseThree"} (Optional): Would you like to add a category?
+      #collapseThree.panel-collapse.collapse
+        .panel-body    
+          =task.label :category
+          =task.radio_button(:category, "getting places")
+          =task.label(:getting_places, "getting places")
+          =task.radio_button(:category, "around the home")
+          =task.label(:around_home, "around the home")
+          =task.radio_button(:category, "shopping")
+          =task.label(:shopping, "shopping")
+          =task.radio_button(:category, "meals")
+          =task.label(:meals, "meals")
+          =task.radio_button(:category, "personal care")
+          =task.label(:personal_care, "personal care")
+          =task.radio_button(:category, "odds & ends")
+          =task.label(:odds_and_ends, "odds & ends")
+          =task.radio_button(:category, "visits & outings")
+          =task.label(:visits_and_outings, "visits & outings")
     =task.submit
