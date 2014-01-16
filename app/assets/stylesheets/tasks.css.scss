@@ -64,10 +64,22 @@ $bgc: #ded8ce;
   }
 }
 
-.new_task {
+.new-task-style{
   background-color: white;
   padding: 20px;
   input[type='radio'] {
     margin-left: 15px;
   }
 }
+
+.new-task {
+  background-color: white;
+  padding: 40px;
+  .time {
+    display: hidden;
+  }
+
+}
+
+
+
