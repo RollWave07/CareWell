@@ -1,6 +1,8 @@
 =form_for [@group, @task] do |task|
+  %br
   =task.label :title
   =task.text_field :title
+  %br
   .panel-group#accordion
     .panel.panel-default
       .panel-heading
@@ -30,17 +32,25 @@
         .panel-body    
           =task.label :category
           =task.radio_button(:category, "getting places")
+          %i.fa.fa-wheelchair
           =task.label(:getting_places, "getting places")
           =task.radio_button(:category, "around the home")
+          %i.fa.fa-home
           =task.label(:around_home, "around the home")
           =task.radio_button(:category, "shopping")
+          %i.fa.fa-shopping-cart
           =task.label(:shopping, "shopping")
           =task.radio_button(:category, "meals")
+          %i.fa.fa-cutlery
           =task.label(:meals, "meals")
           =task.radio_button(:category, "personal care")
+          %i.fa.fa-stethoscope
           =task.label(:personal_care, "personal care")
           =task.radio_button(:category, "odds & ends")
+          %i.fa.fa-wrench 
           =task.label(:odds_and_ends, "odds & ends")
           =task.radio_button(:category, "visits & outings")
+          %i.fa.fa-users
           =task.label(:visits_and_outings, "visits & outings")
-    =task.submit
+    %br
+    =task.submit :class => "btn btn-primary"
