@@ -29,28 +29,58 @@
         %h4.panel-title
           %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseThree"} (Optional): Would you like to add a category?
       #collapseThree.panel-collapse.collapse
-        .panel-body    
+        .panel-body
           =task.label :category
-          =task.radio_button(:category, "getting places")
-          %i.fa.fa-wheelchair
-          =task.label(:getting_places, "getting places")
-          =task.radio_button(:category, "around the home")
-          %i.fa.fa-home
-          =task.label(:around_home, "around the home")
-          =task.radio_button(:category, "shopping")
-          %i.fa.fa-shopping-cart
-          =task.label(:shopping, "shopping")
-          =task.radio_button(:category, "meals")
-          %i.fa.fa-cutlery
-          =task.label(:meals, "meals")
-          =task.radio_button(:category, "personal care")
-          %i.fa.fa-stethoscope
-          =task.label(:personal_care, "personal care")
-          =task.radio_button(:category, "odds & ends")
-          %i.fa.fa-wrench 
-          =task.label(:odds_and_ends, "odds & ends")
-          =task.radio_button(:category, "visits & outings")
-          %i.fa.fa-users
-          =task.label(:visits_and_outings, "visits & outings")
+          .row 
+            .col-md-3
+              .task-form-icon-wrapper
+                %i.fa.fa-wheelchair.form-icon
+                %br
+                =task.label(:getting_places, "getting places")
+                %br
+                =task.radio_button(:category, "getting places", :class => "task-form-radio-button")
+            .col-md-3
+              .task-form-icon-wrapper
+                %i.fa.fa-home.form-icon
+                %br
+                =task.label(:around_home, "around the home")
+                %br
+                =task.radio_button(:category, "around the home", :class => "task-form-radio-button")
+            .col-md-3
+              .task-form-icon-wrapper
+                %i.fa.fa-shopping-cart.form-icon
+                %br
+                =task.label(:shopping, "shopping")
+                %br
+                =task.radio_button(:category, "shopping", :class => "task-form-radio-button")
+            .col-md-3
+              .task-form-icon-wrapper
+                %i.fa.fa-cutlery.form-icon
+                %br
+                =task.label(:meals, "meals")
+                %br
+                =task.radio_button(:category, "meals", :class => "task-form-radio-button")
+          .row 
+            .col-md-3
+              .task-form-icon-wrapper
+                %i.fa.fa-stethoscope.form-icon
+                %br
+                =task.label(:personal_care, "personal care")
+                %br
+                =task.radio_button(:category, "personal care", :class => "task-form-radio-button")
+            .col-md-3
+              .task-form-icon-wrapper
+                %i.fa.fa-wrench.form-icon
+                %br 
+                =task.label(:odds_and_ends, "odds & ends")
+                %br
+                =task.radio_button(:category, "odds & ends", :class => "task-form-radio-button")
+            .col-md-3
+              .task-form-icon-wrapper
+                %i.fa.fa-users.form-icon
+                %br
+                =task.label(:visits_and_outings, "visits & outings")
+                %br
+                =task.radio_button(:category, "visits & outings", :class => "task-form-radio-button")
     %br
     =task.submit :class => "btn btn-primary"
