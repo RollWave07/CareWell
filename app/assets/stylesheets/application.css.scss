@@ -23,7 +23,7 @@
 @font-face {
     font-family: 'Lato';
     src: url(font-path('lato-light-webfont.eot') + "?#iefix") format('embedded-opentype'),
-         url(font-path('lato-light-webfont.woff')) format('woff'), 
+         url(font-path('lato-light-webfont.woff')) format('woff'),
          url(font-path('lato-light-webfont.ttf'))  format('truetype'),
          url(font-path('lato-light-webfont.svg') + "Lato") format('svg');
 }
@@ -61,5 +61,11 @@ a {
 }
 .navbar-nav{
   float: right;
+}
+
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 15px;
 }
 
