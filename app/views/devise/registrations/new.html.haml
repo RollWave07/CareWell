@@ -1,0 +1,38 @@
+.container-full
+  .tan
+    .container
+      .row
+        .col-md-12.main-welcome
+          = image_tag "carewell-logo.gif"
+          %h1
+            Welcome! Create your account.
+.container-full
+  .tan
+    / .container
+    .row
+      .col-md-12
+        =form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+          = devise_error_messages!
+          -if params[:group_id]
+            %h3 Welcome to your group, {Group.find(params[:group_id]).name}
+          -else
+            .group-sign-up
+              =label_tag "Group Name"
+              =text_field_tag :group_name, nil, placeholder: "Caring For", autofocus: true, class: 'form-control'
+          .container
+            .row
+              .form-group
+                =f.label :first_name
+                =f.text_field :first_name, value: params[:first_name], class: 'form-control'
+                =f.label :last_name
+                =f.text_field :last_name, value: params[:last_name], class: 'form-control'
+                =f.label :phone
+                =f.text_field :phone, placeholder: "858-886-9929", class: 'form-control'
+                =f.label :email
+                =f.text_field :email, value: params[:email], class: 'form-control'
+                =f.hidden_field :role, value: 'caregiver'
+                =f.hidden_field :admin, value: true
+                =f.label :password
+                =f.password_field :password, class: 'form-control'
+
+                =f.submit "Sign-Up", class: 'btn btn-large btn-primary'

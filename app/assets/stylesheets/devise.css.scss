@@ -1,0 +1,30 @@
+
+.phone_info {
+ text-decoration: underline;
+ color: blue;
+ padding-left: 40px;
+}
+
+.group-sign-up {
+background: #00a049;
+padding: 10px;
+}
+.form-group {
+  width: 80%;
+  margin: 0 auto;
+}
+.name-form-style {
+ // input {
+ //  width: 90%;
+ // }
+ // float: left;
+ // &:nth-child(2) {
+ //   float: right;
+ // }
+}
+
+    // /   %div
+    // /     - if params[:group_id]
+    // /     = f.hidden_field :group_id, :value => params[:group_id]
+    // /   %div= f.submit "Sign up"
+    // / = render 'devise/shared/links'

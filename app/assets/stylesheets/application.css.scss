@@ -46,6 +46,7 @@ $mint-green: #60D97B;
 
         h1 {
           font-size: 17px;
+          text-align: center;
         }
 
         h3 {
@@ -66,6 +67,14 @@ $mint-green: #60D97B;
           &:nth-child(2){
             float:right;
           }
+        }
+
+        .group-sign-up {
+        background: #00a049;
+        padding: 10px;
+         input {
+           width: 100%;
+         }
         }
     }
 
@@ -119,6 +128,10 @@ $mint-green: #60D97B;
     padding-bottom: 2em;
     background: #f7f5f2;
     border-bottom: 20px solid #383838;
+  }
+  .green {
+    // padding-bottom: 2em;
+    background: #00a049;
   }
 }
 

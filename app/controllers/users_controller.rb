@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < SecureController
   before_action :authenticate_user!
 
   #Carrierwave - Add support for uploaded images

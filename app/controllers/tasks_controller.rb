@@ -1,4 +1,4 @@
-class TasksController < ApplicationController
+class TasksController < SecureController
 
   before_action :authenticate_user!, :find_group
 

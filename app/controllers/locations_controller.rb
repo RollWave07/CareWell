@@ -1,4 +1,4 @@
-class LocationsController < ApplicationController
+class LocationsController < SecureController
   before_action :authenticate_user!
   def index
   end

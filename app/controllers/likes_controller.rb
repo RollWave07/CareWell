@@ -1,4 +1,4 @@
-class LikesController < ApplicationController
+class LikesController < SecureController
   before_action :authenticate_user!
   def index
   end

@@ -1,4 +1,4 @@
-class GroupsController < ApplicationController
+class GroupsController < SecureController
   protect_from_forgery with: :exception
 
   before_action :set_group, only: [:show, :edit, :update, :destroy]
@@ -40,9 +40,9 @@ class GroupsController < ApplicationController
       end
     end
   end
-  
+
   def destroy
-    
+
   end
 
   private

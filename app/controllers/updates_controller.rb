@@ -1,4 +1,4 @@
-class UpdatesController < ApplicationController
+class UpdatesController < SecureController
   before_action :authenticate_user!
   before_filter :find_group #maybe before_filter
 
@@ -53,7 +53,7 @@ class UpdatesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to root_url }
     end
-    
+
   end
 
   private

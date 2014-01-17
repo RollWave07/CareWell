@@ -1,0 +1,31 @@
+.container
+
+  -if params[:group_id]
+    %h3 Welcome to your group, {Group.find(params[:group_id]).name}
+  -else
+    .group-sign-up
+      =label_tag "Group Name"
+      %br
+      =text_field_tag :group_name
+  .first-name-form-style
+    =f.label :first_name
+    =f.text_field :first_name, :autofocus => true, value: params[:first_name]
+  .last-name-form-style
+    =f.label :last_name
+    =f.text_field :last_name, :autofocus => true, value: params[:last_name]
+
+  = f.label :phone, Why this?
+  = f.text_field :phone, placeholder: "858-886-9929", :autofocus => true
+
+  = f.label :email
+  = f.text_field :email, :autofocus => true, value: params[:email]
+
+  / Added hidden fields so user doesn't have to fill them in.
+  = f.hidden_field :role, value: 'caregiver'
+  = f.hidden_field :admin, value: true
+
+  / Add some styles for the phone information hover.  Not sure where to put this given it being a devise controller (which css file touches this?)
+
+
+
+
