@@ -7,7 +7,7 @@
     %meta{name: "viewport", content:"width=device-width", 'initial-scale' => 1.0}
   %body
     - puts("HEY LOOK AT ME" + params[:controller].to_s)
-    -if (params[:controller] != 'pages') && (params[:controller] != 'registrations')
+    -if (params[:controller] != 'registrations') && (params[:controller] != 'pages') && (params[:controller] != 'devise/sessions')
       %nav.navbar-inverse.navbar-fixed-top{:role=>"navigation"}
         .navbar-header
           %button.navbar-toggle.collapsed{type: 'button', 'data-toggle'=> 'collapse', 'data-target' => '#bs-example-navbar-collapse-6'}
