@@ -8,8 +8,35 @@
 //   $(".update_comment").text("");
 // });
 
-$(".button_to").on("ajax:success", function(e, data, status, xhr){
-  console.log(data)
+// THIS ONE:
+
+$(document).on("ajax:success", ".button_to", function(e, data, status, xhr){
+  // console.log(data)
+  // console.log(status)
   $("#vote" + data.vote_id).text(data.count);
-  console.log("#vote" + data.vote_id)
+  // console.log("#vote" + data.vote_id)
 });
+
+// STOP
+
+// $(".button_to").on("ajax:success", function(e, data, status, xhr){
+//   // console.log(data)
+//   // console.log(status)
+//   $("#vote" + data.vote_id).text(data.count);
+//   // console.log("#vote" + data.vote_id)
+// });)
+
+
+// $(".row").on("ajax:success", function(e, data, status, xhr){
+//   $("#update"+data.update).remove();
+// });
+
+
+// $("body").on("ajax:success", function(e, data, status, xhr){
+//   switch (type){
+//     case "delete":
+
+//     case "vote":
+//   }
+
+// });

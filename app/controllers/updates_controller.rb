@@ -17,7 +17,8 @@ class UpdatesController < ApplicationController
     @update.vote :voter => current_user, :vote => 'like'
     respond_to do |format|
       format.json { render json:{vote_id: @update.id, count: @update.votes.count}}
-      format.html {redirect_to :back, notice: "Thank you for voting!"}
+      format.html {redirect_to root_url, notice: "Thank you for voting!"}
+      # format.js { render layout: false }
     end
   end
 
@@ -52,10 +53,17 @@ class UpdatesController < ApplicationController
 
   def destroy
     @update = Update.find(params[:id])
-    @update.destroy
     respond_to do |format|
-      format.html { redirect_to root_url }
+      if @update.destroy
+        format.json { render json:{update: @update.id}}
+        format.html { redirect_to :back, notice: "@update.comment was deleted"  }
+        format.js { render layout: false }
+      end
     end
+    # respond_to do |format|
+    #   format.json { render json:{vote_id: @update.id, count: @update.votes.count}}
+    #   format.html {redirect_to :back, notice: "Thank you for voting!"}
+    # end
     
   end
 
