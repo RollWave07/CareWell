@@ -8,14 +8,14 @@
   %body
     - puts("HEY LOOK AT ME" + params[:controller].to_s)
     -if (params[:controller] != 'registrations') && (params[:controller] != 'pages') && (params[:controller] != 'devise/sessions')
-      %nav.navbar-inverse.navbar-fixed-top{:role=>"navigation"}
+      %nav.navbar-inverse{:role=>"navigation"}
         .navbar-header
           %button.navbar-toggle.collapsed{type: 'button', 'data-toggle'=> 'collapse', 'data-target' => '#bs-example-navbar-collapse-6'}
             %span.sr-only Toggle Navigation
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to image_tag('carewell-logo.gif'), root_url
+          = link_to image_tag('carewell-logo-blacksquare.jpg'), root_url
         .navbar-collapse.collapse{id: 'bs-example-navbar-collapse-6', style: {height: '1px'}}
           %ul.nav.navbar-nav
             -if current_user
