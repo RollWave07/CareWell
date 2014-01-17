@@ -6,6 +6,8 @@
 //   background-size: cover;
 // }
 
+
+
 body {
   background-color: #faf2e6;
 }
@@ -13,27 +15,15 @@ body {
 h1 {
     font-family: 'Lato', sans-serif;
     color: #333333;
-    font-size: 4em;
 }
 
-.main-welcome {
-  margin-top: 2em;
-  img {
-    text-align: center;
-    margin: 0 auto;
-  }
-  .btn-large {
-    padding: 15px 30px;
-  }
-}
-
-.number {
-  border-radius: 50%;
-  background-color: white;
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  display: inline-block;
-  text-align: center;
-  vertical-align: center;
-}
+// .number {
+//   border-radius: 50%;
+//   background-color: white;
+//   width: 50px;
+//   height: 50px;
+//   line-height: 50px;
+//   display: inline-block;
+//   text-align: center;
+//   vertical-align: center;
+// }

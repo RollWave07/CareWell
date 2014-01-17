@@ -28,18 +28,56 @@
          url(font-path('lato-light-webfont.svg') + "Lato") format('svg');
 }
 
+// .navbar {
+//   background-color: #faf2e6;
+//   border-bottom-color: #faf2e6;
+// }
+
+// a {
+//   text-decoration: none
+// }
+
+@media all and (max-width: 480px) {
+        body {
+          // font-size: 11px;
+        }
+
+        h1 {
+          font-size: 15px;
+        }
+
+        .main-welcome {
+          text-align: center;
+          img {
+            padding-top: 1.3em;
+            text-align: center;
+          }
+        }
+        .cw-button {
+          width: 40%;
+          float: left;
+          text-align: center;
+          &:nth-child(2){
+            float:right;
+          }
+        }
+    }
+
+.cw-button {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
+  background: green;
+  display: inline-block;
+  color: white;
+  &:hover {
+    color: #ccc;
+    text-decoration: none;
+  }
+}
+
 .navbar {
-  background-color: #faf2e6;
-  border-bottom-color: #faf2e6;
-}
-
-a {
-  text-decoration: none
-}
-
-.navbar-right {
   font-family: 'Lato', sans-serif;
-  margin-top:40px;
   margin-left: 15px;
   margin-right: 15px;
   float: right;
