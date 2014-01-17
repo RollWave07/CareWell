@@ -4,6 +4,14 @@ class UpdatesController < ApplicationController
 
   #Carrierwave - Add support for uploaded images
   # mount_uploader :profile_pic, ImageUploader
+
+
+  # def receive_twilio_text
+  #   group_id = params[:group_id]
+  #   task_id = params[:task_id]
+  #   # update_id = params[:update_id]
+  # end
+
   def vote
     @update = Update.find(params[:id])
     @update.vote :voter => current_user, :vote => 'like'

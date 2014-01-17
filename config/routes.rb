@@ -1,4 +1,10 @@
 Carewell::Application.routes.draw do
+  get "receivetexts/index"
+  get "sendtexts/index"
+  
+  
+  post "sendtexts/send_text_message" => 'sendtexts#send_text_message', as: 'send_text'
+  
   root 'tasks#index'
   devise_for :users, :controllers => {:registrations => "registrations"}
 
@@ -17,5 +23,4 @@ Carewell::Application.routes.draw do
   get "pages/welcome" => 'pages#welcome', as: 'welcome'
   get "pages/about_us"
   get "users/index"
-
 end
