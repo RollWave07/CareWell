@@ -1,16 +1,25 @@
 
-%h1
-  / can add glyphicons like so below:
-  / %span{:class => "glyphicon glyphicon-saved"}
+%h1 
   Upcoming Tasks
 
-%p Hi, #{@commenter_name}.  These are tasks and updates for #{@group_name}.
+-if @tasks
+  -@tasks.each do |task|
+    .row.task-card
+      .col-xs-8  
+        %h3=task.title
+        %h4 5PM, Saturday, March 16
+      .col-xs-3
+        %i.fa.fa-heart.task-card-icon
+        %i.fa.fa-comment.task-card-icon
+      .col-xs-1
+        =image_tag('right-arrow.gif', :class => 'card-right-arrow')
+
+
 
 -if @tasks
   -@tasks.each do |task|
     .row
-      .col-md-2
-      %ul.col-md-8.task
+      %ul.col-md-12.task
         / %li=task.task_date.strftime("%A, %m/%d/%Y")
         %li=task.category
         %li=task.title
