@@ -68,10 +68,43 @@ $bgc: #ded8ce;
   }
 }
 
-.new_task {
+.new-task-style{
   background-color: white;
   padding: 20px;
   input[type='radio'] {
     margin-left: 15px;
   }
+}
+
+.new-task {
+  background-color: white;
+  padding: 40px;
+  .time {
+    display: hidden;
+  }
+
+}
+
+.form-icon {
+  font-size: 4em;
+  margin-top: 25px;
+  color: #333333;
+}
+
+.task-form-icon-wrapper {
+  text-align: center;
+  height: 100%
+}
+
+#task_information {
+  width: 100%;
+}
+
+.task-form-radio-button {
+  display: none;
+}
+
+.selected-category {
+  background-color: #00aac9;
+  color: white !important;
 }
