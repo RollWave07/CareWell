@@ -1,5 +1,5 @@
-class UpdatesController < SecureController
-  before_action :authenticate_user!
+class UpdatesController < ApplicationController
+  # before_action :authenticate_user!
   before_filter :find_group #maybe before_filter
 
   #Carrierwave - Add support for uploaded images

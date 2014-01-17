@@ -17,7 +17,7 @@
             %h3 Welcome to your group, {Group.find(params[:group_id]).name}
           -else
             .group-sign-up
-              =label_tag "Group Name"
+              / =label_tag "Group Name"
               =text_field_tag :group_name, nil, placeholder: "Caring For", autofocus: true, class: 'form-control'
           .container
             .row
@@ -34,5 +34,7 @@
                 =f.hidden_field :admin, value: true
                 =f.label :password
                 =f.password_field :password, class: 'form-control'
-
-                =f.submit "Sign-Up", class: 'btn btn-large btn-primary'
+                =f.label :password_confirmation
+                =f.password_field :password_confirmation, class: 'form-control'
+                %br
+                =f.submit "Sign-Up", class: 'btn btn-large btn-primary btn-block'

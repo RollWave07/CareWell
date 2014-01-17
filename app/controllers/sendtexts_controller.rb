@@ -1,4 +1,4 @@
-class SendtextsController < SecureController
+class SendtextsController < ApplicationController
   def index
   end
 

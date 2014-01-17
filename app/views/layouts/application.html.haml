@@ -6,8 +6,9 @@
     = csrf_meta_tags
     %meta{name: "viewport", content:"width=device-width", 'initial-scale' => 1.0}
   %body
-    -if params[:controller] != 'pages' and params[:controller] != 'devise/sessions' && params[:action] != 'new'
-      %nav.navbar.navbar-fixed-top{:role=>"navigation"}
+    - puts("HEY LOOK AT ME" + params[:controller].to_s)
+    -if (params[:controller] != 'pages') && (params[:controller] != 'registrations')
+      %nav.navbar-inverse.navbar-fixed-top{:role=>"navigation"}
         .navbar-header
           %button.navbar-toggle.collapsed{type: 'button', 'data-toggle'=> 'collapse', 'data-target' => '#bs-example-navbar-collapse-6'}
             %span.sr-only Toggle Navigation
@@ -17,21 +18,19 @@
           = link_to image_tag('carewell-logo.gif'), root_url
         .navbar-collapse.collapse{id: 'bs-example-navbar-collapse-6', style: {height: '1px'}}
           %ul.nav.navbar-nav
-            %li
-              %a link
             -if current_user
               -if current_user.group != nil && user_signed_in?
-                %li
+                %li.navbar-link
                   = link_to 'Sign out', destroy_user_session_path, method: :delete
-                %li
+                %li.navbar-link
                   = link_to 'Edit Profile', edit_user_registration_path
               -else
-                %li
+                %li.navbar-link
                   = link_to "Create New Group", new_user_registration_path
-                %li
+                %li.navbar-link
                   = link_to "Sign in", new_user_session_path
 
-  = yield
-  = javascript_include_tag "application"
+    = yield
+    = javascript_include_tag "application"
 
 / removed from here flash messages - replaced them for now bc messing up the container

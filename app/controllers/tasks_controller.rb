@@ -1,6 +1,6 @@
-class TasksController < SecureController
+class TasksController < ApplicationController
 
-  before_action :authenticate_user!, :find_group
+  before_action :find_group#, :authenticate_user!
 
   def send_email
     group_id = params[:group_id]
