@@ -44,6 +44,9 @@ gem 'pg'
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 4.0.0'
 
+# Add gem for including Font Awesome Icons
+gem "font-awesome-rails"
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
