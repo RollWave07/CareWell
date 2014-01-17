@@ -1,19 +1,36 @@
 
-%h1 
-  Upcoming Tasks
+%h1.task-header
+  My Upcoming Tasks
+
+-@tasks.each do |task|
+  -if task.assignee_id == current_user.id
+  =link_to " ", group_path(@group, task.id)
+    .row.task-card
+      .col-xs-9
+        %h3=task.title
+        %h4=task.task_date.strftime("%A, %B %e, %Y")
+      .col-xs-3
+        %i.fa.fa-heart.task-card-icon
+        %i.fa.fa-comment.task-card-icon
+        =image_tag('right-arrow.gif', :class => 'card-right-arrow')
+
+%h1.task-header
+  My Group's Activity
 
 -if @tasks
   -@tasks.each do |task|
     .row.task-card
-      .col-xs-8  
+      .col-xs-2
+        %h3 pic
+        %h4 name
+      .col-xs-4 
         %h3=task.title
-        %h4 5PM, Saturday, March 16
-      .col-xs-3
+        %h4=task.task_date.strftime("%A, %B %e, %Y")
+      .col-xs-2
         %i.fa.fa-heart.task-card-icon
         %i.fa.fa-comment.task-card-icon
-      .col-xs-1
+      .col-xs-2
         =image_tag('right-arrow.gif', :class => 'card-right-arrow')
-
 
 
 -if @tasks
