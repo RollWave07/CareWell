@@ -15,7 +15,10 @@ class UpdatesController < ApplicationController
   def vote
     @update = Update.find(params[:id])
     @update.vote :voter => current_user, :vote => 'like'
-    redirect_to :back, notice: "Thank you for voting!"
+    respond_to do |format|
+      format.json { render json:{vote_id: @update.id, count: @update.votes.count}}
+      format.html {redirect_to :back, notice: "Thank you for voting!"}
+    end
   end
 
   def index

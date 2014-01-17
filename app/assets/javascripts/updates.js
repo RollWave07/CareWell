@@ -7,3 +7,9 @@
 //   console.log("click");
 //   $(".update_comment").text("");
 // });
+
+$(".button_to").on("ajax:success", function(e, data, status, xhr){
+  console.log(data)
+  $("#vote" + data.vote_id).text(data.count);
+  console.log("#vote" + data.vote_id)
+});
