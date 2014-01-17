@@ -5,5 +5,6 @@ class Update < ActiveRecord::Base
   mount_uploader :picture, ImageUploader
   
   acts_as_votable
+  
 
 end
