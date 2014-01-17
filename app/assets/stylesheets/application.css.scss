@@ -16,6 +16,8 @@
 // * {
 //   border: 1px solid blue;
 // }
+$dark-green: #308d45;
+$mint-green: #60D97B;
 
 @import "bootstrap";
 @import "font-awesome";
@@ -39,10 +41,14 @@
 
 @media all and (max-width: 480px) {
         body {
-          // font-size: 11px;
+          font-family: 'Lato', sans-serif;
         }
 
         h1 {
+          font-size: 17px;
+        }
+
+        h3 {
           font-size: 15px;
         }
 
@@ -54,7 +60,7 @@
           }
         }
         .cw-button {
-          width: 40%;
+          width: 43%;
           float: left;
           text-align: center;
           &:nth-child(2){
@@ -64,10 +70,10 @@
     }
 
 .cw-button {
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid black;
-  background: green;
+  padding: 10px 5px;
+  margin: 5px;
+  // border: 1px solid $dark-green;
+  background: $mint-green;
   display: inline-block;
   color: white;
   &:hover {
@@ -104,6 +110,15 @@
 .container-full {
   margin: 0 auto;
   width: 100%;
-  padding: 0 15px;
+  // padding: 0 15px;
+  .tan {
+    background: #faf2e6;
+    padding-bottom: 2em;
+  }
+  .white {
+    padding-bottom: 2em;
+    background: #f7f5f2;
+    border-bottom: 20px solid #606060;
+  }
 }
 

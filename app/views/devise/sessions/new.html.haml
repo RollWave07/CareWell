@@ -1,29 +1,34 @@
-.col-md-12
-  .landing-sign-in.main-welcome
-    = image_tag "carewell-logo.gif"
-    %h1 A simple way for families to care for each other no matter where they are.
-.container
-  .row
-    .col-md-12
-      = link_to "Sign-In", new_user_session_path, {class: "cw-button"}
-      = link_to "Sign-Up", new_user_session_path, {class: "cw-button"}
+.container-full
+  .tan
+    .container
+      .row
+        .col-md-12.main-welcome
+          = image_tag "carewell-logo.gif"
+          %h1 A simple way for families to care for each other no matter where they are.
+      .row
+        .col-md-12
+          = link_to "Sign-In", new_user_session_path, {class: "cw-button"}
+          = link_to "Sign-Up", new_user_session_path, {class: "cw-button"}
+.container-full
+  .white
+    .container
+      %h1
+        How it works
+      .row.home-page-about
+        .col-xs-12.col-md-4
+          %h3
+            %span.glyphicon.glyphicon-pushpin
+            Share to dos and updates.
 
-.row
-  .col-md-1
-    %h1
-      %span.glyphicon.glyphicon-pushpin
-  .col-md-3
-    %h4 Share to dos and updates.
-  .col-md-1
-    %h1
-      %span.glyphicon.glyphicon-transfer
-  .col-md-3
-    %h4 CareWell helps with confirmations, reminders, and follow-ups.
-  .col-md-1
-    %h1
-      %span.glyphicon.glyphicon-heart
-  .col-md-3
-    %h4 CareWell makes it easy to thank each other.
+        .col-xs-12.col-md-4
+          %h3
+            %span.glyphicon.glyphicon-transfer
+            CareWell helps with confirmations, reminders, and follow-ups.
+
+        .col-xs-12.col-md-4
+          %h3
+            %span.glyphicon.glyphicon-heart
+            CareWell makes it easy to thank each other.
 
 
 / .row
