@@ -83,18 +83,24 @@ $bgc: #ded8ce;
 
 .form-icon {
   font-size: 4em;
-  margin: 25px 0px 0px 15px;
+  margin-top: 25px;
   color: #333333;
 }
 
 .task-form-icon-wrapper {
   text-align: center;
+  height: 100%
 }
 
 #task_information {
   width: 100%;
 }
 
-// * {
-//   border: 1px solid red;
-// }
+.task-form-radio-button {
+  display: none;
+}
+
+.selected-category {
+  background-color: #00aac9;
+  color: white !important;
+}
