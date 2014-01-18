@@ -1,84 +1,18 @@
 =form_for [@group, @task] do |task|
-  =task.text_field :title, placeholder: "title", :class => 'input-lg'
-  %br
-  .panel-group#accordion
-    .panel.panel-default
-      .panel-heading
-        %h4.panel-title
-          %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseOne"} (Optional): Would you like to add more information?
-      #collapseOne.panel-collapse.collapse
-        .panel-body
-          =task.label :information
-          =task.text_area :information
-    .panel.panel-default
-      .panel-heading
-        %h4.panel-title
-          %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseTwo"} (Optional): Would you like to add a time and date?
-      #collapseTwo.panel-collapse.collapse
-        .panel-body
-          =task.label :start_time
-          =task.time_field :start_time
-          =task.label :duration
-          =task.text_field :duration
-          =task.label :task_date
-          =task.date_field :task_date
-    .panel.panel-default
-      .panel-heading
-        %h4.panel-title
-          %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseThree"} (Optional): Would you like to add a category?
-      #collapseThree.panel-collapse.collapse
-        .panel-body
-          =task.label :category
-          .row
-            .col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-wheelchair.form-icon
-                %br
-                =task.label(:getting_places, "getting places")
-                %br
-                =task.radio_button(:category, "getting places", :class => "task-form-radio-button")
-            .col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-home.form-icon
-                %br
-                =task.label(:around_home, "around the home")
-                %br
-                =task.radio_button(:category, "around the home", :class => "task-form-radio-button")
-            .col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-shopping-cart.form-icon
-                %br
-                =task.label(:shopping, "shopping")
-                %br
-                =task.radio_button(:category, "shopping", :class => "task-form-radio-button")
-            .col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-cutlery.form-icon
-                %br
-                =task.label(:meals, "meals")
-                %br
-                =task.radio_button(:category, "meals", :class => "task-form-radio-button")
-          .row
-            .col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-stethoscope.form-icon
-                %br
-                =task.label(:personal_care, "personal care")
-                %br
-                =task.radio_button(:category, "personal care", :class => "task-form-radio-button")
-            .col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-wrench.form-icon
-                %br
-                =task.label(:odds_and_ends, "odds & ends")
-                %br
-                =task.radio_button(:category, "odds & ends", :class => "task-form-radio-button")
-            .col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-users.form-icon
-                %br
-                =task.label(:visits_and_outings, "visits & outings")
-                %br
-                =task.radio_button(:category, "visits & outings", :class => "task-form-radio-button")
-    %br
-    =task.submit :class => "btn btn-primary"
+  =task.text_field :title, placeholder: "Type in the title of your task here.", :class => 'input-lg'
+
+  %ul.nav.nav-tabs
+    %li
+      %a{data-toggle:"tab", href: "#sectionA"}Section A
+    %li
+      %a{data-toggle:"tab", href: "#sectionB"}Section B
+
+  .tab-content
+    #sectionA.tab-pane.fade.in.active
+      %h3
+        Section A
+      %p Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui. Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.
+    #sectionB.tab-pane.fade
+      %h3 Section B
+      %p pestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.
+  =task.submit :class => "btn btn-primary"

@@ -1,7 +1,8 @@
 // Place all the styles related to the Tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+$dark-green: #308d45;
+$mint-green: #60D97B;
 $bgc: #ded8ce;
 
 .task {
@@ -114,8 +115,22 @@ $bgc: #ded8ce;
   div{text-align: center;}
 }
 
-.input-lg {
+.input-lg,  {
   border-radius: 0;
   border: 0;
   width: 100vw;
 }
+
+.btn.btn-primary {
+  background: $mint-green;
+  padding: 20px;
+  width: 100vw;
+  font-size: 2em;
+  border: 0px;
+}
+
+.nav-tabs>li>a {
+  border-radius: 0px;
+  width: 33vw;
+}
+
