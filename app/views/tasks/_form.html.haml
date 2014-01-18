@@ -18,12 +18,13 @@
           %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseTwo"} (Optional): Would you like to add a time and date?
       #collapseTwo.panel-collapse.collapse
         .panel-body
-          =task.label :start_time
-          =task.time_field :start_time
+          / =task.label :start_time
+          / =task.datetime_select :start_time, placeholder: Time.now value: (Time.now+1.day).strftime("%m/%d/%Y,%I:%M%p")
+          / time_field :start_time, placeholder: Time.now
           =task.label :duration
           =task.text_field :duration
           =task.label :task_date
-          =task.date_field :task_date
+          =task.datetime_select :task_date 
     .panel.panel-default  
       .panel-heading
         %h4.panel-title
