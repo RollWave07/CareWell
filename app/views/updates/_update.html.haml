@@ -8,7 +8,10 @@
     %div=image_tag(update.picture_url(:medium))
     =update.created_at.strftime("at %I:%M%p")
     = raw "Likes: <span id='vote#{update.id}'>#{update.votes.count}</span> "
-    = button_to "Like", vote_group_task_update_path(@group, update.task, update), method: "post", class: 'btn btn-primary likebtn', remote: true
+    -if current_user.voted_for? update
+      = button_to "Liked", unvote_group_task_update_path(@group, update.task, update), method: "post", class: 'btn btn-primary', remote: true
+    -else 
+      = button_to "Like", vote_group_task_update_path(@group, update.task, update), method: "post", class: 'btn btn-primary', remote: true
   .col-md-2
     -if current_user == update.user
       =link_to "delete", group_task_update_path(@group, update.task, update), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "delete_update"

@@ -22,6 +22,15 @@ class UpdatesController < ApplicationController
     end
   end
 
+  def unvote
+    @update = Update.find(params[:id])
+    @update.unliked_by current_user
+    respond_to do |format|
+      format.json { render json:{vote_id: @update.id, count: @update.votes.count}}
+      format.html {redirect_to root_url}
+    end
+  end
+
   def index
   end
 
