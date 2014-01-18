@@ -9,6 +9,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'hirb'
   gem 'pry'
+  gem 'quiet_assets'
 end
 
 # Rmagick - Unf for image manipulation

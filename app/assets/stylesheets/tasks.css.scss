@@ -104,7 +104,7 @@ $bgc: #ded8ce;
   color: white !important;
 }
 
-.no-tasks > .glyphicon {
+.no-tasks .glyphicon {
   font-size: 100px;
   font-weight: bold;
   text-align: center;
@@ -112,4 +112,10 @@ $bgc: #ded8ce;
 
 .no-tasks > h1 {
   div{text-align: center;}
+}
+
+.input-lg {
+  border-radius: 0;
+  border: 0;
+  width: 100vw;
 }

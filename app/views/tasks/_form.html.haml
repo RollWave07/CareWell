@@ -1,7 +1,5 @@
 =form_for [@group, @task] do |task|
-  %br
-  =task.label :title
-  =task.text_field :title
+  =task.text_field :title, placeholder: "title", :class => 'input-lg'
   %br
   .panel-group#accordion
     .panel.panel-default
@@ -24,14 +22,14 @@
           =task.text_field :duration
           =task.label :task_date
           =task.date_field :task_date
-    .panel.panel-default  
+    .panel.panel-default
       .panel-heading
         %h4.panel-title
           %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseThree"} (Optional): Would you like to add a category?
       #collapseThree.panel-collapse.collapse
         .panel-body
           =task.label :category
-          .row 
+          .row
             .col-md-3
               .task-form-icon-wrapper
                 %i.fa.fa-wheelchair.form-icon
@@ -60,7 +58,7 @@
                 =task.label(:meals, "meals")
                 %br
                 =task.radio_button(:category, "meals", :class => "task-form-radio-button")
-          .row 
+          .row
             .col-md-3
               .task-form-icon-wrapper
                 %i.fa.fa-stethoscope.form-icon
@@ -71,7 +69,7 @@
             .col-md-3
               .task-form-icon-wrapper
                 %i.fa.fa-wrench.form-icon
-                %br 
+                %br
                 =task.label(:odds_and_ends, "odds & ends")
                 %br
                 =task.radio_button(:category, "odds & ends", :class => "task-form-radio-button")
