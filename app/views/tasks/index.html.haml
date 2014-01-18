@@ -1,38 +1,64 @@
+.container 
+  %h1.task-header
+    My Upcoming Tasks
 
-%h1
-  / can add glyphicons like so below:
-  / %span{:class => "glyphicon glyphicon-saved"}
-  Upcoming Tasks
-
-%p Hi, #{@commenter_name}.  These are tasks and updates for #{@group_name}.
-
--if @tasks
   -@tasks.each do |task|
-    .row
-      .col-md-2
-      %ul.col-md-8.col-xs-12.task
-        / %li=task.task_date.strftime("%A, %m/%d/%Y")
-        %li=task.category
-        %li=task.title
-        -if current_user == task.user
-          %li=link_to "Edit", edit_group_task_path(@group, task.id)
-        %li=button_to "send text", send_text_path({task_id:task}), method: "post", class: 'btn btn-primary'
-        -if task.assignee_id
-          ="Assignee: #{task.assignee.first_name}"
-        -elsif task.assignee_id.nil? && task.user_id == current_user.id
-          = render 'tasks/modal', task: task
-        -else task.assignee_id.nil?
-          %li=link_to "Sign-Up", group_task_path(@group, task.id, params: {assignee_id: current_user.id}), method: :put, data: {confirm: "Are you sure?"}, remote: true   
-      .col-md-2
+    -if task.assignee_id == current_user.id
+      .row.task-card
+        .col-xs-9
+          %h3=task.title
+          %h4=task.task_date.strftime("%A, %B %e, %Y")
+        .col-xs-3
+          %i.fa.fa-heart.task-card-icon
+          %i.fa.fa-comment.task-card-icon
+          =image_tag('right-arrow.gif', :class => 'card-right-arrow')
 
-    .updates{"data-id" => "#{task.id}"}
-      -task.ordered_updates.each do |update|
-        =render "updates/update", update: update
-    .row
-      .col-md-3
-      .col-md-6
-        =render "updates/form", update: Update.new, task: task
-      .col-md-3
+  %h1.task-header
+    My Group's Activity
 
-=link_to "Add New Task", new_group_task_path(@group)
+  -if @tasks
+    -@tasks.each do |task|
+      .row.task-card
+        .col-xs-2
+          %h3 pic
+          %h4 name
+        .col-xs-4 
+          %h3=task.title
+          %h4=task.task_date.strftime("%A, %B %e, %Y")
+        .col-xs-2
+          %i.fa.fa-heart.task-card-icon
+          %i.fa.fa-comment.task-card-icon
+        .col-xs-2
+          =image_tag('right-arrow.gif', :class => 'card-right-arrow')
+
+
+  -if @tasks
+    -@tasks.each do |task|
+      .row
+        .col-md-2
+        %ul.col-md-8.col-xs-12.task
+          / %li=task.task_date.strftime("%A, %m/%d/%Y")
+          %li=task.category
+          %li=task.title
+          -if current_user == task.user
+            %li=link_to "Edit", edit_group_task_path(@group, task.id)
+          %li=button_to "send text", send_text_path({task_id:task}), method: "post", class: 'btn btn-primary'
+          -if task.assignee_id
+            ="Assignee: #{task.assignee.first_name}"
+          -elsif task.assignee_id.nil? && task.user_id == current_user.id
+            = render 'tasks/modal', task: task
+          -else task.assignee_id.nil?
+            %li=link_to "Sign-Up", group_task_path(@group, task.id, params: {assignee_id: current_user.id}), method: :put, data: {confirm: "Are you sure?"}, remote: true   
+        .col-md-2
+
+      .updates{"data-id" => "#{task.id}"}
+        -task.ordered_updates.each do |update|
+          =render "updates/update", update: update
+      .row
+        .col-md-3
+        .col-md-6
+          =render "updates/form", update: Update.new, task: task
+        .col-md-3
+
+  =link_to "Add New Task", new_group_task_path(@group)
 
