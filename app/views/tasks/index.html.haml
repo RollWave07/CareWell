@@ -1,12 +1,8 @@
 
-%h1
-  / can add glyphicons like so below:
-  / %span{:class => "glyphicon glyphicon-saved"}
-  Upcoming Tasks
+%h1 Upcoming Tasks
 
-%p Hi, #{@commenter_name}.  These are tasks and updates for #{@group_name}.
-
--if @tasks
+-if @tasks.nil?
+  %p Hi, #{@commenter_name}.  These are tasks and updates for #{@group_name}.
   -@tasks.each do |task|
     .row
       .col-md-2
@@ -22,7 +18,7 @@
         -elsif task.assignee_id.nil? && task.user_id == current_user.id
           = render 'tasks/modal', task: task
         -else task.assignee_id.nil?
-          %li=link_to "Sign-Up", group_task_path(@group, task.id, params: {assignee_id: current_user.id}), method: :put, data: {confirm: "Are you sure?"}, remote: true   
+          %li=link_to "Sign-Up", group_task_path(@group, task.id, params: {assignee_id: current_user.id}), method: :put, data: {confirm: "Are you sure?"}, remote: true
       .col-md-2
 
     .updates{"data-id" => "#{task.id}"}
@@ -33,6 +29,10 @@
       .col-md-6
         =render "updates/form", update: Update.new, task: task
       .col-md-3
-
-=link_to "Add New Task", new_group_task_path(@group)
+-else
+  .no-tasks
+    %h1 There aren't any tasks currently.
+    %h1
+      .glyphicon.glyphicon-pencil
+    %h1=link_to "Add New Task", new_group_task_path(@group)
 

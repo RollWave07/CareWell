@@ -103,3 +103,13 @@ $bgc: #ded8ce;
   background-color: #00aac9;
   color: white !important;
 }
+
+.no-tasks > .glyphicon {
+  font-size: 100px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.no-tasks > h1 {
+  div{text-align: center;}
+}

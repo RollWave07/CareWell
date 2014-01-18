@@ -71,7 +71,7 @@ $mint-green: #60D97B;
         }
 
         .group-sign-up {
-        background: #00a049;
+        background: $mint-green;
         padding: 10px;
          input {
            width: 100%;
@@ -92,6 +92,24 @@ $mint-green: #60D97B;
   }
 }
 
+.navbar-inverse .navbar-nav > li > a {
+  padding-top: 25px;
+  color: white;
+}
+
+.navbar-toggle {
+margin-top: 19px;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+input.btn.btn-large.btn-primary {
+  background-color: $mint-green;
+  border: 0;
+}
+
 .navbar {
   font-family: 'Lato', sans-serif;
   margin-left: 15px;
@@ -99,19 +117,23 @@ $mint-green: #60D97B;
   float: right;
   list-style-type: none;
   font-size: 1.5em;
-    a:link {
-      color: #333333;
+    a {
+      padding-top: 25px;
+      &:link {
+        color: white;
+      }
+      &:visited {
+        color: white;
+      }
+      &:hover {
+        color: #00b2d2;
+        text-decoration: none;
+      }
+      &:active {
+        color: white;
+      }
     }
-    a:visited {
-      color: #333333;
-    }
-    a:hover {
-      color: #00b2d2;
-      text-decoration: none;
-    }
-    a:active {
-      color: #333333;
-    }
+
 }
 .navbar-nav{
   float: right;
