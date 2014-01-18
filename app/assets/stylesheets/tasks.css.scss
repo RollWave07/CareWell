@@ -103,3 +103,40 @@ $bgc: #ded8ce;
   background-color: #00aac9;
   color: white !important;
 }
+
+.task-header {
+  color: #40090f;
+  font-size: 4em;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: -20px;
+}
+
+.task-card {
+  width: 100%;
+  height: 150px; 
+  background-color: white;
+  border-radius: 3px;
+  padding: 15px;
+  margin-top:25px;
+  text-decoration: none;
+  h3 {
+    font-family: "Lato", sans-serif;
+    font-size: 3em;
+  }
+  h4 {
+    font-family: "Lato", sans-serif;
+    font-size: 2em;
+    color: #cacaca;
+  }
+  .task-card-icon {
+    font-size: 3em;
+    color: #cacaca;
+    margin-top: 35px;
+    margin-left: 25px;
+    // margin-right: 10px;
+  }
+  .card-right-arrow {
+    margin-left: 30px;
+  }
+}
