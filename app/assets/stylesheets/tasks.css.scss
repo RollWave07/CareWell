@@ -131,6 +131,24 @@ $bgc: #ded8ce;
 
 .nav-tabs>li>a {
   border-radius: 0px;
-  width: 33vw;
 }
+
+ul.nav.nav-tabs {
+  width: 100vw;
+  li {
+    width: 33.33333333vw;
+    text-align: center;
+    background: white;
+    border-top: 1px solid black;
+  }
+}
+
+.tab-content {
+  background: white;
+}
+
+form#new_task.new_task {
+  background: white;
+}
+
 

@@ -39,12 +39,11 @@ class TasksController < ApplicationController
   end
 
   def new
-    @task = Task.new
+    @task = current_user.tasks.new
   end
 
   def create
-    @task = Task.new(task_params)
-    @task.user_id = current_user.id
+    @task = current_user.tasks.new(task_params)
     respond_to do |format|
       if @task.save
         format.html { redirect_to group_tasks_path(@group), notice: 'Task was successfully created.' }

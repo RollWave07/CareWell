@@ -1,7 +1,7 @@
 
 %h1 Upcoming Tasks
 
--if @tasks.nil?
+-unless @tasks.nil?
   %p Hi, #{@commenter_name}.  These are tasks and updates for #{@group_name}.
   -@tasks.each do |task|
     .row

@@ -6,20 +6,27 @@
 
         %ul.nav.nav-tabs
           %li
-            %a{'data-toggle' => "tab", href: "#sectionA"}Section A
+            %a{'data-toggle' => "tab", href: "#sectionA"}
+              %span.glyphicon.glyphicon-list
           %li
-            %a{'data-toggle' => "tab", href: "#sectionB"}Section B
+            %a{'data-toggle' => "tab", href: "#sectionB"}
+              %span.glyphicon.glyphicon-time
           %li
-            %a{'data-toggle' => "tab", href: "#sectionC"}Section C
+            %a{'data-toggle' => "tab", href: "#sectionC"}
+              %span.glyphicon.glyphicon-tag
         .tab-content
           #sectionA.tab-pane.fade.in.active
-            %h3
-              Section A
-            %p Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui. Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.
+            %p
+              =task.text_area :information, placeholder: "Add any details or preferences for this task here.", rows: 8, class: 'form-control'
           #sectionB.tab-pane.fade
-            %h3 Section B
-            %p pestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.
+            %h3 When does it need to be done?
+            %p=task.date_field :task_date, class: 'form-control'
+            %h3 Does it start at a certain time?
+            %p=task.time_field :start_time, class: 'form-control'
+            %h3 How long will it take?
+            %p=task.select :duration, options_for_select([['15 minutes', 15], ['30 minutes', 30], ['45 minutes', 45], ['1 hour', 60], ['75 minutes', 75], ['an hour and a half', 90], ['2 hours', 120]]), {include_blank: true}, {class: 'form-control'}
+
           #sectionC.tab-pane.fade
-            %h3 Section C
-            %p pestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.
+            %h3 What type of task is this?
+            %p (placeholder for tom's work on this matter)
         =task.submit :class => "btn btn-primary"
