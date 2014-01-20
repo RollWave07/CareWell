@@ -6,6 +6,10 @@ class ReceivetextsController < ApplicationController
     @comment = params["Body"]
     @assignee = User.where(phone: params["From"].gsub('+1','')).first
     @task = Task.where(assignee_id: @assignee).completed_recently.first
+    
+    unless @task
+        @task = Task.create(user_id: @assignee, assignee_id: @assignee, title: "Update")
+    end 
 
     # logger.info "+++task=#{@task.inspect}"
 
