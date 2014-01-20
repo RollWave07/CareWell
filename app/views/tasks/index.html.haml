@@ -11,7 +11,7 @@
       %ul.col-md-8.col-xs-12.task
         / %li=task.task_date.strftime("%A, %m/%d/%Y")
         %li=task.category
-        %li=task.title
+        %li=link_to task.title, group_task_path(@group, task.id)
         -if current_user == task.user
           %li=link_to "Edit", edit_group_task_path(@group, task.id)
         -if task.assignee_id
