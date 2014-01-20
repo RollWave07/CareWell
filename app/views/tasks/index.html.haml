@@ -1,9 +1,9 @@
 
 %h1 Upcoming Tasks
 
--if @tasks
-  %p Hi, #{@commenter_name}.  These are tasks and updates for #{@group_name}.
 
+-unless @tasks.nil?
+  %p Hi, #{@commenter_name}.  These are tasks and updates for #{@group_name}.
   %h4=link_to "Add New Task", new_group_task_path(@group)
   -@tasks.each do |task|
     .row
@@ -19,7 +19,7 @@
           %li="Assignee: #{task.assignee.first_name}"
         -else
           .signup
-            %li=link_to "Sign-Up", group_task_path(@group, task.id, params: {assignee_id: current_user.id}), method: :put, data: {confirm: "Are you sure?"}, remote: true 
+            %li=link_to "Sign-Up", group_task_path(@group, task.id, params: {assignee_id: current_user.id}), method: :put, data: {confirm: "Are you sure?"}, remote: true
             -if task.assignee_id.nil? && task.user_id == current_user.id
               %li= render 'tasks/modal', task: task
       .col-md-2

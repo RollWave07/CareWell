@@ -1,10 +1,13 @@
 class Task < ActiveRecord::Base
   belongs_to :user
+  # belongs_to :group
   belongs_to :assignee, :class_name => "User"
   belongs_to :location
   has_many :updates
 
   # validates :category, :inclusion => ['getting places', 'around the home', 'shopping', 'meals', 'personal care', 'odds & ends', 'visits & outings']
+  validates :title, presence: true
+
 
   scope :completed_recently, lambda {where(task_date:(1.day.ago..Time.now))}
 
