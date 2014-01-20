@@ -1,43 +1,45 @@
 .container 
   %h1.task-header
     My Upcoming Tasks
-    
+
   -@tasks.each do |task|
     -if task.assignee_id == current_user.id
-      .row.task-card
-        .col-xs-9
-          %h3=task.title
-          %h4=task.task_date.strftime("%A, %B %e, %Y")
-        .col-xs-3
-          %i.fa.fa-heart.task-card-icon
-          %i.fa.fa-comment.task-card-icon
-          =image_tag('right-arrow.gif', :class => 'card-right-arrow')
+      =link_to group_task_path(@group, task.id) do
+        .row.task-card
+          .col-xs-6
+            %h3=task.title
+            %h4=task.task_date.strftime("%A, %B %e, %Y")
+          .col-xs-4
+            %i.fa.fa-heart.task-card-icon
+            %i.fa.fa-comment.task-card-icon
+          .col-xs-2
+            =image_tag('right-arrow.gif', :class => 'card-right-arrow')
 
   %h1.task-header
     My Group's Activity
 
   -if @tasks
     -@tasks.each do |task|
-      .row.task-card
-        .col-xs-2
-          %h3 pic
-          %h4 name
-        .col-xs-4 
-          %h3=task.title
-          %h4=task.task_date.strftime("%A, %B %e, %Y")
-        .col-xs-2
-          %i.fa.fa-heart.task-card-icon
-          %i.fa.fa-comment.task-card-icon
-        .col-xs-2
-          =image_tag('right-arrow.gif', :class => 'card-right-arrow')
-
+      =link_to group_task_path(@group, task.id) do
+        .row.task-card 
+          .col-sm-1
+          -if task.assignee_id
+            =image_tag(task.assignee.picture_url(:sq_medium), :class=>"group-picture")
+            %h4="#{task.assignee.first_name}"
+          .col-sm-8
+            %h3=task.title
+            %h4=task.task_date.strftime("%A, %B %e, %Y")
+          .col-sm-3
+            %i.fa.fa-heart.task-card-icon
+            %i.fa.fa-comment.task-card-icon
+            =image_tag('right-arrow.gif', :class => 'card-right-arrow')
 
   -if @tasks
     -@tasks.each do |task|
       .row
         .col-md-2
         %ul.col-md-8.col-xs-12.task
-          / %li=task.task_date.strftime("%A, %m/%d/%Y")
+          %li=task.task_date.strftime("%A, %m/%d/%Y")
           %li=task.category
           %li=task.title
           -if current_user == task.user

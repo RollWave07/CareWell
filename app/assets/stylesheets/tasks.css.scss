@@ -133,13 +133,13 @@ $bgc: #ded8ce;
   .task-card-icon {
     font-size: 3em;
     color: #cacaca;
-    margin-top: 45px;
+    margin-top: 55px;
     margin-left: 25px;
     // margin-right: 10px;
   }
   .card-right-arrow {
     margin-left: 30px;
-    margin-top: 15px;
+    margin-top: -15px;
   }
 }
 
@@ -162,7 +162,7 @@ $bgc: #ded8ce;
 .btn.btn-primary {
   background: $mint-green;
   padding: 20px;
-  width: 100vw;
+  width: 100px;
   font-size: 2em;
   border: 0px;
 }
