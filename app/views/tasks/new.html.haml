@@ -20,9 +20,11 @@
               =task.text_area :information, placeholder: "Add any details or preferences for this task here.", rows: 8, class: 'form-control'
           #sectionB.tab-pane.fade
             %h3 When does it need to be done?
-            %p=task.date_field :task_date, class: 'form-control'
-            %h3 Does it start at a certain time?
-            %p=task.time_field :start_time, class: 'form-control'
+            %p=task.datetime_select :task_date, class: 'form-control' 
+            / %h3 When does it need to be done?
+            / %p=task.date_field :task_date, class: 'form-control'
+            / %h3 Does it start at a certain time?
+            / %p=task.time_field :start_time, class: 'form-control'
             %h3 How long will it take?
             %p=task.select :duration, options_for_select([['15 minutes', 15], ['30 minutes', 30], ['45 minutes', 45], ['1 hour', 60], ['75 minutes', 75], ['an hour and a half', 90], ['2 hours', 120]]), {include_blank: true}, {class: 'form-control'}
 

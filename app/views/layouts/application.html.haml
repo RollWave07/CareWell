@@ -6,7 +6,6 @@
     = csrf_meta_tags
     %meta{name: "viewport", content:"width=device-width", 'initial-scale' => 1.0}
   %body
-    - puts("HEY LOOK AT ME" + params[:controller].to_s)
     -if (params[:controller] != 'registrations') && (params[:controller] != 'pages') && (params[:controller] != 'devise/sessions')
       %nav.navbar-inverse{:role=>"navigation"}
         .navbar-header
