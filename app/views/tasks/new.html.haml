@@ -1,7 +1,25 @@
-%h1 What do you need help with?
-%h3 Add a task. You can add more information if you'd like or just click "Create Task".
-
 .container
   .row
     .cols-md-12
-      =render partial: "form"
+      =form_for [@group, @task] do |task|
+        =task.text_field :title, placeholder: "Type in the title of your task here.", :class => 'input-lg'
+
+        %ul.nav.nav-tabs
+          %li
+            %a{'data-toggle' => "tab", href: "#sectionA"}Section A
+          %li
+            %a{'data-toggle' => "tab", href: "#sectionB"}Section B
+          %li
+            %a{'data-toggle' => "tab", href: "#sectionC"}Section C
+        .tab-content
+          #sectionA.tab-pane.fade.in.active
+            %h3
+              Section A
+            %p Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui. Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.
+          #sectionB.tab-pane.fade
+            %h3 Section B
+            %p pestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.
+          #sectionC.tab-pane.fade
+            %h3 Section C
+            %p pestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.
+        =task.submit :class => "btn btn-primary"
