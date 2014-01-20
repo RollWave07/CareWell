@@ -4,6 +4,9 @@ $('.task-form-icon-wrapper').click(function() {
   $(this).addClass('selected-category');
 });
 
+// $('.task-form-icon-wrapper').click(function() {
+//   $(this).removeClass('selected-category');
+// });
 // $.datepicker.setDefaults({
 //   showOn: "both",
 //   buttonImageOnly: true,

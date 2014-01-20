@@ -28,5 +28,57 @@
 
           #sectionC.tab-pane.fade
             %h3 What type of task is this?
-            %p (placeholder for tom's work on this matter)
+            %p
+              .task-form-icon-wrapper
+                %i.fa.fa-wheelchair.form-icon
+                %br
+                =task.label(:getting_places, "getting places")
+                %br
+                =task.radio_button(:category, "getting places", :class => "task-form-radio-button")
+              .col-md-3
+                .task-form-icon-wrapper
+                  %i.fa.fa-home.form-icon
+                  %br
+                  =task.label(:around_home, "around the home")
+                  %br
+                  =task.radio_button(:category, "around the home", :class => "task-form-radio-button")
+              .col-md-3
+                .task-form-icon-wrapper
+                  %i.fa.fa-shopping-cart.form-icon
+                  %br
+                  =task.label(:shopping, "shopping")
+                  %br
+                  =task.radio_button(:category, "shopping", :class => "task-form-radio-button")
+              .col-md-3
+                .task-form-icon-wrapper
+                  %i.fa.fa-cutlery.form-icon
+                  %br
+                  =task.label(:meals, "meals")
+                  %br
+                  =task.radio_button(:category, "meals", :class => "task-form-radio-button")
+            .row
+              .col-md-3
+                .task-form-icon-wrapper
+                  %i.fa.fa-stethoscope.form-icon
+                  %br
+                  =task.label(:personal_care, "personal care")
+                  %br
+                  =task.radio_button(:category, "personal care", :class => "task-form-radio-button")
+              .col-md-3
+                .task-form-icon-wrapper
+                  %i.fa.fa-wrench.form-icon
+                  %br
+                  =task.label(:odds_and_ends, "odds & ends")
+                  %br
+                  =task.radio_button(:category, "odds & ends", :class => "task-form-radio-button")
+              .col-md-3
+                .task-form-icon-wrapper
+                  %i.fa.fa-users.form-icon
+                  %br
+                  =task.label(:visits_and_outings, "visits & outings")
+                  %br
+                  =task.radio_button(:category, "visits & outings", :class => "task-form-radio-button")
+
+
+
         =task.submit :class => "btn btn-primary"
