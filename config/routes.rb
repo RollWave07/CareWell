@@ -12,7 +12,7 @@ Carewell::Application.routes.draw do
   resources :groups do
     resources :tasks do
       resources :updates do
-        member { post :vote }
+        member { post :vote, :unvote }
       end
     end
     resources :locations

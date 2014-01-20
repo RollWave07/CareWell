@@ -61,9 +61,9 @@ class TasksController < ApplicationController
     @task.assignee_id = params[:assignee_id]
     respond_to do |format|
       if @task.update(task_params)
+        format.json { render json:{assignee_name: @task.assignee.first_name}}
         format.html { redirect_to group_tasks_path(@group), notice: 'task was successfully updated.' }
-        format.json { head :no_content }
-        format.js { render layout: false }
+        # format.js { render layout: false }
       else
         format.html { render action: 'edit' }
         format.json { render json: @task.errors, status: :unprocessable_entity }

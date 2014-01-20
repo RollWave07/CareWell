@@ -2,7 +2,7 @@
 (function () {
   var commentHtml = "<%= j render(partial: 'update', locals: {update: @update})%>";
   $('.updates[data-id="<%=@update.task.id%>"]').append(commentHtml);
-  $('#update_comment').val('');
+  $('.comment_update').val('');
   // $(".like-button").on("click", function (e) {
   //   e.preventDefault();
   //   console.log("click");
@@ -10,4 +10,8 @@
   // });
 })();
 
-
+// .on("ajax:success", function(e, data, status, xhr){
+      // console.log(data)
+      // $("#vote" + data.vote_id).text(data.count);
+      // console.log("#vote" + data.vote_id)
+    // })

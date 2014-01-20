@@ -7,6 +7,8 @@ class Task < ActiveRecord::Base
 
   # validates :category, :inclusion => ['getting places', 'around the home', 'shopping', 'meals', 'personal care', 'odds & ends', 'visits & outings']
   validates :title, presence: true
+
+
   scope :completed_recently, lambda {where(task_date:(1.day.ago..Time.now))}
 
   # potentially create a model method to return all tasks here, to be called in view.
