@@ -84,12 +84,13 @@ $bgc: #ded8ce;
 
 .form-icon {
   font-size: 4em;
-  margin-top: 25px;
+  margin-top: 10px;
 }
 
 .task-form-icon-wrapper {
   text-align: center;
-  // float: left;
+  float: left;
+  width: 100%;
 }
 
 .task-form-radio-button {
@@ -111,13 +112,13 @@ $bgc: #ded8ce;
   div{text-align: center;}
 }
 
-.input-lg,  {
+.input-lg {
   border-radius: 0;
   border: 0;
   width: 100vw;
 }
 
-.btn.btn-primary {
+.btn.btn-primary.create_task {
   background: $mint-green;
   padding: 20px;
   width: 100vw;
@@ -146,5 +147,6 @@ ul.nav.nav-tabs {
 form#new_task.new_task {
   background: white;
 }
+
 
 

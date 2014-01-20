@@ -9,7 +9,6 @@ class TasksController < ApplicationController
     last_name = params[:last_name]
     email = params[:email]
     task= params[:task]
-    # binding.pry
     result = Userinvite.invite(group_id, inviter, first_name, last_name, email, task).deliver
     respond_to do |format|
       if result

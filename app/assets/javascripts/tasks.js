@@ -17,7 +17,8 @@ $('.task-form-icon-wrapper').click(function() {
 
 // $.datepicker.formatDate( "yy-mm-dd", new Date( 2007, 1 - 1, 26 ) );
 
-// $("#task_duration").datepicker();
+    $("#task_task_date").datepicker();
+
 // $('.task-form-icon-wrapper').click(function() {
 //   $(this).removeClass('selected-category');
 // });
