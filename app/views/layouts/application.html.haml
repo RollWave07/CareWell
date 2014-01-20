@@ -6,7 +6,6 @@
     = csrf_meta_tags
     %meta{name: "viewport", content:"width=device-width", 'initial-scale' => 1.0}
   %body
-    - puts("HEY LOOK AT ME" + params[:controller].to_s)
     -if (params[:controller] != 'registrations') && (params[:controller] != 'pages') && (params[:controller] != 'devise/sessions')
       %nav.navbar-inverse{:role=>"navigation"}
         .navbar-header
@@ -15,7 +14,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to image_tag('carewell-logo-blacksquare.jpg'), root_url
+          = link_to image_tag('carewell-logo-blacksquare.jpg'), group_tasks_path(@group)
         .navbar-collapse.collapse{id: 'bs-example-navbar-collapse-6', style: {height: '1px'}}
           %ul.nav.navbar-nav
             -if current_user

@@ -38,6 +38,7 @@ class TasksController < ApplicationController
   end
 
   def new
+    @group = Group.find(params[:group_id])
     @task = current_user.tasks.new
   end
 
