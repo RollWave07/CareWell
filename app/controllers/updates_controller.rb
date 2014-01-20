@@ -16,7 +16,7 @@ class UpdatesController < ApplicationController
     @update = Update.find(params[:id])
     @update.vote :voter => current_user, :vote => 'like'
     respond_to do |format|
-      format.json { render json:{vote_id: @update.id, count: @update.votes.count, vote_type}}
+      format.json { render json:{vote_id: @update.id, count: @update.votes.count}}
       format.html {redirect_to root_url, notice: "Thank you for voting!"}
       # format.js { render layout: false }
     end
