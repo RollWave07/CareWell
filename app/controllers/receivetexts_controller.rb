@@ -1,4 +1,5 @@
 class ReceivetextsController < ApplicationController
+  skip_before_action :authenticate_user!
   def index
     # let's pretend that we've mapped this action to
     # http://localhost:3000/sms in the routes.rb file
@@ -8,7 +9,7 @@ class ReceivetextsController < ApplicationController
     @task = Task.where(assignee_id: @assignee).completed_recently.first
     
     unless @task
-        @task = Task.create(user_id: @assignee, assignee_id: @assignee, title: "Update")
+        @task = Task.create(user_id: @assignee.id, assignee_id: @assignee.id, title: "Update")
     end 
 
     # logger.info "+++task=#{@task.inspect}"

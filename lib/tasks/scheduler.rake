@@ -33,7 +33,7 @@ task :send_reminders => :environment do
     message = @client.account.sms.messages.create(
       :to => "#{task.assignee.phone}",  
       :from => "8588668901",
-      :body => "Hi #{task.assignee.first_name}, This is a reminder that your task: #{task.name} is tomorrow at #{task.task_date}."
+      :body => "Hi #{task.assignee.first_name}, This is a reminder that your task: #{task.title} is tomorrow at #{task.task_date}."
     )
   end  
   # puts "done."
@@ -46,16 +46,15 @@ task :task_update => :environment do
 
   tasks = Task.where(task_date:(time_from..time_to))
 
+  account_sid = ENV['TWILIO_ACCOUNT_SID']
+  auth_token = ENV['TWILIO_ACCOUNT_TOKEN']
+  @client = Twilio::REST::Client.new account_sid, auth_token
+
   tasks.each do |task|
-    
-    account_sid = ENV['TWILIO_ACCOUNT_SID']
-    auth_token = ENV['TWILIO_ACCOUNT_TOKEN']
-    @client = Twilio::REST::Client.new account_sid, auth_token
-    
     message = @client.account.sms.messages.create(
       :to => "#{task.assignee.phone}",  
       :from => "8588668901",
-      :body => "Hi #{task.assignee.first_name}, How did the task: #{task.name} go? Text back an update and it will be added onto the task page."
+      :body => "Hi #{task.assignee.first_name}, How did the task: #{task.title} go? Text back an update and it will be added onto the task page."
     )
   end  
 end
