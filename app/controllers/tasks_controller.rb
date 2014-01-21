@@ -31,6 +31,8 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    @group = Group.find(params[:group_id])
+    @update = Update.new
   end
 
   def edit

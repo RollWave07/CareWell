@@ -1,17 +1,24 @@
 .update.row{"data-id" => update.id}
-  .col-md-4
-  .commenter-info.col-md-1
-    =image_tag(update.user.picture_url(:sq_thumb))
-    =update.user.first_name
-  .individual-update.col-md-3
-    %span=update.comment
-    %div=image_tag(update.picture_url(:medium))
-    =update.created_at.strftime("at %I:%M%p")
-    = raw "Likes: <span id='vote#{update.id}'>#{update.votes.count}</span> "
-    -if current_user.voted_for? update
-      = button_to "Liked", unvote_group_task_update_path(@group, update.task, update), method: "post", class: 'btn btn-primary', remote: true
-    -else 
-      = button_to "Like", vote_group_task_update_path(@group, update.task, update), method: "post", class: 'btn btn-primary', remote: true
-  .col-md-2
-    -if current_user == update.user
-      =link_to "delete", group_task_update_path(@group, update.task, update), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "delete_update"
+  .commenter-info.col-xs-2
+    -if update.user.picture != nil
+      =image_tag(update.user.picture_url(:sq_thumb))
+    -else
+      =update.user.first_name
+  .comment.col-xs-10
+    .comment-text
+      =update.comment
+      %br
+      .comment-time
+        =update.created_at.strftime("at %I:%M%p")
+    .row
+      .col-xs-12
+        =raw "<span id='vote#{update.id}'>#{update.votes.count}</span>"
+        %span.glyphicon.glyphicon-heart
+        -if current_user.voted_for? update
+          = button_to "Liked", unvote_group_task_update_path(@group, update.task, update), method: "post", class: 'btn btn-primary', remote: true
+        -else
+          = button_to "Like", vote_group_task_update_path(@group, update.task, update), method: "post", class: 'btn btn-primary', remote: true
+        -if current_user == update.user
+          =link_to "delete", group_task_update_path(@group, update.task, update), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "delete_update"
+
+          / %div=image_tag(update.picture_url(:medium))
