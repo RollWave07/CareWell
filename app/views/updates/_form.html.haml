@@ -1,11 +1,11 @@
-=form_for [@group, task, @update], remote: true do |f|
+=form_for [@group, @task, @update], remote: true do |f|
   .field
-    =f.label :comment
+    =f.label :comment, "Add comment"
     =f.text_field :comment, size: '60', :class => 'comment_update'
   .field
-    =f.label :picture
+    =f.label :picture, "Add picture"
     =f.file_field :picture
   .field
-    =f.hidden_field(:task_id, value: task.id) 
+    =f.hidden_field(:task_id, value: task.id)
   .action
-    =f.submit "Add Update", :class => 'add_update'
+    =f.submit "Add Update"
