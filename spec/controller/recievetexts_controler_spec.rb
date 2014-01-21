@@ -1,7 +1,25 @@
-class ReceivetextsController < ApplicationController
-  def index
-    # let's pretend that we've mapped this action to
-    # http://localhost:3000/sms in the routes.rb file
+require "spec_helper"
+
+describe RecievetextsController do
+  describe "Post#index" do
+    it "assignes the @task to the correct task when a task is available" do
+      @comment = 
+      @assignee = 
+      @task = 
+
+
+    end
+
+    it "creates a new task when a task is not available" do
+      params["Body"] = 
+
+
+
+    end
+
+  end
+end
+
 
     @comment = params["Body"]
     @assignee = User.where(phone: params["From"].gsub('+1','')).first
@@ -16,6 +34,5 @@ class ReceivetextsController < ApplicationController
     # user_id =
     #SMSLogger.log_text_message from_number, message_bodyme
     #params.require(:update).permit(:comment, :picture, :task_id, :user_id)
-    Update.create(user: @assignee, task: @task, comment:@comment)
+    Update.create(user: @assignee, task:@task, comment:@comment)
   end
-end
