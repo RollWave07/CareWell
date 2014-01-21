@@ -1,107 +1,86 @@
-=form_for [@group, @task] do |task|
+.container
+  .row
+    .cols-md-12
+      =form_for [@group, @task] do |task|
+        =task.text_field :title, placeholder: "Type in the title of your task here.", :class => 'input-lg'
 
-  =task.text_field :title, placeholder: "Type in the title of your task here.", :class => 'input-lg'
+        %ul.nav.nav-tabs
+          %li
+            %a{'data-toggle' => "tab", href: "#sectionA"}
+              %span.glyphicon.glyphicon-list
+          %li
+            %a{'data-toggle' => "tab", href: "#sectionB"}
+              %span.glyphicon.glyphicon-time
+          %li
+            %a{'data-toggle' => "tab", href: "#sectionC"}
+              %span.glyphicon.glyphicon-tag
+        .tab-content
+          #sectionA.tab-pane.fade.in.active
+            %p
+              =task.text_area :information, placeholder: "Add any details or preferences for this task here.", rows: 8, class: 'form-control'
+          #sectionB.tab-pane.fade
+            %h3 When does it need to be done?
+            %p=task.datetime_select :task_date, class: 'form-control' 
+            / %h3 When does it need to be done?
+            / %p=task.date_field :task_date, class: 'form-control'
+            / %h3 Does it start at a certain time?
+            / %p=task.time_field :start_time, class: 'form-control'
+            %h3 How long will it take?
+            %p=task.select :duration, options_for_select([['15 minutes', 15], ['30 minutes', 30], ['45 minutes', 45], ['1 hour', 60], ['75 minutes', 75], ['an hour and a half', 90], ['2 hours', 120]]), {include_blank: true}, {class: 'form-control'}
 
-  %ul.nav.nav-tabs
-    %li
-      %a{data-toggle:"tab", href: "#sectionA"}Section A
-    %li
-      %a{data-toggle:"tab", href: "#sectionB"}Section B
-
-  .tab-content
-    #sectionA.tab-pane.fade.in.active
-      %h3
-        Section A
-      %p Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui. Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.
-    #sectionB.tab-pane.fade
-      %h3 Section B
-      %p pestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.
-  =task.submit :class => "btn btn-primary"
-
-  %br
-  =task.label :title
-  =task.text_field :title
-  %br
-  .panel-group#accordion
-    .panel.panel-default
-      .panel-heading
-        %h4.panel-title
-          %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseOne"} (Optional): Would you like to add more information?
-      #collapseOne.panel-collapse.collapse
-        .panel-body
-          =task.label :information
-          =task.text_area :information
-    .panel.panel-default
-      .panel-heading
-        %h4.panel-title
-          %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseTwo"} (Optional): Would you like to add a time and date?
-      #collapseTwo.panel-collapse.collapse
-        .panel-body
-          / =task.label :start_time
-          / =task.datetime_select :start_time, placeholder: Time.now value: (Time.now+1.day).strftime("%m/%d/%Y,%I:%M%p")
-          / time_field :start_time, placeholder: Time.now
-          =task.label :duration
-          =task.text_field :duration
-          =task.label :task_date
-          =task.datetime_select :task_date 
-    .panel.panel-default  
-      .panel-heading
-        %h4.panel-title
-          %a{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapseThree"} (Optional): Would you like to add a category?
-      #collapseThree.panel-collapse.collapse
-        .panel-body
-          =task.label :category
-          .row 
-            .col-md-3
+          #sectionC.tab-pane.fade
+            %h3 What type of task is this?
+            %p
               .task-form-icon-wrapper
                 %i.fa.fa-wheelchair.form-icon
                 %br
                 =task.label(:getting_places, "getting places")
                 %br
                 =task.radio_button(:category, "getting places", :class => "task-form-radio-button")
-            .col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-home.form-icon
-                %br
-                =task.label(:around_home, "around the home")
-                %br
-                =task.radio_button(:category, "around the home", :class => "task-form-radio-button")
-            .col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-shopping-cart.form-icon
-                %br
-                =task.label(:shopping, "shopping")
-                %br
-                =task.radio_button(:category, "shopping", :class => "task-form-radio-button")
-            .col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-cutlery.form-icon
-                %br
-                =task.label(:meals, "meals")
-                %br
-                =task.radio_button(:category, "meals", :class => "task-form-radio-button")
-          .row 
-            .col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-stethoscope.form-icon
-                %br
-                =task.label(:personal_care, "personal care")
-                %br
-                =task.radio_button(:category, "personal care", :class => "task-form-radio-button")
-            .col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-wrench.form-icon
-                %br 
-                =task.label(:odds_and_ends, "odds & ends")
-                %br
-                =task.radio_button(:category, "odds & ends", :class => "task-form-radio-button")
-            .col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-users.form-icon
-                %br
-                =task.label(:visits_and_outings, "visits & outings")
-                %br
-                =task.radio_button(:category, "visits & outings", :class => "task-form-radio-button")
-    %br
-    =task.submit :class => "btn btn-primary"
+              .col-md-3
+                .task-form-icon-wrapper
+                  %i.fa.fa-home.form-icon
+                  %br
+                  =task.label(:around_home, "around the home")
+                  %br
+                  =task.radio_button(:category, "around the home", :class => "task-form-radio-button")
+              .col-md-3
+                .task-form-icon-wrapper
+                  %i.fa.fa-shopping-cart.form-icon
+                  %br
+                  =task.label(:shopping, "shopping")
+                  %br
+                  =task.radio_button(:category, "shopping", :class => "task-form-radio-button")
+              .col-md-3
+                .task-form-icon-wrapper
+                  %i.fa.fa-cutlery.form-icon
+                  %br
+                  =task.label(:meals, "meals")
+                  %br
+                  =task.radio_button(:category, "meals", :class => "task-form-radio-button")
+            .row
+              .col-md-3
+                .task-form-icon-wrapper
+                  %i.fa.fa-stethoscope.form-icon
+                  %br
+                  =task.label(:personal_care, "personal care")
+                  %br
+                  =task.radio_button(:category, "personal care", :class => "task-form-radio-button")
+              .col-md-3
+                .task-form-icon-wrapper
+                  %i.fa.fa-wrench.form-icon
+                  %br
+                  =task.label(:odds_and_ends, "odds & ends")
+                  %br
+                  =task.radio_button(:category, "odds & ends", :class => "task-form-radio-button")
+              .col-md-3
+                .task-form-icon-wrapper
+                  %i.fa.fa-users.form-icon
+                  %br
+                  =task.label(:visits_and_outings, "visits & outings")
+                  %br
+                  =task.radio_button(:category, "visits & outings", :class => "task-form-radio-button")
 
+
+
+        =task.submit :class => "btn btn-primary"

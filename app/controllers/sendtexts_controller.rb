@@ -14,7 +14,7 @@ class SendtextsController < ApplicationController
     result = @client.account.sms.messages.create(
       :to => "#{assignee.phone}",  
       :from => "8588668901",
-      :body => "Hi #{assignee.first_name} How did the task, #{task.title}, go?"
+      :body => "Hi #{assignee.first_name}, How did the task, #{task.title}, go?"
       )
     if result
       respond_to do |format|
