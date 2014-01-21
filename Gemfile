@@ -8,10 +8,13 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'hirb'
-  gem 'pry'
   gem 'quiet_assets'
 end
 
+group :development, :test do
+  gem 'pry'
+  gem 'rspec-rails', '~> 3.0.0.beta'
+end
 # Rmagick - Unf for image manipulation
 # Use RMagick to manipulate images
 gem 'rmagick'
