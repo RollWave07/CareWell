@@ -1,6 +1,11 @@
 .container
   .row
     %h1.task-header
+      Create New Task
+  .row
+    =link_to "Add New Task", new_group_task_path(@group), :class => "btn new-task-button", :method => 'get'
+  .row
+    %h1.task-header
       My Tasks
     -unless @my_tasks.nil?
       -@my_tasks.each do |task|
@@ -15,7 +20,7 @@
                 %i.fa.fa-comment.task-card-icon
                 =image_tag('right-arrow.gif', :class => 'card-right-arrow')
     -else
-      %h2 You don't have any tasks.  Sign Up!
+      %h2 You don't have any tasks. Sign Up!
   .row
     %h1.task-header
       Upcoming Group Tasks

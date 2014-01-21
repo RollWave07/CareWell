@@ -193,3 +193,19 @@ ul.nav.nav-tabs {
 form#new_task.new_task {
   background: white;
 }
+
+.new-task-button {
+  height: 75px;
+  width: 225px;
+  background-color: #40090f;
+  border-radius: 25px;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  padding: 15px;
+  float: right;
+  font-size: 2em;
+}
+.new-task-button:hover {
+  background-color: #8d3039;
+  color: black;
+    }
