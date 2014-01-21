@@ -24,8 +24,10 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.joins(:user).where(:users => {group_id: @group})
+    @my_tasks = current_user.tasks
     @commenter_name = current_user.first_name
     @commenter_picture = current_user.picture
+    @group = Group.find(params[:group_id])
     @group_name = Group.find(current_user.group_id).name
     @update = Update.new
   end

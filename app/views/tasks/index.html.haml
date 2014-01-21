@@ -1,39 +1,38 @@
-.container 
-  %h1.task-header
-    My Upcoming Tasks
-
-  -@tasks.each do |task|
-    -if task.assignee_id == current_user.id
-      =link_to group_task_path(@group, task.id) do
+.container
+  .row
+    %h1.task-header
+      My Tasks
+    -unless @my_tasks.nil?
+      -@my_tasks.each do |task|
         .row.task-card
-          .col-xs-9
+          .col-xs-9.col-md-9
             %h3=task.title
-            %h4=task.task_date.strftime("%A, %B %e, %Y")
-          .col-xs-1
+            %h4=task.task_date
+          .col-xs-1.col-md-1
             %i.fa.fa-heart.task-card-icon
-          .col-xs-1  
+          .col-xs-1.col-md-1
             %i.fa.fa-comment.task-card-icon
-          .col-xs-1
+          .col-xs-1.col-md-1
             =image_tag('right-arrow.gif', :class => 'card-right-arrow')
-
-  %h1.task-header
-    My Group's Activity
-
-  -if @tasks
+    -else
+      %h2 You don't have any tasks.  Sign Up!
+  .row
+    %h1.task-header
+      Upcoming Group Tasks
     -@tasks.each do |task|
-      =link_to group_task_path(@group, task.id) do
-        .row.group-task-card 
-          .col-sm-2.col-md-2
-          -if task.assignee_id
-            =image_tag(task.assignee.picture_url(:sq_medium), :class=>"group-picture")
-            ="#{task.assignee.first_name}"
-          .col-sm-7.col-md-7
-            %h3=task.title
-            %h4=task.task_date.strftime("%A, %B %e, %Y")
-          .col-sm-1.col-md-1
-            %i.fa.fa-heart
-          .col-sm-1.col-md-1  
-            %i.fa.fa-comment
-          .col-sm-1.col-md-1  
-            =image_tag('right-arrow.gif')
-
+      .row.task-card
+        .col-xs-2.col-md-2
+        -if task.assignee == nil
+          "Sign Up"
+        -else
+          =image_tag(task.assignee.picture_url(:sq_medium), :class=>"group-picture")
+          / ="#{task.assignee.first_name}"
+        .col-xs-7.col-md-7
+          %h3=task.title
+          %h4=task.task_date
+        .col-xs-1.col-md-1
+          %i.fa.fa-heart
+        .col-xs-1.col-md-1
+          %i.fa.fa-comment
+        .col-xs-1.col-md-1
+          =image_tag('right-arrow.gif')
