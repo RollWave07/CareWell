@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 
-  before_action :find_group#, :authenticate_user!
+  before_action :find_group
 
   def send_email
     group_id = params[:group_id]
@@ -27,6 +27,7 @@ class TasksController < ApplicationController
     @commenter_picture = current_user.picture
     @group_name = Group.find(current_user.group_id).name
     @update = Update.new
+    @group = Group.find(params[:group_id])
   end
 
   def show
@@ -60,12 +61,18 @@ class TasksController < ApplicationController
   def update
 
     @task = Task.find(params[:id])
+    old_assignee_id = @task.assignee_id
+
     @task.assignee_id = params[:assignee_id]
     respond_to do |format|
       if @task.update(task_params)
         format.json { render json:{assignee_name: @task.assignee.first_name}}
         format.html { redirect_to group_tasks_path(@group), notice: 'task was successfully updated.' }
         # format.js { render layout: false }
+        # send the mailer invitation on sign up
+        if @task.assignee_id != old_assignee_id
+          MailerInvitation.event(@task, @group).deliver
+        end
       else
         format.html { render action: 'edit' }
         format.json { render json: @task.errors, status: :unprocessable_entity }

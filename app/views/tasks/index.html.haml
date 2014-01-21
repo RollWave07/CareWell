@@ -27,11 +27,6 @@
     .updates{"data-id" => "#{task.id}"}
       -task.ordered_updates.each do |update|
         =render "updates/update", update: update
-    .row
-      .col-md-3
-      .col-md-6
-        =render "updates/form", update: Update.new, task: task
-      .col-md-3
 
 -else
   .no-tasks
