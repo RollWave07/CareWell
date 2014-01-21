@@ -161,7 +161,7 @@ $bgc: #ded8ce;
 .input-lg {
   border-radius: 0;
   border: 0;
-  width: 100vw;
+  width: 100%;
 }
 
 .btn.btn-primary.create_task {
@@ -177,9 +177,9 @@ $bgc: #ded8ce;
 }
 
 ul.nav.nav-tabs {
-  width: 100vw;
+  width: 100%;
   li {
-    width: 33.33333333vw;
+    width: 33.33%;
     text-align: center;
     background: white;
     border-top: 1px solid black;
@@ -204,6 +204,7 @@ form#new_task.new_task {
   padding: 15px;
   float: right;
   font-size: 2em;
+  margin-right: 10px;
 }
 .new-task-button:hover {
   background-color: #8d3039;
