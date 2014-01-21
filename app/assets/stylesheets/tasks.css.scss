@@ -118,28 +118,37 @@ $bgc: #ded8ce;
   height: 150px; 
   background-color: white;
   border-radius: 3px;
-  padding: 15px;
+  padding: 20px;
   margin-top:25px;
+  // I know the line below is weird but the design gets messed up if moved
+  margin-left: 0px;
   text-decoration: none;
+  padding-right: 0px;
   h3 {
     font-family: "Lato", sans-serif;
     font-size: 3em;
+    margin-top: 5px;
   }
   h4 {
     font-family: "Lato", sans-serif;
     font-size: 2em;
     color: #cacaca;
   }
-  .task-card-icon {
-    font-size: 3em;
-    color: #cacaca;
-    margin-top: 55px;
-    text-align: right;
-    // margin-left: 15px;
+}
+
+.task-card-image-container {
+  margin-top: 35px;
+}
+
+.task-card-icon {
+  font-size: 2em;
+  color: #cacaca;
+  text-align: right;
+  margin-left: 5px;
   }
-  .card-right-arrow {
-    margin-top: 58px;
-  }
+.card-right-arrow {
+  margin-left: 10px;
+  margin-top: -10px;
 }
 
 .no-tasks .glyphicon {
