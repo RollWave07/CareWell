@@ -93,12 +93,12 @@ $mint-green: #60D97B;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  padding-top: 25px;
+  padding-top: 15px;
   color: white;
 }
 
 .navbar-toggle {
-margin-top: 19px;
+margin-top: 8px;
 }
 
 .btn {
@@ -112,11 +112,9 @@ input.btn.btn-large.btn-primary {
 
 .navbar {
   font-family: 'Lato', sans-serif;
-  margin-left: 15px;
-  margin-right: 15px;
-  float: right;
   list-style-type: none;
-  font-size: 1.5em;
+  font-size: 1.25em;
+  border: none;
     a {
       padding-top: 25px;
       &:link {
@@ -133,14 +131,40 @@ input.btn.btn-large.btn-primary {
         color: white;
       }
     }
-
-}
-.navbar-nav{
-  float: right;
 }
 
+.navbar-inner {
+  background-color: #383838;
+  line-height: 1.25em;
+}
+
+li.navbar-nav{
+  text-align: right;
+}
+li.navbar-link {
+  text-align: center;
+}
+
+// this is hacky but used to compensate for interior padding+margin
+@media all and (max-width: 767px) {
+        .navbar-nav {
+          width: 100%;
+        li.navbar-link.last {
+          margin-right: 0px;
+        }  
+        }
+}
+@media all and (min-width: 768px) {
+        li.navbar-link.last {
+          margin-right: -30px;
+        }
+}
 .navbar-inverse {
   background: #383838;
+}
+
+.logo {
+  margin-top: 8px;
 }
 
 .container-full {
@@ -161,4 +185,3 @@ input.btn.btn-large.btn-primary {
     background: #00a049;
   }
 }
-

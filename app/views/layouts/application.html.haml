@@ -7,27 +7,38 @@
     %meta{name: "viewport", content:"width=device-width", 'initial-scale' => 1.0}
   %body
     -if (params[:controller] != 'registrations') && (params[:controller] != 'pages') && (params[:controller] != 'devise/sessions')
-      %nav.navbar-inverse{:role=>"navigation"}
-        .navbar-header
-          %button.navbar-toggle.collapsed{type: 'button', 'data-toggle'=> 'collapse', 'data-target' => '#bs-example-navbar-collapse-6'}
-            %span.sr-only Toggle Navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          = link_to image_tag('carewell-logo-blacksquare.jpg'), group_tasks_path(@group)
-        .navbar-collapse.collapse{id: 'bs-example-navbar-collapse-6', style: {height: '1px'}}
-          %ul.nav.navbar-nav
-            -if current_user
-              -if current_user.group != nil && user_signed_in?
-                %li.navbar-link
-                  = link_to 'Sign out', destroy_user_session_path, method: :delete
-                %li.navbar-link
-                  = link_to 'Edit Profile', edit_user_registration_path
-              -else
-                %li.navbar-link
-                  = link_to "Create New Group", new_user_registration_path
-                %li.navbar-link
-                  = link_to "Sign in", new_user_session_path
+      .navbar
+        .navbar-inner
+          .container
+            %nav.navbar-inverse{:role=>"navigation"}
+              .navbar-header
+                %button.navbar-toggle.collapsed{type: 'button', 'data-toggle'=> 'collapse', 'data-target' => '#bs-example-navbar-collapse-6'}
+                  %span.sr-only Toggle Navigation
+                  %span.icon-bar
+                  %span.icon-bar
+                  %span.icon-bar
+                = link_to image_tag('carewell-logo-blacksquare.gif', :class=>"logo"), group_tasks_path(@group)
+              .navbar-collapse.collapse{id: 'bs-example-navbar-collapse-6', style: {height: '1px'}}
+                %ul.nav.navbar-nav.pull-right
+                  -if current_user
+                    -if current_user.group != nil && user_signed_in?
+                      %li.navbar-link
+                        = link_to 'Add Task', new_group_task_path(@group)
+                      %li.navbar-link
+                        = link_to 'All Tasks', group_tasks_path(@group)
+                      %li.navbar-link
+                        = link_to 'My Group', group_tasks_path(@group)
+                      %li.navbar-link
+                        = link_to 'Edit Profile', edit_user_registration_path
+                      %li.navbar-link.last
+                        = link_to 'Sign Out', destroy_user_session_path, method: :delete
+                    -else
+                      %li.navbar-link
+                        = link_to "Create New Group", new_user_registration_path
+                      %li.navbar-link
+                        = link_to "Sign in", new_user_session_path
+
+
 
     = yield
     = javascript_include_tag "application"
