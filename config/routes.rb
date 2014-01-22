@@ -5,9 +5,14 @@ Carewell::Application.routes.draw do
 
   post "sendtexts/send_text_message" => 'sendtexts#send_text_message', as: 'send_text'
 
-  root 'pages#welcome'
 
   devise_for :users, :controllers => {:registrations => "registrations"}
+
+  authenticated :user do
+    root :to => "tasks#index", :as => "authenticated_root"
+      end
+
+  root 'pages#welcome'
 
   resources :groups do
     resources :tasks do
