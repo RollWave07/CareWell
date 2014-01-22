@@ -3,7 +3,8 @@
     %h1.task-show
       =@task.title
     %p
-      =@task.task_date.strftime('%A, %B %e, %Y')
+      -if @task.task_date
+        =@task.task_date.strftime('%A, %B %e, %Y')
     -if @task.information != nil
       .details-header
         Details
