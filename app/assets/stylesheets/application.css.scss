@@ -149,15 +149,18 @@ li.navbar-link {
 @media all and (max-width: 767px) {
         .navbar-nav {
           width: 100%;
+          }
         li.navbar-link.last {
           margin-right: 0px;
-        }  
-        }
-}
+          }  
+  }
+
+
 @media all and (min-width: 768px) {
         li.navbar-link.last {
           margin-right: -30px;
         }
+
 }
 .navbar-inverse {
   background: #383838;

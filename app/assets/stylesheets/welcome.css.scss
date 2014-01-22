@@ -6,24 +6,47 @@
 //   background-size: cover;
 // }
 
+.homepage-header {
+  background-color: #383838;
+  height: 100px;
+  width: 100%;
+  padding: 33px 0px;
+}
 
+.background-image {
+  background-image:url('caregiver.jpg');
+  width: 100%;
+  height: 650px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position:center; 
+}
 
-body {
-  background-color: #faf2e6;
+@media all and (max-width: 767px) {
+  .background-image {
+          background-image: none;
+          background-color: white;
+          height: 250px;
+        }
+}
+.intro-text {
+  margin-top: 50px;
+}
+
+.welcome-button {
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+.welcome-icon {
+  margin-top: 50px;
+  font-size: 6em;
+  text-align: center;
+  color: #333333;
+  margin-bottom: 50px;
 }
 
 h1, h3 {
     font-family: 'Lato', sans-serif;
     color: #333333;
-}
-
-.home-page-about {
-  background: #f7f5f2;
-}
-
-.number {
-  border-radius: 50%;
-  line-height: 2em;
-  border: 1px solid black;
-  text-align: center;
 }
