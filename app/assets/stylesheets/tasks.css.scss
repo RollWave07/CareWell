@@ -87,6 +87,7 @@ $bgc: #ded8ce;
 .task-header {
   color: #40090f;
   font-size: 1.5em;
+  // padding-left: 15px;
   // margin-top: 25px;
   // margin-bottom: 25px;
   // margin-left: -20px;
@@ -115,6 +116,10 @@ $bgc: #ded8ce;
   }
 }
 
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
 .task-card-image-container {
   margin-top: 35px;
 }
@@ -186,7 +191,6 @@ form#new_task.new_task {
   padding: 15px;
   float: right;
   font-size: 2em;
-  margin-right: 10px;
 }
 .new-task-button:hover {
   background-color: #8d3039;
