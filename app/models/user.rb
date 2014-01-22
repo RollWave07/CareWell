@@ -10,4 +10,9 @@ class User < ActiveRecord::Base
   has_many :updates
   
   acts_as_voter
+
+  def self.users_in_group(group)
+    group.users
+  end
+  
 end

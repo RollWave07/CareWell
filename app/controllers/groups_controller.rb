@@ -8,6 +8,25 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @total_tasks = Task.tasks(@group)
+    @total_tasks_count = @total_tasks.count
+    @tasks_last_week = @total_tasks.last_week
+    @tasks_last_month = @total_tasks.last_month
+    @tasks_next_week = @total_tasks.next_week
+    @tasks_next_month = @total_tasks.next_month
+
+    @top_three_members_last_month = Task.top_three_members(@tasks_last_month)
+    @top_three_members_last_week = Task.top_three_members(@tasks_last_week)
+
+    @next_three_tasks = Task.next_three_tasks(@tasks_next_month)
+
+    @last_three_tasks = Task.last_three_tasks(@tasks_last_month)
+
+
+
+    @group_members = User.users_in_group(@group)
+    @members_count = @group_members.count
+
   end
 
   def edit
@@ -48,7 +67,11 @@ class GroupsController < ApplicationController
   private
 
   def set_group
-    @group = Group.find(params[:id])
+    if current_user.group
+      @group = current_user.group
+    else
+      @group = Group.find(params[:id])
+    end
   end
   def group_params
     params.require(:group).permit(:name)

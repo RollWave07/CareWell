@@ -1,7 +1,48 @@
-%h1 Groups#show
-%p Find me in app/views/groups/show.html.haml
+%h1 All in the Family:
+%h2="Helping out with #{@group.name}"
+%br
 
-=@group.name
-%br
-%br
 =link_to 'edit group', edit_group_path
+%br
+
+=link_to 'group tasks', group_tasks_path(@group)
+%br
+
+
+= "total_tasks_count: #{@total_tasks_count} "
+%br
+= "tasks_count_last_week: #{@tasks_last_week.count}"
+%br
+
+= "tasks count last month: #{@tasks_last_month.count}" 
+%br
+
+= "tasks count next_week: #{@tasks_next_week.count}" 
+%br
+
+= "tasks_count next_month: #{@tasks_next_month.count} "
+%br
+
+
+%h3="Top members last month"
+
+-@top_three_members_last_month.each_with_index do |member, index|
+  ="#{index+1}: #{member[0]}"
+%br
+/ -[["brian", 3],["Tom",2],["Eric",1]].each_with_index do |member, index|
+/   ="#{index+1}: #{member[0]}"
+/   %br
+%h3="Top members last week"
+-@top_three_members_last_week.each_with_index do |member, index|
+  ="#{index+1}: #{member[0]}"
+%br
+
+%h3 3 next upcoming tasks:
+-@next_three_tasks.each do |task|
+  ="#{task.title}: #{task.assignee.first_name} #{task.assignee.last_name} #{Task.format_date(task.task_date)}"
+  %br
+%br
+%h3 3 last completed tasks:
+-@last_three_tasks.each do |task|
+  ="#{task.title}: #{task.assignee.first_name} #{task.assignee.last_name} #{Task.format_date(task.task_date)}"
+  %br
