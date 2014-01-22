@@ -1,0 +1,19 @@
+=@greeting
+%p
+  Thank you for signing up for:
+%h1=@task_title
+
+%h3 Details
+%p
+  =@task_information
+%p
+  Date
+  =@task_date
+
+If you need to change or update your commitment, please login and modify the task here:
+%br
+%br
+=link_to "Task", group_task_url(@group, @task)
+
+
+

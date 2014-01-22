@@ -26,6 +26,8 @@ gem 'remotipart'
 gem 'fog'
 # Use for silencing warning message on starting rails server (from fog)
 gem 'unf'
+#Use for generating ical invites to tasks
+gem 'icalendar'
 
 # For obfuscation of API key
 gem 'figaro'
