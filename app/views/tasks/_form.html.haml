@@ -20,7 +20,7 @@
               =task.text_area :information, placeholder: "Add any details or preferences for this task here.", rows: 8, class: 'form-control'
           #sectionB.tab-pane.fade
             %h3 When does it need to be done?
-            %p=task.datetime_select :task_date, class: 'form-control' 
+            %p=task.datetime_select :task_date, class: 'form-control'
             / %h3 When does it need to be done?
             / %p=task.date_field :task_date, class: 'form-control'
             / %h3 Does it start at a certain time?
@@ -30,13 +30,14 @@
 
           #sectionC.tab-pane.fade
             %h3 What type of task is this?
-            %p
-              .task-form-icon-wrapper
-                %i.fa.fa-wheelchair.form-icon
-                %br
-                =task.label(:getting_places, "getting places")
-                %br
-                =task.radio_button(:category, "getting places", :class => "task-form-radio-button")
+            .row
+              .col-md-3
+                .task-form-icon-wrapper
+                  %i.fa.fa-truck.form-icon
+                  %br
+                  =task.label(:getting_places, "getting places")
+                  %br
+                  =task.radio_button(:category, "getting places", :class => "task-form-radio-button")
               .col-md-3
                 .task-form-icon-wrapper
                   %i.fa.fa-home.form-icon
@@ -83,4 +84,4 @@
 
 
 
-        =task.submit :class => "btn btn-primary"
+        =task.submit :class => "btn new-task-button"
