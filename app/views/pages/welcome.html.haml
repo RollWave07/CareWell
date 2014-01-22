@@ -7,8 +7,9 @@
       .col-sm-8.col-xs-0
       .col-sm-4.col-xs-12.intro-text
         %h3 A simple way for families to care for each other no matter where they are.
-        =link_to image_tag('sign-in.gif', :class=>"welcome-button"), new_user_session_path
-        =link_to image_tag('register.gif', :class=>"welcome-button"), new_user_registration_path  
+        .button-wrapper
+          =link_to image_tag('sign-in.gif', :class=>"welcome-button"), new_user_session_path
+          =link_to image_tag('register.gif', :class=>"welcome-button"), new_user_registration_path  
 .container
   .row.more-info
     .col-sm-4.welcome-icon
