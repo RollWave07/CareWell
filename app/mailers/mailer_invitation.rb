@@ -1,8 +1,6 @@
 class MailerInvitation < ActionMailer::Base
   default from: "hello@carewelldesign.com"
 
-  # Include the task information, as well as the assignee users email and name.
-
   def event(task, group_id)
   # assignee information (from task)
     @first_name = task.assignee.first_name
@@ -16,11 +14,28 @@ class MailerInvitation < ActionMailer::Base
     @task_date = task.task_date.strftime('%A, %B %e, %Y')
   #group information
     @group = group_id
-
-
-
+  #email content/body information
+    @subject_line = "New CareWell Task: #{@task_title}"
     @greeting = "Hi " + task.assignee.first_name + ','
-    mail( to: @email, subject: @task.title)
-
+    attachments['event.ics'] = {:mime_type => 'text/calendar', :content => create_ical }
+    mail( to: @email, subject: @subject_line)
   end
+
+  def create_ical
+     ical = Icalendar::Calendar.new
+     e = Icalendar::Event.new
+     e.start = (@task.start_time).utc
+     e.start.icalendar_tzid="UTC" # set timezone as "UTC"
+     e.end = (@task.start_time + @task.duration.to_i.minutes).utc
+     e.end.icalendar_tzid="UTC"
+     e.organizer "#{@task.user.first_name}"
+     #might need uid but maybe not.  test.
+     e.uid "MeetingRequest #{@meeting.token}"
+     e.summary @subject_line
+     e.description "@task.information"
+     ical.add_event(e)
+     ical.publish
+     ical.to_ical
+  end
+
 end
