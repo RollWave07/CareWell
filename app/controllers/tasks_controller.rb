@@ -24,6 +24,7 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.joins(:user).where(:users => {group_id: @group})
     @my_tasks = Task.where(assignee_id: current_user.id)
+    @open_tasks = Task.where(assignee_id: nil)
     @commenter_name = current_user.first_name
     @commenter_picture = current_user.picture
     @group = Group.find(params[:group_id])
@@ -64,7 +65,6 @@ class TasksController < ApplicationController
 
     @task = Task.find(params[:id])
     old_assignee_id = @task.assignee_id
-
     @task.assignee_id = params[:assignee_id]
     respond_to do |format|
       if @task.update(task_params)
