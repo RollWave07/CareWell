@@ -30,7 +30,7 @@ class MailerInvitation < ActionMailer::Base
      e.end.icalendar_tzid="UTC"
      e.organizer "#{@task.user.first_name}"
      #might need uid but maybe not.  test.
-     e.uid "MeetingRequest #{@meeting.token}"
+     e.uid "CW Task #{@task.id}"
      e.summary @subject_line
      e.description "@task.information"
      ical.add_event(e)
