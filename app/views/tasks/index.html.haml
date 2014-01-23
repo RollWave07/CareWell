@@ -6,7 +6,7 @@
 .row
   %ul.nav.nav-tabs
     %li
-      %a{'data-toggle' => "tab", href: "#mytasks"}
+      %a.my-task-count{'data-toggle' => "tab", href: "#mytasks"}
         My Tasks
         ="(#{@my_tasks.count})"
     %li
@@ -14,26 +14,15 @@
         All Tasks
         ="(#{@tasks.count})"
     %li
-      %a{'data-toggle' => "tab", href: "#opentasks"}
+      %a.open-task-count{'data-toggle' => "tab", href: "#opentasks"}
         Open Tasks
         ="(#{@open_tasks.count})"
 
   .tab-content
     #mytasks.tab-pane.fade.in.active
-
       -unless @my_tasks.empty?
         -@my_tasks.each do |task|
-          =link_to group_task_path(@group, task.id) do
-            .row.task-card
-              .col-xs-9.col-md-10
-                %h3=task.title
-                -if task.task_date
-                  %h4=task.task_date.strftime('%A, %B %e, %Y')
-              .col-xs-3.col-md-2
-                .task-card-image-container
-                  %i.fa.fa-heart.task-card-icon
-                  %i.fa.fa-comment.task-card-icon
-                  =image_tag('right-arrow.gif', :class => 'card-right-arrow')
+          =render 'task', task: task, group: @group
       -else
         .no-tasks
           %h1 You currently don't have any tasks.
@@ -67,8 +56,9 @@
     #opentasks.tab-pane.fade
       -if @open_tasks.empty? == false
         -@open_tasks.each do |task|
+
           =link_to group_task_path(@group, task.id) do
-            .row.task-card
+            .row.task-card{"data-task-id" => "#{task.id}"}
               .col-xs-2.col-md-2
                 %h4=link_to "Sign-Up", group_task_path(@group, task.id, params: {assignee_id: current_user.id}), method: :put, data: {confirm: "Are you sure?"}, remote: true
               .col-xs-8.col-md-8

@@ -1,1 +1,12 @@
-$('#sign-up').hide().after('Are you sure?')
+(function () {
+  var taskHtml = "<%= j render 'tasks/task', task: @task, group: @group %>";
+  $('#mytasks').append(taskHtml);
+  $('div[data-task-id="<%= @task.id %>"]').remove();
+  $('.open-task-count').text("Open Tasks (<%=@open_tasks.count%>)")
+  $('.my-task-count').text("My Tasks (<%=@my_tasks.count%>)")
+})();
+
+//append will place it inside of the selected div/id, but at the very end.
+//must render within the same a tag and div.
+//don't need to explicitly call partial and locals (assumed).  pass in controller variables.
+//val is for form inputs, .text is for html

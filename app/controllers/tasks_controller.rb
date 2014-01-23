@@ -62,7 +62,8 @@ class TasksController < ApplicationController
   end
 
   def update
-
+    @my_tasks = Task.where(assignee_id: current_user.id)
+    @open_tasks = Task.where(assignee_id: nil)
     @task = Task.find(params[:id])
     old_assignee_id = @task.assignee_id
     @task.assignee_id = params[:assignee_id]
@@ -70,7 +71,7 @@ class TasksController < ApplicationController
       if @task.update(task_params)
         format.json { render json:{assignee_name: @task.assignee.first_name}}
         format.html { redirect_to group_tasks_path(@group), notice: 'task was successfully updated.' }
-        # format.js { render layout: false }
+        format.js { render layout: false, notice: "You've signed up for #{@task.title}."}
         # send the mailer invitation on sign up
         if @task.assignee_id != old_assignee_id
           MailerInvitation.calendar_invite(@task).deliver
