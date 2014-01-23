@@ -1,35 +1,23 @@
-.container-full
-  .tan
-    .container
-      .row
-        .col-md-12.main-welcome
-          = image_tag "carewell-logo.gif"
-          %h1 A simple way for families to care for each other no matter where they are.
-      .row
-        .col-md-12
-          -if current_user.nil?
-            = link_to "Sign-In", new_user_session_path, {class: "cw-button"}
-            = link_to "Sign-Up", new_user_registration_path, {class: "cw-button"}
-          -else
-            = link_to "Sign-Out", destroy_user_session_path, class: "cw-button", method: :delete
-.container-full
-  .white
-    .container
-      %h1
-        How it works
-      .row.home-page-about
-        .col-xs-12.col-md-4
-          %h3
-            %span.glyphicon.glyphicon-pushpin
-            Share to dos and updates.
-
-        .col-xs-12.col-md-4
-          %h3
-            %span.glyphicon.glyphicon-transfer
-            CareWell helps with confirmations, reminders, and follow-ups.
-
-        .col-xs-12.col-md-4
-          %h3
-            %span.glyphicon.glyphicon-heart
-            CareWell makes it easy to thank each other.
-
+.homepage-header 
+  .container
+    =image_tag('carewell-logo-blacksquare.gif')
+.background-image
+  .container
+    .row
+      .col-sm-8
+      .col-sm-4.col-xs-12.intro-text
+        %h3 A simple way for families to care for each other no matter where they are.
+        .button-wrapper
+          =link_to image_tag('sign-in.gif', :class=>"welcome-button"), new_user_session_path
+          =link_to image_tag('register.gif', :class=>"welcome-button"), new_user_registration_path  
+.container
+  .row.more-info
+    .col-sm-4.welcome-icon
+      %i.fa.fa-pencil-square-o
+      %h3 Create To-Do's and Updates
+    .col-sm-4.welcome-icon
+      %i.fa.fa-list-alt
+      %h3 Receive Reminders and Follow-Ups
+    .col-sm-4.welcome-icon
+      %i.fa.fa-heart
+      %h3 Make It Easy to Say Thanks

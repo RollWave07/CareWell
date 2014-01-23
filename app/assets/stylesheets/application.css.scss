@@ -30,6 +30,10 @@ $mint-green: #60D97B;
          url(font-path('lato-light-webfont.svg') + "Lato") format('svg');
 }
 
+body {
+  background-color: #faf2e6;
+}
+
 // .navbar {
 //   background-color: #faf2e6;
 //   border-bottom-color: #faf2e6;
@@ -149,15 +153,18 @@ li.navbar-link {
 @media all and (max-width: 767px) {
         .navbar-nav {
           width: 100%;
+          }
         li.navbar-link.last {
           margin-right: 0px;
-        }  
-        }
-}
+          }  
+  }
+
+
 @media all and (min-width: 768px) {
         li.navbar-link.last {
           margin-right: -30px;
         }
+
 }
 .navbar-inverse {
   background: #383838;
