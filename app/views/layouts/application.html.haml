@@ -38,9 +38,17 @@
                       %li.navbar-link
                         = link_to "Sign in", new_user_session_path
 
+    .container
+      -if flash[:notice]
+        = content_tag :div, flash[:notice], class: "alert alert-success"
+      -if flash[:alert]
+        = content_tag :div, flash[:alert], class: "alert alert-warning"
+      -if flash[:error]
+        = content_tag :div, flash[:error], class: "alert alert-danger"
 
+      end
+      = yield
 
-    = yield
     = javascript_include_tag "application"
 
   %footer.footer

@@ -55,7 +55,7 @@ class TasksController < ApplicationController
         format.html { redirect_to group_tasks_path(@group), notice: 'Task was successfully created.' }
         format.json { render action: 'show', status: :created, location: @task }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'new', alert: 'Unable to add the task.  Please try again.' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end

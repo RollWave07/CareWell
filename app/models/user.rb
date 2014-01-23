@@ -8,6 +8,11 @@ class User < ActiveRecord::Base
 
   has_many :tasks
   has_many :updates
-  
+
   acts_as_voter
+
+  def first_name=(first_name)
+    write_attribute(:first_name, first_name.reverse)
+  end
+
 end
