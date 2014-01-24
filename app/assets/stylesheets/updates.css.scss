@@ -1,13 +1,26 @@
 // Place all the styles related to the Updates controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post-update {
+  background: rgb(214,210,210);
+  padding: 20px;
+  border-radius: 4px;
+  margin-top: 3px;
+}
+
+.input-size {
+  width: 100%;
+}
+
 .update {
   font-family: "Lato", sans-serif;
   background: white;
   // margin-bottom: 20px;
   // border-radius: 10px;
   padding: 10px;
-  margin: 10px 0;
+  // margin: 10px 0;
+  border-bottom: 1px solid rgb(214,210,210);
   li {
     list-style: none;
     display: inline-block;
@@ -25,12 +38,31 @@
   }
 
   .comment {
-    padding-left: 20px;
-    font-style: bold;
-    .col-xs-12 {
-    margin-left: 10px;
+    // padding-left: 20px;
+    // font-style: bold;
+    // .col-xs-12 {
+    // margin-left: 10px;
+    // }
+  }
+
+  #update_picture {
+    display: inline;
+  }
+
+  .image_update {
+    label {
+      display: inline;
+    }
+    input {
+      float: left;
+      display: inline;
     }
   }
+
+  // .delete-update {
+  //   display: inline-block;
+
+  // }
   .comment-text {
     margin-top: 12px;
     margin-left: 10px;
@@ -40,5 +72,34 @@
 
   .comment-time {
     font-size: 0.8em;
+  }
+}
+//set up mobile overrides
+
+@media all and (max-width: 480px) {
+  .post-update {
+    padding: 10px 0px;
+  }
+
+  .update {
+
+    margin: 0px;
+    padding: 0px;
+
+    div.col-md-1, div.col-md-8, div.col-md-3 {
+    display: inline-block;
+    }
+    div.col-md-8 {
+      margin: 0px;
+    }
+    img {
+      position: relative;
+      top: -10px;
+    }
+    .comment-text {
+    font-size: 0.8em;
+    margin-top:5px;
+    padding: 0px;
+    }
   }
 }

@@ -1,25 +1,21 @@
-.container
-  .row
-    %h1.task-show
-      =@task.title
-    %p
-      -if @task.task_date
-        =@task.task_date.strftime('%A, %B %e, %Y')
-    -if @task.information != nil
-      .details-header
-        Details
-      %p
-        =@task.information
-    %h4 Comments
+.row.link
+  =link_to group_tasks_path(@group) do
+    .back
+      .arrow-left
+      %h1.back-words Back
+.row
+  .col-md-4
+    =render 'tasks/task_show', group: @group, task: @task
 
-    .updates{"data-id" => "#{@task.id}"}
+  .col-md-8
+    .row.post-update
+      =render "updates/form", group: @group, task: @task, update: @update
+    .row.updates{"data-id" => "#{@task.id}"}
       -@task.ordered_updates.each do |update|
         =render "updates/update", update: update
-    .row
-      .col-md-3
-      .col-md-6
-        =render "updates/form", task: @task, update: @update
-      .col-md-3
+
+
+
 
 
 

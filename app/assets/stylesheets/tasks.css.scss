@@ -225,8 +225,92 @@ $bgc: #ded8ce;
     display: inline-block;
   }
 
+//set up task show page
+
+h1.show-card-title {
+  font-size: 3em;
+  margin-top: 0;
+  display: inline-block;
+}
+
+h3.show-card-section-header {
+  font-size: 1em;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+
+.time-from-now {
+font-style: italic;
+color: #a1a1a1;
+position: relative;
+top: -10px;
+
+}
+
+.row.link a {
+  text-decoration: none;
+}
+
+.link {
+  display: inline-block;
+}
+
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right:20px solid #323232;
+  margin-top: 20px;
+  margin-left: -10px;
+  display: inline-block;
+}
+
+.back-words {
+display: inline;
+padding-left: 10px;
+position: relative;
+top: -7px;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.float-left {
+  float: left;
+}
+
+
 //set up for mobile
 @media all and (max-width: 480px) {
+
+  h1.show-card-title {
+    font-size: 1.5em;
+    margin-top: 0;
+    display: inline-block;
+  }
+
+  h3.show-card-section-header {
+    font-size: 0.8em !important;
+    text-transform: uppercase;
+    text-decoration: underline;
+  }
+
+  .row.post-update {
+    img {
+      display: none;
+    }
+  }
+
+  .time-from-now {
+  font-style: italic;
+  color: #a1a1a1;
+  position: relative;
+  top: -10px;
+
+  }
+
 
   h1.task-header {
     font-size: 2em;
