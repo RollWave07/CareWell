@@ -1,10 +1,10 @@
 .update{"data-id" => update.id}
-  .commenter-info.col-xs-1
+  .col-xs-1
     -if update.user.picture != nil
       =image_tag(update.user.picture_url(:sq_thumb))
     -else
       =update.user.first_name
-  .comment.col-xs-8
+  .col-xs-8
     .comment-text
       =update.comment
       %br
