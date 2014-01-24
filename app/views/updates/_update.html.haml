@@ -16,7 +16,5 @@
   .col-md-3
     =raw "<span id='vote#{update.id}'>#{update.votes.count}</span>"
     %span.glyphicon.glyphicon-heart
-    -if current_user.voted_for? update
-      = button_to "Liked", unvote_group_task_update_path(@group, update.task, update), method: "post", class: 'btn btn-primary', remote: true
-    -else
-      = button_to "Like", vote_group_task_update_path(@group, update.task, update), method: "post", class: 'btn btn-primary', remote: true
+    
+    = button_to "Like", vote_group_task_update_path(@group, update.task, update), method: "post", class: 'btn btn-primary', remote: true

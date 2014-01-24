@@ -10,9 +10,10 @@
 
 // THIS ONE:
 
-$(document).on("ajax:success", ".button_to", function(e, data, status, xhr){
+$(document).on("ajax:success", ".hearts-count", function(e, data, status, xhr){
   // console.log(data)
   // console.log(status)
+  // console.log(current_user)
   $("#vote" + data.vote_id).text(data.count);
   // console.log("#vote" + data.vote_id)
 });
