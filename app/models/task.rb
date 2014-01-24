@@ -45,6 +45,12 @@ class Task < ActiveRecord::Base
     total
   end
 
+  def days_from_now
+    difference = self.task_date - DateTime.now
+    "#{difference.to_i} days from now."
+  end
+
+
   ## potential model method
   # def needs_assignee
   #   if self.assignee_id.nil? && self.user_id == current_user.id
@@ -67,7 +73,7 @@ class Task < ActiveRecord::Base
   #   tasks(group).where.not(assignee_id: nil)
   # end
 
-  
+
 
   # def self.mytasks(current_user)
   #   #this assumes that a user is only a part of one group
@@ -95,13 +101,13 @@ class Task < ActiveRecord::Base
   end
 
   def self.assigned_to_specific_user(tasks, user)
-    tasks.select do |task| 
+    tasks.select do |task|
       task.assignee == user
     end
   end
 
   # def self.assigned(tasks)
-  #   tasks.select do |task| 
+  #   tasks.select do |task|
   #     task.assignee != nil
   #   end
   # end
@@ -118,7 +124,7 @@ class Task < ActiveRecord::Base
 
 
   # def self.top_three_members(tasks)
-    
+
   # end
   def self.last_three_tasks_completed(tasks)
     tasks.limit(3).where(task_date: 1.month.ago..Time.now).order(task_date: :desc)
@@ -128,7 +134,7 @@ class Task < ActiveRecord::Base
     tasks.group(:category).select(:category, :duration).average(:duration)
   end
 # Task.group(:category).select(:category).sum(:category)
-    
+
 #     Task.where(category: Task.group(:category).select(:category)).average(:duration)
 
 #     Task.select(:category, :duration).group(:category).average(:duration)

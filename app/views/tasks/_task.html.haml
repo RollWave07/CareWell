@@ -12,5 +12,8 @@
         %i.fa.fa-heart.task-card-icon
       -if task.task_date
         %h4=task.task_date.strftime('%A, %B %e, %Y')
+        %p
+          -diff = task.task_date.to_i - Time.now.to_i
+          ="in #{distance_of_time_in_words(diff)}"
     .col-xs-1
       =image_tag('right-arrow.gif', :class => 'card-right-arrow')
