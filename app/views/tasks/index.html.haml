@@ -1,7 +1,7 @@
-.row
+.row.task-index
   %h1.task-header
     Tasks
-  =link_to "Add New Task", new_group_task_path(@group), :class => "btn new-task-button", :method => 'get'
+  =link_to "Add Task", new_group_task_path(@group), :class => "btn new-task-button", :method => 'get'
 
 .row
   %ul.nav.nav-tabs

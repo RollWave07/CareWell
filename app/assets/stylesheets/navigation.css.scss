@@ -1,7 +1,9 @@
 .navbar {
 
   .active {
-    text-decoration: underline;
+    border-bottom: 2px solid white;
+    border-top: 2px solid white;
+    color: white !important;
   }
   //useful potential triangle css for downward pointing arrow
   // .arrow-down {

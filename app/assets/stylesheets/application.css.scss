@@ -31,17 +31,9 @@ $mint-green: #60D97B;
 }
 
 body {
-  background-color: #faf2e6;
+  background-color: #f3f3f3;
 }
 
-// .navbar {
-//   background-color: #faf2e6;
-//   border-bottom-color: #faf2e6;
-// }
-
-// a {
-//   text-decoration: none
-// }
 
 @media all and (max-width: 480px) {
         body {
@@ -98,7 +90,7 @@ body {
 
 .navbar-inverse .navbar-nav > li > a {
   padding-top: 15px;
-  color: white;
+  color: gray;
 }
 
 .navbar-toggle {
@@ -118,6 +110,7 @@ input.btn.btn-large.btn-primary {
   font-family: 'Lato', sans-serif;
   list-style-type: none;
   font-size: 1.25em;
+  margin-bottom: 0;
   border: none;
     a {
       padding-top: 25px;
@@ -156,7 +149,7 @@ li.navbar-link {
           }
         li.navbar-link.last {
           margin-right: 0px;
-          }  
+          }
   }
 
 

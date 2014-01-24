@@ -45,10 +45,7 @@ class Task < ActiveRecord::Base
     total
   end
 
-  def days_from_now
-    difference = self.task_date - DateTime.now
-    "#{difference.to_i} days from now."
-  end
+
 
 
   ## potential model method
@@ -93,6 +90,13 @@ class Task < ActiveRecord::Base
   #finds tasks in a group
   def self.tasks(group)
     self.joins(:user).where(:users => {group_id: group})
+  end
+
+  #finds 1 month of future tasks
+  # this is a test!!
+  def self.upcoming_tasks(group)
+    tasks = self.joins(:user).where(:users => {group_id: group})
+    tasks.where(task_date:(Time.now..Time.now+31.day))
   end
 
   #finds tasks that are not assigned to an assignee(user)

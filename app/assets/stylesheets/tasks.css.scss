@@ -5,223 +5,281 @@ $dark-green: #308d45;
 $mint-green: #60D97B;
 $bgc: #ded8ce;
 
+//all styles
+
+  .task {
+    margin: 30px;
+    background-color: $bgc;
+    border-left: 10px solid #aee239;
+    // border-top-left-radius: 1.5em;
+    // border-top-right-radius: 1.5em;
+    padding: 10px;
+
+    li {
+    list-style: none;
+    display: inline-block;
+    padding-right: 20px;
+    }
+  }
+
+  .update {
+    div {
+    .picture, .comment, .name, .info {
+      display: inline-block;
+      }
+    }
+  }
+
+  .action {
+    text-align: right;
+  }
+
+  .task_category, .task_title, .task_action {
+    display: inline-block;
+  }
+
+  .task_category {
+    font-weight: bold;
+  }
+  .task_title {
+    padding-left: 20px;
+  }
+
+  .name_form {
+    display: inline-block;
+  }
+
+  .new-task-style{
+    background-color: white;
+    padding: 20px;
+    input[type='radio'] {
+      margin-left: 15px;
+    }
+  }
+
+  .new-task {
+    background-color: white;
+    padding: 40px;
+    .time {
+      display: hidden;
+    }
+
+  }
+
+  .form-icon {
+    font-size: 4em;
+    margin-top: 10px;
+  }
+
+  .task-form-icon-wrapper {
+    text-align: center;
+    float: left;
+    width: 100%;
+  }
+
+  .task-form-radio-button {
+    display: none;
+  }
+
+  .selected-category {
+    background-color: #00aac9;
+    color: white !important;
+  }
+
+  h1.task-header {
+    color: #323232;
+    font-size: 2em;
+    font-style: bold;
+    display: inline-block;
+    float: left;
+    margin-right: 30px;
+    // padding-left: 15px;
+    // margin-top: 25px;
+    // margin-bottom: 25px;
+    // margin-left: -20px;
+  }
+
+  .task-card {
+    // height: 150px;
+    // background-color: white;
+    margin: 5px 0;
+    padding: 20px;
+    box-shadow: 0px 0px 3px #888888;
+    text-decoration: none;
+    padding-right: 0px;
+    border-bottom: 1px solid rgb(214,210,210);
+    h3 {
+      font-family: "Lato", sans-serif;
+      font-size: 3em;
+      margin-top: 5px;
+    }
+    h4 {
+      font-family: "Lato", sans-serif;
+      font-size: 2em;
+      color: #cacaca;
+    }
+  }
+
+  .row {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .task-card-image-container {
+    margin-top: 35px;
+  }
+
+  .task-card-icon {
+    font-size: 2.5em;
+    color: #6fcccf;
+    text-align: right;
+    margin-left: 5px;
+    }
+    .heart-icon-color {
+     color: #c24952;
+      }
+
+  .card-right-arrow {
+    padding: 50px;
+    float: right;
+  }
+
+  .no-tasks .glyphicon {
+    font-size: 100px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .no-tasks > h1 {
+    div{text-align: center;}
+  }
+
+  .input-lg {
+    border-radius: 0;
+    border: 0;
+    width: 100%;
+  }
+
+  .btn.btn-primary.create_task {
+    background: $mint-green;
+    padding: 20px;
+    width: 100px;
+    font-size: 2em;
+    border: 0px;
+  }
+
+  .nav-tabs>li>a {
+    border-radius: 0px;
+  }
+
+  ul.nav.nav-tabs {
+    width: 100%;
+    li {
+      width: 33.33%;
+      text-align: center;
+      background: white;
+      border-top: 1px solid black;
+    }
+  }
+
+  .tab-content {
+    background: white;
+  }
+
+  form#new_task.new_task {
+    background: white;
+  }
+
+  .new-task-button {
+    // height: 75px;
+    // width: 225px;
+    background-color: #40090f;
+    border-radius: 5px;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    float: right;
+    font-size: 1.3em;
+    margin: 15px 15px 20px 0;
+  }
+  .new-task-button:hover {
+    background-color: #8d3039;
+    color: black;
+      }
+
+  .comments-count {
+    position: relative;
+    display: inline-block;
+    left: 30px;
+    top: -7px;
+    color: white;
+  }
+
+  .hearts-count {
+    position: relative;
+    display: inline-block;
+    left: 30px;
+    top: -7px;
+    color: white;
+  }
+
+  h3.card-title {
+    display: inline-block;
+  }
+
 //set up for mobile
 @media all and (max-width: 480px) {
 
-}
-
-
-
-
-.task {
-  margin: 30px;
-  background-color: $bgc;
-  border-left: 10px solid #aee239;
-  // border-top-left-radius: 1.5em;
-  // border-top-right-radius: 1.5em;
-  padding: 10px;
-
-  li {
-  list-style: none;
-  display: inline-block;
-  padding-right: 20px;
-  }
-}
-
-.update {
-  div {
-  .picture, .comment, .name, .info {
-    display: inline-block;
-    }
-  }
-}
-
-.action {
-  text-align: right;
-}
-
-.task_category, .task_title, .task_action {
-  display: inline-block;
-}
-
-.task_category {
-  font-weight: bold;
-}
-.task_title {
-  padding-left: 20px;
-}
-
-.name_form {
-  display: inline-block;
-}
-
-.new-task-style{
-  background-color: white;
-  padding: 20px;
-  input[type='radio'] {
-    margin-left: 15px;
-  }
-}
-
-.new-task {
-  background-color: white;
-  padding: 40px;
-  .time {
-    display: hidden;
-  }
-
-}
-
-.form-icon {
-  font-size: 4em;
-  margin-top: 10px;
-}
-
-.task-form-icon-wrapper {
-  text-align: center;
-  float: left;
-  width: 100%;
-}
-
-.task-form-radio-button {
-  display: none;
-}
-
-.selected-category {
-  background-color: #00aac9;
-  color: white !important;
-}
-
-h1.task-header {
-  color: #40090f;
-  font-size: 2em;
-  font-style: bold;
-  display: inline-block;
-  // padding-left: 15px;
-  // margin-top: 25px;
-  // margin-bottom: 25px;
-  // margin-left: -20px;
-}
-
-.task-card {
-  // height: 150px;
-  // background-color: white;
-  // border-radius: 3px;
-  padding: 20px;
-  // I know the line below is weird but the design gets messed up if moved
-  margin-left: 0px;
-  text-decoration: none;
-  padding-right: 0px;
-  border-bottom: 1px solid #efefef;
-  h3 {
-    font-family: "Lato", sans-serif;
-    font-size: 3em;
-    margin-top: 5px;
-  }
-  h4 {
-    font-family: "Lato", sans-serif;
+  h1.task-header {
     font-size: 2em;
-    color: #cacaca;
+    display: inline-block;
+    float: left;
+    margin-right: 30px;
+    // padding-left: 15px;
+    // margin-top: 25px;
+    // margin-bottom: 25px;
+    // margin-left: -20px;
   }
-}
 
-.row {
-  margin-left: 0px;
-  margin-right: 0px;
-}
-.task-card-image-container {
-  margin-top: 35px;
-}
-
-.task-card-icon {
-  font-size: 2.5em;
-  color: #cacaca;
-  text-align: right;
-  margin-left: 5px;
-  }
-.card-right-arrow {
-  padding-top: 35px;
-}
-
-.no-tasks .glyphicon {
-  font-size: 100px;
-  font-weight: bold;
-  text-align: center;
-}
-
-.no-tasks > h1 {
-  div{text-align: center;}
-}
-
-.input-lg {
-  border-radius: 0;
-  border: 0;
-  width: 100%;
-}
-
-.btn.btn-primary.create_task {
-  background: $mint-green;
-  padding: 20px;
-  width: 100px;
-  font-size: 2em;
-  border: 0px;
-}
-
-.nav-tabs>li>a {
-  border-radius: 0px;
-}
-
-ul.nav.nav-tabs {
-  width: 100%;
-  li {
-    width: 33.33%;
-    text-align: center;
-    background: white;
-    border-top: 1px solid black;
-  }
-}
-
-.tab-content {
-  background: white;
-}
-
-form#new_task.new_task {
-  background: white;
-}
-
-.new-task-button {
-  // height: 75px;
-  // width: 225px;
-  background-color: #40090f;
-  border-radius: 25px;
-  color: white;
-  font-family: 'Lato', sans-serif;
-  padding: 15px;
-  float: right;
-  font-size: 2em;
-  margin: 0 0 20px 0;
-}
-.new-task-button:hover {
-  background-color: #8d3039;
-  color: black;
+  .task-card {
+    // height: 150px;
+    // background-color: white;
+    // border-radius: 3px;
+    padding: 20px;
+    // I know the line below is weird but the design gets messed up if moved
+    margin-left: 0px;
+    text-decoration: none;
+    padding-right: 0px;
+    border-bottom: 1px solid rgb(214,210,210);
+    h3 {
+      font-family: "Lato", sans-serif;
+      font-size: 1.5em;
+      margin-top: 5px;
     }
+    h4 {
+      font-family: "Lato", sans-serif;
+      font-size: 1.0em;
+      color: #cacaca;
+    }
+    .card-right-arrow {
+      position: static;
+      padding: 10px;
+    }
+  }
 
-.comments-count {
-  position: relative;
-  display: inline-block;
-  left: 30px;
-  top: -7px;
-  color: white;
+  .form-icon {
+    font-size: 2em;
+    margin-top: 10px;
+  }
+
+  .comments-count {
+    position: relative;
+    display: inline-block;
+    top: -7px;
+  }
+
+  .hearts-count {
+    position: relative;
+    display: inline-block;
+    top: -7px;
+  }
 }
 
-.hearts-count {
-  position: relative;
-  display: inline-block;
-  left: 30px;
-  top: -7px;
-  color: white;
-}
-
-h3.card-title {
-  display: inline-block;
-}
