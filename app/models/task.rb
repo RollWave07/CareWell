@@ -24,7 +24,7 @@ class Task < ActiveRecord::Base
   # end
 
   #___GRAPH DATA
-  
+  scope :future, lambda {where(["task_date > ?", Time.now])}
   scope :week_one, lambda {where(task_date:(7.day.ago..Time.now))}
   scope :week_two, lambda {where(task_date:(14.day.ago..8.day.ago))}
   scope :week_three, lambda {where(task_date:(21.day.ago..15.day.ago))}
