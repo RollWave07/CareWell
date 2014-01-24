@@ -1,19 +1,18 @@
-.container
-  .row.link
-    =link_to group_tasks_path(@group) do
-      .back
-        .arrow-left
-        %h1.back-words Back
-  .row
-    .col-md-4
-      =render 'tasks/task_show', group: @group, task: @task
+.row.link
+  =link_to group_tasks_path(@group) do
+    .back
+      .arrow-left
+      %h1.back-words Back
+.row
+  .col-md-4
+    =render 'tasks/task_show', group: @group, task: @task
 
-    .col-md-8
-      .row.post-update
-        =render "updates/form", group: @group, task: @task, update: @update
-      .row.updates{"data-id" => "#{@task.id}"}
-        -@task.ordered_updates.each do |update|
-          =render "updates/update", update: update
+  .col-md-8
+    .row.post-update
+      =render "updates/form", group: @group, task: @task, update: @update
+    .row.updates{"data-id" => "#{@task.id}"}
+      -@task.ordered_updates.each do |update|
+        =render "updates/update", update: update
 
 
 

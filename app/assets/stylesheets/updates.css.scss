@@ -9,6 +9,10 @@
   margin-top: 3px;
 }
 
+.input-size {
+  width: 100%;
+}
+
 .update {
   font-family: "Lato", sans-serif;
   background: white;
@@ -69,4 +73,12 @@
   .comment-time {
     font-size: 0.8em;
   }
+}
+//set up mobile overrides
+
+@media all and (max-width: 480px) {
+  .post-update {
+    padding: 10px 0px;
+  }
+
 }
