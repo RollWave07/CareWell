@@ -225,6 +225,38 @@ $bgc: #ded8ce;
     display: inline-block;
   }
 
+//set up task show page
+
+.row.link a {
+  text-decoration: none;
+}
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right:20px solid #323232;
+  margin-top: 20px;
+  margin-left: -10px;
+  display: inline-block;
+}
+
+.back-words {
+display: inline;
+padding-left: 10px;
+position: relative;
+top: -7px;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.float-left {
+  float: left;
+}
+
+
 //set up for mobile
 @media all and (max-width: 480px) {
 
