@@ -21,12 +21,17 @@ class TasksController < ApplicationController
     # format.html { notice: 'Message sent successfully' }
   end
 
+
   def index
     @tasks = Task.tasks(@group)
+    @mytasks = Task.assigned_to_specific_user(@tasks, current_user)
+    @unassigned_tasks = Task.unassigned(@tasks)
+
     # @tasks = Task.joins(:user).where(:users => {group_id: @group})
     @commenter_name = current_user.first_name
     @commenter_picture = current_user.picture
-    @group_name = Group.find(current_user.group_id).name
+
+    @group_name = @group.name
     @update = Update.new
   end
 
