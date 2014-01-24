@@ -15,15 +15,18 @@ class User < ActiveRecord::Base
     group.users
   end
 
+
   # TODO:
   # FIXME:
   #   Does not actually limit to tasks which have been completed.
-  def tasks_completed(params = {})
-    find_params = { assignee_id: id }
-    find_params[:task_date] = params[:since]..Time.now if params[:since]
+  # def tasks_completed(params = {})
+  #   find_params = { assignee_id: id }
+  #   find_params[:task_date] = params[:since]..Time.now if params[:since]
 
-    Task.where(find_params).count
-  end
+  #   Task.where(find_params).count
+  # end
+
+  
   # my_user.tasks_completed(task_date: 1.month.ago..Time.now)
   # my_user.tasks_completed(since: 1.month.ago)
 

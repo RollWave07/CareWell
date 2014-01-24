@@ -10,15 +10,12 @@ class Task < ActiveRecord::Base
   validates :title, presence: true
 
 
-  scope :completed_recently, lambda { where(task_date: 1.day.ago..Time.now) }
-
-  scope :last_month, lambda {where(task_date:(31.day.ago..Time.now))}
-  scope :last_week, lambda {where(task_date:(7.day.ago..Time.now))}
-
-  scope :next_month, lambda {where(task_date:(Time.now..Time.now+31.day))}
-  scope :next_week, lambda {where(task_date:(Time.now..Time.now+7.day))}
-
-  scope :all_time, lambda {where(task_date:(Time.new(2014, 1, 1)..Time.now))}
+  # scope :completed_recently, lambda { where(task_date: 1.day.ago..Time.now) }
+  # scope :last_month, lambda {where(task_date:(31.day.ago..Time.now))}
+  # scope :last_week, lambda {where(task_date:(7.day.ago..Time.now))}
+  # scope :next_month, lambda {where(task_date:(Time.now..Time.now+31.day))}
+  # scope :next_week, lambda {where(task_date:(Time.now..Time.now+7.day))}
+  # scope :all_time, lambda {where(task_date:(Time.new(2014, 1, 1)..Time.now))}
 
   # potentially create a model method to return all tasks here, to be called in view.
   #concerned this may be a group model method, however.
@@ -27,10 +24,22 @@ class Task < ActiveRecord::Base
   # end
 
   #___GRAPH DATA
+  
   scope :week_one, lambda {where(task_date:(7.day.ago..Time.now))}
   scope :week_two, lambda {where(task_date:(14.day.ago..8.day.ago))}
   scope :week_three, lambda {where(task_date:(21.day.ago..15.day.ago))}
   scope :week_four, lambda {where(task_date:(28.day.ago..22.day.ago))}
+  
+  @scopes_period = ["week_one", "week_two", "week_three", "week_four"]
+
+  def self.count_per_period(tasks, time_period = @scopes_period)
+    output_array = []
+    time_period.each do |time|
+      output_array << tasks.send("#{time}").count
+    end
+    output_array
+  end
+
 
 
   def ordered_updates
