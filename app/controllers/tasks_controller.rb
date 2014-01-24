@@ -21,15 +21,17 @@ class TasksController < ApplicationController
     # format.html { notice: 'Message sent successfully' }
   end
 
+
   def index
-    @tasks = Task.joins(:user).where(:users => {group_id: @group})
-    @my_tasks = Task.where(assignee_id: current_user.id)
-    @open_tasks = Task.where(assignee_id: nil)
+    @tasks = Task.tasks(@group)
+    @my_tasks = Task.assigned_to_specific_user(@tasks, current_user)
+    @open_tasks = Task.unassigned(@tasks)
+
     @commenter_name = current_user.first_name
     @commenter_picture = current_user.picture
-    @group = Group.find(current_user.group_id)
-    # @group = Group.find(params[:group_id])
-    @group_name = Group.find(current_user.group_id).name
+
+    @group_name = @group.name
+
     @update = Update.new
   end
 
