@@ -11,7 +11,7 @@
     .col-md-8
       .row.post-update
         =render "updates/form", group: @group, task: @task, update: @update
-      .row
+      .row.updates{"data-id" => "#{@task.id}"}
         -@task.ordered_updates.each do |update|
           =render "updates/update", update: update
 
