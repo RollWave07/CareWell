@@ -23,13 +23,13 @@
                   -if current_user
                     -if current_user.group != nil && user_signed_in?
                       %li.navbar-link
-                        = link_to 'Add Task', new_group_task_path(@group)
+                        = link_to 'Add Task', new_group_task_path(@group), {class: nav_links_class("new", "tasks")}
                       %li.navbar-link
-                        = link_to 'All Tasks', group_tasks_path(@group)
+                        = link_to 'All Tasks', group_tasks_path(@group), {class: nav_links_class("index", "tasks")}
                       %li.navbar-link
-                        = link_to 'My Group', group_path(@group)
+                        = link_to 'My Group', group_path(@group), {class: nav_links_class("show", "groups")}
                       %li.navbar-link
-                        = link_to 'Edit Profile', edit_user_registration_path
+                        = link_to 'Edit Profile', edit_user_registration_path, {class: nav_links_class("edit", "registrations")}
                       %li.navbar-link.last
                         = link_to 'Sign Out', destroy_user_session_path, method: :delete
                     -else

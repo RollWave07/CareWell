@@ -5,6 +5,14 @@ $dark-green: #308d45;
 $mint-green: #60D97B;
 $bgc: #ded8ce;
 
+//set up for mobile
+@media all and (max-width: 480px) {
+
+}
+
+
+
+
 .task {
   margin: 30px;
   background-color: $bgc;
@@ -96,16 +104,15 @@ h1.task-header {
 }
 
 .task-card {
-  width: 100%;
-  height: 150px;
-  background-color: white;
-  border-radius: 3px;
+  // height: 150px;
+  // background-color: white;
+  // border-radius: 3px;
   padding: 20px;
-  margin-top:25px;
   // I know the line below is weird but the design gets messed up if moved
   margin-left: 0px;
   text-decoration: none;
   padding-right: 0px;
+  border-bottom: 1px solid #efefef;
   h3 {
     font-family: "Lato", sans-serif;
     font-size: 3em;
@@ -127,14 +134,13 @@ h1.task-header {
 }
 
 .task-card-icon {
-  font-size: 3em;
+  font-size: 2.5em;
   color: #cacaca;
   text-align: right;
   margin-left: 5px;
   }
 .card-right-arrow {
-  margin-left: 10px;
-  margin-bottom: 15px;
+  padding-top: 35px;
 }
 
 .no-tasks .glyphicon {
@@ -199,3 +205,23 @@ form#new_task.new_task {
   background-color: #8d3039;
   color: black;
     }
+
+.comments-count {
+  position: relative;
+  display: inline-block;
+  left: 30px;
+  top: -7px;
+  color: white;
+}
+
+.hearts-count {
+  position: relative;
+  display: inline-block;
+  left: 30px;
+  top: -7px;
+  color: white;
+}
+
+h3.card-title {
+  display: inline-block;
+}

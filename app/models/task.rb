@@ -22,6 +22,14 @@ class Task < ActiveRecord::Base
     self.updates.order("created_at")
   end
 
+  def likes_count
+    total = 0
+    self.updates.each do |update|
+      total += update.likes.count
+    end
+    total
+  end
+
   ## potential model method
   # def needs_assignee
   #   if self.assignee_id.nil? && self.user_id == current_user.id
