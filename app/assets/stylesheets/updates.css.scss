@@ -1,13 +1,22 @@
 // Place all the styles related to the Updates controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post-update {
+  background: rgb(214,210,210);
+  padding: 20px;
+  border-radius: 4px;
+  margin-top: 3px;
+}
+
 .update {
   font-family: "Lato", sans-serif;
   background: white;
   // margin-bottom: 20px;
   // border-radius: 10px;
   padding: 10px;
-  margin: 10px 0;
+  // margin: 10px 0;
+  border-bottom: 1px solid rgb(214,210,210);
   li {
     list-style: none;
     display: inline-block;
@@ -25,10 +34,24 @@
   }
 
   .comment {
-    padding-left: 20px;
-    font-style: bold;
-    .col-xs-12 {
-    margin-left: 10px;
+    // padding-left: 20px;
+    // font-style: bold;
+    // .col-xs-12 {
+    // margin-left: 10px;
+    // }
+  }
+
+  #update_picture {
+    display: inline;
+  }
+
+  .image_update {
+    label {
+      display: inline;
+    }
+    input {
+      float: left;
+      display: inline;
     }
   }
 

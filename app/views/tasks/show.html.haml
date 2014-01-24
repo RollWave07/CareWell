@@ -9,10 +9,14 @@
       =render 'tasks/task_show', group: @group, task: @task
 
     .col-md-8
-      -@task.ordered_updates.each do |update|
-        =render "updates/update", update: update
+      .row.post-update
+        =render "updates/form", group: @group, task: @task, update: @update
+      .row
+        -@task.ordered_updates.each do |update|
+          =render "updates/update", update: update
 
-      =render "updates/form", task: @task, update: @update
+
+
 
 
 

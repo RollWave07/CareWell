@@ -1,18 +1,19 @@
-.update{"data-id" => update.id}
-  .col-xs-1
+.row.update{"data-id" => update.id}
+  .col-md-1
     -if update.user.picture != nil
       =image_tag(update.user.picture_url(:sq_thumb))
     -else
       =update.user.first_name
-  .col-xs-8
+  .col-md-8
     .comment-text
       =update.comment
       %br
       -if current_user == update.user
         =link_to "delete", group_task_update_path(@group, update.task, update), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "delete_update"
       .comment-time
-        =update.created_at.strftime("at %I:%M%p")
-  .col-xs-3
+        -diff = update.created_at.to_i - Time.now.to_i
+        ="#{distance_of_time_in_words(diff)} ago"
+  .col-md-3
     =raw "<span id='vote#{update.id}'>#{update.votes.count}</span>"
     %span.glyphicon.glyphicon-heart
     -if current_user.voted_for? update

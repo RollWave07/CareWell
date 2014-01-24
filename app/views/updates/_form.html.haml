@@ -1,7 +1,15 @@
 =form_for [@group, @task, @update], remote: true do |f|
-
-    =f.text_area :comment
-    =f.label :picture, "Add picture"
-    =f.file_field :picture
+  .col-md-1
+    -if current_user.picture != nil
+      =image_tag(current_user.picture_url(:sq_thumb))
+    -else
+      =update.user.first_name
+  .col-md-8
+    =f.text_area :comment, placeholder: "Anything to share about this task?", size: "70x3"
+    %p
+    .image-update
+      =f.label :picture, "Add picture update:"
+      =f.file_field :picture, value: "Add picture update"
     =f.hidden_field(:task_id, value: task.id)
     =f.submit "Add Update"
+  .col-md-3
