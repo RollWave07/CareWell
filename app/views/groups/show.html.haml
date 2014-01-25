@@ -1,10 +1,121 @@
+= javascript_include_tag "Chart.js"
+
 .row
-  .col-sm-6
-  .col-sm-6
+  .col-md-6
+    =image_tag('http://placekitten.com/400/250', :class => 'group-photo')
+
+  .col-md-6
     %h1="The #{@group.name}"
     =link_to 'edit group', edit_group_path
     %h3="#{@group_count} Members"
     .group-member
       -@users.each do |user|
-        =image_tag(user.picture)
+        =image_tag(user.picture_url(:sq_thumb), :class => "group-user-photo")
         =user.first_name
+
+%h1 Group Statistics
+.row.graph-background
+  .col-md-6
+    %canvas#myChart{height: "400", width: "400"}
+  .col-md-6
+    %h3 Most Tasks Completed This Week
+    %img(src="http://placekitten.com/50/50")
+    %p Name
+    %h3 Most Tasks Completed This Month
+    %img(src="http://placekitten.com/50/50")
+    %p Name
+    %h3 Most Tasks Completed of All Time
+    %img(src="http://placekitten.com/50/50")
+    %p Name
+
+:javascript
+  var ctx = document.getElementById("myChart").getContext("2d");
+
+  var data = {
+    labels : ["January","February","March","April","May","June","July"],
+    datasets : [
+      {
+        fillColor : "rgba(220,220,220,0.5)",
+        strokeColor : "rgba(220,220,220,1)",
+        pointColor : "rgba(220,220,220,1)",
+        pointStrokeColor : "#fff",
+        data : [65,59,90,81,56,55,40]
+      },
+      {
+        fillColor : "rgba(151,187,205,0.5)",
+        strokeColor : "rgba(151,187,205,1)",
+        pointColor : "rgba(151,187,205,1)",
+        pointStrokeColor : "#fff",
+        data : [28,48,40,19,96,27,100]
+      }
+    ]
+  }
+
+  var options = {}
+
+  var myNewChart = new Chart(ctx).PolarArea(data);
+
+  new Chart(ctx).Line(data,options);
+
+
+
+/ %h3="Top members last month"
+
+/ -@top_three_members_last_month.each do |member|
+/   ="#{member.first_name} #{member.last_name} completed #{member.tasks_completed(since: 1.month.ago)} task(s)"
+/   %br
+
+/ %h3="Top members last week"
+/ -@top_three_members_last_week.each do |member|
+/   ="#{member.first_name} #{member.last_name} completed #{member.tasks_completed(since: 1.week.ago)} task(s)"
+/   %br
+
+/ %h3="Last Three tasks completed"
+
+/ -@last_three_tasks_completed.each do |task|
+/   ="#{task.title} was completed by #{task.assignee.first_name}"
+/   %br
+
+/ %h3="Catergories and thier average durations"
+
+/ -@category_avg.each do |task, average|
+/   ="#{task}: #{average}"
+/   %br
+
+/ = "total_tasks_count: #{@total_tasks_count} "
+/ %br
+/ = "tasks_count_last_week: #{@tasks_last_week.count}"
+/ %br
+
+/ = "tasks count last month: #{@tasks_last_month.count}" 
+/ %br
+
+/ = "tasks count next_week: #{@tasks_next_week.count}" 
+/ %br
+
+/ = "tasks_count next_month: #{@tasks_next_month.count} "
+/ %br
+
+
+/ %h3="Top members last month"
+
+/ -@top_three_members_last_month.each_with_index do |member, index|
+/   ="#{index+1}: #{member[0]}"
+/ %br
+/ / -[["brian", 3],["Tom",2],["Eric",1]].each_with_index do |member, index|
+/ /   ="#{index+1}: #{member[0]}"
+/ /   %br
+/ %h3="Top members last week"
+/ -@top_three_members_last_week.each_with_index do |member, index|
+/   ="#{index+1}: #{member[0]}"
+/ %br
+
+/ %h3 3 next upcoming tasks:
+/ -@next_three_tasks.each do |task|
+/   ="#{task.title}: #{task.assignee.first_name} #{task.assignee.last_name} #{Task.format_date(task.task_date)}"
+/   %br
+/ %br
+/ %h3 3 last completed tasks:
+/ -@last_three_tasks.each do |task|
+/   ="#{task.title}: #{task.assignee.first_name} #{task.assignee.last_name} #{Task.format_date(task.task_date)}"
+/   %br

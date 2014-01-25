@@ -11,6 +11,8 @@ group :development do
   gem 'quiet_assets'
 end
 
+gem 'chart-js-rails'
+
 group :development, :test do
   gem 'pry'
   # gem 'pry-rails'
