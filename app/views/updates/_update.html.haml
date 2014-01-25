@@ -13,11 +13,16 @@
 
       -if current_user == update.user
         %p
-          =link_to "delete", group_task_update_path(@group, update.task, update), method: :delete, data: { confirm: 'Are you sure?' }, remote: true
-  .col-md-3.col-xs-6
-    =raw "<span id='vote#{update.id}'>#{update.votes.count}</span>"
-    %span.glyphicon.glyphicon-heart
-    -if current_user.voted_for? update
-      = button_to "Liked", unvote_group_task_update_path(@group, update.task, update), method: "post", class: 'btn btn-primary', remote: true
-    -else
-      = button_to "Like", vote_group_task_update_path(@group, update.task, update), method: "post", class: 'btn btn-primary', remote: true
+          =link_to "delete", group_task_update_path(@group, update.task, update), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "delete_update"
+      .comment-time
+        -diff = update.created_at.to_i - Time.now.to_i
+        ="#{distance_of_time_in_words(diff)} ago"
+  .col-md-3
+    = link_to vote_group_task_update_path(@group, update.task, update), method: "post",  remote: true, style: "text-decoration: none;" do
+      .hearts-count2=raw "<span id='vote#{update.id}'>#{update.votes.count}</span>"
+      -if current_user.voted_for? update
+        %span.glyphicon.glyphicon-heart.active-glyphicon-heart
+      -else
+        %span.glyphicon.glyphicon-heart
+    
+  
