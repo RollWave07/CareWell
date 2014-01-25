@@ -40,6 +40,7 @@ $('.task-form-icon-wrapper').on('click', function() {
   replacementText = $(this).find('label').text();
   $('#task_title').val(replacementText);
   $('.categories').fadeToggle();
+  $('#category').val(replacementText);
 })
 
 

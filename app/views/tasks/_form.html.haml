@@ -10,7 +10,7 @@
       .col-xs-2.calendar
         %span.pick-calendar-date.glyphicon.glyphicon-calendar
       .col-xs-10.time-details
-        =task.select :task_date, options_for_select([['today', 15], ['tomorrow', 30], ['a couple of days', 45], ['in a week', 60], ['in two weeks', 75], ['in a month', 90], ['2 hours', 120]]), {selected: 'in a week' }, {class: 'form-control'}
+        =task.select :task_date, options_for_select([['today', Time.now], ['tomorrow', Time.now + 1.day], ['a couple of days', Time.now + 3.days], ['in a week', Time.now + 1.week], ['in two weeks', Time.now + 2.weeks], ['in a month', Time.now + 4.weeks]]), {selected: 'in a week' }, {class: 'form-control'}
       .col-xs-12
         %h3 When does it start?
         %p=task.select :start_time, options_for_select([['in the morning', 'in the morning'], ['in the afternoon', 'in the afternoon'], ['in the evening', 'in the evening']]), {selected: 'in the morning'}, {class: 'form-control'}
@@ -85,7 +85,5 @@
                 =task.label(:visits_and_outings, "visits & outings")
                 %br
                 =task.radio_button(:category, "visits & outings", :class => "task-form-radio-button")
-
-
 
       =task.submit :class => "btn new-task-button"
