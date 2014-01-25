@@ -7,7 +7,7 @@
         %span.glyphicon.glyphicon-time
       .col-xs-10.time-details
         %h3 When?
-      .col-xs-2
+      .col-xs-2.calendar
         %span.pick-calendar-date.glyphicon.glyphicon-calendar
       .col-xs-10.time-details
         =task.select :task_date, options_for_select([['today', 15], ['tomorrow', 30], ['a couple of days', 45], ['in a week', 60], ['in two weeks', 75], ['in a month', 90], ['2 hours', 120]]), {selected: 'in a week' }, {class: 'form-control'}
