@@ -11,21 +11,33 @@ class GroupsController < ApplicationController
     @users = User.where(group_id: params[:id])
     # @total_tasks = Task.tasks(@group)
     @assigned_tasks = Task.assigned(@group)
-
+    # @users = User.all
     # @total_tasks_count = @total_tasks.count
     # @tasks_last_week = @assigned_tasks.last_week
     # @tasks_last_month = @assigned_tasks.last_month
     # @tasks_next_week = @assigned_tasks.next_week
     # @tasks_next_month = @assigned_tasks.next_month
+   
+    @counts_arrays = Task.count_per_period(@assigned_tasks)
+    @top_three_members = TopMembersQuery.new.top_users_list(7)
 
-    @top_three_members_last_month = TopMembersQuery.new.last_month(User.limit(4)) 
-    puts "REL: #{@top_three_members_last_month.inspect}"
-    #Task.top_three_members(@tasks_last_month)
-    @top_three_members_last_week = TopMembersQuery.new.last_week(User.limit(4)) 
+    @top_three_members_month = TopMembersQuery.new.top_users_list(30)
+
+    #BROKEN Top members Query
+    # @top_three_members_last_month = TopMembersQuery.new.last_month(User.limit(4)) 
+    # puts "REL: #{@top_three_members_last_month.inspect}"
+    # #Task.top_three_members(@tasks_last_month)
+    # @top_three_members_last_week = TopMembersQuery.new.last_week(User.limit(4)) 
+    #------ stop
     #Task.top_three_members(@tasks_last_week)
 
     # @next_three_tasks = Task.recent_three_tasks(@tasks_next_month)
     # @last_three_tasks = Task.recent_three_tasks(@tasks_last_month)
+
+
+
+
+
 
     @last_three_tasks_completed = Task.last_three_tasks_completed(@assigned_tasks)
     @category_avg = Task.average_duration_per_category(@assigned_tasks)

@@ -6,31 +6,32 @@ class Task < ActiveRecord::Base
   belongs_to :location
   has_many :updates
 
-  # validates :category, :inclusion => ['getting places', 'around the home', 'shopping', 'meals', 'personal care', 'odds & ends', 'visits & outings']
+  
   validates :title, presence: true
 
 
   scope :completed_recently, lambda { where(task_date: 1.day.ago..Time.now) }
 
-  scope :last_month, lambda {where(task_date:(31.day.ago..Time.now))}
-  scope :last_week, lambda {where(task_date:(7.day.ago..Time.now))}
-
-  scope :next_month, lambda {where(task_date:(Time.now..Time.now+31.day))}
-  scope :next_week, lambda {where(task_date:(Time.now..Time.now+7.day))}
-
-  scope :all_time, lambda {where(task_date:(Time.new(2014, 1, 1)..Time.now))}
-
-  # potentially create a model method to return all tasks here, to be called in view.
-  #concerned this may be a group model method, however.
-  # def find_group_tasks
-  #   Task.joins(:user).where(:users => {group_id: 1})
-  # end
 
   #___GRAPH DATA
+  scope :future, lambda {where(["task_date > ?", Time.now])}
+  scope :past, lambda {where(["task_date < ?", Time.now])}
+  
   scope :week_one, lambda {where(task_date:(7.day.ago..Time.now))}
   scope :week_two, lambda {where(task_date:(14.day.ago..8.day.ago))}
   scope :week_three, lambda {where(task_date:(21.day.ago..15.day.ago))}
   scope :week_four, lambda {where(task_date:(28.day.ago..22.day.ago))}
+  
+  @scopes_period = ["week_one", "week_two", "week_three", "week_four"]
+
+  def self.count_per_period(tasks, time_period = @scopes_period)
+    output_array = []
+    time_period.each do |time|
+      output_array << tasks.send("#{time}").count
+    end
+    output_array
+  end
+
 
 
   def ordered_updates
@@ -47,47 +48,6 @@ class Task < ActiveRecord::Base
 
 
 
-
-  ## potential model method
-  # def needs_assignee
-  #   if self.assignee_id.nil? && self.user_id == current_user.id
-  #   return "Invite A Helper"
-  #   elsif self.assignee_id.nil?
-  #   return "I can do this!"
-  #   else
-  #   return "This is assigned to you."
-  #   end
-  # end
-
-
-
-  #-----These work:
-  # def self.tasks(group)
-  #   #finds where users are in a group and where assignee is not nil
-  #   self.joins(:user).where(:users => {group_id: group})
-  # end
-  # def self.tasks_assigneed(group)
-  #   tasks(group).where.not(assignee_id: nil)
-  # end
-
-
-
-  # def self.mytasks(current_user)
-  #   #this assumes that a user is only a part of one group
-  #   self.joins(:user).where({assignee: current_user})
-  # end
-
-  # def self.tasks_unassigneed(tasks, user)
-  #   binding.pry
-  #   tasks.select{|task| assignee: nil}
-  # end
-
-
-
-  #TRY ________ Try using the .having method
-
-
-  #finds tasks in a group
   def self.tasks(group)
     self.joins(:user).where(:users => {group_id: group})
   end
@@ -120,16 +80,6 @@ class Task < ActiveRecord::Base
   def self.assigned(group)
     Task.tasks(group).where.not(assignee_id: nil)
   end
-
-  # def self.mytasks(current_user)
-  #   #this assumes that a user is only a part of one group
-  #   self.joins(:user).where({assignee: current_user})
-  # end
-
-
-  # def self.top_three_members(tasks)
-
-  # end
   def self.last_three_tasks_completed(tasks)
     tasks.limit(3).where(task_date: 1.month.ago..Time.now).order(task_date: :desc)
   end
@@ -137,13 +87,23 @@ class Task < ActiveRecord::Base
   def self.average_duration_per_category(tasks)
     tasks.group(:category).select(:category, :duration).average(:duration)
   end
-# Task.group(:category).select(:category).sum(:category)
 
-#     Task.where(category: Task.group(:category).select(:category)).average(:duration)
 
-#     Task.select(:category, :duration).group(:category).average(:duration)
 
-# Task.group(:category, :duration).select(:category, :duration)
+  ## potential model method
+  # def needs_assignee
+  #   if self.assignee_id.nil? && self.user_id == current_user.id
+  #   return "Invite A Helper"
+  #   elsif self.assignee_id.nil?
+  #   return "I can do this!"
+  #   else
+  #   return "This is assigned to you."
+  #   end
+  # end
+
+
+
+  
 
 
 
@@ -202,6 +162,22 @@ class Task < ActiveRecord::Base
   #   end
   #   the_top_three
   # end
+
+
+  #OLD STUFF --------------
+  # validates :category, :inclusion => ['getting places', 'around the home', 'shopping', 'meals', 'personal care', 'odds & ends', 'visits & outings']
+  # scope :last_month, lambda {where(task_date:(31.day.ago..Time.now))}
+  # scope :last_week, lambda {where(task_date:(7.day.ago..Time.now))}
+  # scope :next_month, lambda {where(task_date:(Time.now..Time.now+31.day))}
+  # scope :next_week, lambda {where(task_date:(Time.now..Time.now+7.day))}
+  # scope :all_time, lambda {where(task_date:(Time.new(2014, 1, 1)..Time.now))}
+
+  # potentially create a model method to return all tasks here, to be called in view.
+  #concerned this may be a group model method, however.
+  # def find_group_tasks
+  #   Task.joins(:user).where(:users => {group_id: 1})
+  # end
+
 
 
 

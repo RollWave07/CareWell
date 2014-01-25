@@ -14,22 +14,47 @@ class UpdatesController < ApplicationController
 
   def vote
     @update = Update.find(params[:id])
-    @update.vote :voter => current_user, :vote => 'like'
-    respond_to do |format|
-      format.json { render json:{vote_id: @update.id, count: @update.votes.count}}
-      format.html {redirect_to root_url, notice: "Thank you for voting!"}
-      # format.js { render layout: false }
-    end
+    puts " Voted for? #{current_user.voted_for? @update}"
+    if current_user.voted_for? @update
+      @update.unliked_by current_user
+      respond_to do |format|
+        format.json { render json:{vote_id: @update.id, count: @update.votes.count}}
+        format.html {redirect_to root_url}
+      end
+    else
+      @update.vote :voter => current_user, :vote => 'like'
+      respond_to do |format|
+        format.json { render json:{vote_id: @update.id, count: @update.votes.count}}
+        format.html {redirect_to root_url, notice: "Thank you for voting!"}
+      end
+    end 
   end
 
-  def unvote
-    @update = Update.find(params[:id])
-    @update.unliked_by current_user
-    respond_to do |format|
-      format.json { render json:{vote_id: @update.id, count: @update.votes.count}}
-      format.html {redirect_to root_url}
-    end
-  end
+  
+
+
+
+
+
+
+  # def vote
+  #   @update = Update.find(params[:id])
+  #   @update.vote :voter => current_user, :vote => 'like'
+  #   respond_to do |format|
+  #     format.json { render json:{vote_id: @update.id, count: @update.votes.count}}
+  #     format.html {redirect_to root_url, notice: "Thank you for voting!"}
+  #     # format.js { render layout: false }
+  #   end
+  # end
+
+  # def unvote
+  #   @update = Update.find(params[:id])
+  #   @update.unliked_by current_user
+  #   respond_to do |format|
+  #     format.json { render json:{vote_id: @update.id, count: @update.votes.count}}
+  #     format.html {redirect_to root_url}
+  #   end
+  # end
 
   def index
   end

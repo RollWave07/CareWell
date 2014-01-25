@@ -1,24 +1,28 @@
-.update.row{"data-id" => update.id}
-  .commenter-info.col-xs-2
+.row.update{"data-id" => update.id}
+  .col-md-1.col-xs-2
     -if update.user.picture != nil
       =image_tag(update.user.picture_url(:sq_thumb))
     -else
       =update.user.first_name
-  .comment.col-xs-10
+  .col-md-8.col-xs-10
     .comment-text
       =update.comment
       %br
-      .comment-time
-        =update.created_at.strftime("at %I:%M%p")
-    .row
-      .col-xs-12
-        =raw "<span id='vote#{update.id}'>#{update.votes.count}</span>"
-        %span.glyphicon.glyphicon-heart
-        -if current_user.voted_for? update
-          = button_to "Liked", unvote_group_task_update_path(@group, update.task, update), method: "post", class: 'btn btn-primary', remote: true
-        -else
-          = button_to "Like", vote_group_task_update_path(@group, update.task, update), method: "post", class: 'btn btn-primary', remote: true
-        -if current_user == update.user
-          =link_to "delete", group_task_update_path(@group, update.task, update), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "delete_update"
+      -diff = update.created_at.to_i - Time.now.to_i
+      ="#{distance_of_time_in_words(diff)} ago"
 
-          / %div=image_tag(update.picture_url(:medium))
+      -if current_user == update.user
+        %p
+          =link_to "delete", group_task_update_path(@group, update.task, update), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "delete_update"
+      .comment-time
+        -diff = update.created_at.to_i - Time.now.to_i
+        ="#{distance_of_time_in_words(diff)} ago"
+  .col-md-3
+    = link_to vote_group_task_update_path(@group, update.task, update), method: "post",  remote: true, style: "text-decoration: none;" do
+      .hearts-count2=raw "<span id='vote#{update.id}'>#{update.votes.count}</span>"
+      -if current_user.voted_for? update
+        %span.glyphicon.glyphicon-heart.active-glyphicon-heart
+      -else
+        %span.glyphicon.glyphicon-heart
+    
+  
