@@ -23,9 +23,7 @@
                   -if current_user
                     -if current_user.group != nil && user_signed_in?
                       %li.navbar-link
-                        = link_to 'Add Task', new_group_task_path(current_user.group_id), {class: nav_links_class("new", "tasks")}
-                      %li.navbar-link
-                        = link_to 'All Tasks', group_tasks_path(current_user.group_id), {class: nav_links_class("index", "tasks")}
+                        = link_to 'Tasks', group_tasks_path(current_user.group_id), {class: nav_links_class("index", "tasks")}
                       %li.navbar-link
                         = link_to 'My Group', group_path(current_user.group_id), {class: nav_links_class("show", "groups")}
                       %li.navbar-link

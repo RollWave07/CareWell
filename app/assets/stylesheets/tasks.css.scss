@@ -173,6 +173,30 @@ $bgc: #ded8ce;
     top: 11px;
   }
 
+//style the jquery autocomplete widget
+  .ui-menu {
+    background:white;
+    border: 1px solid black;
+    .ui-menu-item {
+      text-decoration: none;
+      padding: 5px 0;
+      list-style-type: none;
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+
+//style the categories picker
+  .categories {
+    display: none;
+    position: fixed;
+    left: 0px;
+    top: 50px;
+    background: white;
+  }
+
   #task_task_date {
     position: relative;
     left: 40px;
