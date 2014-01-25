@@ -154,11 +154,20 @@ $bgc: #ded8ce;
   }
 
   .input-lg {
+    margin-top: 20px;
     border-radius: 0;
-    border: 0;
+    border: 0px;
+    border-bottom: 1px solid gray;
     width: 100%;
   }
 
+  .pick-categories {
+    font-size: 25px;
+    position: relative;
+    float: right;
+    top: -36px;
+    right: 10px;
+  }
   .btn.btn-primary.create_task {
     background: $mint-green;
     padding: 20px;
@@ -173,11 +182,11 @@ $bgc: #ded8ce;
 
   ul.nav.nav-tabs {
     width: 100%;
+    margin-top: 20px;
     li {
       width: 33.33%;
       text-align: center;
       background: white;
-      border-top: 1px solid black;
     }
   }
 
