@@ -3,31 +3,38 @@
     =form_for [@group, @task] do |task|
       =task.text_field :title, placeholder: "What do you need?", :class => 'input-lg'
       %span.pick-categories.glyphicon.glyphicon-th
-      %ul.nav.nav-tabs
-        %li
-          %a{'data-toggle' => "tab", href: "#sectionA"}
-            %span.glyphicon.glyphicon-list
-        %li
-          %a{'data-toggle' => "tab", href: "#sectionB"}
-            %span.glyphicon.glyphicon-time
-        %li
-          %a{'data-toggle' => "tab", href: "#sectionC"}
-            %span.glyphicon.glyphicon-tag
-      .tab-content
-        #sectionA.tab-pane.fade.in.active
-          %p
-            =task.text_area :information, placeholder: "Add any details or preferences for this task here.", rows: 8, class: 'form-control'
-        #sectionB.tab-pane.fade
-          %h3 When does it need to be done?
-          %p=task.datetime_select :task_date, class: 'form-control'
-          / %h3 When does it need to be done?
-          / %p=task.date_field :task_date, class: 'form-control'
-          / %h3 Does it start at a certain time?
-          / %p=task.time_field :start_time, class: 'form-control'
-          %h3 How long will it take?
-          %p=task.select :duration, options_for_select([['15 minutes', 15], ['30 minutes', 30], ['45 minutes', 45], ['1 hour', 60], ['75 minutes', 75], ['an hour and a half', 90], ['2 hours', 120]]), {include_blank: true}, {class: 'form-control'}
+      .col-xs-2.pick-icon
+        %span.glyphicon.glyphicon-time
+      .col-xs-10.time-details
+        %h3 When?
+      .col-xs-2
+        %span.pick-calendar-date.glyphicon.glyphicon-calendar
+      .col-xs-10.time-details
+        =task.select :task_date, options_for_select([['today', 15], ['tomorrow', 30], ['a couple of days', 45], ['in a week', 60], ['in two weeks', 75], ['in a month', 90], ['2 hours', 120]]), {selected: 'in a week' }, {class: 'form-control'}
+      .col-xs-12
+        %h3 When does it start?
+        %p=task.select :start_time, options_for_select([['in the morning', 'in the morning'], ['in the afternoon', 'in the afternoon'], ['in the evening', 'in the evening']]), {selected: 'in the morning'}, {class: 'form-control'}
+      .col-xs-12
+        %h3 How long will it take?
+        %p=task.select :duration, options_for_select([['15 minutes', 15], ['30 minutes', 30], ['45 minutes', 45], ['1 hour', 60], ['75 minutes', 75], ['an hour and a half', 90], ['2 hours', 120]]), {selected: '30 minutes'}, {class: 'form-control'}
+      .col-xs-2.pick-icon
+        %span.glyphicon.glyphicon-map-marker
+      .col-xs-10
+        %h3 Where?
+        %p=task.text_field :location, placeholder: "Home", class: 'input-lg'
 
-        #sectionC.tab-pane.fade
+      .col-xs-2
+        %span.glyphicon.glyphicon-list
+      .col-xs-10
+        %h3 Any additional details or preferences?
+        %p=task.text_area :information, placeholder: "Any details or preferences to add?", rows: 4, class: 'form-control'
+
+
+
+
+
+
+        /
           %h3 What type of task is this?
           .row
             .col-md-3

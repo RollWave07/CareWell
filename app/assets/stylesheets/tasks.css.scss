@@ -161,12 +161,31 @@ $bgc: #ded8ce;
     width: 100%;
   }
 
+  .pick-icon {
+    padding: 10px;
+    font-size: 17px;
+    margin-top: 10px;
+  }
+
+  .time-details {
+    h3 {
+      margin-top: 0px;
+      margin-left: -6px;
+    }
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .pick-categories {
     font-size: 25px;
     position: relative;
     float: right;
     top: -36px;
     right: 10px;
+  }
+
+  .pick-calendar-date {
+    font-size: 25px;
   }
   .btn.btn-primary.create_task {
     background: $mint-green;
