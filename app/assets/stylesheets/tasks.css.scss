@@ -220,6 +220,14 @@ $bgc: #ded8ce;
     top: -7px;
     color: white;
   }
+  .hearts-count2 {
+    position: relative;
+    display: inline-block;
+    left: 27px;
+    top: -12px;
+    color: white;
+    z-index:10;
+  }
 
   h3.card-title {
     display: inline-block;
