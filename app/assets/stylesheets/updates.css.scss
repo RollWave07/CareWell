@@ -80,26 +80,18 @@
   .post-update {
     padding: 10px 0px;
   }
+    .update {
 
-  .update {
+    div.col-md-1.col-xs-2 {
+      padding: 0px;
+    }
 
-    margin: 0px;
-    padding: 0px;
-
-    div.col-md-1, div.col-md-8, div.col-md-3 {
-    display: inline-block;
-    }
-    div.col-md-8 {
-      margin: 0px;
-    }
-    img {
-      position: relative;
-      top: -10px;
-    }
     .comment-text {
-    font-size: 0.8em;
-    margin-top:5px;
-    padding: 0px;
+    margin-top: 0px;
+    margin-left: 20px;
+    font-size: 0.9em;
+    margin-bottom: 10px;
     }
+
   }
 }
