@@ -69,6 +69,11 @@ class Task < ActiveRecord::Base
       task.assignee == user
     end
   end
+  # def self.assigned_to_specific_user(tasks, user)
+  #   tasks.select do |task|
+  #     task.assignee.id == user
+  #   end
+  # end
 
   # def self.assigned(tasks)
   #   tasks.select do |task|

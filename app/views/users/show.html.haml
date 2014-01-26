@@ -1,2 +1,51 @@
-%h1 Users#show
-%p Find me in app/views/users/show.html.haml
+%h1
+  =@user.picture 
+  =@user.first_name 
+  =@user.last_name
+
+ 
+  
+
+.row.task-index
+  %h1.task-header
+    ="#{@user.first_name }'s Tasks:"
+
+.row
+  %ul.nav.nav-tabs
+    %li
+      %a.my-task-count{'data-toggle' => "tab", href: "#myinfo"}
+        My stats
+    %li
+      %a.my-task-count{'data-toggle' => "tab", href: "#pasttasks"}
+        Past Tasks
+        ="(#{@past_user_tasks.count})"
+    %li
+      %a{'data-toggle' => "tab", href: "#futuretasks"}
+        Future Tasks
+        ="(#{@future_user_tasks.count})"
+  .tab-content
+    #myinfo.tab-pane.fade.in.active
+      %h2="Phone: #{number_to_phone(@user.phone, area_code: true)} "
+      %h2="Email: #{@user.email}"
+      %h2="#{@user.first_name} joined the group, #{@user.group.name}, on #{@user.created_at.strftime("%B %d, %Y")}"
+    #pasttasks.tab-pane.fade
+      -unless @past_user_tasks.empty? 
+        -@past_user_tasks.each do |task|
+          =render 'tasks/task', task: task, group: current_user.group
+      -else
+        .no-tasks
+          %h1 You currently don't have any tasks.
+          %h1
+            .glyphicon.glyphicon-pencil
+          %h1=link_to "Add New Task", new_group_task_path(current_user.group)
+    
+    #futuretasks.tab-pane.fade
+      -unless @future_user_tasks.empty? 
+        -@future_user_tasks.each do |task|
+          =render 'tasks/task', task: task, group: current_user.group
+      -else
+        .no-tasks
+          %h1 You currently don't have any tasks.
+          %h1
+            .glyphicon.glyphicon-pencil
+          %h1=link_to "Add New Task", new_group_task_path(current_user.group)        

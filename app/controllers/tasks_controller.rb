@@ -24,7 +24,7 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.tasks(@group).future
-    @my_tasks = Task.assigned_to_specific_user(@tasks, current_user)
+    @my_tasks = Task.assigned_to_specific_user(@tasks.future, current_user)
     @open_tasks = Task.unassigned(@tasks)
 
     @commenter_name = current_user.first_name

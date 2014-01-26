@@ -21,6 +21,8 @@ Carewell::Application.routes.draw do
       end
     end
     resources :locations
+    get "users/:id" => 'users#show', as: 'group_users'
+
   end
 
   post "/groups/:group_id/tasks/send_email" => 'tasks#send_email', as: 'send_email'
@@ -29,4 +31,5 @@ Carewell::Application.routes.draw do
   get "pages/welcome" => 'pages#welcome', as: 'welcome'
   get "pages/about_us"
   get "users/index"
+  
 end

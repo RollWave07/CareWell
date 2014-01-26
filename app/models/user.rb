@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   belongs_to :group
   mount_uploader :picture, ImageUploader
 
+  # scope :future, lambda {where(["task_date > ?", Time.now])}
+  # scope :past, lambda {where(["task_date < ?", Time.now])}
+  
   has_many :tasks
   has_many :updates
 
