@@ -14,7 +14,7 @@
       %h3.card-title=task.title
     .col-xs-12
       -if task.task_date
-        %h4=task.task_date.strftime('%A, %B %e, %Y')
+        %h4=task.task_date.strftime('%A, %B %e')
         %p
           -diff = task.task_date.to_i - Time.now.to_i
           ="in #{distance_of_time_in_words(diff)}"

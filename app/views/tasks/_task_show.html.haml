@@ -19,7 +19,7 @@
   -if task.task_date
     %p
       =task.task_date.strftime('%l:%M %p') + ' on '
-      =task.task_date.strftime('%A, %B %e, %Y')
+      =task.task_date.strftime('%A, %B %e')
     .time-from-now
       -diff = task.task_date.to_i - Time.now.to_i
       ="in #{distance_of_time_in_words(diff)}"
