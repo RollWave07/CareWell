@@ -43,6 +43,15 @@ $('.task-form-icon-wrapper').on('click', function() {
   $('#category').val(replacementText);
 })
 
+//show the more general due date
+// $('.general-due-date').toggle(
+//   function(){
+//   $(this).text("Add a specific date");
+// },
+// function(){
+//   $(this).text("Add a general date");
+// });
+
 
 //set up the datepicker
 

@@ -10,7 +10,7 @@ $bgc: #ded8ce;
 //reset
 
 * {
-  div, .col-xs-2, .col-md-2, .col-xs-1, .col-xs-9, .col-md-9 {
+  div, .col-xs-2, .col-md-2, .col-xs-1, .col-xs-9, .col-md-9, .col-xs-12, .col-md-12, .new-task {
   margin: 0;
   padding: 0;
   }
@@ -37,6 +37,14 @@ $bgc: #ded8ce;
     div {
     .picture, .comment, .name, .info {
       display: inline-block;
+      }
+    }
+  }
+
+  select {
+  #task_start_time, #start_time_hour, #start_time_minute {
+    .form-control {
+    display: inline-block;
       }
     }
   }
@@ -96,6 +104,10 @@ $bgc: #ded8ce;
   .name_form {
     display: inline-block;
   }
+  .new-task {
+    margin-top: 40px;
+    box-shadow: 0px 0px 3px #888888;
+  }
 
   .new-task-style{
     background-color: white;
@@ -107,11 +119,7 @@ $bgc: #ded8ce;
 
   .new-task {
     background-color: white;
-    padding: 40px;
-    .time {
-      display: hidden;
-    }
-
+    padding: 10px;
   }
 
   .form-icon {
@@ -215,12 +223,6 @@ $bgc: #ded8ce;
     margin-top: 10px;
   }
 
-  .calendar {
-    position: relative;
-    left: -50px;
-    top: 11px;
-  }
-
 //style the jquery autocomplete widget
   .ui-menu {
     background:white;
@@ -249,12 +251,6 @@ $bgc: #ded8ce;
     display: none;
   }
 
-  #task_task_date {
-    position: relative;
-    left: 40px;
-    top: -20px;
-  }
-
   //style the date picker
 .ui-datepicker {
   color: white;
@@ -265,10 +261,23 @@ $bgc: #ded8ce;
   .time-details {
     h3 {
       margin-top: 0px;
-      margin-left: -6px;
     }
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .start-time-link {
+    margin-top: 15px;
+    color: blue;
+    text-decoration: underline;
+  }
+
+  .start-time {
+    display: none;
+  }
+
+  #task_location {
+    margin-top: 0;
   }
 
   .pick-categories {
@@ -282,6 +291,16 @@ $bgc: #ded8ce;
   .pick-calendar-date {
     font-size: 25px;
   }
+
+  .general-due-date {
+    margin-top: 5px;
+    color: blue;
+    text-decoration: underline;
+  }
+  .calendar {
+    display: none;
+  }
+
   .btn.btn-primary.create_task {
     background: $mint-green;
     padding: 20px;
@@ -305,10 +324,6 @@ $bgc: #ded8ce;
   }
 
   .tab-content {
-    background: white;
-  }
-
-  form#new_task.new_task {
     background: white;
   }
 

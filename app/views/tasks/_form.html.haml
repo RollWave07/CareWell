@@ -1,38 +1,34 @@
 .row
-  .cols-md-12
+  .col-xs-12.col-md-12.new-task
     =form_for [@group, @task] do |task|
       =task.text_field :title, placeholder: "What do you need?", :class => 'input-lg'
       %span.pick-categories.glyphicon.glyphicon-th
-      .col-xs-2.pick-icon
-        %span.glyphicon.glyphicon-time
-      .col-xs-10.time-details
-        %h3 When?
-      .col-xs-2.calendar
-        %span.pick-calendar-date.glyphicon.glyphicon-calendar
-      .col-xs-10.time-details
+      .col-xs-12.time-details
+        %h3 Due On (or By)
+      .col-xs-12.time-details
         =task.date_field :task_date, {class: 'form-control'}
+      .col-xs-12.calendar
+        =select(:task, :task_date, options_for_select([['choose an option', nil],['today', Time.now], ['tomorrow', Time.now + 1.day], ['a couple of days', Time.now + 3.days], ['in a week', Time.now + 1.week], ['in two weeks', Time.now + 2.weeks], ['in a month', Time.now + 4.weeks]]), {}, {class: 'form-control'})
       .col-xs-12
-        OR
-      .col-xs-2
-      .col-xs-10.calendar
-        =task.select :task_date, options_for_select([['today', Time.now], ['tomorrow', Time.now + 1.day], ['a couple of days', Time.now + 3.days], ['in a week', Time.now + 1.week], ['in two weeks', Time.now + 2.weeks], ['in a month', Time.now + 4.weeks]]), {selected: 'in a week' }, {class: 'form-control'}
+        .general-due-date
+          Add more general due date
+
       .col-xs-12
-        %h3 When does it start?
-        %p=task.select :start_time, options_for_select([['in the morning', 'in the morning'], ['in the afternoon', 'in the afternoon'], ['in the evening', 'in the evening']]), {selected: 'in the morning'}, {class: 'form-control'}
+        .start-time-link
+          Add start time
+      .col-xs-12.start-time
+        =task.time_field :start_time, {class: 'form-control'}
       .col-xs-12
-        %h3 How long will it take?
+        %h3 How long?
         %p=task.select :duration, options_for_select([['15 minutes', 15], ['30 minutes', 30], ['45 minutes', 45], ['1 hour', 60], ['75 minutes', 75], ['an hour and a half', 90], ['2 hours', 120]]), {selected: '30 minutes'}, {class: 'form-control'}
-      .col-xs-2.pick-icon
-        %span.glyphicon.glyphicon-map-marker
-      .col-xs-10
+      .col-xs-12
         %h3 Where?
+      .col-xs-12
         %p=task.text_field :location, placeholder: "Home", class: 'input-lg'
 
-      .col-xs-2
-        %span.glyphicon.glyphicon-list
-      .col-xs-10
-        %h3 Any additional details or preferences?
-        %p=task.text_area :information, placeholder: "Any details or preferences to add?", rows: 4, class: 'form-control'
+      .col-xs-12
+        %h3 Helpful Notes/Preferences
+        %p=task.text_area :information, placeholder: "e.g., The key is under the matt.", rows: 4, class: 'form-control'
 
 
 
