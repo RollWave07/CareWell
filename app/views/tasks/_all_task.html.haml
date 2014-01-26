@@ -10,7 +10,7 @@
           =image_tag(task.assignee.picture_url(:sq_thumb), :class=>"group-picture")
         -else
           %h4="#{task.assignee.first_name}"
-    .col-xs-8.col-md-6.summary
+    .col-xs-8.col-md-8.summary
       %h3.card-title=task.title.truncate(25)
       -if task.task_date
         %h4
@@ -25,6 +25,6 @@
         .hearts-count
           =task.likes_count
         %i.fa.fa-heart.task-card-icon.heart-icon-color
-    .col-xs-1
+    .col-xs-1.col-md-1
       .arrow-right
 

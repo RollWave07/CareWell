@@ -41,6 +41,43 @@ $bgc: #ded8ce;
     }
   }
 
+  .arrow-right {
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid gray;
+    float: right;
+    margin-top: 20px;
+    margin-right: 40px;
+  }
+
+  .sign-up {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 0 auto;
+    font-size: 15px;
+    background: #ab53c5;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
+  .complete {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 0 auto;
+    font-size: 15px;
+    background: #a0c55f;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
   .action {
     text-align: right;
   }
@@ -373,16 +410,6 @@ top: -7px;
   font-size: 24px;
 }
 
-.arrow-right {
-    width: 0;
-    height: 0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-left: 10px solid gray;
-    float: right;
-    margin-top: 14px;
-  }
-
 //set up for mobile
 @media all and (max-width: 480px) {
 
@@ -460,6 +487,31 @@ top: -7px;
         color: white;
       }
     }
+
+    .complete {
+      display: inline-block;
+      text-align: center;
+      padding: 10px 10px;
+      margin: 0 auto;
+      font-size: 15px;
+      background: #a0c55f;
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+
+    .arrow-right {
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 10px solid gray;
+        float: right;
+        margin-top: 14px;
+        margin-right: 0;
+      }
+
     .group-picture {
       display: block;
       margin: 0 auto;

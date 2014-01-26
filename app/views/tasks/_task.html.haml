@@ -1,7 +1,14 @@
 =link_to group_task_path(group, task.id) do
   .row.task-card
-    .col-xs-12
-      %h3.card-title=task.title
+    .col-xs-2.col-md-2
+      %h4.complete=link_to "Done", group_task_path(@group, task.id, params: {status: 'complete'}), method: :put, remote: true
+    .col-xs-8.col-md-8.summary
+      %h3.card-title=task.title.truncate(25)
+      -if task.task_date
+        %h4
+          =task.task_date.strftime('%A')
+          -diff = task.task_date.to_i - Time.now.to_i
+          ="(in #{distance_of_time_in_words(diff)})"
       -if task.updates.count > 0
         .comments-count
           =task.updates.count
@@ -10,9 +17,6 @@
         .hearts-count
           =task.likes_count
         %i.fa.fa-heart.task-card-icon.heart-icon-color
-      =image_tag('right-arrow.gif', :class => 'card-right-arrow')
-      -if task.task_date
-        %h4=task.task_date.strftime('%A, %B %e')
-        %p
-          -diff = task.task_date.to_i - Time.now.to_i
-          ="in #{distance_of_time_in_words(diff)}"
+    .col-xs-1.col-md-1
+      .arrow-right
+
