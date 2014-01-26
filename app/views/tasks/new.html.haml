@@ -1,5 +1,7 @@
-.container 
-  %h3 New Task
+.container
 
   =render partial: "form"
+
+  =form_tag
+  =text_field_tag(:category)
 

@@ -4,33 +4,58 @@ $('.task-form-icon-wrapper').click(function() {
   $(this).addClass('selected-category');
 });
 
-// $('.task-form-icon-wrapper').click(function() {
-//   $(this).removeClass('selected-category');
+
+//autocomplete for task location
+$(function() {
+    var locationTags = [
+      "Restaurant",
+      "N/A",
+      "Home",
+      "Pharmacy",
+      "Drs. office",
+      "Park",
+      "Friends house",
+      "Online",
+      "Remote",
+      "Outside",
+      "Book Store",
+      "Downtown",
+      "Next door",
+      "Over the phone",
+    ];
+    $( "#task_location" ).autocomplete({
+        source: locationTags
+      });
+    });
+
+//pop up the categories selection div.
+
+$('.pick-categories').on('click', function(){
+  $('.categories').fadeToggle();
+});
+
+//when the icon is chosen (or a dismiss button is hit) then close the box.
+
+$('.task-form-icon-wrapper').on('click', function() {
+  replacementText = $(this).find('label').text();
+  $('#task_title').val(replacementText);
+  $('.categories').fadeToggle();
+  $('#category').val(replacementText);
+})
+
+//show the more general due date
+// $('.general-due-date').toggle(
+//   function(){
+//   $(this).text("Add a specific date");
+// },
+// function(){
+//   $(this).text("Add a general date");
 // });
 
-// $.datepicker.setDefaults({
-//   showOn: "both",
-//   buttonImageOnly: true,
-//   buttonImage: "calendar.gif",
-//   buttonText: "Calendar"
-// });
 
-// $.datepicker.formatDate( "yy-mm-dd", new Date( 2007, 1 - 1, 26 ) );
-
-    $("#task_task_date").datepicker();
-
-// $('.task-form-icon-wrapper').click(function() {
-//   $(this).removeClass('selected-category');
-// });
+//set up the datepicker
 
 
-// $(".signup").on("click", function(e, task){
-//   console.log("hello");
-//   // console.log(status)
-//   // $(this).remove();
-//   $(this).text("Assignee: #{task.assignee.first_name}");
-//   // console.log("#vote" + data.vote_id)
-// });
 
 $(document).on("ajax:success", ".signup", function(e, data, status, xhr){
   // console.log(data)

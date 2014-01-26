@@ -7,6 +7,17 @@ $bgc: #ded8ce;
 
 //all styles
 
+//reset
+
+* {
+  div, .col-xs-2, .col-md-2, .col-xs-1, .col-xs-9, .col-md-9, .col-xs-12, .col-md-12, .new-task {
+  margin: 0;
+  padding: 0;
+  }
+}
+
+//styles
+
   .task {
     margin: 30px;
     background-color: $bgc;
@@ -30,6 +41,51 @@ $bgc: #ded8ce;
     }
   }
 
+  select {
+  #task_start_time, #start_time_hour, #start_time_minute {
+    .form-control {
+    display: inline-block;
+      }
+    }
+  }
+
+  .arrow-right {
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid gray;
+    float: right;
+    margin-top: 20px;
+    margin-right: 40px;
+  }
+
+  .sign-up {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 0 auto;
+    font-size: 15px;
+    background: #ab53c5;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
+  .complete {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 0 auto;
+    font-size: 15px;
+    background: #a0c55f;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
   .action {
     text-align: right;
   }
@@ -48,6 +104,10 @@ $bgc: #ded8ce;
   .name_form {
     display: inline-block;
   }
+  .new-task {
+    margin-top: 40px;
+    box-shadow: 0px 0px 3px #888888;
+  }
 
   .new-task-style{
     background-color: white;
@@ -59,11 +119,7 @@ $bgc: #ded8ce;
 
   .new-task {
     background-color: white;
-    padding: 40px;
-    .time {
-      display: hidden;
-    }
-
+    padding: 10px;
   }
 
   .form-icon {
@@ -154,9 +210,95 @@ $bgc: #ded8ce;
   }
 
   .input-lg {
+    margin-top: 20px;
     border-radius: 0;
-    border: 0;
+    border: 0px;
+    border-bottom: 1px solid gray;
     width: 100%;
+  }
+
+  .pick-icon {
+    padding: 10px;
+    font-size: 17px;
+    margin-top: 10px;
+  }
+
+//style the jquery autocomplete widget
+  .ui-menu {
+    background:white;
+    border: 1px solid black;
+    .ui-menu-item {
+      text-decoration: none;
+      padding: 5px 0;
+      list-style-type: none;
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+
+//style the categories picker
+  .categories {
+    display: none;
+    position: fixed;
+    left: 0px;
+    top: 50px;
+    background: white;
+  }
+
+  #category {
+    display: none;
+  }
+
+  //style the date picker
+.ui-datepicker {
+  color: white;
+  border: 1px solid black;
+  display: none;
+}
+
+  .time-details {
+    h3 {
+      margin-top: 0px;
+    }
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .start-time-link {
+    margin-top: 15px;
+    color: blue;
+    text-decoration: underline;
+  }
+
+  .start-time {
+    display: none;
+  }
+
+  #task_location {
+    margin-top: 0;
+  }
+
+  .pick-categories {
+    font-size: 25px;
+    position: relative;
+    float: right;
+    top: -36px;
+    right: 10px;
+  }
+
+  .pick-calendar-date {
+    font-size: 25px;
+  }
+
+  .general-due-date {
+    margin-top: 5px;
+    color: blue;
+    text-decoration: underline;
+  }
+  .calendar {
+    display: none;
   }
 
   .btn.btn-primary.create_task {
@@ -173,19 +315,15 @@ $bgc: #ded8ce;
 
   ul.nav.nav-tabs {
     width: 100%;
+    margin-top: 20px;
     li {
       width: 33.33%;
       text-align: center;
       background: white;
-      border-top: 1px solid black;
     }
   }
 
   .tab-content {
-    background: white;
-  }
-
-  form#new_task.new_task {
     background: white;
   }
 
@@ -304,6 +442,7 @@ top: -7px;
     display: inline-block;
   }
 
+
   h3.show-card-section-header {
     font-size: 0.8em !important;
     text-transform: uppercase;
@@ -324,7 +463,9 @@ top: -7px;
 
   }
 
-
+  .summary {
+    margin-left: 12px;
+  }
 
   h1.task-header {
     font-size: 2em;
@@ -339,28 +480,73 @@ top: -7px;
 
   .task-card {
     // height: 150px;
-    // background-color: white;
+    background-color: white;
     // border-radius: 3px;
     padding: 20px;
     // I know the line below is weird but the design gets messed up if moved
     margin-left: 0px;
     text-decoration: none;
-    padding-right: 0px;
     border-bottom: 1px solid rgb(214,210,210);
     h3 {
       font-family: "Lato", sans-serif;
-      font-size: 1.5em;
+      font-size: 1.2em;
       margin-top: 5px;
     }
     h4 {
       font-family: "Lato", sans-serif;
-      font-size: 1.0em;
+      font-size: 0.9em;
       color: #cacaca;
+      margin-top: -5px;
+    }
+    .sign-up {
+      display: inline-block;
+      text-align: center;
+      padding: 10px 10px;
+      margin: 0 auto;
+      font-size: 15px;
+      background: #ab53c5;
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+
+    .complete {
+      display: inline-block;
+      text-align: center;
+      padding: 10px 10px;
+      margin: 0 auto;
+      font-size: 15px;
+      background: #a0c55f;
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+
+    .arrow-right {
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 10px solid gray;
+        float: right;
+        margin-top: 14px;
+        margin-right: 0;
+      }
+
+    .group-picture {
+      display: block;
+      margin: 0 auto;
     }
     .card-right-arrow {
       position: static;
       padding: 10px;
     }
+  }
+
+  .task-card-icon {
+    font-size: 1.5em;
   }
 
   .form-icon {
@@ -369,15 +555,13 @@ top: -7px;
   }
 
   .comments-count {
-    position: relative;
-    display: inline-block;
-    top: -7px;
+    position: static;
+    color: black;
   }
 
   .hearts-count {
-    position: relative;
-    display: inline-block;
-    top: -7px;
+    position: static;
+    color: black;
   }
 }
 

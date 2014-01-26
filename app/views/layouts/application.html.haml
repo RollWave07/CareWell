@@ -6,7 +6,7 @@
     = csrf_meta_tags
     %meta{name: "viewport", content:"width=device-width", 'initial-scale' => 1.0}
   %body
-    -if (params[:controller] != 'registrations') && (params[:controller] != 'pages') && (params[:controller] != 'devise/sessions')
+    -if (params[:controller] != 'pages') && (params[:controller] != 'devise/sessions')
       .navbar
         .navbar-inner
           .container
@@ -17,17 +17,15 @@
                   %span.icon-bar
                   %span.icon-bar
                   %span.icon-bar
-                = link_to image_tag('carewell-logo-blacksquare.gif', :class=>"logo"), group_tasks_path(@group)
+                = link_to image_tag('carewell-logo-blacksquare.gif', :class=>"logo"), group_tasks_path(current_user.group_id)
               .navbar-collapse.collapse{id: 'bs-example-navbar-collapse-6', style: {height: '1px'}}
                 %ul.nav.navbar-nav.pull-right
                   -if current_user
                     -if current_user.group != nil && user_signed_in?
                       %li.navbar-link
-                        = link_to 'Add Task', new_group_task_path(@group), {class: nav_links_class("new", "tasks")}
+                        = link_to 'Tasks', group_tasks_path(current_user.group_id), {class: nav_links_class("index", "tasks")}
                       %li.navbar-link
-                        = link_to 'All Tasks', group_tasks_path(@group), {class: nav_links_class("index", "tasks")}
-                      %li.navbar-link
-                        = link_to 'My Group', group_path(@group), {class: nav_links_class("show", "groups")}
+                        = link_to 'My Group', group_path(current_user.group_id), {class: nav_links_class("show", "groups")}
                       %li.navbar-link
                         = link_to 'Edit Profile', edit_user_registration_path, {class: nav_links_class("edit", "registrations")}
                       %li.navbar-link.last

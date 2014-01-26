@@ -1,7 +1,15 @@
 =link_to group_task_path(group, task.id) do
   .row.task-card
     .col-xs-2.col-md-2
-      %h4.complete=link_to "Done", group_task_path(@group, task.id, params: {status: 'complete'}), method: :put, remote: true
+      -if task.assignee == nil
+        %h4.sign-up=link_to "Sign-Up", group_task_path(@group, task.id, params: {assignee_id: current_user.id}), method: :put, data: {confirm: "Are you sure?"}, remote: true
+      -elsif task.assignee_id.nil? && task.user_id == current_user.id
+        %li= render 'tasks/modal', task: task
+      -else
+        -unless task.assignee.picture_url == nil
+          =image_tag(task.assignee.picture_url(:sq_thumb), :class=>"group-picture")
+        -else
+          %h4="#{task.assignee.first_name}"
     .col-xs-8.col-md-8.summary
       %h3.card-title=task.title.truncate(25)
       -if task.task_date

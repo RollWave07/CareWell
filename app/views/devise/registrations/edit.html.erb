@@ -1,5 +1,5 @@
 <div class="col-md-12">
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <h2>Edit Profile</h2>
 
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
     <%= devise_error_messages! %>
@@ -10,7 +10,8 @@
     <div><%= f.label :last_name %><br />
     <%= f.text_field :last_name, :autofocus => true %></div>
 
-    <div><%= f.label :phone %><span class="phone_info">Why this?</span><br />
+    <div><%= f.label :phone %>
+      <a href="#" class="phone_info" data-toggle="tooltip" title="We can optionally send you text messages instead of emails to keep you updated.">Why this?</a><br>
     <%= f.text_field :phone, placeholder: "858-886-9929", :autofocus => true %></div>
 
     <%= f.label :picture %><br>
@@ -19,7 +20,7 @@
 
     <div><%= f.label :email %><br />
     <%= f.text_field :email, :autofocus => true %></div>
-    
+
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>

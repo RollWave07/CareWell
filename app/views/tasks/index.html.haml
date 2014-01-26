@@ -32,44 +32,12 @@
 
     #alltasks.tab-pane.fade
       -@tasks.each do |task|
-        =link_to group_task_path(@group, task.id) do
-          .row.task-card
-            .col-xs-2.col-md-2
-              -if task.assignee == nil
-                %h4=link_to "Sign-Up", group_task_path(@group, task.id, params: {assignee_id: current_user.id}), method: :put, data: {confirm: "Are you sure?"}, remote: true
-              -elsif task.assignee_id.nil? && task.user_id == current_user.id
-                %li= render 'tasks/modal', task: task
-              -else
-                -unless task.assignee.picture_url == nil
-                  =image_tag(task.assignee.picture_url(:sq_thumb), :class=>"group-picture")
-                %h4="#{task.assignee.first_name}"
-            .col-xs-8.col-md-8
-              %h3=task.title
-              -if task.task_date
-                %h4=task.task_date.strftime('%A, %B %e, %Y')
-            .col-xs-2.col-md-2
-              .task-card-image-container
-                %i.fa.fa-heart.task-card-icon
-                %i.fa.fa-comment.task-card-icon
-                =image_tag('right-arrow.gif', :class => 'card-right-arrow')
+        =render 'all_task', task: task, group: @group
 
     #opentasks.tab-pane.fade
-      -if @open_tasks.empty? == false
+      -unless @open_tasks.empty?
         -@open_tasks.each do |task|
-
-          =link_to group_task_path(@group, task.id) do
-            .row.task-card{"data-task-id" => "#{task.id}"}
-              .col-xs-2.col-md-2
-                %h4=link_to "Sign-Up", group_task_path(@group, task.id, params: {assignee_id: current_user.id}), method: :put, data: {confirm: "Are you sure?"}, remote: true
-              .col-xs-8.col-md-8
-                %h3=task.title
-                -if task.task_date
-                  %h4=task.task_date.strftime('%A, %B %e, %Y')
-              .col-xs-2.col-md-2
-                .task-card-image-container
-                  %i.fa.fa-heart.task-card-icon
-                  %i.fa.fa-comment.task-card-icon
-                  =image_tag('right-arrow.gif', :class => 'card-right-arrow')
+          =render 'all_task', task: task, group: @group
       -else
         .no-tasks
           %h1 Your group currently doesn't have any open tasks.
