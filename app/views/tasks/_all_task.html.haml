@@ -1,0 +1,31 @@
+=link_to group_task_path(group, task.id) do
+  .row.task-card
+    .col-xs-12.col-md-2
+      -if task.assignee == nil
+        %h4.sign-up=link_to "Sign-Up", group_task_path(@group, task.id, params: {assignee_id: current_user.id}), method: :put, data: {confirm: "Are you sure?"}, remote: true
+      -elsif task.assignee_id.nil? && task.user_id == current_user.id
+        %li= render 'tasks/modal', task: task
+      -else
+        -unless task.assignee.picture_url == nil
+          =image_tag(task.assignee.picture_url(:sq_thumb), :class=>"group-picture")
+        -else
+          %h4="#{task.assignee.first_name}"
+    .col-xs-12.col-md-6
+      %h3.card-title=task.title
+    .col-xs-12
+      -if task.task_date
+        %h4=task.task_date.strftime('%A, %B %e, %Y')
+        %p
+          -diff = task.task_date.to_i - Time.now.to_i
+          ="in #{distance_of_time_in_words(diff)}"
+    .col-xs-12
+      -if task.updates.count > 0
+        .comments-count
+          =task.updates.count
+        %i.fa.fa-comment.task-card-icon
+      -if task.likes_count > 0
+        .hearts-count
+          =task.likes_count
+        %i.fa.fa-heart.task-card-icon.heart-icon-color
+      =image_tag('right-arrow.gif', :class => 'card-right-arrow')
+

@@ -207,6 +207,13 @@ $bgc: #ded8ce;
     top: -20px;
   }
 
+  //style the date picker
+.ui-datepicker {
+  color: white;
+  border: 1px solid black;
+  display: none;
+}
+
   .time-details {
     h3 {
       margin-top: 0px;
@@ -399,13 +406,12 @@ top: -7px;
 
   .task-card {
     // height: 150px;
-    // background-color: white;
+    background-color: white;
     // border-radius: 3px;
     padding: 20px;
     // I know the line below is weird but the design gets messed up if moved
     margin-left: 0px;
     text-decoration: none;
-    padding-right: 0px;
     border-bottom: 1px solid rgb(214,210,210);
     h3 {
       font-family: "Lato", sans-serif;
@@ -416,6 +422,24 @@ top: -7px;
       font-family: "Lato", sans-serif;
       font-size: 1.0em;
       color: #cacaca;
+      margin-top: 0px;
+    }
+    .sign-up {
+      display: block;
+      text-align: center;
+      padding: 10px 30px;
+      margin: 0 auto;
+      font-size: 15px;
+      background: #ab53c5;
+      margin-bottom: 9px;
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+    .group-picture {
+      display: block;
+      margin: 0 auto;
     }
     .card-right-arrow {
       position: static;

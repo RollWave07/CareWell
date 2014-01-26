@@ -44,7 +44,8 @@ $('.task-form-icon-wrapper').on('click', function() {
 })
 
 
-    $("#task_task_date").datepicker();
+//set up the datepicker
+
 
 
 $(document).on("ajax:success", ".signup", function(e, data, status, xhr){

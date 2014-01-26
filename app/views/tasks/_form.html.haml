@@ -10,6 +10,11 @@
       .col-xs-2.calendar
         %span.pick-calendar-date.glyphicon.glyphicon-calendar
       .col-xs-10.time-details
+        =task.date_field :task_date, {class: 'form-control'}
+      .col-xs-12
+        OR
+      .col-xs-2
+      .col-xs-10.calendar
         =task.select :task_date, options_for_select([['today', Time.now], ['tomorrow', Time.now + 1.day], ['a couple of days', Time.now + 3.days], ['in a week', Time.now + 1.week], ['in two weeks', Time.now + 2.weeks], ['in a month', Time.now + 4.weeks]]), {selected: 'in a week' }, {class: 'form-control'}
       .col-xs-12
         %h3 When does it start?
