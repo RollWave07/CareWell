@@ -8,6 +8,7 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @users = User.where(group_id: params[:id])
     # @total_tasks = Task.tasks(@group)
     @assigned_tasks = Task.assigned(@group)
     # @users = User.all
@@ -42,8 +43,9 @@ class GroupsController < ApplicationController
     @category_avg = Task.average_duration_per_category(@assigned_tasks)
     # @group_members = User.users_in_group(@group)
     # @members_count = @group_members.count
+    @group_count = User.where(group_id: current_user.group_id).count
 
-
+    @group_created_at = Group.find(current_user.group_id).created_at.strftime('%B %e, %Y')
     # @test = User.top_three_users_last_month
 
   end
