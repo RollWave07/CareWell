@@ -1,5 +1,5 @@
 class Userinvite < ActionMailer::Base
-  default from: "eric@carewelldesign.com"
+  default from: "hello@carewelldesign.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -13,7 +13,7 @@ class Userinvite < ActionMailer::Base
     @last_name = last_name
     @task = task
     @email = email
-    
+
     mail( to: email, subject: task)
   end
 
