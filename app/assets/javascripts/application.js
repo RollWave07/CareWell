@@ -14,5 +14,7 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require jquery.remotipart
-//= require turbolinks
+
+//removed Turbolinks from this line
+
 //= require_tree .
