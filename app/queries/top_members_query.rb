@@ -19,7 +19,7 @@ class TopMembersQuery
   # end
 
   def top_users_list(days)
-    ActiveRecord::Base.connection.execute("select users.first_name, users.last_name, users.picture, count(*) as cnt from users inner join (SELECT * FROM tasks WHERE task_date BETWEEN now()::date - #{days} AND NOW()) t on users.id = t.assignee_id group by users.id order by cnt desc")
+    ActiveRecord::Base.connection.execute("select users.id, count(*) as cnt from users inner join (SELECT * FROM tasks WHERE task_date BETWEEN now()::date - #{days} AND NOW()) t on users.id = t.assignee_id group by users.id order by cnt desc")
   end
 
 
