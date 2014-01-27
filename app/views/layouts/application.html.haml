@@ -28,7 +28,7 @@
                       %li.navbar-link
                         = link_to 'My Group', group_path(current_user.group_id), {class: nav_links_class("show", "groups")}
                       %li.navbar-link
-                        = link_to 'Profile', edit_user_registration_path, {class: nav_links_class("edit", "registrations")}
+                        = link_to 'My Profile', group_user_path(@group, current_user.id), {class: nav_links_class("show", "users")}
                       %li.navbar-link.last
                         = link_to 'Sign Out', destroy_user_session_path, method: :delete
                     -else
@@ -54,11 +54,11 @@
             %span.glyphicon.glyphicon-tasks
             =link_to "TASKS", group_tasks_path(current_user.group_id)
           %h1.task-header
-            %span.glyphicon.glyphicon-user
-            =link_to "PROFILE", group_path(current_user.group_id, current_user.id)
-          %h1.task-header
             %span.glyphicon.glyphicon-stats
-            =link_to "STATS", group_path(current_user.group_id)
+            =link_to "GROUP", group_path(current_user.group_id)
+          %h1.task-header
+            %span.glyphicon.glyphicon-user
+            =link_to "PROFILE", group_user_path(current_user.group_id, current_user.id)
 
     .container
       -if flash[:notice]

@@ -1,7 +1,16 @@
-%h1
-  =@user.picture
-  =@user.first_name
-  =@user.last_name
+.row
+  .col-xs-3
+    =image_tag(@user.picture_url(:sq_thumb), :class => "group-user-photo")
+  .col-xs-9
+    %h3
+      =@user.first_name
+      =@user.last_name
+    %p="Phone: #{number_to_phone(@user.phone, area_code: true)} "
+    %p="Email: #{@user.email}"
+    %p="#{@user.first_name} joined the group, #{@user.group.name}, on #{@user.created_at.strftime("%B %d, %Y")}"
+    %p
+      =link_to "Edit", edit_user_registration_path
+
 
 .row.task-index
   %h1.task-header
