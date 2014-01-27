@@ -44,46 +44,62 @@ body {
   height: 100%;
 }
 
+.mobile-header {
+  display: none;
+}
+
+.full-screen-header {
+  display: inline-block;
+}
+
 
 @media all and (max-width: 480px) {
-        body {
-          font-family: 'Lato', sans-serif;
-        }
+  body {
+    font-family: 'Lato', sans-serif;
+  }
 
-        h1 {
-          font-size: 17px;
-          text-align: center;
-          margin-bottom: 0px;
-        }
+  .mobile-header {
+    display: inline-block;
+  }
 
-        h3 {
-          font-size: 15px;
-        }
+  .full-screen-header {
+    display: none;
+  }
 
-        .main-welcome {
-          text-align: center;
-          img {
-            padding-top: 1.3em;
-            text-align: center;
-          }
-        }
-        .cw-button {
-          width: 43%;
-          float: left;
-          text-align: center;
-          &:nth-child(2){
-            float:right;
-          }
-        }
+  h1 {
+    font-size: 17px;
+    text-align: center;
+    margin-bottom: 0px;
+  }
 
-        .group-sign-up {
-        background: $mint-green;
-        padding: 10px;
-         input {
-           width: 100%;
-         }
-        }
+  h3 {
+    font-size: 15px;
+  }
+
+  .main-welcome {
+    text-align: center;
+    img {
+      padding-top: 1.3em;
+      text-align: center;
     }
+  }
+  .cw-button {
+    width: 43%;
+    float: left;
+    text-align: center;
+    &:nth-child(2){
+      float:right;
+    }
+  }
+
+  .group-sign-up {
+  background: $mint-green;
+  padding: 10px;
+   input {
+     width: 100%;
+   }
+  }
+}
 
 .cw-button {
   padding: 10px 5px;

@@ -20,7 +20,7 @@
                   %span.icon-bar
                 = link_to image_tag('carewell-logo-blacksquare.gif', :class=>"logo"), group_tasks_path(current_user.group_id)
               .navbar-collapse.collapse{id: 'bs-example-navbar-collapse-6', style: {height: '1px'}}
-                %ul.nav.navbar-nav.pull-right
+                %ul.nav.navbar-nav.pull-right.full-screen-header
                   -if current_user
                     -if current_user.group != nil && user_signed_in?
                       %li.navbar-link
@@ -28,16 +28,27 @@
                       %li.navbar-link
                         = link_to 'My Group', group_path(current_user.group_id), {class: nav_links_class("show", "groups")}
                       %li.navbar-link
-                        = link_to 'Edit Profile', edit_user_registration_path, {class: nav_links_class("edit", "registrations")}
+                        = link_to 'Profile', edit_user_registration_path, {class: nav_links_class("edit", "registrations")}
                       %li.navbar-link.last
                         = link_to 'Sign Out', destroy_user_session_path, method: :delete
                     -else
-                      %li.navbar-link
-                        = link_to "Create New Group", new_user_registration_path
+                      / %li.navbar-link
+                      /   = link_to "Create New Group", new_user_registration_path
                       %li.navbar-link
                         = link_to "Sign in", new_user_session_path
+                %ul.nav.navbar-nav.pull-right.mobile-header
+                  -if current_user
+                    -if current_user.group != nil && user_signed_in?
+                      %li.navbar-link
+                        = link_to 'Sign Out', destroy_user_session_path, method: :delete
+                    -else
+                      / %li.navbar-link
+                      /   = link_to "Create New Group", new_user_registration_path
+                      %li.navbar-link
+                        = link_to "Sign in", new_user_session_path
+
     -if current_user
-      .container
+      .container.mobile-header
         .row.task-index
           %h1.task-header
             %span.glyphicon.glyphicon-tasks
