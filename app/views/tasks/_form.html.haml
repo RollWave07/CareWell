@@ -1,14 +1,15 @@
 .row
   .col-xs-12.col-md-12.new-task
     =form_for [@group, @task] do |task|
-      =task.text_field :title, placeholder: "What do you need?", :class => 'input-lg'
+      =task.text_field :title, placeholder: "What is the task?", autofocus: true, :class => 'input-lg'
+      =task.text_field :category, placeholder: "What type of task? ->", :class => 'input-lg'
       %span.pick-categories.glyphicon.glyphicon-th
       .col-xs-12.time-details
         %h3 Due On (or By)
       .col-xs-12.time-details
-        =task.date_field :task_date, {class: 'form-control'}
+        =task.datetime_select :task_date, value: ((Time.now) + 7.days), class: 'form-control'
       .col-xs-12.calendar
-        =select(:task, :task_date, options_for_select([['choose an option', nil],['today', Time.now], ['tomorrow', Time.now + 1.day], ['a couple of days', Time.now + 3.days], ['in a week', Time.now + 1.week], ['in two weeks', Time.now + 2.weeks], ['in a month', Time.now + 4.weeks]]), {}, {class: 'form-control'})
+        =select :task, :task_date, options_for_select([['choose an option', nil],['today', Time.now], ['tomorrow', Time.now + 1.day], ['a couple of days', Time.now + 3.days], ['in a week', Time.now + 1.week], ['in two weeks', Time.now + 2.weeks], ['in a month', Time.now + 4.weeks]]), {}, {class: 'form-control'}
       .col-xs-12
         .general-due-date
           Add more general due date
@@ -20,7 +21,7 @@
         =task.time_field :start_time, {class: 'form-control'}
       .col-xs-12
         %h3 How long?
-        %p=task.select :duration, options_for_select([['15 minutes', 15], ['30 minutes', 30], ['45 minutes', 45], ['1 hour', 60], ['75 minutes', 75], ['an hour and a half', 90], ['2 hours', 120]]), {selected: '30 minutes'}, {class: 'form-control'}
+        %p=task.select :duration, options_for_select([['15 minutes', 15], ['30 minutes', 30], ['45 minutes', 45], ['1 hour', 60], ['75 minutes', 75], ['an hour and a half', 90], ['2 hours', 120]]), {class: 'form-control'}
       .col-xs-12
         %h3 Where?
       .col-xs-12
@@ -29,6 +30,8 @@
       .col-xs-12
         %h3 Helpful Notes/Preferences
         %p=task.text_area :information, placeholder: "e.g., The key is under the matt.", rows: 4, class: 'form-control'
+      .col-xs-12
+        =task.submit :class => "btn new-task-button"
 
 
 
@@ -86,5 +89,3 @@
                 =task.label(:visits_and_outings, "visits & outings")
                 %br
                 =task.radio_button(:category, "visits & outings", :class => "task-form-radio-button")
-
-      =task.submit :class => "btn new-task-button"

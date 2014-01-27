@@ -1,7 +1,4 @@
 .container
 
-  =render partial: "form"
-
-  =form_tag
-  =text_field_tag(:category)
+  =render partial: "form", group: @group, task: @task
 
