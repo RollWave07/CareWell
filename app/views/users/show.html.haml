@@ -1,26 +1,8 @@
-.row
-  .col-xs-3
-    =image_tag(@user.picture_url(:sq_thumb), :class => "group-user-photo")
-  .col-xs-9
-    %h3
-      =@user.first_name
-      =@user.last_name
-    %p="Phone: #{number_to_phone(@user.phone, area_code: true)} "
-    %p="Email: #{@user.email}"
-    %p="#{@user.first_name} joined the group, #{@user.group.name}, on #{@user.created_at.strftime("%B %d, %Y")}"
-    %p
-      =link_to "Edit", edit_user_registration_path
-
-
-.row.task-index
-  %h1.task-header
-    ="#{@user.first_name }'s Tasks:"
-
-.row
+.row.profile
   %ul.nav.nav-tabs
     %li
       %a.my-task-count{'data-toggle' => "tab", href: "#myinfo"}
-        My stats
+        Contact Info
     %li
       %a.my-task-count{'data-toggle' => "tab", href: "#pasttasks"}
         Past Tasks
@@ -31,9 +13,19 @@
         ="(#{@future_user_tasks.count})"
   .tab-content
     #myinfo.tab-pane.fade.in.active
-      %h2="Phone: #{number_to_phone(@user.phone, area_code: true)} "
-      %h2="Email: #{@user.email}"
-      %h2="#{@user.first_name} joined the group, #{@user.group.name}, on #{@user.created_at.strftime("%B %d, %Y")}"
+      .col-xs-2
+        =image_tag(@user.picture_url(:sq_thumb), :class => "group-user-photo")
+      .col-xs-10
+        %h3
+          =@user.first_name
+          =@user.last_name
+        %p="Phone: #{number_to_phone(@user.phone, area_code: true)} "
+        %p="Email: #{@user.email}"
+        %p="#{@user.first_name} joined the group, #{@user.group.name}, on #{@user.created_at.strftime("%B %d, %Y")}"
+        -if current_user.id == @user.id
+          %p
+            =link_to "Edit", edit_user_registration_path
+
     #pasttasks.tab-pane.fade
       -unless @past_user_tasks.empty?
         -@past_user_tasks.each do |task|
