@@ -23,7 +23,9 @@ class GroupsController < ApplicationController
 
     @group_created_at = Group.find(current_user.group_id).created_at.strftime('%B %e, %Y')
 
-    @categories_per_month_array = Task.bar_chart_array(@group.id)
+    @categories_per_month_array = Task.bar_chart_array(Task.categories_per_month(@group.id))
+
+    @duration_chart_data = Task.bar_chart_array(Task.average_duration_per_category(@assigned_tasks))
 
   end
 

@@ -36,13 +36,14 @@ class Task < ActiveRecord::Base
     self.where(groupid: groupid).select(:category).group(:category).count
   end
 
-  def self.bar_chart_array(groupid)
-    task_hash = Task.categories_per_month(groupid)
+# Task.categories_per_month(groupid)
+
+  def self.bar_chart_array(task_hash)
    categories = ["getting places", "around the home", "shopping", "meals", "personal care", "odds & ends", "visits & outings", "other"]
    answer = []
    categories.each do |category|
     if task_hash[category]
-      answer << task_hash[category]
+      answer << task_hash[category].to_i
     else
       answer << 0
     end

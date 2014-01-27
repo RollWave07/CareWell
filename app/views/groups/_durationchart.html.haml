@@ -1,0 +1,25 @@
+:javascript
+  var ctx = document.getElementById("durationChart").getContext("2d");
+
+  var data = {
+    labels : ["getting places","around the home","shopping","meals", "personal care", "odds & ends", "visits & outings", "other"],
+    datasets : [
+      {
+        fillColor : "rgba(141,48,57,0.5)",
+        strokeColor : "rgba(64,9,15,1)",
+        pointColor : "rgba(64,9,15,1)",
+        pointStrokeColor : "rgba(64,9,15,1)",
+        data: #{@duration_chart_data}
+      }
+    ]
+  }
+
+  var options = {
+  // Options for displaying chart data, see http://www.chartjs.org/docs/ for more info
+  // scaleOverride: true,
+  // scaleSteps: #{@duration_chart_data.max},
+  // scaleStepWidth: Math.ceil(1 / #{@duration_chart_data.max}*20),
+  // scaleStartValue: 0
+  }
+
+  new Chart(ctx).Bar(data,options);
