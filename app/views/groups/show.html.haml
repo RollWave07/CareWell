@@ -26,15 +26,16 @@
   .row
     .col-md-6
       %h3 Top Three Users This Month
-      -@top_three_members.each do |hash|
-        -user = @users.find(hash["id"])
-        =image_tag(user.picture_url(:sq_thumb))
-        =user.first_name
-        ="#{hash["cnt"]} Tasks Completed"
+      / -@top_three_members.each do |hash|
+      /   -user = @users.find(hash["id"])
+      /   =image_tag(user.picture_url(:sq_thumb))
+      /   =user.first_name
+      /   ="#{hash["cnt"]} Tasks Completed"
     .col-md-6
       %h3="Last Three Tasks Completed"
-    -@last_three_tasks_completed.each do |task|
-      ="#{task.title} was completed by #{task.assignee.first_name}"
+      -@last_three_tasks_completed.each do |task|
+        ="#{task.title} was completed by #{task.assignee.first_name}"
+        %br
 
 =render "linechart"
 =render "barchart"

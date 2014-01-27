@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
     @assigned_tasks = Task.assigned(@group)
    
     @counts_arrays = Task.count_per_period(@assigned_tasks)
-    @top_three_members = TopMembersQuery.new.top_users_list(30)
+    # @top_three_members = TopMembersQuery.new.top_users_list(30)
 
     @last_three_tasks_completed = Task.last_three_tasks_completed(@assigned_tasks)
     @category_avg = Task.average_duration_per_category(@assigned_tasks)
@@ -21,6 +21,8 @@ class GroupsController < ApplicationController
     @group_count = User.where(group_id: current_user.group_id).count
 
     @group_created_at = Group.find(current_user.group_id).created_at.strftime('%B %e, %Y')
+
+    @categories_per_month_array = Task.bar_chart_array(@group.id)
 
   end
 
