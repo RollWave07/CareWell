@@ -1,84 +1,42 @@
-%h1 All in the Family:
-%h2="Helping out with #{@group.name}"
-%br
+= javascript_include_tag "Chart.js"
 
-=link_to 'edit group', edit_group_path
-%br
+.row
+  .col-md-6
+    =image_tag('http://placekitten.com/400/250', :class => 'group-photo')
 
-=link_to 'group tasks', group_tasks_path(@group)
-%br
+  .col-md-6
+    %h1="The #{@group.name}"
+    =link_to 'edit group name', edit_group_path
+    %h3="#{@group_count} Members"
+  .group-member
+    -@users.each do |user|
+      =image_tag(user.picture_url(:sq_thumb), :class => "group-user-photo")
 
-%h3="My Arrays"
-
-=@counts_arrays
-
-%h3="Top members"
--@top_three_members.each do |hash|
-  -hash.each do |member|
-    =member[1]
-  %br
-
-%br
--@top_three_members_month.each do |hash|
-  -hash.each do |member|
-    =member[1]
-  %br
-
-
-%h3="Last Three tasks completed"
--@last_three_tasks_completed.each do |task|
-  ="#{task.title} was completed by #{task.assignee.first_name}"
-  %br
-
-%h3="Catergories and thier average durations"
-
--@category_avg.each do |task, average|
-  ="#{task}: #{average}"
-  %br
-
-%h3="Array of tasks completed each week"
-
-
-
-
-
-
-
-
-/ = "total_tasks_count: #{@total_tasks_count} "
-/ %br
-/ = "tasks_count_last_week: #{@tasks_last_week.count}"
-/ %br
-
-/ = "tasks count last month: #{@tasks_last_month.count}" 
-/ %br
-
-/ = "tasks count next_week: #{@tasks_next_week.count}" 
-/ %br
-
-/ = "tasks_count next_month: #{@tasks_next_month.count} "
-/ %br
-
-
-/ %h3="Top members last month"
-
-/ -@top_three_members_last_month.each_with_index do |member, index|
-/   ="#{index+1}: #{member[0]}"
-/ %br
-/ / -[["brian", 3],["Tom",2],["Eric",1]].each_with_index do |member, index|
-/ /   ="#{index+1}: #{member[0]}"
-/ /   %br
-/ %h3="Top members last week"
-/ -@top_three_members_last_week.each_with_index do |member, index|
-/   ="#{index+1}: #{member[0]}"
-/ %br
-
-/ %h3 3 next upcoming tasks:
-/ -@next_three_tasks.each do |task|
-/   ="#{task.title}: #{task.assignee.first_name} #{task.assignee.last_name} #{Task.format_date(task.task_date)}"
-/   %br
-/ %br
-/ %h3 3 last completed tasks:
-/ -@last_three_tasks.each do |task|
-/   ="#{task.title}: #{task.assignee.first_name} #{task.assignee.last_name} #{Task.format_date(task.task_date)}"
-/   %br
+%h1 Group Statistics
+.graph-background 
+  .row
+    .col-md-6
+      %h3 Tasks Per Week
+      %canvas#lineChart{height: "400", width: "400"}
+    .col-md-6
+      %h3 Tasks by Category
+      %canvas#barChart{height: "400", width: "400"} 
+    / -@category_avg.each do |task, average|
+    /   ="#{task}: #{average}"
+  .row
+    .col-md-6
+      %h3 Members who Completed Tasks This Past Month
+      -@top_three_members.each do |hash|
+        -if hash["group_id"].to_i == @group.id
+          -user = @users.find(hash["id"])
+          =image_tag(user.picture_url(:sq_thumb))
+          =user.first_name
+          ="#{hash["cnt"]} Tasks Completed"
+          %br
+    .col-md-6
+      %h3="Last Three Tasks Completed"
+    -@last_three_tasks_completed.each do |task|
+      ="#{task.title} was completed by #{task.assignee.first_name}"
+      %br
+=render "linechart"
+=render "barchart"

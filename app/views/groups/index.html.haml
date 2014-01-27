@@ -1,10 +1,8 @@
 %h1 Groups#index
-%p Findd me in app/views/groups/index.html.haml
+%p Find me in app/views/groups/index.html.haml
 Groups:
 -if @groups
   - @groups.each do |group|
-    =link_to group.name, group
-    %br
 -else
   "there are no groups"
 %br
