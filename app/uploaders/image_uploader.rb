@@ -25,7 +25,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  # process :scale => [200, 300]
+  # process :scale => [400, 300]
   #
   # def scale(width, height)
   #   # do something
@@ -44,7 +44,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :sq_medium do
     process :resize_to_fill => [75, 75]
   end
-
+  version :wide do
+    process :resize_to_fill => [400, 300]
+  end
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
