@@ -4,6 +4,7 @@
     %title Carewell
     = stylesheet_link_tag "application", media: "all"
     = csrf_meta_tags
+    %link{href: 'http://fonts.googleapis.com/css?family=Lato:300,700', rel: 'stylesheet', type: 'text/css'}
     %meta{name: "viewport", content:"width=device-width", 'initial-scale' => 1.0}
   %body
     -if (params[:controller] != 'pages') && (params[:controller] != 'devise/sessions') && (params[:controller] != 'registrations')

@@ -56,8 +56,9 @@ $bgc: #ded8ce;
     border-bottom: 20px solid transparent;
     border-left: 20px solid gray;
     float: right;
-    margin-top: 20px;
-    margin-right: 40px;
+    margin-top: 30px;
+    position: relative;
+    left: 40px;
   }
 
   .sign-up {
@@ -534,6 +535,7 @@ top: -7px;
         border-bottom: 10px solid transparent;
         border-left: 10px solid gray;
         float: right;
+        position: static;
         margin-top: 14px;
         margin-right: 0;
       }
