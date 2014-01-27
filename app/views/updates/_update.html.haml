@@ -17,6 +17,8 @@
       .comment-time
         -diff = update.created_at.to_i - Time.now.to_i
         ="#{distance_of_time_in_words(diff)} ago"
+  .col-xs-12
+    %img{src: update.picture_url(:medium)}
   .col-md-3
     = link_to vote_group_task_update_path(@group, update.task, update), method: "post",  remote: true, style: "text-decoration: none;" do
       .hearts-count2=raw "<span id='vote#{update.id}'>#{update.votes.count}</span>"
@@ -24,5 +26,5 @@
         %span.glyphicon.glyphicon-heart.active-glyphicon-heart
       -else
         %span.glyphicon.glyphicon-heart
-    
-  
+
+
