@@ -33,6 +33,10 @@ $bgc: #ded8ce;
     }
   }
 
+  input[type='text'] {
+    outline: none;
+  }
+
   .update {
     div {
     .picture, .comment, .name, .info {

@@ -25,7 +25,8 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.tasks(@group).future
     @my_tasks = Task.assigned_to_specific_user(@tasks.future, current_user)
-    @open_tasks = Task.unassigned(@tasks)
+    # @open_tasks = Task.unassigned(@tasks)
+    @open_tasks = Task.tasks(@group).future.where(assignee_id: nil)
 
     @commenter_name = current_user.first_name
     @commenter_picture = current_user.picture
@@ -84,6 +85,11 @@ class TasksController < ApplicationController
       end
     end
 
+  def mark_complete
+    @task = Task.find(params[:id])
+    @task.status = "complete"
+    @task.save
+    end
   end
 
   private

@@ -16,6 +16,7 @@ Carewell::Application.routes.draw do
 
   resources :groups do
     resources :tasks do
+      member { put :mark_complete }
       resources :updates do
         member { post :vote, :unvote }
       end
@@ -31,5 +32,5 @@ Carewell::Application.routes.draw do
   get "pages/welcome" => 'pages#welcome', as: 'welcome'
   get "pages/about_us"
   get "users/index"
-  
+
 end
