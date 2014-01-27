@@ -8,7 +8,7 @@ class TasksController < ApplicationController
     first_name = params[:first_name]
     last_name = params[:last_name]
     email = params[:email]
-    task= params[:task]
+    task = params[:task]
     result = Userinvite.invite(group_id, inviter, first_name, last_name, email, task).deliver
     respond_to do |format|
       if result
@@ -17,7 +17,6 @@ class TasksController < ApplicationController
         format.html { redirect_to group_tasks_path(group_id), notice: 'Message NOT sent successfully' }
       end
     end
-
     # format.html { notice: 'Message sent successfully' }
   end
 
@@ -26,12 +25,6 @@ class TasksController < ApplicationController
     @tasks = Task.tasks(@group).future
     @my_tasks = Task.assigned_to_specific_user(@tasks.future, current_user)
     @open_tasks = Task.unassigned(@tasks)
-
-    @commenter_name = current_user.first_name
-    @commenter_picture = current_user.picture
-
-    @group_name = @group.name
-
     @update = Update.new
   end
 
@@ -49,8 +42,11 @@ class TasksController < ApplicationController
   end
 
   def create
+
     @task = current_user.tasks.new(task_params)
-    @task.task_date = Chronic.parse(params[:task_date])
+    date = Chronic.parse(task_params[:task_date])
+    @task.task_date = date ? date : Time.now+7.days
+
     respond_to do |format|
       if @task.save
         format.html { redirect_to group_tasks_path(@group), notice: 'Task was successfully created.' }
@@ -63,23 +59,24 @@ class TasksController < ApplicationController
   end
 
   def update
-
-    @tasks = Task.tasks(@group).future
-    @my_tasks = Task.assigned_to_specific_user(@tasks.future, current_user)
-    @open_tasks = Task.unassigned(@tasks)
-
     @task = Task.find(params[:id])
+    previous_task_date = @task.task_date
+    date = Chronic.parse(task_params[:task_date])    
+
     old_assignee_id = @task.assignee_id
-    @task.assignee_id = params[:assignee_id]
+    @task.assignee_id = task_params[:assignee_id]
     respond_to do |format|
       if @task.update(task_params)
-        format.json { render json:{assignee_name: @task.assignee.first_name}}
-        format.html { redirect_to group_tasks_path(@group), notice: 'task was successfully updated.' }
-        format.js { render layout: false, notice: "You've signed up for #{@task.title}."}
-        # send the mailer invitation on sign up
-        if @task.assignee_id != old_assignee_id && @task.assignee != nil
-          MailerInvitation.calendar_invite(@task).deliver
-        end
+        @task.task_date = date ? date : previous_task_date
+        if @task.save
+          format.json { render json:{assignee_name: @task.assignee.first_name}}
+          format.html { redirect_to group_tasks_path(@group), notice: 'task was successfully updated.' }
+          format.js { render layout: false, notice: "You've signed up for #{@task.title}."}  
+          # send the mailer invitation on sign up
+          if @task.assignee_id != old_assignee_id && @task.assignee != nil
+            MailerInvitation.calendar_invite(@task).deliver
+          end
+        end  
       else
         format.html { render action: 'edit' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
