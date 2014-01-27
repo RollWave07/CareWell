@@ -142,6 +142,17 @@ $bgc: #ded8ce;
     color: white !important;
   }
 
+.button_to input {
+height: 50px;
+width: 50px;
+position: relative;
+right: 29px;
+top: -18px;
+background: transparent;
+border: 0;
+font-size: 0;
+}
+
   h1.task-header {
     color: #323232;
     font-size: 2em;
