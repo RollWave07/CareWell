@@ -12,6 +12,7 @@ group :development do
 end
 
 gem 'chart-js-rails'
+gem 'chronic'
 
 group :development, :test do
   gem 'pry'

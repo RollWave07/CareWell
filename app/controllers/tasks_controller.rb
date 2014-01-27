@@ -52,6 +52,7 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.new(task_params)
+    @task.task_date = Chronic.parse(params[:task_date])
     respond_to do |format|
       if @task.save
         format.html { redirect_to group_tasks_path(@group), notice: 'Task was successfully created.' }
@@ -64,8 +65,11 @@ class TasksController < ApplicationController
   end
 
   def update
-    @my_tasks = Task.where(assignee_id: current_user.id)
-    @open_tasks = Task.where(assignee_id: nil)
+
+    @tasks = Task.tasks(@group).future
+    @my_tasks = Task.assigned_to_specific_user(@tasks.future, current_user)
+    @open_tasks = Task.unassigned(@tasks)
+
     @task = Task.find(params[:id])
     old_assignee_id = @task.assignee_id
     @task.assignee_id = params[:assignee_id]
@@ -83,12 +87,12 @@ class TasksController < ApplicationController
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
+  end
 
   def mark_complete
     @task = Task.find(params[:id])
     @task.status = "complete"
     @task.save
-    end
   end
 
   private
@@ -102,6 +106,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-      params.fetch(:task, {}).permit(:category, :title, :information, :start_time, :duration, :task_date, :user_id, :assignee_id, :groupid)
-    end
+    params.fetch(:task, {}).permit(:category, :title, :information, :start_time, :duration, :task_date, :user_id, :assignee_id, :groupid)
+   end
 end

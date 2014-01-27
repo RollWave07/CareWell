@@ -5,14 +5,10 @@
       =task.text_field :category, placeholder: "What type of task? ->", :class => 'input-lg'
       %span.pick-categories.glyphicon.glyphicon-th
       .col-xs-12.time-details
-        %h3 Due On (or By)
+        %h3 When?
       .col-xs-12.time-details
-        =task.datetime_select :task_date, value: ((Time.now) + 7.days), class: 'form-control'
+        =task.text_field :task_date, placeholder: "tomorrow, 3 days, 1/14/2014, 5PM", :class => 'input-lg'
       .col-xs-12.calendar
-        =select :task, :task_date, options_for_select([['choose an option', nil],['today', Time.now], ['tomorrow', Time.now + 1.day], ['a couple of days', Time.now + 3.days], ['in a week', Time.now + 1.week], ['in two weeks', Time.now + 2.weeks], ['in a month', Time.now + 4.weeks]]), {}, {class: 'form-control'}
-      .col-xs-12
-        .general-due-date
-          Add more general due date
 
       .col-xs-12
         .start-time-link
