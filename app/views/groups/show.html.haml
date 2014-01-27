@@ -9,11 +9,10 @@
     %h3="#{@group_count} Members"
     .group-member
       -@users.each do |user|
-        link_to
+        link_to group
         =image_tag(user.picture_url(:sq_thumb), :class => "group-user-photo")
     -if current_user.admin == true
       %h3 Admin Options
-      =link_to 'Edit Group Details', edit_group_path
 
 %h1 Group Statistics
 .graph-background
