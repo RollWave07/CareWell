@@ -1,11 +1,69 @@
 .row
   .col-xs-12.col-md-12.new-task
     =form_for [@group, @task] do |task|
+      %h4 Task Title?
       =task.text_field :title, placeholder: "What is the task?", autofocus: true, :class => 'input-lg'
-      =task.text_field :category, placeholder: "What type of task? ->", :class => 'input-lg'
-      %span.pick-categories.glyphicon.glyphicon-th
+      %h4 Category?
+      .col-xs-6.col-md-3
+        .task-form-icon-wrapper
+          %i.fa.fa-truck.form-icon
+          %br
+          =task.label(:getting_places, "getting places")
+          %br
+          =task.radio_button(:category, "getting places", :class => "task-form-radio-button")
+      .col-xs-6.col-md-3
+        .task-form-icon-wrapper
+          %i.fa.fa-home.form-icon
+          %br
+          =task.label(:around_home, "around the home")
+          %br
+          =task.radio_button(:category, "around the home", :class => "task-form-radio-button")
+      .col-xs-6.col-md-3
+        .task-form-icon-wrapper
+          %i.fa.fa-shopping-cart.form-icon
+          %br
+          =task.label(:shopping, "shopping")
+          %br
+          =task.radio_button(:category, "shopping", :class => "task-form-radio-button")
+      .col-xs-6.col-md-3
+        .task-form-icon-wrapper
+          %i.fa.fa-cutlery.form-icon
+          %br
+          =task.label(:meals, "meals")
+          %br
+          =task.radio_button(:category, "meals", :class => "task-form-radio-button")
+      .col-xs-6.col-md-3
+        .task-form-icon-wrapper
+          %i.fa.fa-stethoscope.form-icon
+          %br
+          =task.label(:personal_care, "personal care")
+          %br
+          =task.radio_button(:category, "personal care", :class => "task-form-radio-button")
+      .col-xs-6.col-md-3
+        .task-form-icon-wrapper.selected-category
+          %i.fa.fa-wrench.form-icon
+          %br
+          =task.label(:odds_and_ends, "odds & ends")
+          %br
+          =task.radio_button(:category, "odds & ends", :class => "task-form-radio-button", :checked => true)
+      .col-xs-6.col-md-3
+        .task-form-icon-wrapper
+          %i.fa.fa-users.form-icon
+          %br
+          =task.label(:visits_and_outings, "visits & outings")
+          %br
+          =task.radio_button(:category, "visits & outings", :class => "task-form-radio-button")
+      .col-xs-6.col-md-3
+        .task-form-icon-wrapper
+          %i.fa.fa-phone.form-icon
+          %br
+          =task.label(:remote, "remote")
+          %br
+          =task.radio_button(:category, "remote", :class => "task-form-radio-button")
+      / , :class => 'input-lg'
+      / %span.pick-categories.glyphicon.glyphicon-th
       .col-xs-12.time-details
-        %h3 When?
+        %h4 When?
       .col-xs-12.time-details
         =task.text_field :task_date, placeholder: "tomorrow, in 3 days, by next Saturday, Jan 14, 5PM", :class => 'input-lg'
       .col-xs-12.calendar
@@ -16,70 +74,20 @@
       .col-xs-12.start-time
         =task.time_field :start_time, {class: 'form-control'}
       .col-xs-12
-        %h3 How long?
+        %h4 How long?
         %p=task.select :duration, options_for_select([['15 minutes', 15], ['30 minutes', 30], ['45 minutes', 45], ['1 hour', 60], ['75 minutes', 75], ['an hour and a half', 90], ['2 hours', 120]]), {class: 'form-control'}
       .col-xs-12
-        %h3 Where?
+        %h4 Where?
       .col-xs-12
         %p=task.text_field :location, placeholder: "Home", class: 'input-lg'
 
       .col-xs-12
-        %h3 Helpful Notes/Preferences
+        %h4 Helpful Notes/Preferences
         %p=task.text_area :information, placeholder: "e.g., The key is under the matt.", rows: 4, class: 'form-control'
 
       .col-xs-12
-        =task.submit :class => "btn new-task-button"
-
         =task.hidden_field :groupid, value: (current_user.group_id)
 
-        .categories
-          .row
-            .col-xs-6.col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-truck.form-icon
-                %br
-                =task.label(:getting_places, "getting places")
-                %br
-                =task.radio_button(:category, "getting places", :class => "task-form-radio-button")
-            .col-xs-6.col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-home.form-icon
-                %br
-                =task.label(:around_home, "around the home")
-                %br
-                =task.radio_button(:category, "around the home", :class => "task-form-radio-button")
-            .col-xs-6.col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-shopping-cart.form-icon
-                %br
-                =task.label(:shopping, "shopping")
-                %br
-                =task.radio_button(:category, "shopping", :class => "task-form-radio-button")
-            .col-xs-6.col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-cutlery.form-icon
-                %br
-                =task.label(:meals, "meals")
-                %br
-                =task.radio_button(:category, "meals", :class => "task-form-radio-button")
-            .col-xs-6.col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-stethoscope.form-icon
-                %br
-                =task.label(:personal_care, "personal care")
-                %br
-                =task.radio_button(:category, "personal care", :class => "task-form-radio-button")
-            .col-xs-6.col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-wrench.form-icon
-                %br
-                =task.label(:odds_and_ends, "odds & ends")
-                %br
-                =task.radio_button(:category, "odds & ends", :class => "task-form-radio-button")
-            .col-xs-6.col-md-3
-              .task-form-icon-wrapper
-                %i.fa.fa-users.form-icon
-                %br
-                =task.label(:visits_and_outings, "visits & outings")
-                %br
-                =task.radio_button(:category, "visits & outings", :class => "task-form-radio-button")
+        =task.submit :class => "btn new-task-button"
+
+        
