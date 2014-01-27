@@ -1,4 +1,4 @@
-.row.task-card{'data-task-id': "#{task.id}"}
+.row.task-card{"data-task-id" => "#{task.id}"}
   .col-xs-2.col-md-2
     -if task.assignee == nil
       %h4.sign-up=link_to "Sign-Up", group_task_path(@group, task.id), method: :put, data: {confirm: "Are you sure?"}, remote: true
