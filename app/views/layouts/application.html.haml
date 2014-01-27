@@ -36,6 +36,17 @@
                         = link_to "Create New Group", new_user_registration_path
                       %li.navbar-link
                         = link_to "Sign in", new_user_session_path
+    .container
+      .row.task-index
+        %h1.task-header
+          %span.glyphicon.glyphicon-tasks
+          =link_to "TASKS", group_tasks_path(current_user.group_id)
+        %h1.task-header
+          %span.glyphicon.glyphicon-user
+          TEAM
+        %h1.task-header
+          %span.glyphicon.glyphicon-stats
+          =link_to "STATS", group_path(current_user.group_id)
 
     .container
       -if flash[:notice]

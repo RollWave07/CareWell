@@ -1,22 +1,21 @@
-.row.task-index
-  %h1.task-header
-    Tasks
-  =link_to "Add Task", new_group_task_path(@group), :class => "btn new-task-button", :method => 'get'
-
 .row
   %ul.nav.nav-tabs
     %li
       %a.my-task-count{'data-toggle' => "tab", href: "#mytasks"}
-        My Tasks
+        Me
         ="(#{@my_tasks.count})"
     %li
       %a{'data-toggle' => "tab", href: "#alltasks"}
-        All Tasks
+        All
         ="(#{@tasks.count})"
     %li
       %a.open-task-count{'data-toggle' => "tab", href: "#opentasks"}
-        Open Tasks
+        Open
         ="(#{@open_tasks.count})"
+    %li
+      =link_to new_group_task_path(@group) do
+        %span.glyphicon.glyphicon-plus-sign
+
 
   .tab-content
     #mytasks.tab-pane.fade.in.active

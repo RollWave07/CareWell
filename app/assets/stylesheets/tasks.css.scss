@@ -54,7 +54,7 @@ $bgc: #ded8ce;
     height: 0;
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
-    border-left: 20px solid gray;
+    border-left: 20px solid #dddddd;
     float: right;
     margin-top: 30px;
     position: relative;
@@ -168,9 +168,6 @@ font-size: 0;
   }
 
   .task-card {
-    // height: 150px;
-    // background-color: white;
-    margin: 5px 0;
     padding: 20px;
     box-shadow: 0px 0px 3px #888888;
     text-decoration: none;
@@ -320,11 +317,24 @@ font-size: 0;
   }
 
   ul.nav.nav-tabs {
-    background: #ebeaea;
+    background: white;
     border: 0;
     li {
-      width: 33.33%;
+      width: 25%;
       text-align: center;
+      .active {
+        color: white;
+        background: black;
+      }
+      a {
+        margin: 5px;
+        padding: 5px;
+        border-radius: 4px;
+        &:hover {
+          background: black;
+          color: white;
+        }
+      }
     }
   }
 
@@ -441,6 +451,11 @@ top: -7px;
 //set up for mobile
 @media all and (max-width: 480px) {
 
+  .container {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+  }
   h1.show-card-title {
     font-size: 1.5em;
     margin-top: 0;
@@ -472,15 +487,22 @@ top: -7px;
     margin-left: 12px;
   }
 
+  .task-index {
+    border-bottom: 1px solid gray;
+  }
+
   h1.task-header {
-    font-size: 2em;
+    font-size: 1em;
+    color: gray;
     display: inline-block;
     float: left;
     margin-right: 30px;
-    // padding-left: 15px;
-    // margin-top: 25px;
-    // margin-bottom: 25px;
-    // margin-left: -20px;
+    padding-bottom: 10px;
+    margin: 17px 19px 13px 19px;
+    a {
+      color: gray;
+      text-decoration: none;
+    }
   }
 
   .task-card {
@@ -534,7 +556,7 @@ top: -7px;
         height: 0;
         border-top: 10px solid transparent;
         border-bottom: 10px solid transparent;
-        border-left: 10px solid gray;
+        border-left: 10px solid #dddddd;
         float: right;
         position: static;
         margin-top: 14px;
