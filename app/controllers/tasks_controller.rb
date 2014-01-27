@@ -62,6 +62,9 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     previous_task_date = @task.task_date
     date = Chronic.parse(task_params[:task_date])    
+    @tasks = Task.tasks(@group).future
+    @my_tasks = Task.assigned_to_specific_user(@tasks.future, current_user)
+    @open_tasks = Task.unassigned(@tasks)
 
     old_assignee_id = @task.assignee_id
     @task.assignee_id = task_params[:assignee_id]
