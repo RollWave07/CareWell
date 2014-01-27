@@ -6,7 +6,7 @@
     = csrf_meta_tags
     %meta{name: "viewport", content:"width=device-width", 'initial-scale' => 1.0}
   %body
-    -if (params[:controller] != 'pages') && (params[:controller] != 'devise/sessions')
+    -if (params[:controller] != 'pages') && (params[:controller] != 'devise/sessions') && (params[:controller] != 'registrations')
       .navbar
         .navbar-inner
           .container
@@ -16,7 +16,7 @@
                   %span.sr-only Toggle Navigation
                   %span.icon-bar
                   %span.icon-bar
-                  %span.icon-bar
+                  %span.icon-bar 
                 = link_to image_tag('carewell-logo-blacksquare.gif', :class=>"logo"), group_tasks_path(current_user.group_id)
               .navbar-collapse.collapse{id: 'bs-example-navbar-collapse-6', style: {height: '1px'}}
                 %ul.nav.navbar-nav.pull-right

@@ -14,7 +14,6 @@ class GroupsController < ApplicationController
    
     @counts_arrays = Task.count_per_period(@assigned_tasks)
     @top_three_members = TopMembersQuery.new.top_users_list(30)
-
     @last_three_tasks_completed = Task.last_three_tasks_completed(@assigned_tasks)
     @category_avg = Task.average_duration_per_category(@assigned_tasks)
 

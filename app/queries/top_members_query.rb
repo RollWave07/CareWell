@@ -19,10 +19,11 @@ class TopMembersQuery
   # end
 
   def top_users_list(days)
-    ActiveRecord::Base.connection.execute("select users.id, count(*) as cnt from users inner join (SELECT * FROM tasks WHERE task_date BETWEEN now()::date - #{days} AND NOW()) t on users.id = t.assignee_id group by users.id order by cnt desc")
+    ActiveRecord::Base.connection.execute("select users.group_id, users.id, count(*) as cnt from users inner join (SELECT * FROM tasks WHERE task_date BETWEEN now()::date - #{days} AND NOW()) t on users.id = t.assignee_id group by users.id order by cnt desc")
   end
 
-
+#-----Test
+# ActiveRecord::Base.connection.execute("select users.group_id, users.id, count(*) as cnt from users inner join (SELECT * FROM tasks WHERE task_date BETWEEN now()::date - 30 AND NOW()) t on users.id = t.assignee_id group by users.id order by cnt desc Limit 3")
 
   #FIXME: finds multiple records of Active Record
   # def most_helpful_order
