@@ -37,7 +37,6 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
-    @group = Group.find(params[:group_id])
     @update = Update.new
   end
 
@@ -46,7 +45,6 @@ class TasksController < ApplicationController
   end
 
   def new
-    @group = Group.find(params[:group_id])
     @task = current_user.tasks.new
   end
 

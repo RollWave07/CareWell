@@ -44,7 +44,7 @@
             =link_to "TASKS", group_tasks_path(current_user.group_id)
           %h1.task-header
             %span.glyphicon.glyphicon-user
-            TEAM
+            =link_to "PROFILE", group_group_users_path(current_user.group_id, current_user.id)
           %h1.task-header
             %span.glyphicon.glyphicon-stats
             =link_to "STATS", group_path(current_user.group_id)

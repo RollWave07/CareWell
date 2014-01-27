@@ -23,8 +23,7 @@
         -@my_tasks.each do |task|
           =render 'task', task: task, group: @group
       -else
-        .no-tasks
-          %h1 You currently don't have any tasks. Click "sign-up" to see available options.
+        =render 'tasks/no_tasks'
 
     #alltasks.tab-pane.fade
       -@tasks.each do |task|
@@ -35,8 +34,4 @@
         -@open_tasks.each do |task|
           =render 'all_task', task: task, group: @group
       -else
-        .no-tasks
-          %h1 Your group currently doesn't have any open tasks.
-          %h1
-            .glyphicon.glyphicon-pencil
-          %h1=link_to "Add New Task", new_group_task_path(@group)
+        =render 'tasks/no_group_tasks'
