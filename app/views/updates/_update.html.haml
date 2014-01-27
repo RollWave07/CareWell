@@ -1,27 +1,29 @@
 .row.update{"data-id" => update.id}
   .row.photo-comment-header
-    .col-md-1.col-xs-2
+    .col-md-2.col-xs-2
       -if update.user.picture != nil
         =image_tag(update.user.picture_url(:sq_thumb))
       -else
         =update.user.first_name
-    .col-md-8.col-xs-10
+    .col-md-10.col-xs-10
       .comment-text
         =update.comment
         %br
         -if current_user == update.user
           =link_to "delete", group_task_update_path(@group, update.task, update), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "delete_update"
   -if update.picture
-    .col-xs-12.image-update
+    .col-md-12.col-xs-12.image-update
       %img{src: update.picture_url(:wide)}
-  .col-xs-12
-    -diff = update.created_at.to_i - Time.now.to_i
-    ="#{distance_of_time_in_words(diff)} ago"
-    =link_to vote_group_task_update_path(@group, update.task, update), method: "post",  remote: true, style: "text-decoration: none;" do
-      .hearts-count2=raw "<span id='vote#{update.id}'>#{update.votes.count}</span>"
-      -if current_user.voted_for? update
-        %span.glyphicon.glyphicon-heart.active-glyphicon-heart.task-card-icon
-      -else
-        %span.glyphicon.glyphicon-heart
+  .col-xs-12.col-md-12
+    .time-diffy
+      -diff = update.created_at.to_i - Time.now.to_i
+      ="#{distance_of_time_in_words(diff)} ago"
+    .like-it-now
+      =link_to vote_group_task_update_path(@group, update.task, update), method: "post",  remote: true, style: "text-decoration: none;" do
+        .hearts-count2=raw "<span id='vote#{update.id}'>#{update.votes.count}</span>"
+        -if current_user.voted_for? update
+          %span.glyphicon.glyphicon-heart.active-glyphicon-heart.task-card-icon
+        -else
+          %span.glyphicon.glyphicon-heart
 
 

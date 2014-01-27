@@ -13,6 +13,18 @@
   width: 100%;
 }
 
+.time-diffy {
+  margin-top: 7px;
+  margin-left: 21%;
+  display: inline-block;
+}
+
+.like-it-now {
+  display: inline-block;
+  margin-top: 7px;
+  margin-left: 35%;
+}
+
 .update {
   font-family: "Lato", sans-serif;
   background: white;
@@ -28,9 +40,24 @@
 
   .photo-comment-header{
     padding: 0;
-    margin: 0;
+    margin-left: 21%;
+    margin-top: 20px;
     margin-bottom: 10px;
+    .comment-text {
+      margin-top: 7px;
+      margin-left: -29px;
+    }
   }
+
+.hearts-count2 {
+position: relative;
+float: right;
+top: 6px;
+color: white;
+z-index: 10;
+right: 21px;
+}
+
 
   span.glyphicon.glyphicon-heart {
      color: gray;
@@ -111,6 +138,21 @@
     }
   }
 
+  .time-diffy {
+    margin-top: 7px;
+    margin-left: 0;
+    display: inline-block;
+  }
+
+  .hearts-count2 {
+  position: relative;
+  float: right;
+  top: 3px !important;
+  color: black !important;
+  z-index: 10;
+  right: 31px !important;
+  }
+
   span.glyphicon.glyphicon-heart {
      color: gray;
      float: right;
@@ -128,15 +170,22 @@
      }
   }
 
-  .hearts-count2 {
-    position: relative;
-    right: 30px;
-    top: 2px;
-    float: right;
-    color: black;
-    z-index:10;
+  .photo-comment-header{
+    padding: 0;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 10px;
+    .comment-text {
+      margin-top: 3px !important;
+      margin-left: 5px !important;
+    }
   }
 
+  .like-it-now {
+    display: inline-block;
+    margin-top: 7px;
+    margin-left: 42%;
+  }
     .update {
 
     div.col-md-1.col-xs-2 {
