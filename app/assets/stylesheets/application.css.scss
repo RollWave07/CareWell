@@ -31,6 +31,11 @@ $mint-green: #60D97B;
          url(font-path('lato-light-webfont.svg') + "Lato") format('svg');
 }
 
+h1,h2, h3 {
+  font-family: 'Lato',sans-serif;
+font-weight: 700;
+}
+
 body {
   background-color: #ebeaea;
 }

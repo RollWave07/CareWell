@@ -56,8 +56,9 @@ $bgc: #ded8ce;
     border-bottom: 20px solid transparent;
     border-left: 20px solid gray;
     float: right;
-    margin-top: 20px;
-    margin-right: 40px;
+    margin-top: 30px;
+    position: relative;
+    left: 40px;
   }
 
   .sign-up {
@@ -142,6 +143,17 @@ $bgc: #ded8ce;
     color: white !important;
   }
 
+.button_to input {
+height: 50px;
+width: 50px;
+position: relative;
+right: 29px;
+top: -18px;
+background: transparent;
+border: 0;
+font-size: 0;
+}
+
   h1.task-header {
     color: #323232;
     font-size: 2em;
@@ -205,6 +217,11 @@ $bgc: #ded8ce;
     text-align: center;
   }
 
+  .no-tasks h1 {
+    margin-top: 0px;
+    padding: 10px;
+  }
+
   .no-tasks > h1 {
     div{text-align: center;}
   }
@@ -250,13 +267,6 @@ $bgc: #ded8ce;
   #category {
     display: none;
   }
-
-  //style the date picker
-.ui-datepicker {
-  color: white;
-  border: 1px solid black;
-  display: none;
-}
 
   .time-details {
     h3 {
@@ -309,17 +319,11 @@ $bgc: #ded8ce;
     border: 0px;
   }
 
-  .nav-tabs>li>a {
-    border-radius: 0px;
-  }
-
   ul.nav.nav-tabs {
-    width: 100%;
-    margin-top: 20px;
+    background: #ebeaea;
     li {
       width: 33.33%;
       text-align: center;
-      background: white;
     }
   }
 
@@ -531,6 +535,7 @@ top: -7px;
         border-bottom: 10px solid transparent;
         border-left: 10px solid gray;
         float: right;
+        position: static;
         margin-top: 14px;
         margin-right: 0;
       }

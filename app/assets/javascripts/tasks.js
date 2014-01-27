@@ -38,9 +38,8 @@ $('.pick-categories').on('click', function(){
 
 $('.task-form-icon-wrapper').on('click', function() {
   replacementText = $(this).find('label').text();
-  $('#task_title').val(replacementText);
   $('.categories').fadeToggle();
-  $('#category').val(replacementText);
+  $('#task_category').val(replacementText);
 })
 
 //show the more general due date
