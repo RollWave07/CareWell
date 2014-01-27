@@ -1,9 +1,14 @@
 (function () {
+
+  // if the task status == complete, do something
+
   var taskHtml = "<%= j render 'tasks/task', task: @task, group: @group %>";
   $('#mytasks').append(taskHtml);
   $('.task-card[data-task-id="<%= @task.id %>"]').html("<h1>Thank you for signing up!</h1><p><h1 style='display: inline;'><span class='glyphicon glyphicon-calendar'></span></h1> An email has been sent with the details of the task.</p>")
   $('.open-task-count').text("Open Tasks (<%=@open_tasks.count%>)")
   $('.my-task-count').text("My Tasks (<%=@my_tasks.count%>)")
+
+  // if assignee id has changed, do the other thing.
 })();
 
 //append will place it inside of the selected div/id, but at the very end.
