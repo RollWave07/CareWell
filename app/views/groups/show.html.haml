@@ -12,8 +12,7 @@
         =image_tag(user.picture_url(:sq_thumb), :class => "group-user-photo")
     -if current_user.admin == true
       %h3 Admin Options
-      =link_to 'Edit Group Name', edit_group_path
-      =render 'setgrouppic'
+      =link_to 'Edit Group Details', edit_group_path
 
 %h1 Group Statistics
 .graph-background 

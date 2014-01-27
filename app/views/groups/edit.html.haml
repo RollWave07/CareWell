@@ -1,6 +1,9 @@
-%h1 Edit your Group Name
-
-=render 'groups/form'
+.container
+  .row
+    %h1 Edit your Group Name
+    .col-xs-6
+      =render 'groups/form'
+    .col-xs-6
+      =render 'setgrouppic'
 
 = link_to 'Show Group Page', @group
-
