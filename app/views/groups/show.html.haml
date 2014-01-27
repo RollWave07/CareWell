@@ -38,5 +38,7 @@
     -@last_three_tasks_completed.each do |task|
       ="#{task.title} was completed by #{task.assignee.first_name}"
       %br
+
+
 =render "linechart"
 =render "barchart"
