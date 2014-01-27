@@ -32,6 +32,24 @@ class Task < ActiveRecord::Base
     output_array
   end
 
+  def self.categories_per_month(groupid)
+    self.where(groupid: groupid).select(:category).group(:category).count
+  end
+
+  def self.bar_chart_array(groupid)
+    task_hash = Task.categories_per_month(groupid)
+   categories = ["getting places", "around the home", "shopping", "meals", "personal care", "odds & ends", "visits & outings", "other"]
+   answer = []
+   categories.each do |category|
+    if task_hash[category]
+      answer << task_hash[category]
+    else
+      answer << 0
+    end
+   end
+   answer
+  end
+
 
 
   def ordered_updates
