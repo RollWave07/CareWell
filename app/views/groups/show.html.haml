@@ -9,8 +9,8 @@
     %h3="#{@group_count} Members"
     .group-member
       -@users.each do |user|
-        link_to group
-        =image_tag(user.picture_url(:sq_thumb), :class => "group-user-photo")
+        =link_to group_user_path(@group, user.id) do
+          =image_tag(user.picture_url(:sq_thumb), :class => "group-user-photo")
     -if current_user.admin == true
       %h3 Admin Options
 
