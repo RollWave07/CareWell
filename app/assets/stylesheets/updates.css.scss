@@ -13,6 +13,18 @@
   width: 100%;
 }
 
+.time-diffy {
+  margin-top: 7px;
+  margin-left: 21%;
+  display: inline-block;
+}
+
+.like-it-now {
+  display: inline-block;
+  margin-top: 7px;
+  margin-left: 35%;
+}
+
 .update {
   font-family: "Lato", sans-serif;
   background: white;
@@ -25,8 +37,31 @@
     list-style: none;
     display: inline-block;
   }
+
+  .photo-comment-header{
+    padding: 0;
+    margin-left: 21%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    .comment-text {
+      margin-top: 7px;
+      margin-left: -29px;
+    }
+  }
+
+.hearts-count2 {
+position: relative;
+float: right;
+top: 6px;
+color: white;
+z-index: 10;
+right: 21px;
+}
+
+
   span.glyphicon.glyphicon-heart {
      color: gray;
+     float: right;
      font-size: 2.5em;
      &:hover {
        color: #c24952;
@@ -34,12 +69,13 @@
   }
   span.glyphicon.glyphicon-heart.active-glyphicon-heart {
      color: #c24952;
+     float: right;
      font-size: 2.5em;
      &:hover {
        color: gray;
      }
   }
-  
+
   .commenter-info {
     font-family: "Lato", sans-serif;
     font-size: 1.75em;
@@ -67,6 +103,13 @@
     }
   }
 
+  .image-update {
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
   // .delete-update {
   //   display: inline-block;
 
@@ -87,6 +130,61 @@
 @media all and (max-width: 480px) {
   .post-update {
     padding: 10px 0px;
+  }
+
+  .image-update {
+    img {
+      width: 100%;
+    }
+  }
+
+  .time-diffy {
+    margin-top: 7px;
+    margin-left: 0;
+    display: inline-block;
+  }
+
+  .hearts-count2 {
+  position: relative;
+  float: right;
+  top: 3px !important;
+  color: black !important;
+  z-index: 10;
+  right: 31px !important;
+  }
+
+  span.glyphicon.glyphicon-heart {
+     color: gray;
+     float: right;
+     font-size: 1.5em !important;
+     &:hover {
+       color: #c24952;
+     }
+  }
+  span.glyphicon.glyphicon-heart.active-glyphicon-heart {
+     color: #c24952;
+     float: right;
+     font-size: 1.5em !important;
+     &:hover {
+       color: gray;
+     }
+  }
+
+  .photo-comment-header{
+    padding: 0;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 10px;
+    .comment-text {
+      margin-top: 3px !important;
+      margin-left: 5px !important;
+    }
+  }
+
+  .like-it-now {
+    display: inline-block;
+    margin-top: 7px;
+    margin-left: 42%;
   }
     .update {
 
