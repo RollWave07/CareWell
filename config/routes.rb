@@ -22,7 +22,7 @@ Carewell::Application.routes.draw do
       end
     end
     resources :locations
-    get "users/:id" => 'users#show', as: 'group_users'
+    get "users/:id" => 'users#show', as: 'user'
 
   end
 
