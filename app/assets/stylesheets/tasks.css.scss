@@ -205,6 +205,11 @@ $bgc: #ded8ce;
     text-align: center;
   }
 
+  .no-tasks h1 {
+    margin-top: 0px;
+    padding: 10px;
+  }
+
   .no-tasks > h1 {
     div{text-align: center;}
   }
@@ -302,17 +307,11 @@ $bgc: #ded8ce;
     border: 0px;
   }
 
-  .nav-tabs>li>a {
-    border-radius: 0px;
-  }
-
   ul.nav.nav-tabs {
-    width: 100%;
-    margin-top: 20px;
+    background: #ebeaea;
     li {
       width: 33.33%;
       text-align: center;
-      background: white;
     }
   }
 
