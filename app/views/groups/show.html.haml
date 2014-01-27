@@ -16,16 +16,17 @@
 .graph-background 
   .row
     .col-md-6
-      %h3 Tasks Per Week
+      %h3 Tasks Assigned Per Week
       %canvas#lineChart{height: "400", width: "400"}
+      %canvas#durationChart{height: "400", width: "400"}
     .col-md-6
-      %h3 Tasks by Category
+      %h3 Tasks by Category (All Time)
       %canvas#barChart{height: "400", width: "400"} 
     / -@category_avg.each do |task, average|
     /   ="#{task}: #{average}"
   .row
     .col-md-6
-      %h3 Members who Completed Tasks This Past Month
+      %h3 Members Who Completed Tasks This Month
       -@top_three_members.each do |hash|
         -if hash["group_id"].to_i == @group.id
           -user = @users.find(hash["id"])
@@ -42,3 +43,4 @@
 
 =render "linechart"
 =render "barchart"
+=render "durationchart"
