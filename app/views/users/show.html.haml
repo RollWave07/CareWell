@@ -27,14 +27,14 @@
       %h2="#{@user.first_name} joined the group, #{@user.group.name}, on #{@user.created_at.strftime("%B %d, %Y")}"
     #pasttasks.tab-pane.fade
       -unless @past_user_tasks.empty?
-        -@past_user_tasks.each do |task|
+        -@past_user_tasks.sort_by(&:task_date).reverse.each do |task|
           =render 'tasks/task', task: task, group: current_user.group
       -else
         =render 'tasks/no_tasks'
 
     #futuretasks.tab-pane.fade
       -unless @future_user_tasks.empty?
-        -@future_user_tasks.each do |task|
+        -@future_user_tasks.sort_by(&:task_date).each do |task|
           =render 'tasks/task', task: task, group: current_user.group
       -else
         =render 'tasks/no_tasks'
