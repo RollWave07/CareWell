@@ -7,7 +7,10 @@
       %h4
         =task.task_date.strftime('%A')
         -diff = task.task_date.to_i - Time.now.to_i
-        ="(in #{distance_of_time_in_words(diff)})"
+        -if task.task_date > Time.now
+          ="(in #{distance_of_time_in_words(diff)})"
+        -else
+          ="(#{distance_of_time_in_words(diff)} ago)"
     -if task.updates.count > 0
       .comments-count
         =task.updates.count
