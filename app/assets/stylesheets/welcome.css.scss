@@ -6,11 +6,14 @@
 //   background-size: cover;
 // }
 
-.homepage-header {
-  background-color: #383838;
-  height: 100px;
-  width: 100%;
-  padding: 33px 0px;
+.main-statement {
+  margin-top: 70px;
+  font-size: 3em;
+  line-height: 1.2em;
+  color: white;
+  h1 {
+    font-weight: 400 !important;
+  }
 }
 
 .background-image {
@@ -19,7 +22,7 @@
   height: 650px;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position:center; 
+  background-position:center;
 }
 
 @media all and (max-width: 767px) {

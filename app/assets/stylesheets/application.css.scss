@@ -31,6 +31,8 @@ $mint-green: #60D97B;
          url(font-path('lato-light-webfont.svg') + "Lato") format('svg');
 }
 
+navbar-inner
+
 h1,h2, h3 {
   font-family: 'Lato',sans-serif;
 font-weight: 700;
@@ -40,7 +42,7 @@ html {
   height: 100%;
 }
 body {
-  background-color: #ebeaea;
+  background-color: #3498db;
   height: 100%;
 }
 
@@ -114,6 +116,25 @@ body {
   }
 }
 
+.navbar-collapse.collapse {
+  display: inline-block !important;
+}
+
+.nav {
+  form {
+    display: inline-block;
+    margin-top: 10px;
+    input {
+      padding: 10px;
+      font-size: medium;
+    }
+    input[type='submit']{
+      padding: 10px 20px;
+      background-color: #f0ad4e;
+    }
+  }
+}
+
 .navbar-inverse .navbar-nav > li > a {
   padding-top: 15px;
   color: gray;
@@ -157,7 +178,7 @@ input.btn.btn-large.btn-primary {
 }
 
 .navbar-inner {
-  background-color: #383838;
+  background-color: #3498db;
   line-height: 1.25em;
 }
 
@@ -190,7 +211,7 @@ li.navbar-link {
 }
 
 .logo {
-  margin-top: 8px;
+  margin-top: 15px;
 }
 
 .container-full {

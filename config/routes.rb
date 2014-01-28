@@ -12,7 +12,7 @@ Carewell::Application.routes.draw do
     root :to => "tasks#index", :as => "authenticated_root"
       end
 
-  root 'pages#welcome'
+  root 'tasks#index'
 
   resources :groups do
     resources :tasks do
