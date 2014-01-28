@@ -59,16 +59,38 @@
   border: 0.5px solid #f4e97a;
   padding: 15px;
   position: absolute;
-  top: -460px;
+  top: -335px;
   box-shadow: 0px 0px 5px #293f54;
   input {
     margin-bottom: 10px;
   }
+  .first-name {
+    display: inline-block;
+    width: 122px;
+  }
+  .last-name {
+    display: inline-block;
+    width: 160px;
+    margin-left: 9px;
+  }
+  .password {
+    display: inline-block;
+    width: 122px;
+  }
+  .confirm-password {
+    display: inline-block;
+    width: 160px;
+    margin-left: 9px;
+  }
   .aside {
-    font-family: 'Jenna-Sue', sans-serif;
-    font-size: 1.8em;
-    font-style: italic;
+    // font-family: 'Jenna-Sue', sans-serif;
+    // font-size: 1.8em;
+    // font-style: italic;
     color: #293f54;
+  }
+
+  h1 {
+    margin-top: 0px;
   }
 }
 
