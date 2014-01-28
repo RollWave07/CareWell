@@ -31,11 +31,23 @@ $mint-green: #60D97B;
          url(font-path('lato-light-webfont.svg') + "Lato") format('svg');
 }
 
+@font-face {
+    font-family: 'Jenna-Sue';
+    src: url(font-path('JennaSue.ttf'))  format('truetype');
+}
+
+
 navbar-inner
 
 h1,h2, h3 {
   font-family: 'Lato',sans-serif;
 font-weight: 700;
+}
+
+.aside {
+  font-family: 'Jenna-Sue', sans-serif;
+  font-size: 1.8em;
+  font-style: italic;
 }
 
 html {

@@ -1,11 +1,28 @@
-.row
-.col-md-2
-.col-md-8
-  %h1.main-statement
-    A simple way for families to care for each other no matter where they are.
-.col-md-2
-.col.md-2
-.col-md-8
-  =link_to
+.container
+  .row
+    .col-md-2
+    .col-md-8
+      %h1.main-statement
+        A simple way for families and friends to care for each other, no matter where they are.
+    .col-md-2
+  .row
+    .col-md-2
+    .col-md-8.family
+      =image_tag('family.png')
+    .col-md-2
+  .row
+    .col-md-4
+    .col-md-4
+      .register-button
+        ="Register"
+    .col-md-4.sign-up-teaser
+      .aside
+        Register for free in 60 seconds.
+      .register-form
+        =render "devise/registrations/new_registration", resource: resource
+.container-full.how-it-works
+  .container
+    .row.main-statement
+      %h1 How we work together
 
 
