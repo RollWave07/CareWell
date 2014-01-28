@@ -1,24 +1,27 @@
+- updates_count = task.updates.count
+- likes_count = task.likes_count
+- assignee = task.assignee
+- task_task_date = task.task_date
+- task_information = task.information
+
 .task-card
-  %h1.show-card-title=task.title
-  -task_updates_count = task.updates.count
-  -if task_updates_count > 0
+  %h1.show-card-title=task.title  
+  -if updates_count > 0
     .comments-count
-      =task_updates_count
-    %i.fa.fa-comment.task-card-icon
-  - task_likes_count = task.likes_count
-  -if task_likes_count > 0
+      =updates_count
+    %i.fa.fa-comment.task-card-icon  
+  -if likes_count > 0
     .hearts-count
-      =task_likes_count
+      =likes_count
     %i.fa.fa-heart.task-card-icon.heart-icon-color
   %h3.show-card-section-header
     Covered By
-  -if task.assignee
-    =image_tag(task.assignee.picture_url(:sq_thumb))
+  -if assignee
+    =image_tag(assignee.picture_url(:sq_thumb))
   -else
     %p I can help.
   %h3.show-card-section-header
     Date and Time
-  -task_task_date = task.task_date
   -if task_task_date
     %p
       =task_task_date.strftime('%l:%M %p') + ' on '
@@ -30,7 +33,6 @@
     %p No date or time information.
   %h3.show-card-section-header
     Details
-  -task_information = task.information
   -if task_information
     %p=task_information
   -else
@@ -38,11 +40,11 @@
   %h3.show-card-section-header
     Actions
   -if current_user.admin?
-    =link_to edit_group_task_path(@group, task) do
+    =link_to edit_group_task_path(group, task) do
       %span.awesome
         %span.glyphicon.glyphicon-edit
-    =link_to group_task_path(@group, task), method: :delete, data: { confirm: 'Are you sure you want to delete this task?' } do
+    =link_to group_task_path(group, task), method: :delete, data: { confirm: 'Are you sure you want to delete this task?' } do
       %span.awesome
         %span.glyphicon.glyphicon-trash
-  -if current_user.id == task.assignee_id
-    =link_to "DROP", group_task_path(@group, task, params: {assignee_id: nil}), method: :put, data: { confirm: 'Are you sure you want to drop this task?'}
+  -if current_user == assignee
+    =link_to "DROP", group_task_path(group, task, params: {assignee_id: nil}), method: :put, data: { confirm: 'Are you sure you want to drop this task?'}
