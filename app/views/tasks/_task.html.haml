@@ -1,26 +1,31 @@
+- task_date = task.task_date
+- updates_count = task.updates.count
+- likes_count = task.likes_count
+- task_id = task.id
+
 .row.task-card
   .col-xs-2.col-md-2
-    %h4.complete=link_to "Done", mark_complete_group_task_path(@group, task.id, params: {status: 'complete'}), method: :put, remote: true
+    %h4.complete=link_to "Done", mark_complete_group_task_path(group, task_id, params: {status: 'complete'}), method: :put, remote: true
   .col-xs-8.col-md-8.summary
     %h3.card-title=task.title.truncate(25)
-    -if task.task_date
+    -if task_date
       %h4
-        =task.task_date.strftime('%A')
-        -diff = task.task_date.to_i - Time.now.to_i
-        -if task.task_date > Time.now
+        =task_date.strftime('%A')
+        -diff = task_date.to_i - Time.now.to_i
+        -if task_date > Time.now
           ="(in #{distance_of_time_in_words(diff)})"
         -else
           ="(#{distance_of_time_in_words(diff)} ago)"
-    -if task.updates.count > 0
+    -if updates_count > 0
       .comments-count
-        =task.updates.count
+        =updates_count
       %i.fa.fa-comment.task-card-icon
-    -if task.likes_count > 0
+    -if likes_count > 0
       .hearts-count
-        =task.likes_count
+        =likes_count
       %i.fa.fa-heart.task-card-icon.heart-icon-color
   .col-xs-1.col-md-1
     .arrow-right
-      =button_to "The Task", group_task_path(group, task.id), method: :get
+      =button_to "The Task", group_task_path(group, task_id), method: :get
 
 

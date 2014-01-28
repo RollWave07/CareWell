@@ -68,7 +68,7 @@ class Task < ActiveRecord::Base
 
 
   def self.tasks(group)
-    self.joins(:user).where(:users => {group_id: group})
+    self.includes(:updates).joins(:user).where(:users => {group_id: group})
   end
 
   #finds 1 month of future tasks
