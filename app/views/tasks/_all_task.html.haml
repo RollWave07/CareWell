@@ -11,6 +11,7 @@
 - updates_count = task.updates.count
 - likes_count = task.likes_count
 - task_id = task.id
+- diff = task_date.to_i - Time.now.to_i
 
 .row.task-card{"data-task-id" => "#{task.id}"}
   .col-xs-2.col-md-2
@@ -26,11 +27,9 @@
         %h4="#{task.assignee.first_name}"
   .col-xs-8.col-md-8.summary
     %h3.card-title=task.title.truncate(25)
-    -if task_date
-      %h4
-        =task_date.strftime('%A')
-        -diff = task_date.to_i - Time.now.to_i
-        ="(in #{distance_of_time_in_words(diff)})"
+    %h4
+      =task_date.strftime('%A')      
+      ="(in #{distance_of_time_in_words(diff)})"
     -if updates_count > 0
       .comments-count
         =updates_count

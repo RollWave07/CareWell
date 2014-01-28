@@ -3,7 +3,7 @@
 - assignee = task.assignee
 - task_task_date = task.task_date
 - task_information = task.information
-
+- diff = task_task_date.to_i - Time.now.to_i
 .task-card
   %h1.show-card-title=task.title  
   -if updates_count > 0
@@ -27,7 +27,6 @@
       =task_task_date.strftime('%l:%M %p') + ' on '
       =task_task_date.strftime('%A, %B %e')
     .time-from-now
-      -diff = task_task_date.to_i - Time.now.to_i
       ="in #{distance_of_time_in_words(diff)}"
   -else
     %p No date or time information.
