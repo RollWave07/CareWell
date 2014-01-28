@@ -1,10 +1,3 @@
-.row.task-card{"data-task-id" => "#{task.id}", :class => "category-#{task.category}"}
-  .col-xs-2.col-md-2
-    -if task.assignee == nil
-      %h4.sign-up=link_to "Sign-Up", group_task_path(@group, task.id, params: { task: {assignee_id: current_user.id}}), method: :patch, data: {confirm: "Are you sure?"}, remote: true
-    -elsif task.assignee_id.nil? && task.user_id == current_user.id
-      %li= render 'tasks/modal', task: task
-
 - assignee_nil = task.assignee.nil?
 - current_user_id = current_user.id
 - task_date = task.task_date
@@ -13,7 +6,7 @@
 - task_id = task.id
 - diff = task_date.to_i - Time.now.to_i
 
-.row.task-card{"data-task-id" => "#{task.id}"}
+.row.task-card{"data-task-id" => "#{task.id}", :class => "category-#{task.category}"}
   .col-xs-2.col-md-2
     -if assignee_nil && task.user_id == current_user_id
       %h4= render 'tasks/modal', task: task

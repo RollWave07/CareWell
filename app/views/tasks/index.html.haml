@@ -1,37 +1,37 @@
-.row
-  %ul.nav.nav-tabs
-    %li
-      %a.my-task-count{'data-toggle' => "tab", href: "#mytasks"}
-        Me
-        ="(#{@my_tasks.count})"
-    %li
-      %a{'data-toggle' => "tab", href: "#alltasks"}
-        All
-        ="(#{@tasks.count})"
-    %li
-      %a.open-task-count{'data-toggle' => "tab", href: "#opentasks"}
-        Open
-        ="(#{@open_tasks.count})"
-    %li
-      =link_to new_group_task_path(@group) do
-        %span.glyphicon.glyphicon-plus-sign
+.container
+  .row.task-index-header
+    %h1="Tasks for The #{@group.name}"
+    %h1=link_to "Add New Task", new_group_task_path(current_user.group)
+  .row
+    %ul.nav.nav-tabs
+      %li
+        %a.my-task-count{'data-toggle' => "tab", href: "#mytasks"}
+          My Tasks
+          ="(#{@my_tasks.count})"
+      %li
+        %a{'data-toggle' => "tab", href: "#alltasks"}
+          Open Tasks
+          ="(#{@tasks.count})"
+      %li
+        %a.open-task-count{'data-toggle' => "tab", href: "#opentasks"}
+          Future Tasks
+          ="(#{@open_tasks.count})"
+          
+    .tab-content
+      #mytasks.tab-pane.fade.in.active
+        -unless @my_tasks.empty?
+          -@my_tasks.sort_by(&:task_date).each do |task|
+            =render 'task', task: task, group: @group
+        -else
+          =render 'tasks/no_tasks'
 
-
-  .tab-content
-    #mytasks.tab-pane.fade.in.active
-      -unless @my_tasks.empty?
-        -@my_tasks.sort_by(&:task_date).each do |task|
-          =render 'task', task: task, group: @group
-      -else
-        =render 'tasks/no_tasks'
-
-    #alltasks.tab-pane.fade
-      -@tasks.sort_by(&:task_date).each do |task|
-        =render 'all_task', task: task, group: @group
-
-    #opentasks.tab-pane.fade
-      -unless @open_tasks.empty?
-        -@open_tasks.sort_by(&:task_date).each do |task|
+      #alltasks.tab-pane.fade
+        -@tasks.sort_by(&:task_date).each do |task|
           =render 'all_task', task: task, group: @group
-      -else
-        =render 'tasks/no_group_tasks'
+
+      #opentasks.tab-pane.fade
+        -unless @open_tasks.empty?
+          -@open_tasks.sort_by(&:task_date).each do |task|
+            =render 'all_task', task: task, group: @group
+        -else
+          =render 'tasks/no_group_tasks'

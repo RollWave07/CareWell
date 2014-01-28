@@ -148,62 +148,64 @@ $bgc: #ded8ce;
   }
 
 .button_to input {
-height: 50px;
-width: 50px;
-position: relative;
-right: 29px;
-top: -18px;
-background: transparent;
-border: 0;
-font-size: 0;
+  height: 50px;
+  width: 50px;
+  position: relative;
+  right: 29px;
+  top: -18px;
+  background: transparent;
+  border: 0;
+  font-size: 0;
 }
 
-  .task-card {
-    padding: 20px;
-    box-shadow: 0px 0px 3px #888888;
-    text-decoration: none;
-    padding-right: 0px;
-    border-bottom: 1px solid rgb(214,210,210);
-    h3 {
-      font-family: "Lato", sans-serif;
-      font-size: 3em;
-      margin-top: 5px;
+.task-card {
+  padding: 20px;
+  box-shadow: 0px 0px 3px #888888;
+  text-decoration: none;
+  padding-right: 0px;
+  border-bottom: 1px solid rgb(214,210,210);
+  h3 {
+    font-family: "Lato", sans-serif;
+    font-size: 3em;
+    margin-top: 5px;
     }
     h4 {
-      font-family: "Lato", sans-serif;
-      font-size: 2em;
-      color: #cacaca;
-    }
+    font-family: "Lato", sans-serif;
+    font-size: 2em;
+    color: #cacaca;
   }
+}
 
-  .row {
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-  .task-card-image-container {
-    margin-top: 35px;
-  }
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+  
+.task-card-image-container {
+  margin-top: 35px;
+}
 
-  .task-card-icon {
-    font-size: 2.5em;
-    color: #6fcccf;
-    text-align: right;
-    margin-left: 5px;
-    }
-    .heart-icon-color {
-     color: #c24952;
-      }
+.task-card-icon {
+  font-size: 2.5em;
+  color: #6fcccf;
+  text-align: right;
+  margin-left: 5px;
+}
 
-  .card-right-arrow {
-    padding: 50px;
-    float: right;
-  }
+.heart-icon-color {
+  color: #c24952;
+}
 
-  .no-tasks .glyphicon {
-    font-size: 100px;
-    font-weight: bold;
-    text-align: center;
-  }
+.card-right-arrow {
+  padding: 50px;
+  float: right;
+}
+
+.no-tasks .glyphicon {
+  font-size: 100px;
+  font-weight: bold;
+  text-align: center;
+}
 
   .no-tasks h1 {
     margin-top: 0px;
@@ -244,22 +246,22 @@ font-size: 0;
   }
 
 //style the categories picker
-  .categories {
-    display: none;
-    position: fixed;
-    left: 0px;
-    top: 50px;
-    background: white;
+.categories {
+  display: none;
+  position: fixed;
+  left: 0px;
+  top: 50px;
+  background: white;
   }
 
-  #category {
-    display: none;
+#category {
+  display: none;
   }
 
-  .time-details {
-    h3 {
-      margin-top: 0px;
-    }
+.time-details {
+  h3 {
+    margin-top: 0px;
+  }
     padding-left: 0;
     padding-right: 0;
   }
@@ -308,7 +310,7 @@ font-size: 0;
   }
 
   ul.nav.nav-tabs {
-    background: white;
+    background: #a5feff;
     border: 0;
     li {
       width: 25%;
@@ -574,5 +576,10 @@ top: -7px;
     color: black;
     padding-left: 5px;
   }
+}
+
+.task-index-header  {
+margin-top: 20px;
+margin-bottom: 30px;
 }
 
