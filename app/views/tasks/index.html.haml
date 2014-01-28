@@ -20,18 +20,18 @@
   .tab-content
     #mytasks.tab-pane.fade.in.active
       -unless @my_tasks.empty?
-        -@my_tasks.each do |task|
+        -@my_tasks.sort_by(&:task_date).each do |task|
           =render 'task', task: task, group: @group
       -else
         =render 'tasks/no_tasks'
 
     #alltasks.tab-pane.fade
-      -@tasks.each do |task|
+      -@tasks.sort_by(&:task_date).each do |task|
         =render 'all_task', task: task, group: @group
 
     #opentasks.tab-pane.fade
       -unless @open_tasks.empty?
-        -@open_tasks.each do |task|
+        -@open_tasks.sort_by(&:task_date).each do |task|
           =render 'all_task', task: task, group: @group
       -else
         =render 'tasks/no_group_tasks'
