@@ -2,28 +2,56 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.profile {
-  ul.nav.nav-tabs {
-    background: white;
-    border: 0;
-    li {
-      width: 33%;
-      text-align: center;
-      .active {
-        color: white;
-        background: black;
-      }
-      a {
-        margin: 5px;
-        padding: 5px;
-        border-radius: 4px;
-        &:hover {
-          background: black;
-          color: white;
-        }
-      }
-    }
+// .profile {
+//   ul.nav.nav-tabs {
+//     background: white;
+//     border: 0;
+//     li {
+//       width: 33%;
+//       text-align: center;
+//       .active {
+//         color: white;
+//         background: black;
+//       }
+//       a {
+//         margin: 5px;
+//         padding: 5px;
+//         border-radius: 4px;
+//         &:hover {
+//           background: black;
+//           color: white;
+//         }
+//       }
+//     }
+//   }
+// }
+
+
+.profile_pic{
+  img{
+    width: 100%;
+    border: solid white 5px;
   }
+  
 }
 
+.profile_name{
+  font-size: 50pt;
+  color: white;
+  font-family: Lato;
+}
+.profile_contact{
+  background: #f2f2f2;
+  font-size: 30pt;
+  color: #ff615b;
+  border: solid #f2f2f2 5px;
+}
 
+.edit{
+  color: #9d9d9d;
+  font-size: 15pt;
+  a{
+    text-decoration: none;
+  }
+  
+}  
