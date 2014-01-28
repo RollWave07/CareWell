@@ -1,9 +1,12 @@
 .navbar {
 
   .active {
-    border-bottom: 2px solid white;
-    border-top: 2px solid white;
-    color: white !important;
+    background: #f0ad4e;
+    border-radius: 5px;
+    color: #3498db !important;
+  }
+  .category-shopping {
+    //placeholder
   }
   //useful potential triangle css for downward pointing arrow
   // .arrow-down {

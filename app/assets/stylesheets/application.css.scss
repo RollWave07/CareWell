@@ -166,9 +166,11 @@ input.btn.btn-large.btn-primary {
 }
 
 .navbar {
+  ul {
+    margin-top: 25px;
+  }
   font-family: 'Lato', sans-serif;
   list-style-type: none;
-  font-size: 1.25em;
   margin-bottom: 0;
   border: none;
     a {

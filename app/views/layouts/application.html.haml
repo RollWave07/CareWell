@@ -36,8 +36,6 @@
                 -else
                   %li.navbar-link
                     = link_to "Sign in", new_user_session_path
-                %li.navbar-link
-                  = link_to "Sign in", new_user_session_path
             -else
               .nav.navbar-nav.pull-right.full-screen-header
                 =render 'devise/sessions/new_session'

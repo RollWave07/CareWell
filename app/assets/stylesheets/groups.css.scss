@@ -23,3 +23,56 @@
 .group-member-name {
   display: block;
 }
+//Eric's added styles for group show page
+
+.group-show {
+
+  .family-members {
+    margin-bottom: 35px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+  h1, h2 {
+    color: white;
+  }
+
+  .number-summary-stats {
+    width: 200px;
+    display: block;
+    border-radius: 5px;
+    border: 5px solid white;
+    border-color: white;
+    color: white;
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+    font-size: 10em;
+    .green {
+      background: #53bc9c;
+    }
+  }
+  p.number-summary
+      {
+      font-family: 'Lato';
+      position: relative;
+      left: 15px;
+      top: -32px;
+      color: white;
+    }
+
+  .edit-group {
+    color: white;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    font-weight: 400;
+    margin-top: -7px;
+    margin-left: 5px;
+  }
+  h3 {
+    color: #293f54;
+  }
+}
