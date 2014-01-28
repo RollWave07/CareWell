@@ -1,45 +1,45 @@
+%br
+%br
+.container
+  .row
+    .profile_top
+      .col-md-5
+        .profile_pic
+          =image_tag(@user.picture_url(:wide))
+      .profile_info.col-md-7
+        .profile_name="#{@user.first_name} #{@user.last_name}"
+        .profile_contact
+          .phone="Phone: #{number_to_phone(@user.phone, area_code: true)}"
+          .email="Email: #{@user.email}"
+          -if current_user == @user
+            .edit.glyphicon.glyphicon-pencil=link_to "Edit", edit_user_registration_path
+  .row
+    %br
+    %br  
+  .row
+    .profile_name="#{@user.first_name}'s Tasks"
+  .row
+    %br
+    %br
+  .row
+    %ul
+      %li
+        %a.profile_tasks.past_tasks{'data-toggle' => "tab", href: "#pasttasks"}
+          ="Past Tasks (#{@past_user_tasks.count})"
+      %li
+        %a.profile_tasks.future_tasks{'data-toggle' => "tab", href: "#futuretasks"}
+          ="Future Tasks (#{@future_user_tasks.count})"
+    .tab-content
+      #pasttasks.tab-pane.fade.in.active
+        -unless @past_user_tasks.empty?
+          -@past_user_tasks.sort_by(&:task_date).reverse.each do |task|
+            =render 'tasks/task', task: task, group: current_user.group
+        -else
+          =render 'tasks/no_tasks'
 
-.row.flatty-header
-  %h1="#{@user.first_name}'s Profile"
-
-.row.profile
-  %ul.nav.nav-tabs
-    %li
-      %a.my-task-count{'data-toggle' => "tab", href: "#myinfo"}
-        Contact Info
-    %li
-      %a.my-task-count{'data-toggle' => "tab", href: "#pasttasks"}
-        Past Tasks
-        ="(#{@past_user_tasks.count})"
-    %li
-      %a{'data-toggle' => "tab", href: "#futuretasks"}
-        Future Tasks
-        ="(#{@future_user_tasks.count})"
-  .tab-content
-    #myinfo.tab-pane.fade.in.active
-      .col-xs-2
-        =image_tag(@user.picture_url(:sq_thumb), :class => "group-user-photo")
-      .col-xs-10
-        %h3
-          =@user.first_name
-          =@user.last_name
-        %p="Phone: #{number_to_phone(@user.phone, area_code: true)} "
-        %p="Email: #{@user.email}"
-        %p="#{@user.first_name} joined the group, #{@user.group.name}, on #{@user.created_at.strftime("%B %d, %Y")}"
-        -if current_user.id == @user.id
-          %p
-            =link_to "Edit", edit_user_registration_path
-
-    #pasttasks.tab-pane.fade
-      -unless @past_user_tasks.empty?
-        -@past_user_tasks.sort_by(&:task_date).reverse.each do |task|
-          =render 'tasks/task', task: task, group: current_user.group
-      -else
-        =render 'tasks/no_tasks'
-
-    #futuretasks.tab-pane.fade
-      -unless @future_user_tasks.empty?
-        -@future_user_tasks.sort_by(&:task_date).each do |task|
-          =render 'tasks/task', task: task, group: current_user.group
-      -else
-        =render 'tasks/no_tasks'
+      #futuretasks.tab-pane.fade
+        -unless @future_user_tasks.empty?
+          -@future_user_tasks.sort_by(&:task_date).each do |task|
+            =render 'tasks/task', task: task, group: current_user.group
+        -else
+          =render 'tasks/no_tasks'
