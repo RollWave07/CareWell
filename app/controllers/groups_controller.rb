@@ -8,25 +8,24 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @users = User.where(group_id: params[:id])
+    @users = User.users_in_group(@group)
   
     @assigned_tasks = Task.assigned(@group)
    
     @counts_arrays = Task.count_per_period(@assigned_tasks)
     
-    @top_three_members = TopMembersQuery.new.top_users_list(30)
+    @users_and_tasks = TopMembersQuery.new.users_and_tasks_list(30)
 
     @last_three_tasks_completed = Task.last_three_tasks_completed(@assigned_tasks)
     @category_avg = Task.average_duration_per_category(@assigned_tasks)
 
-    @group_count = User.where(group_id: current_user.group_id).count
+    @group_count = @users.count
 
-    @group_created_at = Group.find(current_user.group_id).created_at.strftime('%B %e, %Y')
+    @group_created_at = @group.created_at.strftime('%B %e, %Y')
 
     @categories_per_month_array = Task.bar_chart_array(Task.categories_per_month(@group.id))
 
-    @duration_chart_data = Task.bar_chart_array(Task.average_duration_per_category(@assigned_tasks))
-
+    @duration_chart_data = Task.bar_chart_array(@category_avg)
   end
 
   def edit

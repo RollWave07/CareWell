@@ -33,7 +33,9 @@ class RegistrationsController < Devise::RegistrationsController
       end
     else
       clean_up_passwords resource
-      respond_with resource
+      # respond_with resource
+      #would like to set and return an error message but unsure how.
+      redirect_to root_url
     end
   end
 
