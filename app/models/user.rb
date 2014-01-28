@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   acts_as_voter
 
   def self.users_in_group(group)
-    group.users
+    self.where(group_id: group.id)
   end
 
 

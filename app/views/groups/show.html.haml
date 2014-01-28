@@ -8,7 +8,8 @@
     %h1="The #{@group.name}"
     %h3="#{@group_count} Members"
     .group-member
-      -@users.each do |user|
+      -group_users = @users
+      -group_users.each do |user|
         =link_to group_user_path(@group, user.id) do
           =image_tag(user.picture_url(:sq_thumb), :class => "group-user-photo")
     -if current_user.admin == true
@@ -29,9 +30,9 @@
   .row
     .col-md-6
       %h3 Members Who Completed Tasks This Month
-      -@top_three_members.each do |hash|
+      -@users_and_tasks.take(3).each do |hash|
         -if hash["group_id"].to_i == @group.id
-          -user = @users.find(hash["id"])
+          -user = group_users.find(hash["id"])
           =image_tag(user.picture_url(:sq_thumb))
           =user.first_name
           ="#{hash["cnt"]} Tasks Completed"
