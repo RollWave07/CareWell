@@ -27,10 +27,10 @@
     %p No date or time information.
   %h3.show-card-section-header
     Details
-  -if task.information.empty?
-    %p No additional details.
-  -else
+  -if task.information
     %p=task.information
+  -else
+    %p No additional details.
   %h3.show-card-section-header
     Actions
   -if current_user.admin?

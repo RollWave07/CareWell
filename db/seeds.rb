@@ -1,4 +1,4 @@
-Group.create!({name: "Star Wars"})
+Group.create!([{name: "Star Wars"},{name: "BreatheHeavy"}] )
 
 User.create!([
   {first_name: "Luke",last_name: "Skywalker", email: "luke@skywalker.com", password:"password", phone: 6175158907, group_id: 1, admin: true },
@@ -15,13 +15,12 @@ User.create!([
   {first_name: "Sith",last_name: "Lord", email: "sith@lord.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
   {first_name: "Boba",last_name: "Fett", email: "boba@fett.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
   {first_name: "Padme",last_name: "Amidala", email: "padme@amidala.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
-  {first_name: "Jar Jar",last_name: "Binks", email: "jarjar@binks.com", password:"password", phone: 6175158907, group_id: 1, admin: false }
+  {first_name: "Jar Jar",last_name: "Binks", email: "jarjar@binks.com", password:"password", phone: 6175158907, group_id: 1, admin: false }, 
+  {first_name: "Holy",last_name: "Spearit", email: "holy@spearit.com", password:"password", phone: 6175158907, group_id: 2, admin: true },
+  {first_name: "Godney",last_name: "Spears", email: "godney@spears.com", password:"password", phone: 6175158907, group_id: 2, admin: false },
+  {first_name: "Jessica",last_name: "British", email: "jessica@british.com", password:"password", phone: 6175158907, group_id: 2, admin: false }
 ])
-index = 1
-while index<101
-  Task.create!({title: "Task number #{index}"})
-  index += 1
-end
+
 
 
 category_array = [
@@ -37,33 +36,35 @@ category_array = [
 
 duration_array = [15,  30,  45,  60,  75, 90, 120]
 
-task_date_array = [
-Time.now+1.day,
-Time.now-1.day,
-Time.now+3.day,
-Time.now-3.day,
-Time.now+7.day,
-Time.now-7.day,
-Time.now+rand(30).day,
-Time.now-rand(30).day,
-Time.now+rand(30).day,
-Time.now-rand(30).day
-]
+people = User.all.count-3
 
-people = User.all.count
 
+
+index = 1
+while index<101 
+  Task.create!({title: "Task number #{index}", groupid: 1, category: category_array.sample, duration: duration_array.sample, task_date: Time.now+rand(30).day, user_id: rand(people)+1})
+  index += 1
+end
+
+while index<200
+  Task.create!({title: "Task number #{index}", groupid: 1, category: category_array.sample, duration: duration_array.sample, task_date: Time.now-rand(30).day, user_id: rand(people)+1})
+  index += 1
+end
 
 Task.all.each do |task|
-  task.category = category_array.sample
-  task.duration = duration_array.sample
-  task.task_date = task_date_array.sample
-  user = rand(people)+1
-  task.user_id = user
-  assignee = rand(people)+1
-  task.assignee_id = assignee == user ? rand(people)+1 : assignee
-  task.groupid = 1
-  task.save
+  if task.id.to_i % 13 != 0
+    assignee = rand(people)+1
+    task.assignee_id = assignee == task.user_id ? rand(people)+1 : assignee
+    task.save
+  end
 end
+
+
+Task.create!([
+  {title: "Task number 300", groupid: 2, category: category_array.sample, duration: duration_array.sample, task_date: Time.now-rand(30).day, user_id: 16, assignee_id: 17},
+  {title: "Task number 301", groupid: 2, category: category_array.sample, duration: duration_array.sample, task_date: Time.now+rand(30).day, user_id: 16, assignee_id: 18},
+  {title: "Task number 302", groupid: 2, category: category_array.sample, duration: duration_array.sample, task_date: Time.now+rand(30).day, user_id: 17, assignee_id: 18}
+  ])
 
 
 
