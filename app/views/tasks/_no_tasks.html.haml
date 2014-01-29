@@ -1,4 +1,5 @@
 .no-tasks
-  %h3.card-title You currently don't have any tasks. Click "sign-up" to see available options.
+  %h3.card-title
+    You currently don't have any tasks. Click "sign-up" to see available options.
     %span.glyphicon.glyphicon-pencil
   %h1=link_to "Add New Task", new_group_task_path(current_user.group)
