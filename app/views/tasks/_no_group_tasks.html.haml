@@ -1,5 +1,8 @@
-.no-tasks
-  %h1 Your group doesn't currently have any tasks.
-  %h1
-    .glyphicon.glyphicon-pencil
-  %h1=link_to "Add New Task", new_group_task_path(current_user.group)
+.row
+  .no-tasks{style: "padding: 20px;text-align: center;"}
+    %h3.card-title
+      Your group doesn't currently have any tasks.
+    %br
+    %h3.card-title
+      %span.glyphicon.glyphicon-pencil
+    %h1=link_to "Add New Task", new_group_task_path(current_user.group)

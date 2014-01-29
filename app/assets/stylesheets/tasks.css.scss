@@ -145,6 +145,10 @@ $bgc: #ded8ce;
     padding: 10px;
   }
 
+  #pasttasks {
+    text-align: center;
+  }
+
   .form-icon {
     font-size: 4em;
     margin-top: 10px;
@@ -199,7 +203,7 @@ $bgc: #ded8ce;
   margin-left: 0px;
   margin-right: 0px;
 }
-  
+
 .task-card-image-container {
   margin-top: 35px;
 }
@@ -349,7 +353,7 @@ $bgc: #ded8ce;
         border-top-left-radius: 4px;
         border-top-right-radius: 4px;
         font-family: "Lato", sans-serif;
-        
+
         .active {
           color: #293f54;
         }
@@ -644,7 +648,7 @@ h1 {
   border-radius: 4px;
   color: white;
     a {
-    text-decoration: none;  
+    text-decoration: none;
     }
 }
 
