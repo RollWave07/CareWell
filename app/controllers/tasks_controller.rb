@@ -19,7 +19,6 @@ class TasksController < ApplicationController
     # format.html { notice: 'Message sent successfully' }
   end
 
-
   def index
     @tasks = Task.tasks(@group).future
     @my_tasks = Task.assigned_to_specific_user(@tasks.future, current_user)
