@@ -19,7 +19,7 @@ $bgc: #ded8ce;
 //styles
 
 .task-card {
-  background: #f2f2f2;
+  background: white;
 }
   .task {
     margin: 30px;
@@ -92,15 +92,18 @@ $bgc: #ded8ce;
       color: white;
     }
   }
-
+  h4.complete {
+    color: white !important;
+  }
   .complete {
     display: inline-block;
     text-align: center;
     padding: 10px 20px;
     margin: 0 auto;
     font-size: 15px;
-    background: #a0c55f;
-    a {
+    background: #53bc9c;
+    border-radius: 4px;
+     a {
       text-decoration: none;
       color: white;
     }
@@ -151,6 +154,7 @@ $bgc: #ded8ce;
     text-align: center;
     float: left;
     width: 100%;
+    color: #a6a6a6;
   }
 
   .task-form-radio-button {
@@ -158,67 +162,69 @@ $bgc: #ded8ce;
   }
 
   .selected-category {
-    background-color: #00aac9;
+    background-color: #53bc9c;
     color: white !important;
   }
 
 .button_to input {
-height: 50px;
-width: 50px;
-position: relative;
-right: 29px;
-top: -18px;
-background: transparent;
-border: 0;
-font-size: 0;
+  height: 50px;
+  width: 50px;
+  position: relative;
+  right: 29px;
+  top: -18px;
+  background: transparent;
+  border: 0;
+  font-size: 0;
 }
 
-  .task-card {
-    padding: 20px;
-    box-shadow: 0px 0px 3px #888888;
-    text-decoration: none;
-    padding-right: 0px;
-    border-bottom: 1px solid rgb(214,210,210);
-    h3 {
-      font-family: "Lato", sans-serif;
-      font-size: 3em;
-      margin-top: 5px;
+.task-card {
+  padding: 20px;
+  box-shadow: 0px 0px 3px #888888;
+  text-decoration: none;
+  padding-right: 0px;
+  border-bottom: 1px solid rgb(214,210,210);
+  h3 {
+    font-family: "Lato", sans-serif;
+    font-size: 3em;
+    margin-top: 5px;
     }
     h4 {
-      font-family: "Lato", sans-serif;
-      font-size: 2em;
-      color: #cacaca;
-    }
+    font-family: "Lato", sans-serif;
+    font-size: 2em;
+    color: #cacaca;
   }
+}
 
-  .row {
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-  .task-card-image-container {
-    margin-top: 35px;
-  }
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+  
+.task-card-image-container {
+  margin-top: 35px;
+}
 
-  .task-card-icon {
-    font-size: 2.5em;
-    color: #6fcccf;
-    text-align: right;
-    margin-left: 5px;
-    }
-    .heart-icon-color {
-     color: #c24952;
-      }
+.task-card-icon {
+  font-size: 2.5em;
+  color: #6fcccf;
+  text-align: right;
+  margin-left: 5px;
+}
 
-  .card-right-arrow {
-    padding: 50px;
-    float: right;
-  }
+.heart-icon-color {
+  color: #c24952;
+}
 
-  .no-tasks .glyphicon {
-    font-size: 100px;
-    font-weight: bold;
-    text-align: center;
-  }
+.card-right-arrow {
+  padding: 50px;
+  float: right;
+}
+
+.no-tasks .glyphicon {
+  font-size: 100px;
+  font-weight: bold;
+  text-align: center;
+}
 
   .no-tasks h1 {
     margin-top: 0px;
@@ -259,22 +265,22 @@ font-size: 0;
   }
 
 //style the categories picker
-  .categories {
-    display: none;
-    position: fixed;
-    left: 0px;
-    top: 50px;
-    background: white;
+.categories {
+  display: none;
+  position: fixed;
+  left: 0px;
+  top: 50px;
+  background: white;
   }
 
-  #category {
-    display: none;
+#category {
+  display: none;
   }
 
-  .time-details {
-    h3 {
-      margin-top: 0px;
-    }
+.time-details {
+  h3 {
+    margin-top: 0px;
+  }
     padding-left: 0;
     padding-right: 0;
   }
@@ -323,21 +329,33 @@ font-size: 0;
   }
 
   ul.nav.nav-tabs {
-    background: white;
+    background: #293f54;
     border: 0;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
     li {
       width: 25%;
       text-align: center;
       .active {
-        color: white;
-        background: black;
+        color: #293f54 !important;
+        background-color: white;
+        background: #53bc9c;
       }
       a {
-        margin: 5px;
-        padding: 5px;
-        border-radius: 4px;
+        font-size: 1.45em;
+        // margin: 5px;
+        // padding: 5px;
+        // border-radius: 4px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        font-family: "Lato", sans-serif;
+        
+        .active {
+          color: #293f54;
+        }
+
         &:hover {
-          background: black;
+          background: #53bc9c;
           color: white;
         }
       }
@@ -351,7 +369,7 @@ font-size: 0;
   .new-task-button {
     // height: 75px;
     // width: 225px;
-    background-color: #40090f;
+    background-color: #ab53c5;
     border-radius: 5px;
     color: white;
     font-family: 'Lato', sans-serif;
@@ -360,8 +378,8 @@ font-size: 0;
     margin: 15px 15px 20px 0;
   }
   .new-task-button:hover {
-    background-color: #8d3039;
-    color: black;
+    background-color: #ab53c5;
+    color: white;
       }
 
   .comments-count {
@@ -387,6 +405,7 @@ font-size: 0;
 
   h3.card-title {
     display: inline-block;
+    color: #ef5e5a;
   }
 
 //set up task show page
@@ -550,7 +569,8 @@ top: -10px;
       padding: 10px 10px;
       margin: 0 auto;
       font-size: 15px;
-      background: #a0c55f;
+      background: #53bc9c;
+      border-radius: 4px;
       a {
         text-decoration: none;
         color: white;
@@ -600,3 +620,36 @@ top: -10px;
   }
 }
 
+.task-index-header  {
+margin-top: 20px;
+margin-bottom: 30px;
+display: inline;
+line-height: 50px;
+h1 {
+  display: inline-block;
+}
+}
+
+.purple-new-task-button {
+  display: inline;
+  float:right;
+  font-size: .75em;
+  padding: 15px;
+  h4 {
+  font-family: "Lato", sans-serif;
+  font-size: 2em;
+  }
+  margin-bottom: 30px;
+  background-color: #ab53c5;
+  border-radius: 4px;
+  color: white;
+    a {
+    text-decoration: none;  
+    }
+}
+
+.new-task-h4 {
+  font-family: "Lato" sans-serif;
+  font-size: 1.5em;
+  color: #a6a6a6;
+}

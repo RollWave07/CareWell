@@ -26,6 +26,7 @@ class TasksController < ApplicationController
     @my_tasks = Task.assigned_to_specific_user(@tasks.future, current_user)
     @open_tasks = Task.unassigned(@tasks)
     @update = Update.new
+    @group = current_user.group
   end
 
   def show
