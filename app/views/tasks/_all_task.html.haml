@@ -18,8 +18,11 @@
   .col-xs-8.col-md-8.summary
     %h3.card-title=task.title.truncate(25)
     %h4
-      =task_date.strftime('%A')      
-      ="(in #{distance_of_time_in_words(diff)})"
+      =task_date.strftime('%A')
+      -if task_date > Time.now
+        ="(in #{distance_of_time_in_words(diff)})"
+      -else
+        ="(#{distance_of_time_in_words(diff)} ago)"
     -if updates_count > 0
       .comments-count
         =updates_count
