@@ -5,7 +5,9 @@
 
 .row.task-card
   .col-xs-2.col-md-2
-    %h4.complete=link_to "Done", mark_complete_group_task_path(group, task_id, params: {status: 'complete'}), method: :put, remote: true
+    =link_to mark_complete_group_task_path(group, task_id, params: {status: 'complete'}), method: :put, remote: true do
+      %h4.complete
+        Done
   .col-xs-8.col-md-8.summary
     %h3.card-title=task.title.truncate(25)
     -if task_date

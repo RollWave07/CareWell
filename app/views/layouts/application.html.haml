@@ -23,7 +23,7 @@
                 =link_to image_tag('carewell-green-logo.png', :class=>"logo")
             .navbar-collapse.collapse{id: 'bs-example-navbar-collapse-6', style: {height: '1px'}}
             -if current_user
-              %ul.nav.navbar-nav.pull-right.full-screen-header
+              %ul.nav.navbar-nav.pull-right
                 -if current_user.group != nil && user_signed_in?
                   %li.navbar-link
                     = link_to 'Tasks', group_tasks_path(current_user.group_id), {class: nav_links_class("index", "tasks")}
@@ -39,29 +39,29 @@
             -else
               .nav.navbar-nav.pull-right.full-screen-header
                 =render 'devise/sessions/new_session'
-              %ul.nav.navbar-nav.pull-right.mobile-header
-                -if current_user
-                  -if current_user.group != nil && user_signed_in?
-                    %li.navbar-link
-                      = link_to 'Sign Out', destroy_user_session_path, method: :delete
-                  -else
-                    / %li.navbar-link
-                    /   = link_to "Create New Group", new_user_registration_path
-                    %li.navbar-link
-                      = link_to "Sign in", new_user_session_path
+              / %ul.nav.navbar-nav.pull-right.mobile-header
+              /   -if current_user
+              /     -if current_user.group != nil && user_signed_in?
+              /       %li.navbar-link
+              /         = link_to 'Sign Out', destroy_user_session_path, method: :delete
+              /     -else
+              /       / %li.navbar-link
+              /       /   = link_to "Create New Group", new_user_registration_path
+              /       %li.navbar-link
+              /         = link_to "Sign in", new_user_session_path
 
-    -if current_user
-      .container.mobile-header
-        .row.task-index
-          %h1.task-header
-            %span.glyphicon.glyphicon-tasks
-            =link_to "TASKS", group_tasks_path(current_user.group_id)
-          %h1.task-header
-            %span.glyphicon.glyphicon-stats
-            =link_to "GROUP", group_path(current_user.group_id)
-          %h1.task-header
-            %span.glyphicon.glyphicon-user
-            =link_to "PROFILE", group_user_path(current_user.group_id, current_user.id)
+    / -if current_user
+    /   .container.mobile-header
+    /     .row.task-index
+    /       %h1.task-header
+    /         %span.glyphicon.glyphicon-tasks
+    /         =link_to "TASKS", group_tasks_path(current_user.group_id)
+    /       %h1.task-header
+    /         %span.glyphicon.glyphicon-stats
+    /         =link_to "GROUP", group_path(current_user.group_id)
+    /       %h1.task-header
+    /         %span.glyphicon.glyphicon-user
+    /         =link_to "PROFILE", group_user_path(current_user.group_id, current_user.id)
 
     .container
       -if flash[:notice]

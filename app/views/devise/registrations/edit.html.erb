@@ -1,60 +1,62 @@
-<div class="col-md-12">
-  <h2>Edit Profile</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div class="edit-register-form">
+          <h2>Edit Profile</h2>
 
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-    <%= devise_error_messages! %>
+          <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+            <%= devise_error_messages! %>
 
-    <div><%= f.label :first_name %><br />
-    <%= f.text_field :first_name, :autofocus => true %></div>
+            <div><%= f.label :first_name %><br />
+            <%= f.text_field :first_name, :autofocus => true %></div>
 
-    <div><%= f.label :last_name %><br />
-    <%= f.text_field :last_name, :autofocus => true %></div>
+            <div><%= f.label :last_name %><br />
+            <%= f.text_field :last_name, :autofocus => true %></div>
 
-    <div><%= f.label :phone %>
-      <a href="#" class="phone_info" data-toggle="tooltip" title="We can optionally send you text messages instead of emails to keep you updated.">Why this?</a><br>
-    <%= f.text_field :phone, placeholder: "858-886-9929", :autofocus => true %></div>
+            <div><%= f.label :phone %>
+              <a href="#" class="phone_info" data-toggle="tooltip" title="We can optionally send you text messages instead of emails to keep you updated.">Why this?</a><br>
+            <%= f.text_field :phone, placeholder: "858-886-9929", :autofocus => true %></div>
+            <br>
+            <%= f.label :picture %><br>
+            <!-- Removing require -->
+            <%= f.file_field :picture %>
 
-    <%= f.label :picture %><br>
-    <!-- Removing require -->
-    <%= f.file_field :picture %><br><br>
+            <div><%= f.label :email %><br />
+            <%= f.text_field :email, :autofocus => true %></div>
 
-    <div><%= f.label :email %><br />
-    <%= f.text_field :email, :autofocus => true %></div>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
+            <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+            <%= f.password_field :password, :autocomplete => "off", placeholder: "password" %>
+            <%= f.password_field :password_confirmation, placeholder: "confirm password" %></div>
 
-    <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, :autocomplete => "off" %></div>
+            <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+            <%= f.password_field :current_password %></div>
 
-    <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %></div>
+            <div><%= f.submit "Update" %></div>
+          <% end %>
 
-    <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password %></div>
+          <h3>Cancel my account</h3>
 
-    <div><%= f.submit "Update" %></div>
-  <% end %>
+            Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>
 
-  <h3>Cancel my account</h3>
-
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
-
-  <%= link_to "Back", :back %>
+          <%= link_to "Oops, go back", :back %>
+          </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+  </div>
 </div>
-
 <!-- Add some styles for the phone information hover.  Not sure where to put this given it being a devise controller (which css file touches this?) -->
 
 
 <style>
-  div {
-    margin-bottom: 15px;
-  }
   .phone_info {
     text-decoration: underline;
     color: blue;
     padding-left: 40px;
   }
-
 </style>
