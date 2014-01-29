@@ -12,43 +12,35 @@
         .container
           %nav.navbar{:role=>"navigation"}
             .navbar-header
-              %button.navbar-toggle.collapsed{type: 'button', 'data-toggle'=> 'collapse', 'data-target' => '#bs-example-navbar-collapse-6'}
-                %span.sr-only Toggle Navigation
-                %span.icon-bar
-                %span.icon-bar
-                %span.icon-bar
               -if current_user
                 =link_to image_tag('carewell-green-logo.png', :class=>"logo"),group_tasks_path(current_user.group_id)
               -else
                 =link_to image_tag('carewell-green-logo.png', :class=>"logo")
-            .navbar-collapse.collapse{id: 'bs-example-navbar-collapse-6', style: {height: '1px'}}
-            -if current_user
-              %ul.nav.navbar-nav.pull-right
-                -if current_user.group != nil && user_signed_in?
-                  %li.navbar-link
-                    = link_to 'Tasks', group_tasks_path(current_user.group_id), {class: nav_links_class("index", "tasks")}
-                  %li.navbar-link
-                    = link_to 'My Group', group_path(current_user.group_id), {class: nav_links_class("show", "groups")}
-                  %li.navbar-link
-                    = link_to 'My Profile', group_user_path(current_user.group_id, current_user.id), {class: nav_links_class("show", "users")}
-                  %li.navbar-link.last
-                    = link_to 'Sign Out', destroy_user_session_path, method: :delete
-                -else
-                  %li.navbar-link
-                    = link_to "Sign in", new_user_session_path
-            -else
-              .nav.navbar-nav.pull-right.full-screen-header
-                =render 'devise/sessions/new_session'
-              / %ul.nav.navbar-nav.pull-right.mobile-header
-              /   -if current_user
-              /     -if current_user.group != nil && user_signed_in?
-              /       %li.navbar-link
-              /         = link_to 'Sign Out', destroy_user_session_path, method: :delete
-              /     -else
-              /       / %li.navbar-link
-              /       /   = link_to "Create New Group", new_user_registration_path
-              /       %li.navbar-link
-              /         = link_to "Sign in", new_user_session_path
+
+              %button.navbar-toggle.collapsed{type: 'button', 'data-toggle'=> 'collapse', 'data-target' => '#bs-example-navbar-collapse-6'}
+                %span.sr-only Toggle Navigation
+                %span.icon-bar{style: "color: white;"}
+                %span.icon-bar
+                %span.icon-bar
+
+            .navbar-collapse.collapse{id: 'bs-example-navbar-collapse-6'}
+              -if current_user
+                %ul.nav.navbar-nav.pull-right
+                  -if current_user.group != nil && user_signed_in?
+                    %li.navbar-link
+                      = link_to 'Tasks', group_tasks_path(current_user.group_id), {class: nav_links_class("index", "tasks")}
+                    %li.navbar-link
+                      = link_to 'My Group', group_path(current_user.group_id), {class: nav_links_class("show", "groups")}
+                    %li.navbar-link
+                      = link_to 'My Profile', group_user_path(current_user.group_id, current_user.id), {class: nav_links_class("show", "users")}
+                    %li.navbar-link.last
+                      = link_to 'Sign Out', destroy_user_session_path, method: :delete
+                  -else
+                    %li.navbar-link
+                      = link_to "Sign in", new_user_session_path
+              -else
+                .nav.navbar-nav.pull-right.full-screen-header
+                  =render 'devise/sessions/new_session'
 
     -if current_user
       .container

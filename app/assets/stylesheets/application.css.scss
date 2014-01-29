@@ -127,10 +127,6 @@ body {
   }
 }
 
-.navbar-collapse.collapse {
-  display: inline-block !important;
-}
-
 .nav {
   form {
     display: inline-block;
@@ -157,6 +153,11 @@ body {
 
 .navbar-toggle {
 margin-top: 8px;
+border: 2px solid white;
+  .icon-bar {
+    background: white;
+  }
+
 }
 
 .btn {
