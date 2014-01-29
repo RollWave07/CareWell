@@ -2,7 +2,23 @@
 .container.group-show
   .row.family-members
     .col-md-6
-      =image_tag(@group.picture_url(:group), :class=>'group-photo')
+      -if @group.picture_url == nil
+        %img{src: "http://placehold.it/400x250/f2f2f2/ef5e5a&text=Add+Your+Group+Photo!", class: 'update'}
+        = form_for(@group) do |f|
+          - if @group.errors.any?
+            #error_explanation
+              %h2
+                = pluralize(@group.errors.count, "error")
+                prohibited this picture from being saved:
+              %ul
+                - @group.errors.full_messages.each do |msg|
+                  %li= msg
+          .field
+            = f.file_field :picture, :required => true
+          .actions
+            = f.submit
+      -else
+        =image_tag(@group.picture_url(:group), :class=>'group-photo')
     .col-md-6.whitetext
       %h1="The #{@group.name}"
       %h3="#{@group_count} Members"
@@ -10,7 +26,10 @@
         -group_users = @users
         -group_users.each do |user|
           =link_to group_user_path(@group, user.id) do
-            =image_tag(user.picture_url(:sq_thumb), :class => "group-user-photo")
+            -if user.picture_url == nil
+              =image_tag("mickey-mouse.jpg", class: "group-user-photo")
+            -else
+              =image_tag(user.picture_url(:sq_thumb), :class => "group-user-photo")
       .group_invite
         =render 'tasks/modal'
       -if current_user.admin == true
@@ -61,7 +80,7 @@
         %canvas#barChart{height: "400", width: "400"}
       / -@category_avg.each do |task, average|
       /   ="#{task}: #{average}"
-    
+
 
 = javascript_include_tag "Chart.js"
 =render "linechart"
