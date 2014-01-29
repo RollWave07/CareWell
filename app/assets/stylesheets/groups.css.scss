@@ -64,7 +64,18 @@
 
   .edit-group {
     color: white;
+    a{
+      color: white;
+      text-decoration: none;
+    }
+
   }
+
+  #show-group-page {
+    a {
+      color: white;
+  }
+}
 
   h2 {
     font-size: 1.5em;

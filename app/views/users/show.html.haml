@@ -5,7 +5,10 @@
     .profile_top
       .col-md-5
         .profile_pic
-          =image_tag(@user.picture_url(:wide))
+          -if @user.picture_url == nil
+            =image_tag("mickey-mouse.jpg", class: "group-user-photo")
+          -else
+            =image_tag(@user.picture_url(:wide))
       .profile_info.col-md-7
         .profile_name="#{@user.first_name} #{@user.last_name}"
         .profile_contact
@@ -15,7 +18,7 @@
             .edit.glyphicon.glyphicon-pencil=link_to "Edit", edit_user_registration_path
   .row
     %br
-    %br  
+    %br
   .row
     .profile_name="#{@user.first_name}'s Tasks"
   .row
