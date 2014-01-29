@@ -18,12 +18,12 @@ class TopMembersQuery
   #   ActiveRecord::Base.connection.execute('select users.first_name, users.last_name, users.picture, count(*) as cnt from users inner join (SELECT * FROM tasks WHERE task_date < NOW()) t on users.id = t.assignee_id group by users.id order by cnt desc')
   # end
 
-  def users_and_tasks_list(days)
-    ActiveRecord::Base.connection.execute("select users.group_id, users.id, count(*) as cnt from users inner join (SELECT * FROM tasks WHERE task_date BETWEEN now()::date - #{days} AND NOW()) t on users.id = t.assignee_id group by users.id order by cnt desc")
+  def users_and_tasks_list(days, groupid)
+    ActiveRecord::Base.connection.execute("select users.group_id, users.id, count(*) as cnt from users inner join (SELECT * FROM tasks WHERE task_date BETWEEN now()::date - 30 AND NOW() AND tasks.groupid = #{groupid}) t on users.id = t.assignee_id group by users.id order by cnt desc")
   end
 
 #-----Test
-# ActiveRecord::Base.connection.execute("select users.group_id, users.id, count(*) as cnt from users inner join (SELECT * FROM tasks WHERE task_date BETWEEN now()::date - 30 AND NOW()) t on users.id = t.assignee_id group by users.id order by cnt desc Limit 3")
+# ActiveRecord::Base.connection.execute("select users.group_id, users.id, count(*) as cnt from users inner join (SELECT * FROM tasks WHERE task_date BETWEEN now()::date - 30 AND NOW() AND tasks.groupid = 1) t on users.id = t.assignee_id group by users.id order by cnt desc")
 
   #FIXME: finds multiple records of Active Record
   # def most_helpful_order

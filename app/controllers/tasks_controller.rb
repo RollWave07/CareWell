@@ -3,18 +3,17 @@ class TasksController < ApplicationController
   before_action :find_group
 
   def send_email
-    group_id = params[:group_id]
-    inviter = current_user.first_name
+    inviter_first = current_user.first_name
+    inviter_last = current_user.last_name
     first_name = params[:first_name]
     last_name = params[:last_name]
     email = params[:email]
-    task = params[:task]
-    result = Userinvite.invite(group_id, inviter, first_name, last_name, email, task).deliver
+    result = Userinvite.invite(@group, inviter_first, inviter_last, first_name, last_name, email).deliver
     respond_to do |format|
       if result
-        format.html { redirect_to group_tasks_path(group_id), notice: 'Message sent successfully' }
+        format.html { redirect_to :back, notice: 'Message sent successfully' }
       else
-        format.html { redirect_to group_tasks_path(group_id), notice: 'Message NOT sent successfully' }
+        format.html { redirect_to :back, notice: 'Message NOT sent successfully' }
       end
     end
     # format.html { notice: 'Message sent successfully' }
