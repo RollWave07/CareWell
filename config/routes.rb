@@ -1,6 +1,6 @@
 Carewell::Application.routes.draw do
   get "receivetexts/index"
-  get "sendtexts/index"
+
 
 
   post "sendtexts/send_text_message" => 'sendtexts#send_text_message', as: 'send_text'
@@ -18,7 +18,7 @@ Carewell::Application.routes.draw do
     resources :tasks do
       member { put :mark_complete }
       resources :updates do
-        member { post :vote, :unvote }
+        member { post :vote }
       end
     end
     resources :locations
@@ -32,5 +32,5 @@ Carewell::Application.routes.draw do
   get "pages/welcome" => 'pages#welcome', as: 'welcome'
   get "pages/about_us"
   get "users/index"
-
+  get "sendtexts/index"
 end

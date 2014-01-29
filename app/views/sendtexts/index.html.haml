@@ -1,2 +1,13 @@
-%h1 Sendtexts#index
-%p Find me in app/views/sendtexts/index.html.haml
+.container
+  .row
+    .send-text-btn  
+      %h1 Shhhhh!!!!
+      %h2 Secret Send Text Page
+      %br
+      %br
+      =button_to "send text", send_text_path({task_id: params[:taskid]}), method: "post", id: 'send-button', remote: true
+
+      / =form_for @sendtexts as: :post,  url: send_text_path(@task) do |f|
+      /   =f.label :task
+      /   =f.text_field :task
+      /   =f.submit

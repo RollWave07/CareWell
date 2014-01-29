@@ -1,3 +1,25 @@
 // Place all the styles related to the Sendtexts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.send-text-btn {
+  text-align: center;
+  font-family: Leto;
+  color: white;
+  text-align: center;
+}
+#send-button{
+  border-radius: 5px;
+  background: #ff615b;
+  padding: 20px 30px;
+  margin: 20px 0px;
+  color: white;
+  font-family: Lato;
+  font-weight: 400;
+  font-size: 2em;
+  text-align: center;
+  cursor: pointer;
+  width: 300px;
+  height: 100px;
+  right: 0px;
+}
+
