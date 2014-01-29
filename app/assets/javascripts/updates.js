@@ -10,10 +10,7 @@
 
 // THIS ONE:
 
-$(document).on("ajax:success", ".col-md-3", function(e, data, status, xhr){
-  // console.log(data)
-  // console.log(status)
-  console.log(this)
+$(document).on("ajax:success", ".like-it-now", function(e, data, status, xhr){
   $("#vote" + data.vote_id).text(data.count);
   $(this).find("span").toggleClass( "active-glyphicon-heart" );
   // console.log("#vote" + data.vote_id)
