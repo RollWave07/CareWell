@@ -36,7 +36,6 @@ $mint-green: #60D97B;
     src: url(font-path('JennaSue.ttf'))  format('truetype');
 }
 
-
 navbar-inner
 
 h1,h2, h3 {
@@ -56,6 +55,7 @@ html {
 body {
   background-color: #3498db;
   height: 100%;
+  font-family: 'Lato'
 }
 
 .mobile-header {

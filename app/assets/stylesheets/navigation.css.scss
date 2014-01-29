@@ -3,19 +3,16 @@
   .active {
     background: #f0ad4e;
     border-radius: 5px;
-    color: #3498db !important;
+    color: white;
+  }
+
+  li.navbar-link {
+    a {
+    border-radius: 5px;
+  }
   }
   .category-shopping {
     //placeholder
   }
-  //useful potential triangle css for downward pointing arrow
-  // .arrow-down {
-  //   width: 0;
-  //   height: 0;
-  //   border-left: 20px solid transparent;
-  //   border-right: 20px solid transparent;
-
-  //   border-top: 20px solid #f00;
-  // }
 
 }

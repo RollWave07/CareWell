@@ -18,6 +18,9 @@ $bgc: #ded8ce;
 
 //styles
 
+.task-card {
+  background: #f2f2f2;
+}
   .task {
     margin: 30px;
     background-color: $bgc;
@@ -33,11 +36,23 @@ $bgc: #ded8ce;
     }
   }
 
+  .updates {
+    margin-top: 25px;
+    box-shadow: 0px 0px 3px #888888;
+  }
+
+  .icon {
+    font-size: 3em;
+    margin-right: 10px;
+    color: #ef5e5a;
+  }
+
   input[type='text'] {
     outline: none;
   }
 
   .update {
+    background: #f2f2f2;
     div {
     .picture, .comment, .name, .info {
       display: inline-block;
@@ -374,6 +389,11 @@ $bgc: #ded8ce;
     color: white;
   }
 
+  .task-details{
+    font-family: 'Lato'
+  }
+
+
   .hearts-count {
     position: relative;
     display: inline-block;
@@ -390,15 +410,20 @@ $bgc: #ded8ce;
 //set up task show page
 
 h1.show-card-title {
-  font-size: 3em;
+  color: #ef5e5a;
+  font-size: 2.7em;
   margin-top: 0;
   display: inline-block;
 }
 
 h3.show-card-section-header {
-  font-size: 1em;
-  text-transform: uppercase;
-  text-decoration: underline;
+  font-size: 2em;
+}
+
+.show-card-section-header {
+  font-size: 0.8em;
+  color: #9d9d9d;
+  font-weight: 400;
 }
 
 .time-from-now {
@@ -420,19 +445,18 @@ top: -10px;
 .arrow-left {
   width: 0;
   height: 0;
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-right:20px solid #323232;
-  margin-top: 20px;
-  margin-left: -10px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right:10px solid white;
   display: inline-block;
+  position:relative;
+  top: 48px;
+  left: 17px;
 }
 
 .back-words {
-display: inline;
-padding-left: 10px;
-position: relative;
-top: -7px;
+  color: white;
+  margin-left: 40px;
 }
 
 .inline {
@@ -445,8 +469,8 @@ top: -7px;
 
 .awesome {
   display: inline-block;
-  padding-right: 10%;
   font-size: 24px;
+  padding-left: 20px;
 }
 
 //set up for mobile

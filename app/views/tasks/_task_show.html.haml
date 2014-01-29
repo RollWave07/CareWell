@@ -5,31 +5,40 @@
 - task_information = task.information
 - diff = task_task_date.to_i - Time.now.to_i
 .task-card
-  %h1.show-card-title=task.title  
-  -if updates_count > 0
-    .comments-count
-      =updates_count
-    %i.fa.fa-comment.task-card-icon  
-  -if likes_count > 0
-    .hearts-count
-      =likes_count
-    %i.fa.fa-heart.task-card-icon.heart-icon-color
-  %h3.show-card-section-header
-    Covered By
-  -if assignee
-    =image_tag(assignee.picture_url(:sq_thumb))
-  -else
-    %p I can help.
-  %h3.show-card-section-header
-    Date and Time
+  -if task.category == "getting places"
+    %i.fa.fa-truck.icon
+  -if task.category == "around the home"
+    %i.fa.fa-home.icon
+  -if task.category == "shopping"
+    %i.fa.fa-shopping-cart.icon
+  -if task.category == "meals"
+    %i.fa.fa-cutlery.icon
+  -if task.category == "personal care"
+    %i.fa.fa-stethoscope.icon
+  -if task.category == "odds & ends"
+    %i.fa.fa-wrench.icon
+  -if task.category == "visits & outings"
+    %i.fa.fa-users.icon
+  -if task.category == "remote"
+    %i.fa.fa-phone.icon
+  %h1.show-card-title=task.title
   -if task_task_date
-    %p
+    %p.task-details
       =task_task_date.strftime('%l:%M %p') + ' on '
       =task_task_date.strftime('%A, %B %e')
-    .time-from-now
-      ="in #{distance_of_time_in_words(diff)}"
+      .time-from-now
+        ="(in #{distance_of_time_in_words(diff)})"
   -else
     %p No date or time information.
+  %h3.show-card-section-header
+    Covered By
+    -if task.assignee
+      -if task.assignee.picture
+        =image_tag(task.assignee.picture_url(:sq_thumb))
+      -else
+      =task.assignee.first_name
+    -else
+      %p I can help.
   %h3.show-card-section-header
     Details
   -if task_information
@@ -42,8 +51,11 @@
     =link_to edit_group_task_path(group, task) do
       %span.awesome
         %span.glyphicon.glyphicon-edit
+        Edit
     =link_to group_task_path(group, task), method: :delete, data: { confirm: 'Are you sure you want to delete this task?' } do
       %span.awesome
         %span.glyphicon.glyphicon-trash
-  -if current_user == assignee
-    =link_to "DROP", group_task_path(group, task, params: {assignee_id: nil}), method: :put, data: { confirm: 'Are you sure you want to drop this task?'}
+        Delete
+      %span.awesome
+        -if current_user == assignee
+          =link_to "Unassign", group_task_path(group, task, params: {assignee_id: nil}), method: :put, data: { confirm: 'Are you sure you want to drop this task?'}

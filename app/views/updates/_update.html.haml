@@ -6,7 +6,7 @@
 .row.update{"data-id" => update_id}
   .row.photo-comment-header
     .col-md-2.col-xs-2
-      -if user.picture 
+      -if user.picture_url
         =image_tag(user.picture_url(:sq_thumb))
       -else
         =user.first_name

@@ -1,15 +1,18 @@
-=form_for [@group, @task, @update], remote: true do |f|
+%h1.show-card-title
+  Comments
+.row
   .col-md-1
-    -if current_user.picture != nil
+    -if current_user.picture_url(:sq_thumb)
       =image_tag(current_user.picture_url(:sq_thumb))
     -else
-      =update.user.first_name
-  .col-md-8
-    =f.text_area :comment, placeholder: "Anything to share about this task?", class: 'input-size'
-    %p
-    .image-update
-      =f.label :picture, "Add picture update:"
-      =f.file_field :picture, value: "Add picture update"
-    =f.hidden_field(:task_id, value: task.id)
-    =f.submit "Add Update"
-  .col-md-3
+      =current_user.first_name
+  .col-md-11
+    =form_for [@group, @task, @update], remote: true do |f|
+      =f.text_area :comment, placeholder: "Anything to share about this task?", class: 'input-size'
+      .col-md-6
+        .image-update
+          =f.label :picture, "Add picture update:"
+          =f.file_field :picture, value: "Add picture update"
+        =f.hidden_field(:task_id, value: task.id)
+      .col-md-6
+        =f.submit "Add Update", class: "submit-update"
