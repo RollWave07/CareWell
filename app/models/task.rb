@@ -39,16 +39,16 @@ class Task < ActiveRecord::Base
 # Task.categories_per_month(groupid)
 
   def self.bar_chart_array(task_hash)
-   categories = ["getting places", "around the home", "shopping", "meals", "personal care", "odds & ends", "visits & outings", "remote"]
-   answer = []
-   categories.each do |category|
-    if task_hash[category]
-      answer << task_hash[category].to_i
-    else
-      answer << 0
+    categories = ["getting places", "around the home", "shopping", "meals", "personal care", "odds & ends", "visits & outings", "remote"]
+    answer = []
+    categories.each do |category|
+      if task_hash[category]
+        answer << task_hash[category].to_i
+      else
+        answer << 0
+      end
     end
-   end
-   answer
+    answer
   end
 
 
@@ -65,6 +65,9 @@ class Task < ActiveRecord::Base
     total
   end
 
+  def self.duration_total_past_week(tasks)
+    tasks.week_one.inject(0) { |mem, var|  mem + var.duration}/60
+  end
 
 
   def self.tasks(group)

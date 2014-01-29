@@ -1,21 +1,12 @@
-Group.create!([{name: "Star Wars"},{name: "BreatheHeavy"}] )
+Group.create!([{name: "Hook"},{name: "BreatheHeavy"}] )
 
 User.create!([
-  {first_name: "Luke",last_name: "Skywalker", email: "luke@skywalker.com", password:"password", phone: 6175158907, group_id: 1, admin: true },
-  {first_name: "rtwo",last_name: "dtwo", email: "rtwo@dtwo.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
-  {first_name: "Princess",last_name: "Leia", email: "princess@leia.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
-  {first_name: "Anakin",last_name: "Skywalker", email: "Anakin@Skywalker.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
-  {first_name: "cthree",last_name: "po", email: "cthree3@po.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
-  {first_name: "Yoda",last_name: "jedi", email: "yoda@jedi.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
-  {first_name: "Han",last_name: "Solo", email: "han@solo.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
-  {first_name: "Jabba",last_name: "Hut", email: "jabba@hut.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
-  {first_name: "Chewy",last_name: "baca", email: "chewy@baca.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
-  {first_name: "Obi",last_name: "Wan", email: "obei@wan.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
-  {first_name: "Darth",last_name: "Vader", email: "darth@vader.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
-  {first_name: "Sith",last_name: "Lord", email: "sith@lord.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
-  {first_name: "Boba",last_name: "Fett", email: "boba@fett.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
-  {first_name: "Padme",last_name: "Amidala", email: "padme@amidala.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
-  {first_name: "Jar Jar",last_name: "Binks", email: "jarjar@binks.com", password:"password", phone: 6175158907, group_id: 1, admin: false }, 
+  {first_name: "Captain",last_name: "Hook", email: "captain@hook.com", password:"password", phone: 6175158907, group_id: 1, admin: true },
+  {first_name: "Tinker",last_name: "Bell", email: "tinker@bell.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
+  {first_name: "Tiger",last_name: "Lily", email: "tiger@lily.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
+  {first_name: "Lost",last_name: "Boys", email: "lost@boys.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
+  {first_name: "Peter",last_name: "Pan", email: "peter@pan.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
+  {first_name: "Mr",last_name: "Smee", email: "mr@smee.com", password:"password", phone: 6175158907, group_id: 1, admin: false },
   {first_name: "Holy",last_name: "Spearit", email: "holy@spearit.com", password:"password", phone: 6175158907, group_id: 2, admin: true },
   {first_name: "Godney",last_name: "Spears", email: "godney@spears.com", password:"password", phone: 6175158907, group_id: 2, admin: false },
   {first_name: "Jessica",last_name: "British", email: "jessica@british.com", password:"password", phone: 6175158907, group_id: 2, admin: false }
@@ -34,20 +25,20 @@ category_array = [
  "remote"
 ]
 
-duration_array = [15,  30,  45,  60,  75, 90, 120]
+duration_array = [15,  30,  45,  60, 75, 90, 120]
 
 people = User.all.count-3
 
 
 
 index = 1
-while index<101 
-  Task.create!({title: "Task number #{index}", groupid: 1, category: category_array.sample, duration: duration_array.sample, task_date: Time.now+rand(30).day, user_id: rand(people)+1})
+while index<12
+  Task.create!({title: "Task number #{index}", groupid: 1, category: category_array.sample, duration: duration_array.sample, task_date: Time.now-rand(30).day, user_id: rand(people)+1})
   index += 1
 end
 
-while index<200
-  Task.create!({title: "Task number #{index}", groupid: 1, category: category_array.sample, duration: duration_array.sample, task_date: Time.now-rand(30).day, user_id: rand(people)+1})
+while index<27
+  Task.create!({title: "Task number #{index}", groupid: 1, category: category_array.sample, duration: duration_array.sample, task_date: Time.now+rand(30).day, user_id: rand(people)+1})
   index += 1
 end
 
