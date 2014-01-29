@@ -70,6 +70,7 @@
         = content_tag :div, flash[:alert], class: "alert alert-warning"
       -if flash[:error]
         = content_tag :div, flash[:error], class: "alert alert-danger"
+
     = yield
 
     = javascript_include_tag "application"
