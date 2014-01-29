@@ -141,7 +141,11 @@ body {
       font-size: medium;
     }
     input[type='submit']{
-      padding: 10px 20px;
+      padding: 8px 20px;
+      color: white;
+      height: 40px;
+      margin-bottom: 4px;
+      margin-left: 1px;
       background-color: #f0ad4e;
     }
   }
@@ -226,6 +230,7 @@ li.navbar-link {
 
 .logo {
   margin-top: 15px;
+  margin-bottom:15px;
 }
 
 .container-full {
