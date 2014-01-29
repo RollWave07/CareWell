@@ -62,14 +62,13 @@
           %h1.task-header
             %span.glyphicon.glyphicon-user
             =link_to "PROFILE", group_user_path(current_user.group_id, current_user.id)
-
-    .container
-      -if flash[:notice]
-        = content_tag :div, flash[:notice], class: "alert alert-success"
-      -if flash[:alert]
-        = content_tag :div, flash[:alert], class: "alert alert-warning"
-      -if flash[:error]
-        = content_tag :div, flash[:error], class: "alert alert-danger"
+      .container
+        -if flash[:notice]
+          = content_tag :div, flash[:notice], class: "alert alert-success"
+        -if flash[:alert]
+          = content_tag :div, flash[:alert], class: "alert alert-warning"
+        -if flash[:error]
+          = content_tag :div, flash[:error], class: "alert alert-danger"
     = yield
 
     = javascript_include_tag "application"
