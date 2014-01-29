@@ -14,9 +14,10 @@ class GroupsController < ApplicationController
    
     @counts_arrays = Task.count_per_period(@assigned_tasks)
     
-    @users_and_tasks = TopMembersQuery.new.users_and_tasks_list(30)
+    @users_and_tasks = TopMembersQuery.new.users_and_tasks_list(30, @group.id)
 
     @last_three_tasks_completed = Task.last_three_tasks_completed(@assigned_tasks)
+
     @category_avg = Task.average_duration_per_category(@assigned_tasks)
 
     @group_count = @users.count
@@ -26,6 +27,8 @@ class GroupsController < ApplicationController
     @categories_per_month_array = Task.bar_chart_array(Task.categories_per_month(@group.id))
 
     @duration_chart_data = Task.bar_chart_array(@category_avg)
+
+    @duration_week = Task.duration_total_past_week(@assigned_tasks)
   end
 
   def edit

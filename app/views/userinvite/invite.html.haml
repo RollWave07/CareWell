@@ -1,4 +1,4 @@
-= "Hi #{@first_name}, #{@inviter} would like your help with #{@task}. If you would like to help out, please click on the link below to register:"
+= "Hi #{@first_name}, #{@inviter_first} would like to invite you to join the CareWell group: #{@group_name}. If you would like to help out, please click on the link below to register:"
 
 %p For more information, click the link below:
 = link_to "Register", new_user_registration_url(params: {group_id: @group_id, first_name: @first_name, last_name: @last_name, email: @email} )

@@ -3,7 +3,7 @@
   .row.family-members
     .col-md-6
       =image_tag(@group.picture_url(:group), :class=>'group-photo')
-    .col-md-6
+    .col-md-6.whitetext
       %h1="The #{@group.name}"
       %h3="#{@group_count} Members"
       .group-member
@@ -11,42 +11,27 @@
         -group_users.each do |user|
           =link_to group_user_path(@group, user.id) do
             =image_tag(user.picture_url(:sq_thumb), :class => "group-user-photo")
+      .group_invite
+        =render 'tasks/modal'
       -if current_user.admin == true
         %h3 Admin Options
-
-  %h1 Group Statistics
-  .graph-background
-    .row
-      .col-md-6grou
-        %h3 Tasks Assigned Per Week
-        %canvas#lineChart{height: "400", width: "400"}
-        %canvas#durationChart{height: "400", width: "400"}
-      .col-md-6
-        %h1="The #{@group.name}"
-        %h2="#{@group_count} Members"
-        .group-member
-          -@users.each do |user|
-            =link_to group_user_path(@group, user.id) do
-              =image_tag(user.picture_url(:sq_thumb), :class => "group-user-photo")
-        -if current_user.admin == true
-          %h3 Admin Options
-          =link_to 'Edit Group', edit_group_path(@group), {class: "edit-group"}
+        =link_to 'Edit Group', edit_group_path(@group), {class: "edit-group"}
   .row
     %h1 The Week By Numbers
     .col-md-4
       .number-summary-stats
-        5
+        =@counts_arrays.first
       %p.number-summary Tasks Completed This Week
     .col-md-4
       .number-summary-stats
-        5
+        =@users_and_tasks.count
       %p.number-summary Active Family Members
     .col-md-4
       .number-summary-stats.green
-        10
-      %p.number-summary Total Care Factor
-    .col-md-6
-      %h3 Members Who Completed Tasks This Month
+        =@duration_week
+      %p.number-summary Hours Caring This Week
+    .col-md-6.whitetext
+      %h3 Top Three Members This Month
       -@users_and_tasks.take(3).each do |hash|
         -if hash["group_id"].to_i == @group.id
           -user = group_users.find(hash["id"])
@@ -54,22 +39,25 @@
           =user.first_name
           ="#{hash["cnt"]} Tasks Completed"
           %br
-    .col-md-6
-      %h3="Last Three Tasks Completed"
-    -@last_three_tasks_completed.each do |task|
-      ="#{task.title} was completed by #{task.assignee.first_name}"
-      %br
-
-
+    .col-md-6.whitetext
+      %h3 Last Three Tasks Completed
+      -@last_three_tasks_completed.each do |task|
+        ="#{task.title} was completed by #{task.assignee.first_name}"
+        %br
   %h1 Detailed Group Statistics
   .graph-background
-    .row
+    .row.greentext.text-center
       .col-md-6
         %h3 Tasks Assigned Per Week
+        %br
         %canvas#lineChart{height: "400", width: "400"}
+      .col-md-6
+        %h3 Average Time Per Task
+        %br
         %canvas#durationChart{height: "400", width: "400"}
       .col-md-6
         %h3 Tasks by Category (All Time)
+        %br
         %canvas#barChart{height: "400", width: "400"}
       / -@category_avg.each do |task, average|
       /   ="#{task}: #{average}"
