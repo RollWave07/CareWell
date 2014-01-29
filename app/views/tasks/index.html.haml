@@ -2,7 +2,7 @@
   .row.task-index-header
     %h1
       ="Tasks for The #{@group.name}"
-    =link_to new_group_task_path(current_user.group) do 
+    =link_to new_group_task_path(current_user.group) do
       .purple-new-task-button
         %h4 Add New Task
   .row
@@ -13,13 +13,13 @@
           ="(#{@my_tasks.count})"
       %li
         %a{'data-toggle' => "tab", href: "#alltasks"}
-          Open Tasks
+          All Upcoming Tasks
           ="(#{@tasks.count})"
       %li
         %a.open-task-count{'data-toggle' => "tab", href: "#opentasks"}
-          Future Tasks
+          Open Tasks
           ="(#{@open_tasks.count})"
-          
+
     .tab-content
       #mytasks.tab-pane.fade.in.active
         -unless @my_tasks.empty?

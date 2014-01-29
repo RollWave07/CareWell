@@ -6,7 +6,7 @@
       .col-md-5
         .profile_pic
           -if @user.picture_url == nil
-            =image_tag("mickey-mouse.jpg", class: "group-user-photo")
+            =image_tag("mickey-mouse-large.jpg", class: "group-user-photo")
           -else
             =image_tag(@user.picture_url(:wide))
       .profile_info.col-md-7
@@ -17,32 +17,28 @@
           -if current_user == @user
             .edit.glyphicon.glyphicon-pencil=link_to "Edit", edit_user_registration_path
   .row
-    %br
-    %br
-  .row
     .profile_name="#{@user.first_name}'s Tasks"
   .row
-    %br
-    %br
-  .row
-    %ul
+    %ul.nav.nav-tabs
       %li
-        %a.profile_tasks.past_tasks{'data-toggle' => "tab", href: "#pasttasks"}
-          ="Past Tasks (#{@past_user_tasks.count})"
+        %a.my-task-count{'data-toggle' => "tab", href: "#futuretasks"}
+          ="#{@user.first_name}'s Future Tasks (#{@future_user_tasks.count})"
       %li
-        %a.profile_tasks.future_tasks{'data-toggle' => "tab", href: "#futuretasks"}
-          ="Future Tasks (#{@future_user_tasks.count})"
+        %a{'data-toggle' => "tab", href: "#pasttasks"}
+          ="#{@user.first_name}'s Past Tasks (#{@past_user_tasks.count})"
+
     .tab-content
-      #pasttasks.tab-pane.fade.in.active
-        -unless @past_user_tasks.empty?
-          -@past_user_tasks.sort_by(&:task_date).reverse.each do |task|
-            =render 'tasks/task', task: task, group: current_user.group
+      #futuretasks.tab-pane.fade.in.active
+        -unless @future_user_tasks.empty?
+          -@future_user_tasks.sort_by(&:task_date).reverse.each do |task|
+            =render 'tasks/all_task', task: task, group: @group
         -else
           =render 'tasks/no_tasks'
 
-      #futuretasks.tab-pane.fade
-        -unless @future_user_tasks.empty?
-          -@future_user_tasks.sort_by(&:task_date).each do |task|
-            =render 'tasks/task', task: task, group: current_user.group
+      #pasttasks.tab-pane.fade
+        -unless @past_user_tasks.empty?
+          -@past_user_tasks.sort_by(&:task_date).each do |task|
+            =render 'tasks/all_task', task: task, group: @group
         -else
-          =render 'tasks/no_tasks'
+          %h3.card-title{style: "margin-top: 0; padding: 30px;"}
+            ="#{@user.first_name} hasn't completed any tasks...yet!"
