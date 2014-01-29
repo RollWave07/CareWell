@@ -20,10 +20,10 @@
     .profile_name="#{@user.first_name}'s Tasks"
   .row
     %ul.nav.nav-tabs
-      %li
+      %li.half{style: "width: 50%"}
         %a.my-task-count{'data-toggle' => "tab", href: "#futuretasks"}
           ="#{@user.first_name}'s Future Tasks (#{@future_user_tasks.count})"
-      %li
+      %li{style: "width: 50%"}
         %a{'data-toggle' => "tab", href: "#pasttasks"}
           ="#{@user.first_name}'s Past Tasks (#{@past_user_tasks.count})"
 
