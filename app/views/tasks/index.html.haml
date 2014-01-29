@@ -1,7 +1,10 @@
 .container
   .row.task-index-header
-    %h1="Tasks for The #{@group.name}"
-    %h1=link_to "Add New Task", new_group_task_path(current_user.group)
+    %h1
+      ="Tasks for The #{@group.name}"
+    =link_to new_group_task_path(current_user.group) do 
+      .purple-new-task-button
+        %h4 Add New Task
   .row
     %ul.nav.nav-tabs
       %li
