@@ -142,7 +142,7 @@ $bgc: #ded8ce;
 
   .new-task {
     background-color: white;
-    padding: 10px;
+    padding: 30px;
   }
 
   .form-icon {
@@ -236,10 +236,10 @@ $bgc: #ded8ce;
   }
 
   .input-lg {
-    margin-top: 20px;
     border-radius: 0;
+    padding-left: 0;
     border: 0px;
-    border-bottom: 1px solid gray;
+    // border-bottom: 1px solid gray;
     width: 100%;
   }
 
@@ -651,5 +651,5 @@ h1 {
 .new-task-h4 {
   font-family: "Lato" sans-serif;
   font-size: 1.5em;
-  color: #a6a6a6;
+  color: #293f54;
 }

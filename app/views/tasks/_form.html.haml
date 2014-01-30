@@ -1,9 +1,9 @@
 .row
   .col-xs-12.col-md-12.new-task
     =form_for [@group, @task] do |task|
-      %h4.new-task-h4 Task Title?
+      %h4.new-task-h4 Task Title
       =task.text_field :title, placeholder: "What is the task?", autofocus: true, :class => 'input-lg'
-      %h4.new-task-h4 Category?
+      %h4.new-task-h4 Category
       .col-xs-6.col-md-3
         .task-form-icon-wrapper
           %i.fa.fa-truck.form-icon
@@ -63,16 +63,16 @@
       / , :class => 'input-lg'
       / %span.pick-categories.glyphicon.glyphicon-th
       .col-xs-12.time-details
-        %h4.new-task-h4 When?
+        %h4.new-task-h4 When
       .col-xs-12.time-details
         =task.text_field :task_date, placeholder: "tomorrow, in 3 days, by next Saturday, Jan 14, 5PM", :class => 'input-lg'
       .col-xs-12.start-time
         =task.time_field :start_time, {class: 'form-control'}
       .col-xs-12
-        %h4.new-task-h4 How long?
+        %h4.new-task-h4 How long
         %p=task.select :duration, options_for_select([['15 minutes', 15], ['30 minutes', 30], ['45 minutes', 45], ['1 hour', 60], ['75 minutes', 75], ['an hour and a half', 90], ['2 hours', 120]]), {class: 'form-control'}
       .col-xs-12
-        %h4.new-task-h4 Where?
+        %h4.new-task-h4 Where
       .col-xs-12
         %p=task.text_field :location, placeholder: "Home", class: 'input-lg'
 
@@ -85,4 +85,4 @@
 
         =task.submit :class => "btn new-task-button"
 
-        
+
