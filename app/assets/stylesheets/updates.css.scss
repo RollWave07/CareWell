@@ -24,16 +24,15 @@
 }
 
 .time-diffy {
-  margin-top: 7px;
-  margin-left: 21%;
+  padding: 20px;
   display: inline-block;
   width: 130px;
 }
 
 .like-it-now {
   display: inline-block;
-  margin-top: 7px;
-  margin-left: 35%;
+  float: right;
+  padding: 20px;
 }
 
 .update {
@@ -50,13 +49,10 @@
   }
 
   .photo-comment-header{
-    padding: 0;
-    margin-left: 21%;
-    margin-top: 20px;
+    padding: 20px;
     margin-bottom: 10px;
     .comment-text {
       margin-top: 7px;
-      margin-left: -29px;
     }
   }
 
@@ -195,7 +191,6 @@ right: 21px;
   .like-it-now {
     display: inline-block;
     margin-top: 7px;
-    margin-left: 42%;
   }
     .update {
 
