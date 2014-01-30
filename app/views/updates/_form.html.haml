@@ -1,12 +1,12 @@
 %h1.show-card-title
   Comments
 .row
-  .col-md-1
+  .col-md-2
     -if current_user.picture_url(:sq_thumb)
-      =image_tag(current_user.picture_url(:sq_thumb))
+      =image_tag(current_user.picture_url(:sq_thumb), style: "margin-left: 5px;")
     -else
       =current_user.first_name
-  .col-md-11
+  .col-md-10
     =form_for [@group, @task, @update], remote: true do |f|
       =f.text_area :comment, placeholder: "Anything to share about this task?", class: 'input-size'
       .col-md-6
