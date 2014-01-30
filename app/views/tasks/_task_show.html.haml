@@ -36,10 +36,9 @@
     -if task.assignee
       -if task.assignee.picture
         =image_tag(task.assignee.picture_url(:sq_thumb))
-      -else
-        =task.assignee.first_name
+      =task.assignee.first_name
     -else
-      %h4.sign-up=link_to "Sign-Up", group_task_path(group, task_id, params: { task: {assignee_id: current_user_id}}), method: :patch, data: {confirm: "Are you sure?"}, remote: true
+      %h4.sign-up=link_to "Sign-Up", group_task_path(group, params[:id], params: { task: {assignee_id: current_user.id}}), method: :patch, data: {confirm: "Are you sure?"}, remote: true
   %h3.show-card-section-header
     Details
   -if task_information
