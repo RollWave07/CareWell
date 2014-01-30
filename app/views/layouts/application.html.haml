@@ -41,15 +41,14 @@
               -else
                 .nav.navbar-nav.pull-right.full-screen-header
                   =render 'devise/sessions/new_session'
-
-    -if current_user
-      .container
-        -if flash[:notice]
-          = content_tag :div, flash[:notice], class: "alert alert-success"
-        -if flash[:alert]
-          = content_tag :div, flash[:alert], class: "alert alert-warning"
-        -if flash[:error]
-          = content_tag :div, flash[:error], class: "alert alert-danger"
+      -if current_user
+        .container
+          -if flash[:notice]
+            = content_tag :div, flash[:notice], class: "alert alert-success"
+          -if flash[:alert]
+            = content_tag :div, flash[:alert], class: "alert alert-warning"
+          -if flash[:error]
+            = content_tag :div, flash[:error], class: "alert alert-danger"
     /   .container.mobile-header
     /     .row.task-index
     /       %h1.task-header

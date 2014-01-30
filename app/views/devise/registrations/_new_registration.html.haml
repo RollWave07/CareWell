@@ -4,22 +4,21 @@
   = devise_error_messages!
   -if params[:group_id]
     %h3 Welcome to your group, {Group.find(params[:group_id]).name}!
-  -else
-    =text_field_tag :group_name, nil, placeholder: "What's your group's name?", autofocus: true, class: 'form-control'
-    .aside Now dear, just some basic details about you!
-    .first-name
-      =f.text_field :first_name, placeholder: "First Name", value: params[:first_name], class: 'form-control'
-    .last-name
-      =f.text_field :last_name, placeholder: "Last Name", value: params[:last_name], class: 'form-control'
-    =f.email_field :email, placeholder: "email", value: params[:email], class: 'form-control'
-    =f.hidden_field :role, value: 'caregiver'
-    =f.hidden_field :admin, value: true
-    .aside How about a password to keep this buttoned up?
-    .password
-      =f.password_field :password, class: 'form-control'
-    .confirm-password
-      =f.password_field :password_confirmation, placeholder: "Can you confirm that?", class: 'form-control'
-    =f.submit "Sign-Up", class: 'btn btn-large btn-primary btn-block btn-sign-up'
-    .aside
-      .close-window
-        Oops.
+  =text_field_tag :group_name, nil, placeholder: "Who are you caring for?", autofocus: true, class: 'form-control'
+  .aside Now dear, just some basic details about you!
+  .first-name
+    =f.text_field :first_name, placeholder: "First Name", value: params[:first_name], class: 'form-control'
+  .last-name
+    =f.text_field :last_name, placeholder: "Last Name", value: params[:last_name], class: 'form-control'
+  =f.email_field :email, placeholder: "email", value: params[:email], class: 'form-control'
+  =f.hidden_field :role, value: 'caregiver'
+  =f.hidden_field :admin, value: true
+  .aside How about a password to keep this buttoned up?
+  .password
+    =f.password_field :password, class: 'form-control'
+  .confirm-password
+    =f.password_field :password_confirmation, placeholder: "Can you confirm that?", class: 'form-control'
+  =f.submit "Sign-Up", class: 'btn btn-large btn-primary btn-block btn-sign-up'
+  .aside
+    .close-window
+      Oops.
