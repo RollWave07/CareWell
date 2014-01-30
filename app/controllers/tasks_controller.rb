@@ -60,7 +60,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     previous_task_date = @task.task_date
-    date = Chronic.parse(task_params[:task_date])    
+    date = Chronic.parse(task_params[:task_date])
     @tasks = Task.tasks(@group).future
     @my_tasks = Task.assigned_to_specific_user(@tasks.future, current_user)
     @open_tasks = Task.unassigned(@tasks)
@@ -73,16 +73,25 @@ class TasksController < ApplicationController
         if @task.save
           format.json { render json:{assignee_name: @task.assignee.first_name}}
           format.html { redirect_to group_tasks_path(@group), notice: 'task was successfully updated.' }
-          format.js { render layout: false, notice: "You've signed up for #{@task.title}."}  
+          format.js { render layout: false, notice: "You've signed up for #{@task.title}."}
           # send the mailer invitation on sign up  - taken out for demo - look into delayed_job gem.
           # if @task.assignee_id != old_assignee_id && @task.assignee != nil
           #   MailerInvitation.calendar_invite(@task).deliver
           # end
-        end  
+        end
       else
         format.html { render action: 'edit' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    task = Task.find(params[:id])
+    task.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.json { head :no_content }
     end
   end
 
