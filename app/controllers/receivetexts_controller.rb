@@ -9,7 +9,7 @@ class ReceivetextsController < ApplicationController
     @task = Task.where(assignee_id: @assignee).completed_recently.first
     
     unless @task
-        @task = Task.create(user_id: @assignee.id, assignee_id: @assignee.id, title: "Update")
+        @task = Task.create(user_id: @assignee.id, title: "Text Update", category: "odds & ends", task_date: Time.now + 7.days, duration: 60, groupid:@assignee.group.id)
     end 
 
     # logger.info "+++task=#{@task.inspect}"
