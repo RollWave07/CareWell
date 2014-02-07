@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+* {
+  border: 1px solid red;
+}
+
 .group-photo {
   margin-top: 15px;
   border: 5px solid white;
@@ -32,6 +36,27 @@ input.update-group-button {
   border: 0;
   padding: 10px 30px;
   color: white;
+}
+
+.add-member {
+  background: #ff615b;
+  height: 106px;
+  width: 106px;
+  border-radius: 3px;
+  display: inline-block;
+  float: left;
+  line-height: 106px;
+  text-align: center;
+  a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.8em;
+  }
+}
+
+.group-member {
+  display: inline-block;
+  float: left;
 }
 
 .group-show {

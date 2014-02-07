@@ -1,6 +1,6 @@
 
 .container.group-show
-  .row.family-members
+  .row
     .col-md-6
       -if @group.picture_url == nil
         %img{src: "http://placehold.it/400x250/f2f2f2/ef5e5a&text=Add+Your+Group+Photo!", class: 'update'}
@@ -30,13 +30,17 @@
               =image_tag("mickey-mouse.jpg", class: "group-user-photo")
             -else
               =image_tag(user.picture_url(:sq_thumb), :class => "group-user-photo")
-      .group_invite
-        =render 'tasks/modal'
+      .add-member
+        %a{'data-toggle' => 'modal', 'data-target' => '#myModal'}
+          Invite
+      =render 'tasks/modal'
       -if current_user.admin == true
         %h3 Admin Options
         =link_to 'Edit Group', edit_group_path(@group), {class: "edit-group"}
   .row
-    %h1 The Week By Numbers
+    .col-md-12
+      %h1
+        The Week By Numbers
     .col-md-4
       .number-summary-stats
         =@counts_arrays.first
@@ -56,7 +60,7 @@
           -user = group_users.find(hash["id"])
           =image_tag(user.picture_url(:sq_thumb))
           =user.first_name
-          ="#{hash["cnt"]} Tasks Completed"
+          ="#{pluralize(hash["cnt"], 'Task')} Completed"
           %br
     .col-md-6.whitetext
       %h3 Last Three Tasks Completed
