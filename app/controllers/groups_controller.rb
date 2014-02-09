@@ -9,11 +9,11 @@ class GroupsController < ApplicationController
 
   def show
     @users = User.users_in_group(@group)
-  
+
     @assigned_tasks = Task.assigned(@group)
-   
+
     @counts_arrays = Task.count_per_period(@assigned_tasks)
-    
+
     @users_and_tasks = TopMembersQuery.new.users_and_tasks_list(30, @group.id)
 
     @last_three_tasks_completed = Task.last_three_tasks_completed(@assigned_tasks)
@@ -56,8 +56,10 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: 'group was successfully updated.' }
+        format.json { respond_with_bip(@group) }
       else
         format.html { render action: 'edit' }
+        format.json { respond_with_bip(@group) }
       end
     end
   end

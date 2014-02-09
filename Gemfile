@@ -36,6 +36,8 @@ gem 'icalendar'
 # For obfuscation of API key
 gem 'figaro'
 
+gem 'best_in_place', github: 'bernat/best_in_place'
+
 # Use HAML
 gem 'haml-rails'
 gem 'haml'

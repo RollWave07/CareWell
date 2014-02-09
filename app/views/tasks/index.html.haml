@@ -1,7 +1,8 @@
 .container
   .row.task-index-header
     %h1
-      ="Care tasks for #{@group.name}"
+      Care tasks for
+      =best_in_place @group, :name
     =link_to new_group_task_path(current_user.group) do
       .purple-new-task-button
         %h4 Add New Task
