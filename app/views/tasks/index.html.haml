@@ -21,7 +21,7 @@
           ="(#{@open_tasks.count})"
 
     .tab-content
-      #mytasks.tab-pane.fade.in.active
+      #mytasks.tab-pane.fade
         -unless @my_tasks.empty?
           -@my_tasks.sort_by(&:task_date).each do |task|
             =render 'task', task: task, group: @group
@@ -38,3 +38,14 @@
             =render 'all_task', task: task, group: @group
         -else
           =render 'tasks/no_group_tasks'
+:javascript
+  $(document).ready(function () {
+    if (#{@my_tasks.count} < 1) {
+      $('.nav-tabs li:last').addClass('active');
+      $('#opentasks').addClass('in active');
+    }
+    else {
+      $('.nav-tabs li:first').addClass('active');
+      $('#mytasks').addClass('in active');
+    }
+  });

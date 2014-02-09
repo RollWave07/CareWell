@@ -42,17 +42,11 @@ $('.task-form-icon-wrapper').on('click', function() {
   $('#task_category').val(replacementText);
 })
 
-//show the more general due date
-// $('.general-due-date').toggle(
-//   function(){
-//   $(this).text("Add a specific date");
-// },
-// function(){
-//   $(this).text("Add a general date");
+//select a tab test
+
+// $(document).ready(function() {
+//   $('#opentasks').tab('show');
 // });
-
-
-//set up the datepicker
 
 
 
