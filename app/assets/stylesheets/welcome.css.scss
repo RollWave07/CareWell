@@ -66,18 +66,21 @@
   box-shadow: 0px 0px 5px #293f54;
   input {
     margin-bottom: 10px;
+    font-size: 1.5em;
   }
   .first-name {
-    // width: 122px;
+    width: 100%;
   }
   .last-name {
     display: inline-block;
     width: 160px;
     margin-left: 9px;
   }
+  .email{
+    width: 100%;
+  }
   .password {
-    display: inline-block;
-    width: 122px;
+    width: 100%;
   }
   .confirm-password {
     display: inline-block;
