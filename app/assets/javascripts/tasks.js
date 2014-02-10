@@ -1,9 +1,12 @@
-$('.task-form-icon-wrapper').click(function() {
-  $(this).find(':radio').prop("checked", true);
-  $('.task-form-icon-wrapper').removeClass('selected-category');
-  $(this).addClass('selected-category');
-});
+$(document).ready(function() {
 
+  $('.task-form-icon-wrapper').click(function() {
+    $(this).find(':radio').prop("checked", true);
+    $('.task-form-icon-wrapper').removeClass('selected-category');
+    $(this).addClass('selected-category');
+  });//end task form icon wrapper
+
+});//end ready
 
 //autocomplete for task location
 $(function() {
