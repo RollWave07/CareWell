@@ -6,7 +6,8 @@
   = devise_error_messages!
   -if params[:group_id]
     %h3 Welcome to your group, {Group.find(params[:group_id]).name}!
-  =text_field_tag :group_name, nil, placeholder: "Who are you caring for?", autofocus: true, class: 'form-control'
+  .recipient  
+    =text_field_tag :group_name, nil, placeholder: "Who are you caring for?", autofocus: true, class: 'form-control'
   .aside Now dear, just some basic details about you!
   .first-name
     =f.text_field :first_name, placeholder: "Your First Name", value: params[:first_name], class: 'form-control'

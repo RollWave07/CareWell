@@ -15,14 +15,16 @@ class UsersController < ApplicationController
     @future_user_tasks = Task.assigned_to_specific_user(@tasks.future, @user)
   end
 
-  # Check to see if email is available on sign-up
+  # Checks the database to see if email is available on sign-up
+  # 
+  # Returns json object
   def email_available
-    email_attempt = params[:email_attempt]
+    email_attempt = params[:email_attempt].downcase
     user = User.find_by_email(email_attempt)
     if user
-      render :json => { :available => false}
+      render :json => { :available => "taken"}
     else
-      render :json => { :available => true}
+      render :json => { :available => "available"}
     end
   end
 

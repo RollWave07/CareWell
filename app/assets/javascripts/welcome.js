@@ -7,11 +7,9 @@ $('.close-window').on('click', function() {
 });
 
 // ajax request to get list of already taken emails
+var emailAvailable = "taken";
 $('input#user_email').on('blur', function() {
-  console.log("blur");
   var emailData = this.value;
-  console.log(this);
-  console.log("emailData:" + emailData);
   $.ajax({
     type: "GET",
     url: "/users/email_available",
@@ -19,16 +17,37 @@ $('input#user_email').on('blur', function() {
     dataType: "json",
     success: function(data){
         console.log(data.available)
+        emailAvailable = data.available;
     }  
   });      
 });
 
-// get value from single password field and add it to 
-// confirm password field
-$('.btn-sign-up').on('click', function(e) {
-  var password = $('.password input').val();
-  // console.log(password);
-  $('.confirm-password input').val(password);
-  // console.log($('.confirm-password input').val());
+// Checks to see that all the fields are properly filled in.
+// Returns a string of the first field that is unacceptable,
+// or "success" if all fields are valid.
+function validateForm() {
+  if($('.recipient input').val() === "") {
+    return "recipient";
+  }else if($('.first-name input').val() === "") {
+    return "first name";
+  }else if(emailAvailable === "taken") {
+    return "email";
+  }else if($('.password input').val().length < 4){
+    return "password";
+  }else{
+    return "success";
+  }
+}
 
+// listens for sign-up submit button and
+// validates all fields before allowing submit
+$('.btn-sign-up').on('click', function(e) {
+  if(validateForm() === "success") {
+    // get value from single password field and add it to 
+    // confirm password field
+    $('.confirm-password input').val( $('.password input').val() );
+    return;
+  }
+  e.preventDefault();
+  console.log(validateForm());
 });
