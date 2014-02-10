@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :find_group
+  before_action :authenticate_user!, except: :email_available
+  before_action :find_group, except: :email_available
   #Carrierwave - Add support for uploaded images
   # mount_uploader :profile_pic, ImageUploader
 
@@ -14,6 +14,18 @@ class UsersController < ApplicationController
     @past_user_tasks = Task.assigned_to_specific_user(@tasks.past, @user)
     @future_user_tasks = Task.assigned_to_specific_user(@tasks.future, @user)
   end
+
+  # Check to see if email is available on sign-up
+  def email_available
+    email_attempt = params[:email_attempt]
+    user = User.find_by_email(email_attempt)
+    if user
+      render :json => { :available => false}
+    else
+      render :json => { :available => true}
+    end
+  end
+
 
 private
   def find_group
