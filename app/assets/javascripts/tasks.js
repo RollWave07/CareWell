@@ -48,6 +48,17 @@ $('.task-form-icon-wrapper').on('click', function() {
 //   $('#opentasks').tab('show');
 // });
 
+$(document).ready( function () {
+  $('.task-index-header h1').hover(
+    function() {
+      console.log('show');
+      $('.edit-indicator').show();
+    },
+    function(){
+      console.log('hide');
+      $('.edit-indicator').hide();
+    });
+});
 
 
 $(document).on("ajax:success", ".signup", function(e, data, status, xhr){

@@ -3,6 +3,7 @@
     %h1
       Care tasks for
       =best_in_place @group, :name
+      %span.edit-indicator.glyphicon.glyphicon-pencil
     =link_to new_group_task_path(current_user.group) do
       .purple-new-task-button
         %h4 Add New Task
