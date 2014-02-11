@@ -1,4 +1,4 @@
-== CareWell
+CareWell
 ========
 
 The 43.5 million Americans who care for aging family members face significant health issues, financial instability, family strife, social isolation, and burnout. They and the elders they help suffer. As the number of elderly Americans skyrockets, we need ways to provide compassionate, long-term elder care.
