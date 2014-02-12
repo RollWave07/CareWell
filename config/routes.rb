@@ -36,4 +36,8 @@ Carewell::Application.routes.draw do
   get "pages/about_us"
   get "users/index"
   get "sendtexts/index"
+
+  get "users/email_available"
 end
+
+

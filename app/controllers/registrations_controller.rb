@@ -7,6 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
     #   new_group_path
     # end
   end
+  
 
   def create
     build_resource(sign_up_params)
