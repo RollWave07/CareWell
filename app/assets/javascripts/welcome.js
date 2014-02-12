@@ -13,11 +13,25 @@ $(document).ready(function() {
           console.log(data.available)
           emailAvailable = data.available;
           if(emailAvailable == false) {
+            $('.register-form input#user_email').val('');
             $('.register-form input#user_email').addClass('warning');
+            $('.register-form input#user_email').attr('placeholder', 'This email address is already in use.');
           }
       }
     });
   });
+
+  //on password blur, make sure there is 4.
+
+  $('.register-form #user_password').on('blur', function() {
+      $(this).removeClass('warning');
+      var passwordCheck = $(this).val();
+      if (passwordCheck.length < 4) {
+        $(this).val('');
+        $(this).addClass('warning');
+        $(this).attr('placeholder', 'Your password should have at least 4 characters');
+      }
+  })
 
   // Checks to see that all the fields are properly filled in.
   // Returns a string of the first field that is unacceptable,
