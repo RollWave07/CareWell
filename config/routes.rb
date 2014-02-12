@@ -12,7 +12,10 @@ Carewell::Application.routes.draw do
     root :to => "tasks#index", :as => "authenticated_root"
       end
 
-  root 'tasks#index'
+  devise_scope :user do
+      root "registrations#new"
+    end
+
 
   resources :groups do
     resources :tasks do

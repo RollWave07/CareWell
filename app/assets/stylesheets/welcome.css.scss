@@ -17,25 +17,38 @@
   }
 }
 
+section {
+  width: 100%;
+  .registration-section {
+    background: #53bc9c;
+    padding: 4rem 0;
+  }
+}
+
 .family {
   img {
   display: block;
   margin: 0 auto;
-  margin-bottom: 20px;
   }
 }
 
+.sign-up-login {
+  color: white;
+  padding-left: 15px;
+}
+
 .register-button {
-  border-radius: 5px;
+  border-radius: 3px;
+  border: none;
   background: #ff615b;
   padding: 20px 30px;
-  margin: 20px 0px;
   color: white;
   font-family: Lato;
   font-weight: 400;
   font-size: 2em;
   text-align: center;
   cursor: pointer;
+  width: 100%;
 
   a {
     color: white;
@@ -56,14 +69,7 @@
 }
 
 .register-form {
-  display: none;
-  background: #f0e451;
-  border-radius: 5px;
-  border: 0.5px solid #f4e97a;
   padding: 15px;
-  position: absolute;
-  top: -335px;
-  box-shadow: 0px 0px 5px #293f54;
   input {
     margin-bottom: 10px;
   }

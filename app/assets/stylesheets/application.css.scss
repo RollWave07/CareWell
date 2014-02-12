@@ -36,6 +36,12 @@ $mint-green: #60D97B;
     src: url(font-path('JennaSue.ttf'))  format('truetype');
 }
 
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 navbar-inner
 
 h1,h2, h3 {
