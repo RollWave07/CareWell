@@ -18,8 +18,8 @@ $('input#user_email').on('blur', function() {
     success: function(data){
         console.log(data.available)
         emailAvailable = data.available;
-    }  
-  });      
+    }
+  });
 });
 
 // Checks to see that all the fields are properly filled in.
@@ -43,9 +43,8 @@ function validateForm() {
 // validates all fields before allowing submit
 $('.btn-sign-up').on('click', function(e) {
   if(validateForm() === "success") {
-    // get value from single password field and add it to 
+    // get value from single password field and add it to
     // confirm password field
-    $('.confirm-password input').val( $('.password input').val() );
     return;
   }
   e.preventDefault();
