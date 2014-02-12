@@ -16,15 +16,15 @@ class UsersController < ApplicationController
   end
 
   # Checks the database to see if email is available on sign-up
-  # 
+  #
   # Returns json object
   def email_available
     email_attempt = params[:email_attempt].downcase
     user = User.find_by_email(email_attempt)
     if user
-      render :json => { :available => "taken"}
+      render :json => { :available => false}
     else
-      render :json => { :available => "available"}
+      render :json => { :available => true}
     end
   end
 
