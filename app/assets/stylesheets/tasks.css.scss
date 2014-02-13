@@ -140,6 +140,19 @@ $bgc: #ded8ce;
     }
   }
 
+  .first-time-user {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    background: white;
+    h1 {
+      color: black;
+    }
+  }
+
   .new-task {
     background-color: white;
     padding: 30px;

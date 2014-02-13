@@ -40,8 +40,25 @@
             =render 'all_task', task: task, group: @group
         -else
           =render 'tasks/no_group_tasks'
+
+.first-time-user
+  %h1 Hello First Timer!
+  =link_to "Dismiss", root_path, {class: "dismiss"}
+
 :javascript
   $(document).ready(function () {
+
+    //first time user
+    if (#{current_user.sign_in_count} == 1) {
+      //the JS below will make it ALWAYS show - need logic to only have it show 1x.
+      // $('.first-time-user').show();
+    }
+
+    $('dismiss').on('click', function() {
+      $('first-time-user').hide();
+    });
+    //second-time user
+
     if (#{@my_tasks.count} < 1) {
       $('.nav-tabs li:last').addClass('active');
       $('#opentasks').addClass('in active');
