@@ -153,8 +153,17 @@ $bgc: #ded8ce;
   .task-form-icon-wrapper {
     text-align: center;
     float: left;
-    width: 100%;
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
     color: #a6a6a6;
+    padding: 15px;
+
+
+    &:hover {
+      background: #f0ad4e;
+      color: white;
+    }
   }
 
   .task-form-radio-button {

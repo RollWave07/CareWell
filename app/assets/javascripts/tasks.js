@@ -9,27 +9,28 @@ $(document).ready(function() {
 });//end ready
 
 //autocomplete for task location
-$(function() {
-    var locationTags = [
-      "Restaurant",
-      "N/A",
-      "Home",
-      "Pharmacy",
-      "Drs. office",
-      "Park",
-      "Friends house",
-      "Online",
-      "Remote",
-      "Outside",
-      "Book Store",
-      "Downtown",
-      "Next door",
-      "Over the phone",
-    ];
-    $( "#task_location" ).autocomplete({
-        source: locationTags
-      });
-    });
+//turn off for now because page movement is annoying
+// $(function() {
+//     var locationTags = [
+//       "Restaurant",
+//       "N/A",
+//       "Home",
+//       "Pharmacy",
+//       "Drs. office",
+//       "Park",
+//       "Friends house",
+//       "Online",
+//       "Remote",
+//       "Outside",
+//       "Book Store",
+//       "Downtown",
+//       "Next door",
+//       "Over the phone",
+//     ];
+//     $( "#task_location" ).autocomplete({
+//         source: locationTags
+//       });
+//     });
 
 //pop up the categories selection div.
 

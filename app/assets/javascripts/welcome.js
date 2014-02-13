@@ -29,7 +29,7 @@ $(document).ready(function() {
       if (passwordCheck.length < 4) {
         $(this).val('');
         $(this).addClass('warning');
-        $(this).attr('placeholder', 'Your password should have at least 4 characters');
+        $(this).attr('placeholder', 'Your password needs at least 4 characters.');
       }
   })
 
