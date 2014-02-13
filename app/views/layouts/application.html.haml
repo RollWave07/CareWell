@@ -14,7 +14,11 @@
           %nav.navbar{:role=>"navigation"}
             .navbar-header
               -if current_user
-                =link_to image_tag('carewell-green-logo.png', :class=>"logo"),group_tasks_path(current_user.group_id)
+                -if current_user.group.picture_url != nil
+                  =link_to image_tag('group-logo.png', class: 'group-logo'), group_tasks_path(current_user.group_id)
+
+                -else
+                  =link_to image_tag('carewell-green-logo.png', :class=>"logo"),group_tasks_path(current_user.group_id)
               -else
                 =link_to image_tag('carewell-green-logo.png', :class=>"logo")
 
@@ -50,19 +54,9 @@
             = content_tag :div, flash[:alert], class: "alert alert-warning"
           -if flash[:error]
             = content_tag :div, flash[:error], class: "alert alert-danger"
-    /   .container.mobile-header
-    /     .row.task-index
-    /       %h1.task-header
-    /         %span.glyphicon.glyphicon-tasks
-    /         =link_to "TASKS", group_tasks_path(current_user.group_id)
-    /       %h1.task-header
-    /         %span.glyphicon.glyphicon-stats
-    /         =link_to "GROUP", group_path(current_user.group_id)
-    /       %h1.task-header
-    /         %span.glyphicon.glyphicon-user
-    /         =link_to "PROFILE", group_user_path(current_user.group_id, current_user.id)
-
-
-
     = yield
 
+    :css
+      .group-logo {
+      background-image: url("#{current_user.group.picture_url(:group_logo)}");
+      }

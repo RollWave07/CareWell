@@ -4,21 +4,21 @@
     .col-md-6
       -if @group.picture_url == nil
         %img{src: "http://placehold.it/400x250/f2f2f2/ef5e5a&text=Add+Your+Group+Photo!", class: 'update'}
-        = form_for(@group) do |f|
-          - if @group.errors.any?
-            #error_explanation
-              %h2
-                = pluralize(@group.errors.count, "error")
-                prohibited this picture from being saved:
-              %ul
-                - @group.errors.full_messages.each do |msg|
-                  %li= msg
-          .field
-            = f.file_field :picture, :required => true
-          .actions
-            = f.submit
       -else
         =image_tag(@group.picture_url(:group), :class=>'group-photo')
+      = form_for(@group) do |f|
+        - if @group.errors.any?
+          #error_explanation
+            %h2
+              = pluralize(@group.errors.count, "error")
+              prohibited this picture from being saved:
+            %ul
+              - @group.errors.full_messages.each do |msg|
+                %li= msg
+        .field
+          = f.file_field :picture, :required => true
+        .actions
+          = f.submit
     .col-md-6.whitetext
       %h1="The #{@group.name}"
       %h3="#{@group_count} Members"
