@@ -15,8 +15,11 @@
             .navbar-header
               -if current_user
                 -if current_user.group.picture_url != nil
-                  =link_to image_tag('group-logo.png', class: 'group-logo'), group_tasks_path(current_user.group_id)
-
+                  =link_to image_tag('group-logo.png', class: 'logo group-logo'), group_tasks_path(current_user.group_id)
+                  :css
+                    .group-logo {
+                    background-image: url("#{current_user.group.picture_url(:group_logo)}");
+                    }
                 -else
                   =link_to image_tag('carewell-green-logo.png', :class=>"logo"),group_tasks_path(current_user.group_id)
               -else
@@ -46,17 +49,11 @@
               -else
                 .nav.navbar-nav.pull-right.full-screen-header
                   =render 'devise/sessions/new_session'
-      -if current_user
-        .container
-          -if flash[:notice]
-            = content_tag :div, flash[:notice], class: "alert alert-success"
-          -if flash[:alert]
-            = content_tag :div, flash[:alert], class: "alert alert-warning"
-          -if flash[:error]
-            = content_tag :div, flash[:error], class: "alert alert-danger"
+      .container
+        -if flash[:notice]
+          = content_tag :div, flash[:notice], class: "alert alert-success"
+        -if flash[:alert]
+          = content_tag :div, flash[:alert], class: "alert alert-warning"
+        -if flash[:error]
+          = content_tag :div, flash[:error], class: "alert alert-danger"
     = yield
-
-    :css
-      .group-logo {
-      background-image: url("#{current_user.group.picture_url(:group_logo)}");
-      }
