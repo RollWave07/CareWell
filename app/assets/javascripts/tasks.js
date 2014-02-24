@@ -6,6 +6,19 @@ $(document).ready(function() {
     $(this).addClass('selected-category');
   });//end task form icon wrapper
 
+  //create an array of images that will randomly pick one if there aren't any tasks.
+
+  var randomPhoto = function () {
+
+    var randomPhotoIndex, photoArray;
+
+    randomPhotoIndex = Math.floor(Math.random() * 6);
+    photoArray = ['a','b','c','d','e'];
+    // return photoArray[randomPhotoIndex];
+    return 'pink-flower.png';
+  };
+
+
 });//end ready
 
 //autocomplete for task location

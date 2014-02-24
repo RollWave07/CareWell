@@ -39,6 +39,7 @@
           -@open_tasks.sort_by(&:task_date).each do |task|
             =render 'all_task', task: task, group: @group
         -else
+          =image_tag("#{random_photo}", class: 'random-photo')
           =render 'tasks/no_group_tasks'
 
 .first-time-user
