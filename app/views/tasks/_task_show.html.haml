@@ -57,8 +57,7 @@
         %span.glyphicon.glyphicon-trash
         Delete
   -if current_user == assignee
-    =link_to group_task_path(group, task, params: {assignee_id: nil}), method: :put, data: { confirm: 'Are you sure you want to drop this task?'} do
+    =link_to group_task_path(group, task, params: {assignee_id: nil}), method: :put do
       %span.awesome
-        %span.glyphicon.glyphicon-circle-arrow-down
-        Unassign
+        I can't do this task anymore
 

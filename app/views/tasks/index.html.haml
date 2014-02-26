@@ -52,11 +52,11 @@
     //first time user
     if (#{current_user.sign_in_count} == 1) {
       //the JS below will make it ALWAYS show - need logic to only have it show 1x.
-      // $('.first-time-user').show();
+      $('.first-time-user').show();
     }
 
-    $('dismiss').on('click', function() {
-      $('first-time-user').hide();
+    $('.first-time-user').on('click', function() {
+      $(this).hide();
     });
     //second-time user
 

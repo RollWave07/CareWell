@@ -70,15 +70,15 @@
   %h1 Detailed Group Statistics
   .graph-background
     .row.greentext.text-center
-      .col-md-6
+      .col-md-12
         %h3 Tasks Assigned Per Week
         %br
         %canvas#lineChart{height: "400", width: "400"}
-      .col-md-6
+      .col-md-12
         %h3 Average Time Per Task
         %br
         %canvas#durationChart{height: "400", width: "400"}
-      .col-md-6
+      .col-md-12
         %h3 Tasks by Category (All Time)
         %br
         %canvas#barChart{height: "400", width: "400"}
@@ -86,7 +86,7 @@
       /   ="#{task}: #{average}"
 
 
-= javascript_include_tag "Chart.js"
+=javascript_include_tag "Chart.js"
 =render "linechart"
 =render "barchart"
 =render "durationchart"

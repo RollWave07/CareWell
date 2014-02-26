@@ -14,7 +14,7 @@
       -else
         %h4="#{task.assignee.first_name}"
     -else
-      %h4.sign-up=link_to "Volunteer", group_task_path(group, task_id, params: { task: {assignee_id: current_user_id}}), method: :patch, data: {confirm: "Are you sure?"}, remote: true
+      %h4.sign-up=link_to "Volunteer", group_task_path(group, task_id, params: { task: {assignee_id: current_user_id}}), method: :patch, remote: true
   .col-xs-8.col-md-8.summary
     =link_to group_task_path(group, task_id) do
       %h3.card-title=task.title.truncate(25)
