@@ -99,6 +99,9 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.status = "complete"
     @task.save
+    respond_to do |format|
+      format.js {render layout: false, notice: "Task marked complete!"}
+    end
   end
 
   private

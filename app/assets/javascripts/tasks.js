@@ -75,7 +75,6 @@ $(document).ready( function () {
       console.log('hide');
       $('.edit-indicator').hide();
     });
-});
 
 
 $(document).on("ajax:success", ".signup", function(e, data, status, xhr){

@@ -92,21 +92,41 @@ $bgc: #ded8ce;
       color: white;
     }
   }
-  h4.complete {
-    color: white !important;
-  }
+
   .complete {
     display: inline-block;
     text-align: center;
-    padding: 10px 20px;
-    margin: 0 auto;
+    margin: 25px;
     font-size: 15px;
-    background: #53bc9c;
-    border-radius: 4px;
+    background: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    border: 2px solid #53bc9c;
+
      a {
       text-decoration: none;
       color: white;
     }
+     i {
+       display: inline-block;
+       margin: 0 auto;
+       line-height: 50px;
+       color: white;
+       transition-property: color;
+        transition-duration: 0.3s;
+     }
+
+     i:hover{
+       color: #53bc9c;
+       opacity: 0.5;
+     }
+
+  }
+
+  .opacity {
+    opacity: 1;
+    color: #53bc9c;
   }
 
   .action {

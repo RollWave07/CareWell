@@ -3,11 +3,11 @@
 - likes_count = task.likes_count
 - task_id = task.id
 
-.row.task-card
+.row.task-card{"data-task-id" => "#{task.id}"}
   .col-xs-2.col-md-2
     =link_to mark_complete_group_task_path(group, task_id, params: {status: 'complete'}), method: :put, remote: true do
       %h4.complete
-        Done
+        %i.fa.fa-check
   .col-xs-8.col-md-8.summary
     %h3.card-title=task.title.truncate(25)
     -if task_date
