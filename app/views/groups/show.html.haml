@@ -1,0 +1,93 @@
+.container.group-show
+  .row
+    .col-md-6
+      -if @group.picture_url == nil
+        %img{src: "http://placehold.it/400x250/f2f2f2/ef5e5a&text=Add+Your+Group+Photo!", class: 'update'}
+      -else
+        =image_tag(@group.picture_url(:group), :class=>'group-photo')
+      = form_for(@group) do |f|
+        - if @group.errors.any?
+          #error_explanation
+            %h2
+              = pluralize(@group.errors.count, "error")
+              prohibited this picture from being saved:
+            %ul
+              - @group.errors.full_messages.each do |msg|
+                %li= msg
+        .field
+          = f.file_field :picture, :required => true
+        .actions
+          = f.submit
+    .col-md-6.whitetext
+      %h1="The #{@group.name}"
+      %h3="#{@group_count} Members"
+      .group-member
+        -group_users = @users
+        -group_users.each do |user|
+          =link_to group_user_path(@group, user.id) do
+            -if user.picture_url == nil
+              =image_tag("mickey-mouse.jpg", class: "group-user-photo")
+            -else
+              =image_tag(user.picture_url(:sq_thumb), :class => "group-user-photo")
+      .add-member
+        %a{'data-toggle' => 'modal', 'data-target' => '#myModal'}
+          Invite
+      =render 'tasks/modal'
+      -if current_user.admin == true
+        %h3 Admin Options
+        =link_to 'Edit Group', edit_group_path(@group), {class: "edit-group"}
+  .row
+    .col-md-12
+      %h1
+        The Week By Numbers
+    .col-md-4
+      .number-summary-stats
+        =@counts_arrays.first
+      %p.number-summary Tasks Completed This Week
+    .col-md-4
+      .number-summary-stats
+        =@users_and_tasks.count
+      %p.number-summary Active Family Members
+    .col-md-4
+      .number-summary-stats.green
+        =@duration_week
+      %p.number-summary Hours Caring This Week
+    .col-md-6.whitetext
+      %h3 Top Three Members This Month
+      -@users_and_tasks.take(3).each do |hash|
+        -if hash["group_id"].to_i == @group.id
+          -user = group_users.find(hash["id"])
+          =image_tag(user.picture_url(:sq_thumb))
+          =user.first_name
+          ="#{pluralize(hash["cnt"], 'Task')} Completed"
+          %br
+    .col-md-6.whitetext
+      %h3 Last Three Tasks Completed
+      -@last_three_tasks_completed.each do |task|
+        ="#{task.title} was completed by #{task.assignee.first_name}"
+        %br
+  %h1 Detailed Group Statistics
+  .graph-background
+    .row.greentext.text-center
+      .col-md-6
+        %h3 Tasks Assigned Per Week
+        %br
+        %canvas#lineChart{height: "400", width: "400"}
+      .col-md-6
+        %h3 Average Time Per Task
+        %br
+        %canvas#durationChart{height: "400", width: "400"}
+      .col-md-6
+        %h3 Tasks by Category (All Time)
+        %br
+        %canvas#barChart{height: "400", width: "400"}
+      / -@category_avg.each do |task, average|
+      /   ="#{task}: #{average}"
+
+
+= javascript_include_tag "Chart.js"
+
+=render "linechart"
+  
+=render "barchart"
+=render "durationchart"
