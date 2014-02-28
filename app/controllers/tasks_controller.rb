@@ -100,7 +100,7 @@ class TasksController < ApplicationController
     @task.status = "complete"
     @task.save
     respond_to do |format|
-      format.js {render layout: false, notice: "Task marked complete!"}
+      format.js {render layout: false}
     end
   end
 

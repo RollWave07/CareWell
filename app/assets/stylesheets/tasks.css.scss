@@ -93,7 +93,7 @@ $bgc: #ded8ce;
     }
   }
 
-  .complete {
+  .task-box {
     display: inline-block;
     text-align: center;
     margin: 25px;
@@ -104,29 +104,31 @@ $bgc: #ded8ce;
     border-radius: 5px;
     border: 2px solid #53bc9c;
 
+
      a {
       text-decoration: none;
-      color: white;
+      color: transparent;
     }
+
      i {
        display: inline-block;
        margin: 0 auto;
        line-height: 50px;
-       color: white;
-       transition-property: color;
+       color: #53bc9c;
+       opacity: 0;
+       transition-property: opacity;
         transition-duration: 0.3s;
+
+      &.complete {
+        opacity: 1;
+        color: #53bc9c;
+      }
      }
 
      i:hover{
-       color: #53bc9c;
        opacity: 0.5;
      }
 
-  }
-
-  .opacity {
-    opacity: 1;
-    color: #53bc9c;
   }
 
   .action {
