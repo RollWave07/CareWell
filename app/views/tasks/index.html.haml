@@ -42,9 +42,16 @@
           =image_tag("#{random_photo}", class: 'random-photo')
           =render 'tasks/no_group_tasks'
 
-.first-time-user
-  %h1 Hello First Timer!
-  =link_to "Dismiss", root_path, {class: "dismiss"}
+#first-time-user.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"}X
+        %h1 Hello, First-Timer!
+      .modal-body
+        %h4 This is a sweet CareWell modal!
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
 
 :javascript
   $(document).ready(function () {
@@ -53,11 +60,18 @@
     if (#{current_user.sign_in_count} == 1) {
       //the JS below will make it ALWAYS show - need logic to only have it show 1x.
       $('.first-time-user').show();
+      // check if the modal has been viewed this session
+      if (getCookie("welcomeModalViewed") === "") {
+        $('#first-time-user').modal('show');   // show the modal
+        document.cookie = "welcomeModalViewed=true";  // set a cookie
+      }
+
     }
 
     $('.first-time-user').on('click', function() {
       $(this).hide();
     });
+
     //second-time user
 
     if (#{@my_tasks.count} < 1) {
@@ -69,3 +83,15 @@
       $('#mytasks').addClass('in active');
     }
   });
+
+  // Cookie Functions
+  // This gets the value of a cookie
+  function getCookie(cookiename) {
+    var name = cookiename + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+      var c = ca[i].trim();
+      if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+    }
+    return "";
+  }

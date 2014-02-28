@@ -1,4 +1,3 @@
-
 .container.group-show
   .row
     .col-md-6
@@ -85,8 +84,9 @@
       / -@category_avg.each do |task, average|
       /   ="#{task}: #{average}"
 
+= javascript_include_tag "Chart.js"
 
-=javascript_include_tag "Chart.js"
 =render "linechart"
+
 =render "barchart"
 =render "durationchart"
