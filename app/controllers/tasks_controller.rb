@@ -97,7 +97,13 @@ class TasksController < ApplicationController
 
   def mark_complete
     @task = Task.find(params[:id])
-    @task.status = "complete"
+    if @task.status == "complete"
+      @task.status = "incomplete"
+    elsif @task.status == "incomplete"
+      @task.status = "complete"
+    else
+      @task.status = "complete"
+    end
     @task.save
     respond_to do |format|
       format.js {render layout: false}

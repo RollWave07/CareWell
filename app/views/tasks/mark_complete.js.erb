@@ -1,1 +1,1 @@
-$('.task-card[data-task-id="<%= @task.id %>"]').find('.complete i').addClass('full-opacity');
+$('.task-card[data-task-id="<%= @task.id %>"]').removeClass('complete incomplete').addClass('<%= @task.status %>');

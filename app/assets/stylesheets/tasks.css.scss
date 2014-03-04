@@ -20,7 +20,68 @@ $bgc: #ded8ce;
 
 .task-card {
   background: white;
+
+  .task-box {
+    display: inline-block;
+    text-align: center;
+    margin: 25px;
+    font-size: 15px;
+    background: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    border: 2px solid #53bc9c;
+
+     a {
+      text-decoration: none;
+      color: transparent;
+    }
+
+     i {
+       font-size: 27px;
+       display: inline-block;
+       margin: 0 auto;
+       line-height: 50px;
+       color: #53bc9c;
+       opacity: 0;
+       transition-property: opacity;
+        transition-duration: 0.3s;
+        &:hover {
+          opacity: 0.5;
+        }
+     }
+   }
+
+ &.complete {
+   .card-title {
+     text-decoration: line-through;
+   }
+   .task-box {
+    i {
+    opacity: 1;
+      }
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.incomplete {
+    .card-title {
+      text-decoration: none;
+    }
+    .task-box {
+      i {
+        opacity: 0;
+        &:hover {
+        opacity: 0.5;
+        }
+      }
+
+    }
+  }
 }
+
   .task {
     margin: 30px;
     background-color: $bgc;
@@ -86,49 +147,11 @@ $bgc: #ded8ce;
     padding: 10px 20px;
     margin: 0 auto;
     font-size: 15px;
-    background: #ab53c5;
+    background: #f0ad4e;
     a {
       text-decoration: none;
       color: white;
     }
-  }
-
-  .task-box {
-    display: inline-block;
-    text-align: center;
-    margin: 25px;
-    font-size: 15px;
-    background: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
-    border: 2px solid #53bc9c;
-
-
-     a {
-      text-decoration: none;
-      color: transparent;
-    }
-
-     i {
-       display: inline-block;
-       margin: 0 auto;
-       line-height: 50px;
-       color: #53bc9c;
-       opacity: 0;
-       transition-property: opacity;
-        transition-duration: 0.3s;
-
-      &.complete {
-        opacity: 1;
-        color: #53bc9c;
-      }
-     }
-
-     i:hover{
-       opacity: 0.5;
-     }
-
   }
 
   .action {
@@ -417,7 +440,7 @@ $bgc: #ded8ce;
   .new-task-button {
     // height: 75px;
     // width: 225px;
-    background-color: #ab53c5;
+    background-color: #f0ad4e;
     border-radius: 5px;
     color: white;
     font-family: 'Lato', sans-serif;
@@ -426,7 +449,7 @@ $bgc: #ded8ce;
     margin: 15px 15px 20px 0;
   }
   .new-task-button:hover {
-    background-color: #ab53c5;
+    background-color: #f0ad4e;
     color: white;
       }
 
@@ -604,7 +627,7 @@ top: -10px;
       padding: 10px 10px;
       margin: 0 auto;
       font-size: 15px;
-      background: #ab53c5;
+      background: #f0ad4e;
       a {
         text-decoration: none;
         color: white;
@@ -683,17 +706,18 @@ h1 {
   float:right;
   font-size: .75em;
   padding: 15px;
+  margin-bottom: 30px;
+  background-color: #C21FEC;
+  border-radius: 4px;
+  color: white;
+
   h4 {
   font-family: "Lato", sans-serif;
   font-size: 2em;
   }
-  margin-bottom: 30px;
-  background-color: #ab53c5;
-  border-radius: 4px;
-  color: white;
-    a {
+  a {
     text-decoration: none;
-    }
+  }
 }
 
 .new-task-h4 {
