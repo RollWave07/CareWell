@@ -726,6 +726,16 @@ h1 {
   color: #293f54;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
+input#task_assignee_id {
+  position: relative;
+  top: -3px;
+  margin-right: 5px;
+}
+
 
 // CSS for Welcome modal
 #first-time-user {

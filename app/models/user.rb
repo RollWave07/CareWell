@@ -18,4 +18,13 @@ class User < ActiveRecord::Base
     self.where(group_id: group.id)
   end
 
+  def self.user_array(group)
+    array = []
+    users = self.where(group_id: group.id)
+    users.each do |user|
+      array << [user.first_name]
+    end
+    puts array
+  end
+
 end
