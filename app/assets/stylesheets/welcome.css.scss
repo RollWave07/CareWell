@@ -198,3 +198,14 @@ h1, h3 {
     font-family: 'Lato', sans-serif;
     color: white;
 }
+
+@media all and (max-width: 480px) {
+
+.family {
+  img {
+    width: 100%;
+  }
+}
+
+
+}

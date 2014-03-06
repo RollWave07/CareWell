@@ -7,7 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
     #   new_group_path
     # end
   end
-  
+
 
   def create
     build_resource(sign_up_params)
@@ -39,10 +39,6 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to root_url
     end
   end
-
-  # def after_sign_in_path_for(resource)
-  #   group_tasks_path(current_user.group.id)
-  # end
 
 end
 
