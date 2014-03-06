@@ -168,9 +168,18 @@ body {
   padding: 10px;
    input {
      width: 100%;
-   }
+     }
   }
-}
+
+  .navbar-toggle {
+    display: none;
+  }
+  img.logo {
+    display: block;
+    margin: 15px auto;
+  }
+
+} //end of media query max width 480
 
 .cw-button {
   padding: 10px 5px;
