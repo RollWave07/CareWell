@@ -13,7 +13,7 @@ Carewell::Application.routes.draw do
       end
 
   devise_scope :user do
-      root "registrations#new"
+      root "registrations#new", :as => "unauthenticated_root"
     end
 
 

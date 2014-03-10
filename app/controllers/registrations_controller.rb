@@ -8,6 +8,9 @@ class RegistrationsController < Devise::RegistrationsController
     # end
   end
 
+  def after_inactive_sign_up_path_for(resource)
+    unauthenticated_root_path(resource)
+  end
 
   def create
     build_resource(sign_up_params)
@@ -36,7 +39,7 @@ class RegistrationsController < Devise::RegistrationsController
       clean_up_passwords resource
       # respond_with resource
       #would like to set and return an error message but unsure how.
-      redirect_to root_url
+      redirect_to unauthenticated_root_path
     end
   end
 
