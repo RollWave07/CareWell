@@ -4,6 +4,11 @@ $(document).ready(function() {
     $(this).find('input:radio').prop("checked", true);
     $('.task-form-icon-wrapper').removeClass('selected-category');
     $(this).addClass('selected-category');
+    if ($('#task_category_around_the_home').prop("checked") == true ) {
+      $('#task_location').val('Home');
+    } else {
+      $('#task_location').val('');
+    }
   });//end task form icon wrapper
 
   //create an array of images that will randomly pick one if there aren't any tasks.

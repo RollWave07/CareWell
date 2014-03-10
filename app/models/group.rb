@@ -3,4 +3,8 @@ class Group < ActiveRecord::Base
 
   mount_uploader :picture, ImageUploader
 
+  # def to_param
+  #   "#{id} #{name}".parameterize
+  # end
+
 end

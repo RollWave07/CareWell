@@ -24,7 +24,7 @@ class RegistrationsController < Devise::RegistrationsController
     resource.group = @group
 
     if resource.save
-      ServiceSignup.welcome(resource.group, resource).deliver
+      # ServiceSignup.welcome(resource.group, resource).deliver
       yield resource if block_given?
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_flashing_format?
