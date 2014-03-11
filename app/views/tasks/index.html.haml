@@ -40,8 +40,6 @@
               -for task in tasks
                 %li=link_to h(task.title), group_task_path(@group, task.id)
 
-      -@tasks.sort_by(&:task_date).each do |task|
-        =render 'all_task', task: task, group: @group
       .section-title
         Open Tasks
         ="(#{@open_tasks.count})"
