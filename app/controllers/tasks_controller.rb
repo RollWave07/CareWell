@@ -20,10 +20,12 @@ class TasksController < ApplicationController
   end
 
   def index
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
     @user = User.find(current_user.id)
     @tasks = Task.tasks(@group).future
     @my_tasks = Task.assigned_to_specific_user(@tasks.future, current_user)
     @past_user_tasks = Task.assigned_to_specific_user(@tasks.past, @user)
+    @this_months_tasks = Task.from_this_month
     @open_tasks = Task.unassigned(@tasks)
     @update = Update.new
     @group = current_user.group

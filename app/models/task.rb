@@ -12,7 +12,8 @@ class Task < ActiveRecord::Base
 
   scope :completed_recently, lambda { where(task_date: 1.day.ago..Time.now) }
 
-
+  #this month's tasks
+  scope :from_this_month, lambda {where(task_date: Time.now.at_beginning_of_month..Time.now.at_end_of_month)}
   #___GRAPH DATA
   scope :future, lambda {where(["task_date > ?", Time.now])}
   scope :past, lambda {where(["task_date < ?", Time.now])}

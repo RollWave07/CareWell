@@ -5,7 +5,7 @@
       =best_in_place @group, :name
       %span.edit-indicator.glyphicon.glyphicon-pencil
   .row
-    .col-xs-12.col-md-7.white.my-task-list
+    .col-xs-12.col-md-6.white.my-task-list
       .section-title
         My Care Tasks
         ="(#{@my_tasks.count})"
@@ -22,12 +22,24 @@
         %h3.card-title{style: "margin-top: 0; padding: 30px;"}
           ="#{@user.first_name} hasn't completed any tasks...yet!"
     .col-md-1
-    .col-xs-12.col-md-4.white.my-task-list
+    .col-xs-12.col-md-5.white.my-task-list
       .section-title
         All Upcoming Care Tasks
         ="(#{@tasks.count})"
         =link_to new_group_task_path(current_user.group) do
           %h4 Add New
+      .cal
+        =link_to "<", params: {month: (@date.beginning_of_month-1).strftime("%B-%Y")}
+        =@date.strftime("%B %Y")
+        =link_to ">", :month => (@date.end_of_month+1).strftime("%B-%Y")
+        =calendar_for @this_months_tasks, :year => @date.year, :month=> @date.month do |calendar|
+          =calendar.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat')
+          -calendar.day(:day_method => :task_date) do |day, tasks|
+            =day.day
+            %ul
+              -for task in tasks
+                %li=link_to h(task.title), group_task_path(@group, task.id)
+
       -@tasks.sort_by(&:task_date).each do |task|
         =render 'all_task', task: task, group: @group
       .section-title

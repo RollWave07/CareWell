@@ -32,7 +32,8 @@ gem 'fog'
 gem 'unf'
 #Use for generating ical invites to tasks
 gem 'icalendar'
-
+#Use for creating calendar of events
+gem "watu_table_builder", :require => "table_builder"
 # For obfuscation of API key
 gem 'figaro'
 
