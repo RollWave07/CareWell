@@ -59,9 +59,20 @@ html {
   height: 100%;
 }
 body {
-  background-color: #3498db;
+  background-color: #E8E8E8;
   height: 100%;
   font-family: 'Lato'
+}
+
+.section-title {
+  font-size: 1.3em;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+hr {
+  margin: 2rem 0;
+  border: 1px solid #eee;
 }
 
 .mobile-header {

@@ -4,43 +4,41 @@
       Care tasks for
       =best_in_place @group, :name
       %span.edit-indicator.glyphicon.glyphicon-pencil
-    =link_to new_group_task_path(current_user.group) do
-      .purple-new-task-button
-        %h4 Add New Task
   .row
-    %ul.nav.nav-tabs
-      %li
-        %a.my-task-count{'data-toggle' => "tab", href: "#mytasks"}
-          My Tasks
-          ="(#{@my_tasks.count})"
-      %li
-        %a{'data-toggle' => "tab", href: "#alltasks"}
-          All Upcoming Tasks
-          ="(#{@tasks.count})"
-      %li
-        %a.open-task-count{'data-toggle' => "tab", href: "#opentasks"}
-          Open Tasks
-          ="(#{@open_tasks.count})"
-
-    .tab-content
-      #mytasks.tab-pane.fade
-        -unless @my_tasks.empty?
-          -@my_tasks.sort_by(&:task_date).each do |task|
-            =render 'task', task: task, group: @group
-        -else
-          =render 'tasks/no_tasks'
-
-      #alltasks.tab-pane.fade
-        -@tasks.sort_by(&:task_date).each do |task|
+    .col-xs-12.col-md-7.white.my-task-list
+      .section-title
+        My Care Tasks
+        ="(#{@my_tasks.count})"
+      -unless @my_tasks.empty?
+        -@my_tasks.sort_by(&:task_date).each do |task|
+          =render 'task', task: task, group: @group
+      %hr
+      .section-title
+        My Recent Tasks
+      -unless @past_user_tasks.empty?
+        -@past_user_tasks.sort_by(&:task_date).reverse.each do |task|
+          =render 'tasks/all_task', task: task, group: @group
+      -else
+        %h3.card-title{style: "margin-top: 0; padding: 30px;"}
+          ="#{@user.first_name} hasn't completed any tasks...yet!"
+    .col-md-1
+    .col-xs-12.col-md-4.white.my-task-list
+      .section-title
+        All Upcoming Care Tasks
+        ="(#{@tasks.count})"
+        =link_to new_group_task_path(current_user.group) do
+          %h4 Add New
+      -@tasks.sort_by(&:task_date).each do |task|
+        =render 'all_task', task: task, group: @group
+      .section-title
+        Open Tasks
+        ="(#{@open_tasks.count})"
+      -unless @open_tasks.empty?
+        -@open_tasks.sort_by(&:task_date).each do |task|
           =render 'all_task', task: task, group: @group
-
-      #opentasks.tab-pane.fade
-        -unless @open_tasks.empty?
-          -@open_tasks.sort_by(&:task_date).each do |task|
-            =render 'all_task', task: task, group: @group
-        -else
-          =image_tag("#{random_photo}", class: 'random-photo')
-          =render 'tasks/no_group_tasks'
+      -else
+        =image_tag("#{random_photo}", class: 'random-photo')
+        =render 'tasks/no_group_tasks'
 
 #first-time-user.modal.fade
   .modal-dialog

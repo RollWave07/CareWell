@@ -18,21 +18,18 @@
   .col-xs-8.col-md-8.summary
     =link_to group_task_path(group, task_id) do
       %h3.card-title=task.title.truncate(25)
-      %h4
-        =task_date.strftime('%A')
-        -if task_date > Time.now
-          ="(in #{distance_of_time_in_words(diff)})"
-        -else
-          ="(#{distance_of_time_in_words(diff)} ago)"
-      -if updates_count > 0
-        .comments-count
-          =updates_count
-        %i.fa.fa-comment.task-card-icon
-      -if likes_count > 0
-        .hearts-count
-          =likes_count
-        %i.fa.fa-heart.task-card-icon.heart-icon-color
-  .col-xs-1.col-md-1
-    .arrow-right
-      =button_to "The Task", group_task_path(group, task_id), method: :get
+    %h4
+      =task_date.strftime('%A')
+      -if task_date > Time.now
+        ="(in #{distance_of_time_in_words(diff)})"
+      -else
+        ="(#{distance_of_time_in_words(diff)} ago)"
+    -if updates_count > 0
+      .comments-count
+        =updates_count
+      %i.fa.fa-comment.task-card-icon
+    -if likes_count > 0
+      .hearts-count
+        =likes_count
+      %i.fa.fa-heart.task-card-icon.heart-icon-color
 

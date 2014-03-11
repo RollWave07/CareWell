@@ -18,6 +18,12 @@ $bgc: #ded8ce;
 
 //styles
 
+//my task list on new task page
+.my-task-list {
+  background: white;
+  padding: 20px;
+}
+
 .task-card {
   background: white;
 
@@ -258,12 +264,12 @@ $bgc: #ded8ce;
   border-bottom: 1px solid rgb(214,210,210);
   h3 {
     font-family: "Lato", sans-serif;
-    font-size: 3em;
+    font-size: 1.8em;
     margin-top: 5px;
     }
     h4 {
     font-family: "Lato", sans-serif;
-    font-size: 2em;
+    font-size: 1.3em;
     color: #cacaca;
   }
 }
