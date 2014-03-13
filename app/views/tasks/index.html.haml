@@ -5,7 +5,7 @@
       =best_in_place @group, :name
       %span.edit-indicator.glyphicon.glyphicon-pencil
   .row
-    .col-xs-12.col-md-6.white.my-task-list
+    .col-xs-12.col-md-7.white.my-task-list
       .section-title
         My Care Tasks
         ="(#{@my_tasks.count})"
@@ -21,7 +21,6 @@
       -else
         %h3.card-title{style: "margin-top: 0; padding: 30px;"}
           ="#{@user.first_name} hasn't completed any tasks...yet!"
-    .col-md-1
     .col-xs-12.col-md-5.white.my-task-list
       .section-title
         All Upcoming Care Tasks
@@ -35,11 +34,19 @@
         =calendar_for @this_months_tasks, :year => @date.year, :month=> @date.month do |calendar|
           =calendar.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat')
           -calendar.day(:day_method => :task_date) do |day, tasks|
-            =day.day
-            %ul
-              -for task in tasks
-                %li=link_to h(task.title), group_task_path(@group, task.id)
-
+            .day
+              =day.day
+              %ul
+                -if tasks.count > 0
+                  -for task in tasks
+                    -if task.assignee == nil
+                      %li.open
+                        =link_to group_task_path(@group, task.id) do
+                          =render 'tasks/icon', task: task
+                    -else
+                      %li.covered
+                        =link_to group_task_path(@group, task.id) do
+                          =render 'tasks/icon', task: task
       .section-title
         Open Tasks
         ="(#{@open_tasks.count})"

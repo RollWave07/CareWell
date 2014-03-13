@@ -17,7 +17,9 @@
       %h4.sign-up=link_to "Volunteer", group_task_path(group, task_id, params: { task: {assignee_id: current_user_id}}), method: :patch, remote: true
   .col-xs-8.col-md-8.summary
     =link_to group_task_path(group, task_id) do
-      %h3.card-title=task.title.truncate(25)
+      %h3.card-title
+        =render 'tasks/icon', task: task
+        =task.title.truncate(25)
     %h4
       =task_date.strftime('%A')
       -if task_date > Time.now

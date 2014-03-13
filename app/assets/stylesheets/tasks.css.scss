@@ -88,6 +88,42 @@ $bgc: #ded8ce;
   }
 }
 
+// calendar styles
+td {
+  height: 60px;
+  width: 60px;
+  border: 1px solid gray;
+  color: #CCC;
+}
+
+.notmonth, .day, .weekend, .today, .future {
+
+}
+
+.today, .day, .future, .weekend {
+  vertical-align: top;
+  text-align: center;
+  ul {
+    padding: 0;
+  }
+}
+
+li.open {
+  list-style-type: none;
+  i {
+  color: orange;
+  font-size: 2.5rem;
+  }
+}
+li.covered {
+  list-style-type: none;
+  i {
+  color: green;
+  font-size: 2.5rem;
+  }
+}
+
+
   .task {
     margin: 30px;
     background-color: $bgc;

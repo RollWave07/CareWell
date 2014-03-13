@@ -5,22 +5,7 @@
 - task_information = task.information
 - diff = task_task_date.to_i - Time.now.to_i
 .task-card
-  -if task.category == "getting places"
-    %i.fa.fa-truck.icon
-  -if task.category == "around the home"
-    %i.fa.fa-home.icon
-  -if task.category == "shopping"
-    %i.fa.fa-shopping-cart.icon
-  -if task.category == "meals"
-    %i.fa.fa-cutlery.icon
-  -if task.category == "personal care"
-    %i.fa.fa-stethoscope.icon
-  -if task.category == "odds & ends"
-    %i.fa.fa-wrench.icon
-  -if task.category == "visits & outings"
-    %i.fa.fa-users.icon
-  -if task.category == "remote"
-    %i.fa.fa-phone.icon
+  =render 'tasks/icon', task: task
   %h1.show-card-title=task.title
   -if task_task_date
     %p.task-details
