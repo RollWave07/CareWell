@@ -25,12 +25,33 @@ describe Task do
     end
     # its(:unassigned) {should = 3}
   end
-  # describe "#unassigned(tasks)" do
+  describe "#unassigned(tasks)" do
     
-  #   it 'returns 1 ' do
-  #     users
-  #     tasks
-  #     expect(Task.unassigned(Task.all).count).to eq 1
-  #   end
-  # end  
+    it 'returns 1 ' do
+      users
+      tasks
+      expect(Task.unassigned(Task.all).count).to eq 1
+    end
+  end
+  
+  describe 'validations' do
+    describe 'presence' do
+      context 'when given an :title' do
+        it 'creates a new record' do
+          new_task = Task.create( title: "Made a new task")
+          expect(new_task).to be_valid
+          expect(Task.count).to eq 1
+        end
+      end
+      context 'when given nothing' do
+        it 'fails to create a record' do
+          new_task = Task.create
+          expect(new_task).to_not be_valid
+          expect(Task.count).to eq 0
+          expect(new_task.errors.full_messages).to include("Title can't be blank")
+        end
+      end
+    end
+  end
+
 end

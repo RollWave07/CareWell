@@ -34,7 +34,6 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     acts_as_votable (0.8.0)
-    addressable (2.3.5)
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
@@ -61,8 +60,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
-    crack (0.4.2)
-      safe_yaml (~> 1.0.0)
     debug_inspector (0.0.2)
     devise (3.2.2)
       bcrypt-ruby (~> 3.0)
@@ -178,7 +175,6 @@ GEM
       rspec-mocks (= 3.0.0.beta1)
     rspec-support (3.0.0.beta1)
     ruby-hmac (0.4.0)
-    safe_yaml (1.0.1)
     sass (3.2.13)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -215,12 +211,8 @@ GEM
     unf (0.1.3)
       unf_ext
     unf_ext (0.0.6)
-    vcr (2.8.0)
     warden (1.2.3)
       rack (>= 1.0)
-    webmock (1.17.4)
-      addressable (>= 2.2.7)
-      crack (>= 0.3.2)
 
 PLATFORMS
   ruby
@@ -259,5 +251,3 @@ DEPENDENCIES
   twilio-ruby
   uglifier (>= 1.3.0)
   unf
-  vcr (~> 2.8.0)
-  webmock (~> 1.17.4)
