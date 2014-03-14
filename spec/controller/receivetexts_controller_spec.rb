@@ -2,54 +2,36 @@ require "spec_helper"
 require "pry"
 
 describe ReceivetextsController, type: :controller do
-  let(:params) { {"Body" => "test body", "From" => "6175158907"} }
-  let(:task) {Task.new(title: "test task")}
-  let(:current_user) {User.new}
-
-  describe "Receivetexts#index" do
-    it "assignes the @task to the correct task when a task is available" do
-      # comment.stub(:body).with('a string')
-      # expect comment.class.to eq(String)
-      # @assignee = 
-      # @task = 
-      Task.stub_chain(:where, :completed_recently, :first).and_return(task)
-      binding.pry
-
-      get :index
-
-      expect(assigns(:task)).to eq(task)
-
-
-
-
-    end
-
-    # it "creates a new task when a task is not available" do
-    #   params["Body"] = 
-
-
-
-    # end
-
+  let(:user) do
+    User.create(first_name: "Captain",last_name: "Hook", email: "captain@hook.com", password:"password", phone: 6175158907, group_id: 1, admin: true )
+    
   end
+  let(:task) do
+    Task.create(title: "Sample Task", groupid: 1, category: "getting places", duration: 60, task_date: Time.now, assignee_id: 1 , user_id: 1)
+  end
+
+  describe "GET 'index'" do
+    it "returns http success" do
+      user
+      task
+      get 'index', "Body" => "test body", "From" => "6175158907"
+      response.should be_success
+    end
+    it "creates an update" do
+      user
+      task
+      get 'index', "Body" => "test body", "From" => "6175158907"
+      expect(Update.count).to eq(1)
+    end
+    # it "assignes user one to the most recent task" do
+      
+    # end
+    # it "creates a new task when task not found" do
+      
+    # end
+  end
+
+  
 end
 
-  @task can be nil
-    if so, @task will be created using @assignee
-
-
-    @comment = params["Body"]
-    @assignee = User.where(phone: params["From"].gsub('+1','')).first
-    @task = Task.where(assignee_id: @assignee).completed_recently.first
-    
-    unless @task
-        @task = Task.create(user_id: @assignee, assignee_id: @assignee, title: "Update")
-    end 
-
-    # logger.info "+++task=#{@task.inspect}"
-
-    # user_id =
-    #SMSLogger.log_text_message from_number, message_bodyme
-    #params.require(:update).permit(:comment, :picture, :task_id, :user_id)
-    Update.create(user: @assignee, task:@task, comment:@comment)
-  end
+ 
