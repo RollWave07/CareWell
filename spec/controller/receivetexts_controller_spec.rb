@@ -1,55 +1,63 @@
-# require "spec_helper"
-# require "pry"
+require "spec_helper"
+require "pry"
 
-# describe ReceivetextsController, type: :controller do
-#   let(:params) { {"Body" => "test body", "From" => "6175158907"} }
-#   let(:task) {Task.new(title: "test task")}
-#   let(:current_user) {User.new}
-
-#   describe "Receivetexts#index" do
-#     it "assignes the @task to the correct task when a task is available" do
-#       # comment.stub(:body).with('a string')
-#       # expect comment.class.to eq(String)
-#       # @assignee = 
-#       # @task = 
-#       Task.stub_chain(:where, :completed_recently, :first).and_return(task)
-#       binding.pry
-
-#       get :index
-
-#       expect(assigns(:task)).to eq(task)
-
-
-
-
-#     end
-
-#     # it "creates a new task when a task is not available" do
-#     #   params["Body"] = 
-
-
-
-#     # end
-
-#   end
-# end
-
-  # @task can be nil
-  #   if so, @task will be created using @assignee
-
-
-  #   @comment = params["Body"]
-  #   @assignee = User.where(phone: params["From"].gsub('+1','')).first
-  #   @task = Task.where(assignee_id: @assignee).completed_recently.first
+describe ReceivetextsController, type: :controller do
+  let(:user) do
+    User.create!([{first_name: "Captain",last_name: "Hook", email: "captain@hook.com", password:"password", phone: 6175158907, group_id: 1, admin: true},
+      {first_name: "Tiger",last_name: "Lily", email: "tiger@lily.com", password:"password", phone: 6175158907, group_id: 1, admin: false }
+     ])
     
-  #   unless @task
-  #       @task = Task.create(user_id: @assignee, assignee_id: @assignee, title: "Update")
-  #   end 
+  end
+  let(:task) do
+    Task.create!([
+      {title: "Sample Task 2", groupid: 1, category: "getting places", duration: 60, task_date: Time.now+1.day, assignee_id: User.first.id , user_id: User.first.id},
+      {title: "Sample Task 3", groupid: 1, category: "getting places", duration: 60, task_date: Time.now-2.day, assignee_id: User.first.id , user_id: User.first.id},
+      {title: "Sample Task 4", groupid: 1, category: "getting places", duration: 30, task_date: Time.now-1.hour, assignee_id: nil , user_id: User.first.id}])
 
-  #   # logger.info "+++task=#{@task.inspect}"
+  end
 
-  #   # user_id =
-  #   #SMSLogger.log_text_message from_number, message_bodyme
-  #   #params.require(:update).permit(:comment, :picture, :task_id, :user_id)
-  #   Update.create(user: @assignee, task:@task, comment:@comment)
-  # end
+  describe "recieves a text" do
+    it "returns http success" do
+      user
+      task
+      get 'index', "Body" => "test body", "From" => "6175158907"
+      response.should be_success
+    end
+    
+    context 'finds a recently completed task' do
+      it "creates an update on an existing task" do
+        user
+        task
+        Task.create(title: "Sample Task 1", groupid: 1, category: "getting places", duration: 30, task_date: Time.now-1.hour, assignee_id: User.first.id , user_id: User.first.id)
+        get 'index', "Body" => "test body", "From" => "6175158907"
+        expect(Update.count).to eq(1)
+        assert_equal Update.first.task.title, "Sample Task 1"
+      end
+      it 'assignes it to the correct user' do
+        user
+        task
+        Task.create(title: "Sample Task 5", groupid: 1, category: "getting places", duration: 30, task_date: Time.now-1.hour, assignee_id: User.last.id , user_id: User.last.id)
+        Task.create(title: "Sample Task 1", groupid: 1, category: "getting places", duration: 30, task_date: Time.now-2.hour, assignee_id: User.first.id , user_id: User.last.id)
+        
+        get 'index', "Body" => "test body", "From" => "6175158907"
+        expect(Update.count).to eq(1)
+        assert_equal Update.first.task.title, "Sample Task 1"
+      end
+    end
+
+    context 'does not find a recent completed task' do
+      it "creates an update on a new task" do
+        user
+        task
+        get 'index', "Body" => "test body", "From" => "6175158907"
+        expect(Update.count).to eq(1)
+        assert_equal Update.first.id, Task.last.updates.take.id
+        assert_equal Task.last.title, "Text Update"
+      end
+    end
+  end
+
+  
+end
+
+ 

@@ -27,4 +27,5 @@ class User < ActiveRecord::Base
     puts array
   end
 
+
 end

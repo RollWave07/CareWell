@@ -52,7 +52,6 @@ class Task < ActiveRecord::Base
   end
 
 
-
   def ordered_updates
     self.updates.order("created_at")
   end

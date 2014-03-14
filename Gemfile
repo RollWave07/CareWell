@@ -18,6 +18,9 @@ group :development, :test do
   gem 'pry'
   # gem 'pry-rails'
   gem 'rspec-rails', '~> 3.0.0.beta'
+  #record Twilio api for testing
+  # gem "vcr", "~> 2.8.0"
+  # gem "webmock", "~> 1.17.4"
 end
 # Rmagick - Unf for image manipulation
 # Use RMagick to manipulate images
@@ -95,3 +98,4 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
