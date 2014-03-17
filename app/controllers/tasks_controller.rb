@@ -23,10 +23,10 @@ class TasksController < ApplicationController
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     @user = User.find(current_user.id)
     @tasks = Task.tasks(@group).future
+    @others_tasks = Task.tasks(@group).future.where.not(assignee_id: nil, assignee_id: current_user)
     @my_tasks = Task.assigned_to_specific_user(@tasks.future, current_user)
     @past_user_tasks = Task.assigned_to_specific_user(@tasks.past, @user)
-    @this_months_tasks = Task.tasks(@group).from_this_month
-    @open_tasks = Task.unassigned(@tasks)
+    @open_tasks = Task.tasks(@group).future.where(assignee_id: nil)
     @this_months_events = Event.events(@group).from_this_month
     @update = Update.new
   end

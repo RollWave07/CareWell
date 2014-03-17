@@ -36,6 +36,10 @@ $bgc: #ded8ce;
   color: #666;
 }
 
+.nav-pills {
+  display: inline-block;
+}
+
 .task-card {
   background: white;
 
@@ -307,7 +311,6 @@ li.covered {
 .task-card {
   padding: 20px;
   text-decoration: none;
-  padding-right: 0px;
   margin-top: -1px;
   border: 1px solid rgb(214,210,210);
   &:hover {

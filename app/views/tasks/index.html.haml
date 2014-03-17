@@ -26,8 +26,8 @@
         %ul.nav.nav-pills
           %li.active
             %a{href: "#all", 'data-toggle' => "pill"}
-              All Upcoming
-              ="(#{@tasks.count})"
+              Other Upcoming
+              ="(#{@others_tasks.count})"
           %li
             %a{href: "#open", 'data-toggle' => "pill"}
               Open
@@ -35,11 +35,19 @@
         =link_to new_group_task_path(current_user.group) do
           %h4.add-new Add New
 
-      -unless @open_tasks.empty?
-        -@open_tasks.sort_by(&:task_date).each do |task|
-          =render 'open_task', task: task, group: @group
-      -else
-        There are no open tasks for this month!
+        .tab-content
+          .tab-pane.active{id: "all"}
+            -unless @others_tasks.empty?
+              -@others_tasks.each do |task|
+                =render 'all_task', task: task, group: @group
+            -else
+              There are no upcoming tasks covered by other team members.
+          .tab-pane{id: "open"}
+            -unless @open_tasks.empty?
+              -@open_tasks.sort_by(&:task_date).each do |task|
+                =render 'open_task', task: task, group: @group
+            -else
+              There are no open tasks for this month!
 
       .section-title
         Events
