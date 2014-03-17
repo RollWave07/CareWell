@@ -35,7 +35,12 @@ $bgc: #ded8ce;
     border-top-right-radius: 5px;
     padding: 20px;
     border-bottom: 1px solid #E6E9ED;
+    margin-bottom: 0;
   }
+  .section-contents {
+    padding: 20px;
+  }
+
 }
 
 .add-new {
@@ -57,7 +62,6 @@ $bgc: #ded8ce;
 
 .task-card {
   background: white;
-  margin: 20px;
 
   .details {
     float: right;
@@ -631,7 +635,7 @@ top: -10px;
   .container {
     margin: 0 auto;
     padding: 0;
-    width: 100%;
+    width: 95%;
   }
   h1.show-card-title {
     font-size: 1.5em;
