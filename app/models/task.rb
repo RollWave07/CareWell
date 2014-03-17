@@ -3,7 +3,7 @@ class Task < ActiveRecord::Base
   belongs_to :user
   # belongs_to :group
   belongs_to :assignee, :class_name => "User"
-  belongs_to :location
+  # belongs_to :location
   has_many :updates
 
 
