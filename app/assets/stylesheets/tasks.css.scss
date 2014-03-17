@@ -26,11 +26,16 @@ $bgc: #ded8ce;
 
 .card {
   background: white;
-  padding: 20px;
   margin: 20px;
   margin-left: 0;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+  .section-title {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 20px;
+    border-bottom: 1px solid #E6E9ED;
+  }
 }
 
 .add-new {
@@ -52,6 +57,7 @@ $bgc: #ded8ce;
 
 .task-card {
   background: white;
+  margin: 20px;
 
   .details {
     float: right;
