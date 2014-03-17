@@ -46,7 +46,8 @@ navbar-inner
 
 h1,h2, h3 {
 font-family: 'Lato',sans-serif;
-font-weight: 300;
+font-weight: 700;
+text-shadow:2px 2px 2px rgba(255,255,255, 1);
 }
 
 .aside {
@@ -59,7 +60,7 @@ html {
   height: 100%;
 }
 body {
-  background-color: #E8E8E8;
+  background-color: rgb(241, 242, 246);
   height: 100%;
   font-family: 'Lato'
 }
@@ -67,6 +68,7 @@ body {
 .section-title {
   font-size: 1.3em;
   font-weight: 700;
+  color: #333;
   margin-bottom: 15px;
 }
 

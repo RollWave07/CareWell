@@ -29,5 +29,5 @@
         =likes_count
       %i.fa.fa-heart.task-card-icon.heart-icon-color
   .col-xs-4.col-md-4
-    =button_to "Details", group_task_path(group, task_id), method: :get
+    =link_to "Details", group_task_path(group, task_id), method: :get, class: "details"
 
