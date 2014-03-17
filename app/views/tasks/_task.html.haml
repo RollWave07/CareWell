@@ -8,8 +8,10 @@
     =link_to mark_complete_group_task_path(group, task_id), method: :put, remote: true do
       %h4.task-box
         %i.fa.fa-check
-  .col-xs-8.col-md-8.summary
-    %h3.card-title=task.title.truncate(25)
+  .col-xs-6.col-md-6.summary
+    %h3.card-title
+      =render 'icon', task: task
+      =task.title.truncate(25)
     -if task_date
       %h4
         =task_date.strftime('%A')
@@ -26,7 +28,6 @@
       .hearts-count
         =likes_count
       %i.fa.fa-heart.task-card-icon.heart-icon-color
-  .col-xs-1.col-md-1
-    .arrow-right
-      =button_to "The Task", group_task_path(group, task_id), method: :get
+  .col-xs-4.col-md-4
+    =button_to "Details", group_task_path(group, task_id), method: :get
 

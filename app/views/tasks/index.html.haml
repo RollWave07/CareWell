@@ -1,6 +1,6 @@
 .container
   .row.task-index-header
-    %h1
+    %h1.application-section-header
       Care tasks for
       =best_in_place @group, :name
       %span.edit-indicator.glyphicon.glyphicon-pencil
@@ -54,8 +54,7 @@
         -@open_tasks.sort_by(&:task_date).each do |task|
           =render 'all_task', task: task, group: @group
       -else
-        =image_tag("#{random_photo}", class: 'random-photo')
-        =render 'tasks/no_group_tasks'
+        There are no open tasks for this month!
 
 #first-time-user.modal.fade
   .modal-dialog
