@@ -1,0 +1,22 @@
+.row
+  .col-xs-12.col-md-12.new-task
+    =form_for [@group, @event] do |event|
+      %h4.new-task-h4 Event Title
+      =event.text_field :event_title, placeholder: "What is the event?", autofocus: true, :class => 'form-control input-lg'
+
+      .col-xs-12
+        %h4.new-task-h4 Details
+        %p=event.text_field :event_details, placeholder: "e.g., The key is under the matt.", rows: 4, class: 'form-control input-lg'
+
+      .col-xs-12.time-details
+        %h4.new-task-h4 When
+      .col-xs-12.time-details
+        =event.datetime_field :event_date, placeholder: "tomorrow, in 3 days, by next Saturday, Jan 14, 5PM", :class => 'form-control input-lg'
+      .col-xs-12
+        %h4.new-task-h4 Where
+      .col-xs-12
+        %p=event.text_field :event_location, placeholder: "Home", class: 'form-control input-lg'
+
+        =event.submit :class => "btn new-task-button"
+
+

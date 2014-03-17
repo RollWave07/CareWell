@@ -26,27 +26,8 @@
         All Upcoming Care Tasks
         ="(#{@tasks.count})"
         =link_to new_group_task_path(current_user.group) do
-          %h4 Add New
-      .cal
-        =link_to "<", params: {month: (@date.beginning_of_month-1).strftime("%B-%Y")}
-        =@date.strftime("%B %Y")
-        =link_to ">", :month => (@date.end_of_month+1).strftime("%B-%Y")
-        =calendar_for @this_months_tasks, :year => @date.year, :month=> @date.month do |calendar|
-          =calendar.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat')
-          -calendar.day(:day_method => :task_date) do |day, tasks|
-            .day
-              =day.day
-              %ul
-                -if tasks.count > 0
-                  -for task in tasks
-                    -if task.assignee == nil
-                      %li.open
-                        =link_to group_task_path(@group, task.id) do
-                          =render 'tasks/icon', task: task
-                    -else
-                      %li.covered
-                        =link_to group_task_path(@group, task.id) do
-                          =render 'tasks/icon', task: task
+          %h4.add-new Add New
+
       .section-title
         Open Tasks
         ="(#{@open_tasks.count})"
@@ -55,6 +36,25 @@
           =render 'all_task', task: task, group: @group
       -else
         There are no open tasks for this month!
+
+      .section-title
+        Upcoming Events
+        =link_to new_group_event_path(current_user.group) do
+          %h4.add-new Add New
+
+        .cal
+          =link_to "<", params: {month: (@date.beginning_of_month-1).strftime("%B-%Y")}
+          =@date.strftime("%B %Y")
+          =link_to ">", :month => (@date.end_of_month+1).strftime("%B-%Y")
+          =calendar_for @this_months_events, :year => @date.year, :month=> @date.month do |calendar|
+            =calendar.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat')
+            -calendar.day(:day_method => :event_date) do |day, events|
+              .day
+                =day.day
+                -for event in events
+                  %ul
+                    %li
+                      =link_to event.event_title, group_event_path(@group, event.id)
 
 #first-time-user.modal.fade
   .modal-dialog

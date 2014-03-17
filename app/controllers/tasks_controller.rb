@@ -27,8 +27,8 @@ class TasksController < ApplicationController
     @past_user_tasks = Task.assigned_to_specific_user(@tasks.past, @user)
     @this_months_tasks = Task.tasks(@group).from_this_month
     @open_tasks = Task.unassigned(@tasks)
+    @this_months_events = Event.events(@group).from_this_month
     @update = Update.new
-    @group = current_user.group
   end
 
   def show

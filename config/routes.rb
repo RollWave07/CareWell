@@ -18,6 +18,7 @@ Carewell::Application.routes.draw do
 
 
   resources :groups do
+    resources :events
     resources :tasks do
       member { put :mark_complete }
       resources :updates do
