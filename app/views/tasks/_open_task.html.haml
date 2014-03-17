@@ -1,0 +1,31 @@
+- current_user_id = current_user.id
+- task_date = task.task_date
+- updates_count = task.updates.count
+- likes_count = task.likes_count
+- task_id = task.id
+- diff = task_date.to_i - Time.now.to_i
+
+.row.task-card{"data-task-id" => "#{task.id}", :class => "category-#{task.category}"}
+  .col-xs-8.col-md-8.summary
+    =link_to group_task_path(group, task_id) do
+      %h3.card-title
+        =render 'tasks/icon', task: task
+        =task.title.truncate(25)
+    %h4
+      =task_date.strftime('%A')
+      -if task_date > Time.now
+        ="(in #{distance_of_time_in_words(diff)})"
+      -else
+        ="(#{distance_of_time_in_words(diff)} ago)"
+    -if updates_count > 0
+      .comments-count
+        =updates_count
+      %i.fa.fa-comment.task-card-icon
+    -if likes_count > 0
+      .hearts-count
+        =likes_count
+      %i.fa.fa-heart.task-card-icon.heart-icon-color
+  .col-xs-4.col-md-4
+    %h4.sign-up=link_to "Volunteer", group_task_path(group, task_id, params: { task: {assignee_id: current_user_id}}), method: :patch, remote: true
+    =link_to "Details", group_task_path(group, task_id)
+
