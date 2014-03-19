@@ -1,42 +1,43 @@
 .container
   .row
-    .profile_top
-      .col-md-5
-        .profile_pic
-          -if @user.picture_url == nil
-            =image_tag("mickey-mouse-large.jpg", class: "group-user-photo")
-          -else
-            =image_tag(@user.picture_url(:wide))
-      .profile_info.col-md-7
-        .profile_name="#{@user.first_name} #{@user.last_name}"
-        .profile_contact
-          .phone="Phone: #{number_to_phone(@user.phone, area_code: true)}"
-          .email="Email: #{@user.email}"
-          -if current_user == @user
-            .edit.glyphicon.glyphicon-pencil=link_to "Edit", edit_user_registration_path
-  .row
-    .profile_name="#{@user.first_name}'s Tasks"
-  .row
-    %ul.nav.nav-tabs
-      %li.half{style: "width: 50%"}
-        %a.my-task-count{'data-toggle' => "tab", href: "#futuretasks"}
-          ="#{@user.first_name}'s Future Tasks (#{@future_user_tasks.count})"
-      %li{style: "width: 50%"}
-        %a{'data-toggle' => "tab", href: "#pasttasks"}
-          ="#{@user.first_name}'s Past Tasks (#{@past_user_tasks.count})"
+    %h1.application-section-header
+      My Profile
+    .col-xs-12.col-md-12
+      .card
+        .section-title
+          Details
+          .edit
+            -if current_user == @user
+              =link_to edit_user_registration_path do
+                .edit.glyphicon.glyphicon-pencil
+        .section-contents.overflow-hidden
+          .col-xs-12.col-md-2
+            -if @user.picture_url == nil
+              =image_tag("mickey-mouse-large.jpg", class: "group-user-photo")
+            -else
+              =image_tag(@user.picture_url(:wide))
+            %h3
+              ="#{@user.first_name} #{@user.last_name}"
+          .col-xs-12.col-md-10
+            .phone="Phone: #{number_to_phone(@user.phone, area_code: true)}"
+            .email="Email: #{@user.email}"
 
-    .tab-content
-      #futuretasks.tab-pane.fade.in.active
-        -unless @future_user_tasks.empty?
-          -@future_user_tasks.sort_by(&:task_date).each do |task|
-            =render 'tasks/all_task', task: task, group: @group
-        -else
-          =render 'tasks/no_tasks'
+      .card
+        .section-title
+          Task Preferences
+          .edit
+            -if current_user == @user
+              =link_to edit_user_registration_path do
+                .edit.glyphicon.glyphicon-pencil
+        .section-contents
+          Here is where task preferences will go.
 
-      #pasttasks.tab-pane.fade
-        -unless @past_user_tasks.empty?
-          -@past_user_tasks.sort_by(&:task_date).reverse.each do |task|
-            =render 'tasks/all_task', task: task, group: @group
-        -else
-          %h3.card-title{style: "margin-top: 0; padding: 30px;"}
-            ="#{@user.first_name} hasn't completed any tasks...yet!"
+      .card
+        .section-title
+          Contact Preferences
+          .edit
+            -if current_user == @user
+              =link_to edit_user_registration_path do
+                .edit.glyphicon.glyphicon-pencil
+        .section-contents
+          Here is where contact preferences will go.
