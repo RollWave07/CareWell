@@ -7,5 +7,6 @@ class Update < ActiveRecord::Base
 
   acts_as_votable
 
+  scope :week_one, lambda {where(created_at:(7.day.ago..Time.now))}
 
 end

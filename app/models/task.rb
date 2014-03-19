@@ -108,9 +108,6 @@ class Task < ActiveRecord::Base
   def self.assigned(group)
     Task.tasks(group).where.not(assignee_id: nil)
   end
-  def self.last_three_tasks_completed(tasks)
-    tasks.limit(3).where(task_date: 1.month.ago..Time.now).order(task_date: :desc)
-  end
 
   def self.average_duration_per_category(tasks)
     tasks.group(:category).select(:category, :duration).average(:duration)

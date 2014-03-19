@@ -10,13 +10,13 @@ class GroupsController < ApplicationController
   def show
     @users = User.users_in_group(@group)
 
+    @top3 = User.top_users_per_week(@group)
+
+    @active_users = User.active_users_per_week(@group)
+
     @assigned_tasks = Task.assigned(@group)
 
     @counts_arrays = Task.count_per_period(@assigned_tasks)
-
-    @users_and_tasks = TopMembersQuery.new.users_and_tasks_list(30, @group.id)
-
-    @last_three_tasks_completed = Task.last_three_tasks_completed(@assigned_tasks)
 
     @category_avg = Task.average_duration_per_category(@assigned_tasks)
 

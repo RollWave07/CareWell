@@ -2,19 +2,45 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.number-summary-stats {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #48CFAD;
+    color: white;
+    text-align: center;
+    font-size: 4em;
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+  }
+
 .group-photo {
-  margin-top: 15px;
-  border: 5px solid white;
-  border-radius: 3px;
+  width: 100%;
 }
 
 .group-user-photo {
-  border: 3px solid white;
-  border-radius: 3px;
   margin-right: 5px;
   margin-bottom: 7px;
 }
 
+#group_picture {
+  padding: 20px;
+  display: inline-block;
+  float: left;
+  width: 230px;
+}
+
+.actions {
+  input[type='submit'] {
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+    color: white;
+    background-color: orange;
+    border: 1px solid #e0881b;
+    padding: 5px 10px;
+  }
+}
 .graph-background {
   background-color: white;
   border-radius: 3px;
@@ -41,12 +67,12 @@ input.update-group-button {
 
 .add-member {
   background: #ff615b;
-  height: 106px;
-  width: 106px;
+  height: 60px;
+  width: 60px;
   border-radius: 3px;
   display: inline-block;
   float: left;
-  line-height: 106px;
+  line-height: 60px;
   text-align: center;
   a {
     text-decoration: none;
@@ -74,28 +100,13 @@ input.update-group-button {
   }
 
   .number-summary-stats {
-    width: 200px;
-    display: block;
+    display: inline-block;
     border-radius: 5px;
-    border: 5px solid white;
-    border-color: white;
+    background-color: #48CFAD;
     color: white;
-    height: 200px;
-    line-height: 200px;
     text-align: center;
-    font-size: 10em;
-    .green {
-      background: #53bc9c;
-    }
+    font-size: 4em;
   }
-  p.number-summary
-      {
-      font-family: 'Lato';
-      position: relative;
-      left: 15px;
-      top: -32px;
-      color: white;
-    }
 
   .edit-group {
     color: white;

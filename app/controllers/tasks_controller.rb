@@ -23,6 +23,7 @@ class TasksController < ApplicationController
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     @user = User.find(current_user.id)
     @tasks = Task.tasks(@group).future
+    @past_tasks = Task.tasks(@group).past.limit(5)
     @others_tasks = Task.tasks(@group).future.where.not(assignee_id: nil, assignee_id: current_user)
     @my_tasks = Task.assigned_to_specific_user(@tasks.future, current_user)
     @past_user_tasks = Task.assigned_to_specific_user(@tasks.past, @user)

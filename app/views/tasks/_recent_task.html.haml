@@ -13,17 +13,15 @@
         =image_tag(assignee_picture_url, :class=>"group-picture")
       -else
         %h4="#{task.assignee.first_name}"
-  .col-xs-8.col-md-8.summary
+  .col-xs-7.col-md-7.summary
     =link_to group_task_path(group, task_id) do
       %h3.card-title
         =render 'tasks/icon', task: task
         =task.title.truncate(25)
     %h4
       =task_date.strftime('%A')
-      -if task_date > Time.now
-        ="(in #{distance_of_time_in_words(diff)})"
-      -else
-        ="(#{distance_of_time_in_words(diff)} ago)"
+      ="(#{distance_of_time_in_words(diff)} ago)"
+  .col-xs-3.col-md-3
     -if updates_count > 0
       .comments-count
         =updates_count

@@ -14,14 +14,7 @@
           %nav.navbar{:role=>"navigation"}
             .navbar-header
               -if current_user
-                -if current_user.group.picture_url != nil
-                  =link_to image_tag('group-logo.png', class: 'logo group-logo'), group_tasks_path(current_user.group_id)
-                  :css
-                    .group-logo {
-                    background-image: url("#{current_user.group.picture_url(:group_logo)}");
-                    }
-                -else
-                  =link_to image_tag('carewell-green-logo.png', :class=>"logo"),group_tasks_path(current_user.group_id)
+                =link_to image_tag('carewell-green-logo.png', :class=>"logo"),group_tasks_path(current_user.group_id)
               -else
                 =link_to image_tag('carewell-green-logo.png', :class=>"logo")
 

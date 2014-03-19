@@ -27,4 +27,32 @@ class User < ActiveRecord::Base
     puts array
   end
 
+  def self.top_users_per_week(group)
+    users = self.where(group_id: group)
+    user_array = []
+    users.each do |user|
+      task_count = user.tasks.week_one.count
+      user_array << {user.first_name => task_count}
+    end
+    sorted_array = user_array.sort_by {|k,v| v}
+    sorted_array[0..2]
+  end
+
+  def self.active_users_per_week(group)
+    users = self.where(group_id: group)
+    active = 0
+    users.each do |user|
+      if user.tasks.week_one.count > 0
+        active += 1
+      elsif user.updates.week_one.count > 0
+        active += 1
+      elsif user.votes.where(created_at:(7.day.ago..Time.now)).count > 0
+        active += 1
+      else
+        return
+      end
+    end
+    active
+  end
+
 end

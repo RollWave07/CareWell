@@ -5,14 +5,25 @@
       =best_in_place @group, :name
       %span.edit-indicator.glyphicon.glyphicon-pencil
   .row
-    .col-xs-12.col-md-6.card.no-left-margin
-      .section-title
-        My Care Tasks
-        ="(#{@my_tasks.count})"
-      .section-contents
-        -unless @my_tasks.empty?
-          -@my_tasks.sort_by(&:task_date).each do |task|
-            =render 'task', task: task, group: @group
+    .col-xs-12.col-md-6.no-left-margin
+      .card
+        .section-title
+          My Care Tasks
+          ="(#{@my_tasks.count})"
+        .section-contents
+          -unless @my_tasks.empty?
+            -@my_tasks.sort_by(&:task_date).each do |task|
+              =render 'task', task: task, group: @group
+      .card
+        .section-title
+          Recent Care Tasks
+        .section-contents
+          -unless @past_tasks.empty?
+            -@past_tasks.sort_by(&:task_date).reverse.each do |task|
+              =render 'recent_task', task: task, group: @group
+          -else
+            %h3.card-title
+              ="No tasks have been completed yet!"
 
     .col-xs-12.col-md-5.card
       .section-title
@@ -26,7 +37,7 @@
               Open
               ="(#{@open_tasks.count})"
         =link_to new_group_task_path(current_user.group) do
-          %h4.add-new Add New
+          %h4.add-new Add
       .section-contents
         .tab-content
           .tab-pane.active{id: "all"}
@@ -41,36 +52,26 @@
                 =render 'open_task', task: task, group: @group
             -else
               There are no open tasks for this month!
-  .row
-    .col-xs-12.col-md-6.card.no-left-margin
-      .section-title
-        Recent Care Tasks
-      .section-contents
-        -unless @past_user_tasks.empty?
-          -@past_user_tasks.sort_by(&:task_date).reverse.each do |task|
-            =render 'tasks/all_task', task: task, group: @group
-        -else
-          %h3.card-title
-            ="#{@user.first_name} hasn't completed any tasks...yet!"
-    .col-xs-12.col-md-5.card
-      .section-title
-        Events
-        =link_to new_group_event_path(current_user.group) do
-          %h4.add-new Add New
-      .section-contents
-        .cal
-          =link_to "<", params: {month: (@date.beginning_of_month-1).strftime("%B-%Y")}
-          =@date.strftime("%B %Y")
-          =link_to ">", :month => (@date.end_of_month+1).strftime("%B-%Y")
-          =calendar_for @this_months_events, :year => @date.year, :month=> @date.month do |calendar|
-            =calendar.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat')
-            -calendar.day(:day_method => :event_date) do |day, events|
-              .day
-                =day.day
-                -for event in events
-                  %ul
-                    %li
-                      =link_to event.event_title, group_event_path(@group, event.id)
+    /
+      .col-xs-12.col-md-5.card
+        .section-title
+          Events
+          =link_to new_group_event_path(current_user.group) do
+            %h4.add-new Add
+        .section-contents
+          .cal
+            =link_to "<", params: {month: (@date.beginning_of_month-1).strftime("%B-%Y")}
+            =@date.strftime("%B %Y")
+            =link_to ">", :month => (@date.end_of_month+1).strftime("%B-%Y")
+            =calendar_for @this_months_events, :year => @date.year, :month=> @date.month do |calendar|
+              =calendar.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat')
+              -calendar.day(:day_method => :event_date) do |day, events|
+                .day
+                  =day.day
+                  -for event in events
+                    %ul
+                      %li
+                        =link_to event.event_title, group_event_path(@group, event.id)
 
 #first-time-user.modal.fade
   .modal-dialog
