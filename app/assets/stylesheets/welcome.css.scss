@@ -170,11 +170,13 @@ section {
 
 .main-statement {
   font-size: 2em;
-  line-height: 1.2em;
+  // line-height: 1.2em;
   color: white;
   text-align: center;
+  text-shadow: none;
   h1 {
     font-weight: 400 !important;
+    
 
   }
 }
@@ -204,3 +206,8 @@ section {
 
 
 }
+
+.introduction{
+  background-color: #3498db;
+
+  }
