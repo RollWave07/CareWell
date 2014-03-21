@@ -19,7 +19,7 @@
 }
 
 .group-user-photo {
-  margin: 5px;
+  // margin: 5px;
   // margin-bottom: 7px;
 }
 
@@ -74,7 +74,7 @@ input.update-group-button {
   float: left;
   line-height: 60px;
   text-align: center;
-  margin-right: 7px;
+  // margin-right: 7px;
   a {
     text-decoration: none;
     color: white;
@@ -154,3 +154,6 @@ input.update-group-button {
   color: #ff615b;
 }
 
+.adminoptions {
+  clear: both;
+}
