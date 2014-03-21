@@ -385,7 +385,7 @@ li.covered {
   font-size: 2.5em;
   color: #6fcccf;
   text-align: right;
-  margin-left: 5px;
+  // margin-left: 5px;
 }
 
 .heart-icon-color {
@@ -560,9 +560,10 @@ li.covered {
   .comments-count {
     position: relative;
     display: inline-block;
-    left: 30px;
+    left: 25px;
     top: -7px;
     color: white;
+    padding: 0px;
   }
 
   .task-details{
@@ -573,9 +574,10 @@ li.covered {
   .hearts-count {
     position: relative;
     display: inline-block;
-    left: 30px;
+    left: 25px;
     top: -7px;
     color: white;
+    padding: 0px;
   }
 
   h3.card-title {
@@ -850,4 +852,7 @@ input#task_assignee_id {
   h1 {
     color: $mint-green;
   }
+}
+.nopad{
+  padding: 0;
 }

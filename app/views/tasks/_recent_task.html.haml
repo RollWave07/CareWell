@@ -21,7 +21,7 @@
     %h4
       =task_date.strftime('%A')
       ="(#{distance_of_time_in_words(diff)} ago)"
-  .col-xs-3.col-md-3
+  .col-xs-3.col-md-3.nopad
     -if updates_count > 0
       .comments-count
         =updates_count
