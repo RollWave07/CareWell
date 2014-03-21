@@ -36,13 +36,13 @@
 
         .section-contents
           .tab-content
-            .tab-pane.active{id: "#assigned_per_week"}
+            #assigned_per_week.tab-pane.fade.in.active
               .greentext.text-center
                 %canvas#lineChart{height: "400", width: "400"}
-            .tab-pane{id: "#average_time_per_task"}
+            #average_time_per_task.tab-pane.fade
               .greentext.text-center
                 %canvas#durationChart{height: "400", width: "400"}
-            .tab-pane{id: "#tasks_by_category"}
+            #tasks_by_category.tab-pane.fade
               .greentext.text-center
                 %canvas#barChart{height: "400", width: "400"}
 
@@ -95,6 +95,7 @@
       /   ="#{task}: #{average}"
 
 = javascript_include_tag "Chart.js"
+
 
 =render "linechart"
 
