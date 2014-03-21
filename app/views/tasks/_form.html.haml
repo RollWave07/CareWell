@@ -5,12 +5,12 @@
       =task.text_field :title, placeholder: "What is the task?", autofocus: true, :class => 'form-control input-lg'
       %h4.new-task-h4 Category
       .col-xs-6.col-md-3
-        .task-form-icon-wrapper
+        .task-form-icon-wrapper{title: "The doctor's, out around town, to the store, etc."}
           %i.fa.fa-truck.form-icon
           %br
           =task.label(:getting_places, "getting places")
           %br
-          =task.radio_button(:category, "getting places", :class => "task-form-radio-button")
+          =task.radio_button(:category, "getting places", :class => "task-form-radio-button", title: "The doctor's, out around town, to the store, etc.")
       .col-xs-6.col-md-3
         .task-form-icon-wrapper
           %i.fa.fa-home.form-icon

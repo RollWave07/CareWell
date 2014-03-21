@@ -4,7 +4,7 @@
       .row
         .col-md-2
         .col-md-8
-          %h1.main-statement
+          .main-statement
             A simple way for families and friends to care for one another.
         .col-md-2
       .row
@@ -16,8 +16,10 @@
   .registration-section
     .container
       .row
-        .col-md-4
-        .col-md-4
+        .col-xs-4.col-sm-2.col-md-3
+        .col-xs-12.col-sm-8.col-md-6
+          .sign-up-login
+            Register now to get started.
           .register-form
             =form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
               = devise_error_messages!
@@ -28,4 +30,4 @@
               =f.hidden_field :admin, value: true
               =f.password_field :password, placeholder: "Password", class: 'form-control input-lg'
               =f.submit "Sign Up", class: 'register-button'
-        .col-md-4
+        .col-xs-4.col-sm-2.col-md-3
