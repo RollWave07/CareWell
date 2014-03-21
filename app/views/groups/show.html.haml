@@ -77,12 +77,14 @@
           .section-subtitle
             Members
           -@users.each do |user|
+            
             =link_to group_user_path(@group, user.id) do
               -if user.picture_url == nil
                 =image_tag("mickey-mouse.jpg", class: "group-user-photo")
               -else
                 =image_tag(user.picture_url(:sq_thumb), :class => "group-user-photo")
-          .add-member
+          
+          #addmember.group-user-photo
             %a{'data-toggle' => 'modal', 'data-target' => '#myModal'}
               Invite
           =render 'tasks/modal'
