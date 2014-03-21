@@ -43,7 +43,8 @@ $bgc: #ded8ce;
     margin-bottom: 0;
   }
   .section-contents {
-    padding: 20px;
+    padding: 0;
+    margin: 0;
   }
 
   .overflow-hidden {
@@ -351,13 +352,14 @@ li.covered {
 }
 
 .task-card {
-  margin: 10px 0;
-  padding-bottom: 15px;
+  padding: 20px;
   text-decoration: none;
-  margin-top: -1px;
   border-bottom: 1px solid rgb(214,210,210);
   &:hover {
-    box-shadow: 0px 0px 3px #888888;
+    background-color: #f4f4f4;
+  }
+  &:nth-last-of-type(1) {
+    border-bottom: 0;
   }
   h3 {
     font-family: "Lato", sans-serif;
@@ -581,6 +583,7 @@ li.covered {
   h3.card-title {
     display: inline-block;
     color: #ef5e5a;
+    margin: 5px auto;
   }
 
 //set up task show page
@@ -713,6 +716,14 @@ top: -10px;
   .task-card {
     // height: 150px;
     background-color: white;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
     // border-radius: 3px;
     // I know the line below is weird but the design gets messed up if moved
     margin-left: 0px;
