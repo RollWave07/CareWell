@@ -56,7 +56,7 @@ $bgc: #ded8ce;
     font-size: 1.2em;
     font-weight: 700;
     color: #AAB2BD;
-    padding: 20px;
+    padding: 10px;
     padding-left: 0;
   }
 
@@ -85,14 +85,18 @@ $bgc: #ded8ce;
     float: right;
   }
 
+  .task-details {
+    padding: 20px;
+  }
+
   .task-box {
     display: inline-block;
     text-align: center;
-    margin: 25px;
     font-size: 15px;
     background: white;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
+    margin-top: 4px;
     border-radius: 5px;
     border: 2px solid #53bc9c;
 
@@ -195,11 +199,6 @@ li.covered {
     display: inline-block;
     padding-right: 20px;
     }
-  }
-
-  .updates {
-    margin-top: 25px;
-    box-shadow: 0px 0px 3px #888888;
   }
 
   .icon {
@@ -355,9 +354,6 @@ li.covered {
   padding: 20px;
   text-decoration: none;
   border-bottom: 1px solid rgb(214,210,210);
-  &:hover {
-    background-color: #f4f4f4;
-  }
   &:nth-last-of-type(1) {
     border-bottom: 0;
   }

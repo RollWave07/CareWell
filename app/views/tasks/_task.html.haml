@@ -2,32 +2,64 @@
 - updates_count = task.updates.count
 - likes_count = task.likes_count
 - task_id = task.id
-
-.row.task-card{"data-task-id" => "#{task.id}", :class => task.status}
-  .col-xs-2.col-md-2
-    =link_to mark_complete_group_task_path(group, task_id), method: :put, remote: true do
-      %h4.task-box
-        %i.fa.fa-check
-  .col-xs-6.col-md-6.summary
-    %h3.card-title
-      =render 'icon', task: task
-      =task.title.truncate(25)
-    -if task_date
-      %h4
-        =task_date.strftime('%A')
-        -diff = task_date.to_i - Time.now.to_i
-        -if task_date > Time.now
-          ="(in #{distance_of_time_in_words(diff)})"
-        -else
-          ="(#{distance_of_time_in_words(diff)} ago)"
-    -if updates_count > 0
-      .comments-count
-        =updates_count
-      %i.fa.fa-comment.task-card-icon
-    -if likes_count > 0
-      .hearts-count
-        =likes_count
-      %i.fa.fa-heart.task-card-icon.heart-icon-color
-  .col-xs-4.col-md-4
-    =link_to "Details", group_task_path(group, task_id), method: :get, class: "details"
+- assignee = task.assignee
+.task-card{"data-task-id" => "#{task.id}", :class => task.status}
+  .row
+    .col-xs-1.col-md-1
+      =link_to mark_complete_group_task_path(group, task_id), method: :put, remote: true do
+        %h4.task-box
+          %i.fa.fa-check
+    .col-xs-9.col-md-9.summary
+      %h3.card-title
+        =render 'icon', task: task
+        =task.title.truncate(25)
+      -if task_date
+        %h4
+          =task_date.strftime('%l:%M %p')
+          =task_date.strftime('%A, %B %e')
+          -diff = task_date.to_i - Time.now.to_i
+          -if task_date > Time.now
+            ="(in #{distance_of_time_in_words(diff)})"
+          -else
+            ="(#{distance_of_time_in_words(diff)} ago)"
+      -if updates_count > 0
+        .comments-count
+          =updates_count
+        %i.fa.fa-comment.task-card-icon
+      -if likes_count > 0
+        .hearts-count
+          =likes_count
+        %i.fa.fa-heart.task-card-icon.heart-icon-color
+    .col-xs-2.col-md-2
+      =link_to "Details", group_task_path(group, task_id), method: :get, class: "details"
+  .row.task-details
+    .section-subtitle
+      Where
+    =task.location
+    .section-subtitle
+      Notes
+    =task.information.empty? ? "No additional notes." : task.information
+    .section-subtitle
+      Actions
+    -if current_user.admin?
+      =link_to edit_group_task_path(group, task) do
+        %span.awesome
+          %span.glyphicon.glyphicon-edit
+          Edit
+      =link_to group_task_path(group, task), method: :delete, data: { confirm: 'Are you sure you want to delete this task?' } do
+        %span.awesome
+          %span.glyphicon.glyphicon-trash
+          Delete
+    -if current_user == assignee
+      =link_to group_task_path(group, task, params: {assignee_id: nil}), method: :put do
+        %span.awesome
+          Drop
+  .row
+    .section-subtitle
+      Comments
+  .row.updates{"data-id" => "#{task.id}"}
+    -task.ordered_updates.each do |update|
+      =render "updates/update", update: update
+  .row
+    =render "updates/form", group: @group, task: task, update: @update
 

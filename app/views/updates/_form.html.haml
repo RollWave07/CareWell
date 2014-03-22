@@ -1,18 +1,7 @@
-%h1.show-card-title
-  Comments
 .row
-  .col-md-2
-    -if current_user.picture_url(:sq_thumb)
-      =image_tag(current_user.picture_url(:sq_thumb), style: "margin-left: 5px;")
-    -else
-      =current_user.first_name
-  .col-md-10
-    =form_for [@group, @task, @update], remote: true do |f|
-      =f.text_area :comment, placeholder: "Anything to share about this task?", class: 'input-size'
-      .col-md-6
-        .image-update
-          =f.label :picture, "Add picture update:"
-          =f.file_field :picture, value: "Add picture update"
-        =f.hidden_field(:task_id, value: task.id)
-      .col-md-6
-        =f.submit "Add Update", class: "submit-update"
+  =form_for [@group, task, @update], remote: true do |f|
+    =f.text_field :comment, placeholder: "Anything to share, #{current_user.first_name}?", class: 'form-control input-lg'
+    =f.file_field :picture, value: "Add picture update"
+    =f.submit "Post", class: "submit-update"
+    %i.fa.fa-camera.fa-3x.choose-photo
+    =f.hidden_field(:task_id, value: task.id)

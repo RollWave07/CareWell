@@ -4,45 +4,46 @@
 - task_task_date = task.task_date
 - task_information = task.information
 - diff = task_task_date.to_i - Time.now.to_i
-.task-card
-  =render 'tasks/icon', task: task
-  %h1.show-card-title=task.title
-  -if task_task_date
-    %p.task-details
-      =task_task_date.strftime('%l:%M %p') + ' on '
-      =task_task_date.strftime('%A, %B %e')
-      .time-from-now
-        ="(in #{distance_of_time_in_words(diff)})"
-  -else
-    %p No date or time information.
-  %h3.show-card-section-header
-    Covered By
-    %br
-    -if task.assignee
-      -if task.assignee.picture
-        =image_tag(task.assignee.picture_url(:sq_thumb))
-      =task.assignee.first_name
+.row
+  .task-card
+    =render 'tasks/icon', task: task
+    %h1.show-card-title=task.title
+    -if task_task_date
+      %p.task-details
+        =task_task_date.strftime('%l:%M %p') + ' on '
+        =task_task_date.strftime('%A, %B %e')
+        .time-from-now
+          ="(in #{distance_of_time_in_words(diff)})"
     -else
-      %h4.sign-up=link_to "Sign-Up", group_task_path(group, params[:id], params: { task: {assignee_id: current_user.id}}), method: :patch, data: {confirm: "Are you sure?"}, remote: true
-  %h3.show-card-section-header
-    Details
-  -if task_information
-    %p=task_information
-  -else
-    %p No additional details.
-  %h3.show-card-section-header
-    Actions
-  -if current_user.admin?
-    =link_to edit_group_task_path(group, task) do
-      %span.awesome
-        %span.glyphicon.glyphicon-edit
-        Edit
-    =link_to group_task_path(group, task), method: :delete, data: { confirm: 'Are you sure you want to delete this task?' } do
-      %span.awesome
-        %span.glyphicon.glyphicon-trash
-        Delete
-  -if current_user == assignee
-    =link_to group_task_path(group, task, params: {assignee_id: nil}), method: :put do
-      %span.awesome
-        I can't do this task anymore
+      %p No date or time information.
+    %h3.show-card-section-header
+      Covered By
+      %br
+      -if task.assignee
+        -if task.assignee.picture
+          =image_tag(task.assignee.picture_url(:sq_thumb))
+        =task.assignee.first_name
+      -else
+        %h4.sign-up=link_to "Sign-Up", group_task_path(group, params[:id], params: { task: {assignee_id: current_user.id}}), method: :patch, data: {confirm: "Are you sure?"}, remote: true
+    %h3.show-card-section-header
+      Details
+    -if task_information
+      %p=task_information
+    -else
+      %p No additional details.
+    %h3.show-card-section-header
+      Actions
+    -if current_user.admin?
+      =link_to edit_group_task_path(group, task) do
+        %span.awesome
+          %span.glyphicon.glyphicon-edit
+          Edit
+      =link_to group_task_path(group, task), method: :delete, data: { confirm: 'Are you sure you want to delete this task?' } do
+        %span.awesome
+          %span.glyphicon.glyphicon-trash
+          Delete
+    -if current_user == assignee
+      =link_to group_task_path(group, task, params: {assignee_id: nil}), method: :put do
+        %span.awesome
+          I can't do this task anymore
 
