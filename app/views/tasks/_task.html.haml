@@ -5,11 +5,11 @@
 - assignee = task.assignee
 .task-card{"data-task-id" => "#{task.id}", :class => task.status}
   .row
-    .col-xs-1.col-md-1
+    .col-xs-2.col-md-1
       =link_to mark_complete_group_task_path(group, task_id), method: :put, remote: true do
         %h4.task-box
           %i.fa.fa-check
-    .col-xs-9.col-md-9.summary
+    .col-xs-8.col-md-9.summary
       %h3.card-title
         =render 'icon', task: task
         =task.title.truncate(25)
@@ -31,8 +31,7 @@
           =likes_count
         %i.fa.fa-heart.task-card-icon.heart-icon-color
     .col-xs-2.col-md-2
-      .arrow
-        Details
+      .arrow.right
   .row.task-details
     .col-xs-12
       .section-subtitle
