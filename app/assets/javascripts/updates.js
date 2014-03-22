@@ -8,7 +8,11 @@ $(document).on("ajax:success", ".like-it-now", function(e, data, status, xhr){
 
 $(document).ready( function() {
   $('.choose-photo').on('click',function (){
-    console.log("clicked");
     $('input#update_picture').click();
   });//end click
+
+  $('.choose-group-photo').on('click', function() {
+    $('input#group_picture').click();
+  });//end click
+
 })//end ready

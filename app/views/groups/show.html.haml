@@ -9,15 +9,15 @@
         .section-title
           The Week By Numbers
         .section-contents.overflow-hidden
-          .col-md-4
+          .col-xs-4.col-md-4
             .number-summary-stats
               =@counts_arrays.first
             %p.number-summary Tasks Completed
-          .col-md-4
+          .col-xs-4.col-md-4
             .number-summary-stats
               =@active_users ||= 0
             %p.number-summary Active Family Members
-          .col-md-4
+          .col-xs-4.col-md-4
             .number-summary-stats.green
               =@duration_week
             %p.number-summary Hours Caring
@@ -53,7 +53,7 @@
           Our Team
 
         -if @group.picture_url == nil
-          %img{src: "http://placehold.it/400x250/f2f2f2/ef5e5a&text=Add+Your+Group+Photo!", class: 'update'}
+          %img{src: "http://placehold.it/400x250/f2f2f2/ef5e5a&text=Add+Your+Group+Photo!", class: 'group-photo'}
         -else
           =image_tag(@group.picture_url(:group), :class=>'group-photo')
         = form_for(@group) do |f|
@@ -72,8 +72,8 @@
               = f.submit "Add Photo"
             -else
               = f.submit "Change Photo"
-
-        .section-contents
+            %i.fa.fa-camera.fa-3x.choose-group-photo
+        .section-contents.padded
           .section-subtitle
             Members
           -@users.each do |user|

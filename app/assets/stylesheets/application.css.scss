@@ -186,9 +186,9 @@ hr {
      }
   }
 
-  .navbar-toggle {
-    display: none;
-  }
+  // .navbar-toggle {
+  //   display: none;
+  // }
 
 } //end of media query max width 480
 
@@ -230,7 +230,8 @@ hr {
 }
 
 .navbar-toggle {
-margin-top: 8px;
+margin-top: 13px;
+margin-right: 4px;
 border: 2px solid white;
   .icon-bar {
     background: white;
