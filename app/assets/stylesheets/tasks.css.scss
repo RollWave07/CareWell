@@ -102,10 +102,10 @@ $bgc: #ded8ce;
     }
 
      i {
-       font-size: 27px;
+       font-size: 20px;
        display: inline-block;
        margin: 0 auto;
-       line-height: 50px;
+       line-height: 30px;
        color: #53bc9c;
        opacity: 0;
        transition-property: opacity;
@@ -144,6 +144,10 @@ $bgc: #ded8ce;
 
     }
   }
+}
+
+.task-details {
+  display: none;
 }
 
 // calendar styles
@@ -248,6 +252,18 @@ li.covered {
       color: white;
     }
   }
+
+  .arrow {
+  width: 0;
+  height: 0;
+  border-top: 10px solid #CCD1D9;
+  border-left: 10px solid transparent;
+  border-right:10px solid transparent;
+  display: inline-block;
+  &:hover {
+    border-top: 10px solid #AAB2BD;
+  }
+}
 
   .action {
     text-align: right;
