@@ -85,10 +85,6 @@ $bgc: #ded8ce;
     float: right;
   }
 
-  .task-details {
-    padding: 20px;
-  }
-
   .task-box {
     display: inline-block;
     text-align: center;
@@ -712,14 +708,7 @@ top: -10px;
   .task-card {
     // height: 150px;
     background-color: white;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
+
     // border-radius: 3px;
     // I know the line below is weird but the design gets messed up if moved
     margin-left: 0px;

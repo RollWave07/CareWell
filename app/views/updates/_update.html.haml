@@ -3,7 +3,7 @@
 - task = update.task
 - diff = update.created_at.to_i - Time.now.to_i
 
-.row.update{"data-id" => update_id}
+.update{"data-id" => update_id}
   .row.photo-comment-header
     .col-md-2.col-xs-2
       -if user.picture_url

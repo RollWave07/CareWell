@@ -33,27 +33,14 @@
     .col-xs-2.col-md-2
       =link_to "Details", group_task_path(group, task_id), method: :get, class: "details"
   .row.task-details
-    .section-subtitle
-      Where
-    =task.location
-    .section-subtitle
-      Notes
-    =task.information.empty? ? "No additional notes." : task.information
-    .section-subtitle
-      Actions
-    -if current_user.admin?
-      =link_to edit_group_task_path(group, task) do
-        %span.awesome
-          %span.glyphicon.glyphicon-edit
-          Edit
-      =link_to group_task_path(group, task), method: :delete, data: { confirm: 'Are you sure you want to delete this task?' } do
-        %span.awesome
-          %span.glyphicon.glyphicon-trash
-          Delete
-    -if current_user == assignee
-      =link_to group_task_path(group, task, params: {assignee_id: nil}), method: :put do
-        %span.awesome
-          Drop
+    .col-xs-12
+      .section-subtitle
+        Where
+      =task.location
+    .col-xs-12
+      .section-subtitle
+        Notes
+      =task.information.empty? ? "No additional notes." : task.information
   .row
     .section-subtitle
       Comments
@@ -62,4 +49,20 @@
       =render "updates/update", update: update
   .row
     =render "updates/form", group: @group, task: task, update: @update
+
+  .section-subtitle
+    Actions
+  -if current_user.admin?
+    =link_to edit_group_task_path(group, task) do
+      %span.awesome
+        %span.glyphicon.glyphicon-edit
+        Edit
+    =link_to group_task_path(group, task), method: :delete, data: { confirm: 'Are you sure you want to delete this task?' } do
+      %span.awesome
+        %span.glyphicon.glyphicon-trash
+        Delete
+  -if current_user == assignee
+    =link_to group_task_path(group, task, params: {assignee_id: nil}), method: :put do
+      %span.awesome
+        Drop
 

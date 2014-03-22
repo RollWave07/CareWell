@@ -1,7 +1,6 @@
-.row
-  =form_for [@group, task, @update], remote: true do |f|
-    =f.text_field :comment, placeholder: "Anything to share, #{current_user.first_name}?", class: 'form-control input-lg'
-    =f.file_field :picture, value: "Add picture update"
-    =f.submit "Post", class: "submit-update"
-    %i.fa.fa-camera.fa-3x.choose-photo
-    =f.hidden_field(:task_id, value: task.id)
+=form_for [@group, task, @update], remote: true do |f|
+  =f.text_field :comment, placeholder: "Anything to share, #{current_user.first_name}?", class: 'form-control input-lg'
+  =f.file_field :picture, value: "Add picture update"
+  =f.submit "Post", class: "submit-update"
+  %i.fa.fa-camera.fa-3x.choose-photo
+  =f.hidden_field(:task_id, value: task.id)
