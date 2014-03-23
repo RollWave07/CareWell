@@ -12,6 +12,7 @@ $(document).ready(function() {
   });//end task form icon wrapper
 
   $('.arrow').click( function() {
+    $(this).toggleClass('spin-180');
     $(this).closest('.task-card').find('.task-details').slideToggle();
   });
 

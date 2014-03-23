@@ -61,6 +61,11 @@ $bgc: #ded8ce;
 
 }
 
+.spin-180 {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
 .cancel {
   float: right;
 font-size: 1.3em;
