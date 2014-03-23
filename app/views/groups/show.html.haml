@@ -33,19 +33,17 @@
             %li
               %a{href: "#tasks_by_category", 'data-toggle' => "pill"}
                 Tasks by Category
-
         .section-contents
           .tab-content
-            .tab-pane.active{id: "#assigned_per_week"}
+            .tab-pane.active{id: "assigned_per_week"}
               .greentext.text-center
                 %canvas#lineChart{height: "400", width: "400"}
-            .tab-pane{id: "#average_time_per_task"}
+            .tab-pane{id: "average_time_per_task"}
               .greentext.text-center
                 %canvas#durationChart{height: "400", width: "400"}
-            .tab-pane{id: "#tasks_by_category"}
+            .tab-pane{id: "tasks_by_category"}
               .greentext.text-center
                 %canvas#barChart{height: "400", width: "400"}
-
 
     .col-md-4.col-xs-12
       .card
@@ -97,6 +95,5 @@
 = javascript_include_tag "Chart.js"
 
 =render "linechart"
-
 =render "barchart"
 =render "durationchart"
