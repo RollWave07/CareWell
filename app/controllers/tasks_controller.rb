@@ -43,12 +43,7 @@ class TasksController < ApplicationController
 
   def new
     @task = current_user.tasks.new
-    users = User.users_in_group(@group)
-    array = []
-    users.each do |user|
-      array << [user.first_name]
-    end
-    @array = array
+    @users = User.users_in_group(@group)
   end
 
   def create
