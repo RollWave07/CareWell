@@ -91,7 +91,7 @@
             =task.select :assignee_id, @users.all.collect {|u| [u.first_name, u.id]},{include_blank: true}, {class: 'form-control input-lg'}
 
           .col-xs-12
-            =task.hidden_field :groupid, value: (current_user.group_id)
+            =task.hidden_field :group_id, value: (current_user.group_id)
             =link_to "Cancel", group_tasks_path(@group), :class => "cancel"
             =task.submit :class => "btn new-task-button"
 

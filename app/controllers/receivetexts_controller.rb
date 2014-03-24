@@ -8,8 +8,8 @@ class ReceivetextsController < ApplicationController
     @assignee = User.where(phone: params["From"].gsub('+1','')).first
     @task = Task.where(assignee_id: @assignee).completed_recently.first
     unless @task
-        @task = Task.create(user_id: @assignee.id, title: "Text Update", category: "odds & ends", task_date: Time.now + 7.days, duration: 60, groupid: @assignee.group_id)
-    end 
+        @task = Task.create(user_id: @assignee.id, title: "Text Update", category: "odds & ends", task_date: Time.now + 7.days, duration: 60, group_id: @assignee.group_id)
+    end
 
     # logger.info "+++task=#{@task.inspect}"
 
