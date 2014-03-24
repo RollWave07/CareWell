@@ -27,4 +27,12 @@ class MailerInvitation < ActionMailer::Base
        end
      end
 
+  def task_sign_up_notification(task)
+    @group = task.group.id
+    @user = task.user.first_name
+    @subject_line = "Task Sign Up Notification: #{task.assignee.first_name} signed up for #{task.title}"
+
+    mail(:to => task.user.email, :subject => @subject_line, from => "hello@carewelldesign.com")
+  end
+
 end

@@ -39,6 +39,7 @@ class TasksController < ApplicationController
 
   def edit
     @task = Task.find(params[:id])
+    @users = User.users_in_group(@group)
   end
 
   def new
@@ -86,10 +87,10 @@ class TasksController < ApplicationController
           format.json { render json:{assignee_name: @task.assignee.first_name}}
           format.html { redirect_to group_tasks_path(@group), notice: 'task was successfully updated.' }
           format.js { render layout: false, notice: "You've signed up for #{@task.title}."}
-          # send the mailer invitation on sign up  - taken out for demo - look into delayed_job gem.
-          # if @task.assignee_id != old_assignee_id && @task.assignee != nil
-          #   MailerInvitation.calendar_invite(@task).deliver
-          # end
+          if @task.assignee_id != old_assignee_id && @task.assignee != nil
+            MailerInvitation.calendar_invite(@task).deliver
+            MailerInvitation.task_sign_up_notification(@task).deliver
+          end
         end
       else
         format.html { render action: 'edit' }
