@@ -22,7 +22,7 @@
             -@past_tasks.sort_by(&:task_date).reverse.each do |task|
               =render 'recent_task', task: task, group: @group
           -else
-            %h3.card-title
+            %h3.card-title.padded
               ="No tasks have been completed yet!"
 
     .col-xs-12.col-md-5.card{style: 'margin-bottom: 15px'}
