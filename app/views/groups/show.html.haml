@@ -84,10 +84,6 @@
             %a{'data-toggle' => 'modal', 'data-target' => '#myModal'}
               Invite
           =render 'tasks/modal'
-          -if current_user.admin == true
-            %h3 Admin Options
-            =link_to 'Edit Group', edit_group_path(@group), {class: "edit-group"}
-
 
       / -@category_avg.each do |task, average|
       /   ="#{task}: #{average}"
