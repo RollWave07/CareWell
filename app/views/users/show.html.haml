@@ -19,7 +19,7 @@
           .col-xs-12.col-md-5
             %h3
               ="#{@user.first_name} #{@user.last_name}"
-          
+
             .phone="Phone: #{number_to_phone(@user.phone, area_code: true)}"
             .email="Email: #{@user.email}"
 
@@ -30,15 +30,15 @@
             -if current_user == @user
               =link_to edit_user_registration_path do
                 .edit.glyphicon.glyphicon-pencil
-        .section-contents
+        .section-contents{style: "padding: 20px;"}
           Here is where task preferences will go.
 
-      .card
+      .card{style: "margin-bottom: 20px"}
         .section-title
           Contact Preferences
           .edit
             -if current_user == @user
               =link_to edit_user_registration_path do
                 .edit.glyphicon.glyphicon-pencil
-        .section-contents
+        .section-contents.padded{style: "padding: 20px;"}
           Here is where contact preferences will go.
