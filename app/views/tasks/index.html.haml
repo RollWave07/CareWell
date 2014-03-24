@@ -25,7 +25,7 @@
             %h3.card-title
               ="No tasks have been completed yet!"
 
-    .col-xs-12.col-md-5.card
+    .col-xs-12.col-md-5.card{style: 'margin-bottom: 15px'}
       .section-title
         %ul.nav.nav-pills
           %li.active
@@ -107,13 +107,11 @@
 
     //second-time user
 
-    if (#{@my_tasks.count} < 1) {
-      $('.nav-tabs li:last').addClass('active');
-      $('#opentasks').addClass('in active');
-    }
-    else {
-      $('.nav-tabs li:first').addClass('active');
-      $('#mytasks').addClass('in active');
+    if (#{@open_tasks.count} > 0) {
+      $('.nav-pills li:first').removeClass('active');
+      $('.nav-pills li:last').addClass('active');
+      $('.tab-pane#all').removeClass('active');
+      $('.tab-pane#open').addClass('active');
     }
   });
 

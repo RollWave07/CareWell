@@ -9,15 +9,15 @@
         .section-title
           The Week By Numbers
         .section-contents.overflow-hidden
-          .col-xs-4.col-md-4
+          .col-xs-4.col-md-4.center
             .number-summary-stats
               =@counts_arrays.first
             %p.number-summary Tasks Completed
-          .col-xs-4.col-md-4
+          .col-xs-4.col-md-4.center
             .number-summary-stats
               =@active_users ||= 0
             %p.number-summary Active Family Members
-          .col-xs-4.col-md-4
+          .col-xs-4.col-md-4.center
             .number-summary-stats.green
               =@duration_week
             %p.number-summary Hours Caring
