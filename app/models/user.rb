@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def self.active_users_per_week(group)
-    users = self.where(group_id: group)
+    users = User.where(group_id: group.id)
     active = 0
     users.each do |user|
       if user.tasks.week_one.count > 0
@@ -48,8 +48,6 @@ class User < ActiveRecord::Base
         active += 1
       elsif user.votes.where(created_at:(7.day.ago..Time.now)).count > 0
         active += 1
-      else
-        return
       end
     end
     active

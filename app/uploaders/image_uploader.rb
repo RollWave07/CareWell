@@ -39,7 +39,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [50, 75]
   end
   version :sq_thumb do
-    process :resize_to_fill => [100, 100]
+    process :resize_to_fill => [60, 60]
   end
   version :medium do
     process :resize_to_fill => [70, 100]
@@ -48,7 +48,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [75, 75]
   end
   version :wide do
-    process :resize_to_fill => [400, 300]
+    process :resize_to_fit => [400, 300]
   end
   version :group do
     process :resize_to_fill => [400, 250]

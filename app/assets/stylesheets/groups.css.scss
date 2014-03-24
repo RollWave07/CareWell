@@ -85,7 +85,7 @@ input.update-group-button {
   display: none;
 }
 
-.add-member {
+#addmember {
   background: #ff615b;
   cursor: pointer;
   height: 60px;
@@ -95,6 +95,7 @@ input.update-group-button {
   float: left;
   line-height: 60px;
   text-align: center;
+  // margin-right: 7px;
   a {
     text-decoration: none;
     color: white;

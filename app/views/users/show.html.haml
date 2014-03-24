@@ -11,14 +11,15 @@
               =link_to edit_user_registration_path do
                 .edit.glyphicon.glyphicon-pencil
         .section-contents.overflow-hidden
-          .col-xs-12.col-md-2
+          .col-xs-12.col-md-6
             -if @user.picture_url == nil
               =image_tag("mickey-mouse-large.jpg", class: "group-user-photo")
             -else
               =image_tag(@user.picture_url(:wide))
+          .col-xs-12.col-md-5
             %h3
               ="#{@user.first_name} #{@user.last_name}"
-          .col-xs-12.col-md-10
+          
             .phone="Phone: #{number_to_phone(@user.phone, area_code: true)}"
             .email="Email: #{@user.email}"
 

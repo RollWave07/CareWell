@@ -15,7 +15,7 @@
             %p.number-summary Tasks Completed
           .col-xs-4.col-md-4.center
             .number-summary-stats
-              =@active_users ||= 0
+              =@active_users
             %p.number-summary Active Family Members
           .col-xs-4.col-md-4.center
             .number-summary-stats.green
@@ -75,20 +75,19 @@
           .section-subtitle
             Members
           -@users.each do |user|
-            =link_to group_user_path(@group, user.id) do
-              -if user.picture_url == nil
-                =image_tag("mickey-mouse.jpg", class: "group-user-photo")
-              -else
-                =image_tag(user.picture_url(:sq_thumb), :class => "group-user-photo")
-          .add-member
+            .squarelinks
+              =link_to group_user_path(@group, user.id) do
+                -if user.picture_url == nil
+                  =image_tag("mickey-mouse.jpg", class: "group-user-photo")
+                -else
+                  =image_tag(user.picture_url(:sq_thumb), :class => "group-user-photo")
+          #addmember.squarelinks
             %a{'data-toggle' => 'modal', 'data-target' => '#myModal'}
               Invite
           =render 'tasks/modal'
 
-      / -@category_avg.each do |task, average|
-      /   ="#{task}: #{average}"
-
 = javascript_include_tag "Chart.js"
+
 
 =render "linechart"
 =render "barchart"
