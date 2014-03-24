@@ -1,0 +1,6 @@
+%h1
+  ="Hi, #{@user.first_name}!"
+="This is a notice from CareWell that a task, #{@task.title} was created. Check out the details and sign up"
+=link_to "here", group_tasks_url(@task.group)
+.
+="For questions, connect with #{@task.user.first_name}."

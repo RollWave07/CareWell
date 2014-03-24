@@ -49,6 +49,7 @@ class TasksController < ApplicationController
 
   def create
 
+    @users = User.users_in_group(@group)
     @task = current_user.tasks.new(task_params)
     date = Chronic.parse(task_params[:task_date])
     @task.task_date = date ? date : Time.now+7.days
@@ -63,6 +64,9 @@ class TasksController < ApplicationController
       if @task.save
         format.html { redirect_to group_tasks_path(@group), notice: 'Task was successfully created.' }
         format.json { render action: 'show', status: :created, location: @task }
+        @users.each do |user|
+        MailerInvitation.task_created(@task, user).deliver
+        end
       else
         format.html { render action: 'new', alert: 'Unable to add the task.  Please try again.' }
         format.json { render json: @task.errors, status: :unprocessable_entity }

@@ -1,4 +1,5 @@
 class MailerInvitation < ActionMailer::Base
+  default from: "hello@carewelldesign.com"
 
   require 'icalendar'
   require 'date'
@@ -27,13 +28,30 @@ class MailerInvitation < ActionMailer::Base
        end
      end
 
+  def task_created(task, user)
+    @task = task
+    @user = user
+    @subject_line = "Task Creation Notification: #{task.title}"
+    mail(:to => user.email, :subject => @subject_line)
+  end
+
   def task_sign_up_notification(task)
     @task = task
     @group = task.group.id
     @user = task.user.first_name
     @subject_line = "Task Sign Up Notification: #{task.assignee.first_name} signed up for #{task.title}"
 
-    mail(:to => @task.user.email, :subject => @subject_line, :from => "hello@carewelldesign.com")
+    mail(:to => @task.user.email, :subject => @subject_line)
+  end
+
+  def task_reminder(task)
+    @group = task.group_id
+    @task = task
+    @user = task.assignee
+    @subject_line = "Reminder for Your Upcoming Task, #{task.title}!"
+
+    mail(:to => @user.email, :subject => @subject_line)
+
   end
 
 end
