@@ -80,6 +80,12 @@ input.update-group-button {
   color: white;
 }
 
+.modal-body {
+  .form-control {
+    margin-bottom: 10px;
+  }
+}
+
 .edit-indicator {
   font-size: 0.6em;
   display: none;
@@ -144,8 +150,11 @@ input.update-group-button {
 
 .modal-title, .modal-body{
   font-family: "Lato", sans-serif;
-  size: 1em;
   color: #ff615b;
+}
+
+.modal-title {
+  font-weight: 700;
 }
 
 @media all and (max-width: 480px) {

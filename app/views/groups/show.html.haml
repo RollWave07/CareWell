@@ -1,11 +1,11 @@
 .container
-  .row.task-index-header
-    %h1.application-section-header
-      ="#{@group.name}'s Team"
+  .row
+    .task-index-header
+      %h1.application-section-header
+        ="#{@group.name}'s Team"
     %h4.add-new
       %a{'data-toggle' => 'modal', 'data-target' => '#myModal'}
         Invite New Teammate
-    =render 'tasks/modal'
   .row
     .col-md-8.col-xs-12
       .card
@@ -88,7 +88,7 @@
 
 = javascript_include_tag "Chart.js"
 
-
+=render 'tasks/modal'
 =render "linechart"
 =render "barchart"
 =render "durationchart"
