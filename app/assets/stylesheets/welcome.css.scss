@@ -30,29 +30,31 @@ section {
   }
 }
 
-.user-login {
-  input {
-    border-radius: 4px;
-    border: 1px solid rgb(204,204,204);
-  }
-  .main-button {
-    border: 0;
-    border-radius: 3px;
-  }
-}
-
 .family {
   img {
   display: block;
   margin: 0 auto;
   }
 }
-
-.sign-up-login {
+.sign-up-or-in {
+  display: block;
+  text-align: center;
+  .sign-up-login {
   color: white;
   font-size: 1.5em;
   text-align: center;
+  display: inline-block;
+  position: relative;
+  top: -18px;
+  }
+  ul.nav.nav-pills {
+    font-size: 1.5em;
+  }
+  .tab-content {
+    background: none;
+  }
 }
+
 
 .warning {
   border: 2px solid #ff615b;
@@ -89,13 +91,21 @@ section {
   margin-top: 39px;
 }
 
+.sign-in-form {
+    padding: 15px;
+    input {
+      margin-bottom: 10px;
+      font-size: 1.5em;
+    }
+  }
+
 .register-form {
   padding: 15px;
-
   input {
     margin-bottom: 10px;
     font-size: 1.5em;
-  }
+    }
+
   .first-name {
     width: 100%;
   }
@@ -126,12 +136,12 @@ section {
     text-align: center;
     margin-top: 0px;
   }
-}
 
 .btn-sign-up {
   padding: 15px;
   font-family: 'Lato';
   font-size: 2em;
+  }
 }
 
 .close-window {
@@ -180,7 +190,7 @@ section {
   text-shadow: none;
   h1 {
     font-weight: 400 !important;
-    
+
 
   }
 }
