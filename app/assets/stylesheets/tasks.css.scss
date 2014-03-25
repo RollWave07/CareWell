@@ -262,18 +262,6 @@ li.covered {
     }
   }
 
-  // .arrow-right {
-  //   width: 0;
-  //   height: 0;
-  //   border-top: 20px solid transparent;
-  //   border-bottom: 20px solid transparent;
-  //   border-left: 20px solid #dddddd;
-  //   float: right;
-  //   margin-top: 30px;
-  //   position: relative;
-  //   left: 40px;
-  // }
-
   .sign-up {
     display: inline-block;
     text-align: center;
@@ -292,12 +280,14 @@ li.covered {
   .arrow {
   width: 0;
   height: 0;
-  border-top: 10px solid #CCD1D9;
+  margin-left: 3px;
+  margin-bottom: 2px;
+  border-top: 10px solid #ef5e5a;
   border-left: 10px solid transparent;
   border-right:10px solid transparent;
   display: inline-block;
   &:hover {
-    border-top: 10px solid #AAB2BD;
+    border-top: 10px solid #bc4a4a;
     cursor: pointer;
   }
 }
@@ -635,6 +625,9 @@ li.covered {
     display: inline-block;
     color: #ef5e5a;
     margin: 5px auto;
+    &:hover {
+      color: #bc4a4a;
+    }
   }
 
 //set up task show page

@@ -10,12 +10,10 @@ $(document).ready(function() {
       $('#task_location').val('');
     }
   });//end task form icon wrapper
-
-  $('.arrow').click( function() {
-    $(this).toggleClass('spin-180');
+  $('h3.card-title').click( function() {
     $(this).closest('.task-card').find('.task-details').slideToggle();
+    $(this).find('.arrow').toggleClass('spin-180');
   });
-
 
 $(document).on("ajax:success", ".signup", function(e, data, status, xhr){
   // console.log(data)

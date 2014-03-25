@@ -6,11 +6,11 @@
 - diff = task_date.to_i - Time.now.to_i
 .task-card{"data-task-id" => "#{task.id}", :class => "category-#{task.category}"}
   .row
-    .col-xs-7.col-md-7.summary
-      =link_to group_task_path(group, task_id) do
-        %h3.card-title
-          =render 'tasks/icon', task: task
-          =task.title.truncate(25)
+    .col-xs-8.col-md-8.summary
+      %h3.card-title
+        =render 'tasks/icon', task: task
+        =task.title.truncate(25)
+        .arrow
       %h4
         =task_date.strftime('%A')
         -if task_date > Time.now
@@ -25,10 +25,8 @@
         .hearts-count
           =likes_count
         %i.fa.fa-heart.task-card-icon.heart-icon-color
-    .col-xs-3.col-md-3
+    .col-xs-4.col-md-4
       %h4.sign-up=link_to "Volunteer?", group_task_path(group, task_id, params: { task: {assignee_id: current_user_id}}), method: :patch, remote: true
-    .col-xs-2.col-md-2
-      .arrow.right
   .row.task-details
     .col-xs-12
       .section-subtitle
