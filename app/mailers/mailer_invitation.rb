@@ -32,7 +32,7 @@ class MailerInvitation < ActionMailer::Base
     @task = task
     @user = user
     @subject_line = "Task Creation Notification: #{task.title}"
-    mail(:to => user.email, :subject => @subject_line)
+    mail(:to => @user.email, :subject => @subject_line)
   end
 
   def task_sign_up_notification(task)
