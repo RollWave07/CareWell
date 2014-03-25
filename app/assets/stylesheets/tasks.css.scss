@@ -353,7 +353,6 @@ li.covered {
 
   .form-icon {
     font-size: 4em;
-    margin-top: 10px;
   }
 
   .task-form-icon-wrapper {
@@ -364,6 +363,9 @@ li.covered {
     overflow: hidden;
     color: #a6a6a6;
     padding: 15px;
+    margin-right: 30px;
+    margin-top: 10px;
+    border-radius: 5px;
 
 
     &:hover {
@@ -830,11 +832,6 @@ top: -10px;
     font-size: 1.5em;
   }
 
-  .form-icon {
-    font-size: 2em;
-    margin-top: 10px;
-  }
-
   .comments-count {
     position: static;
     color: black;
@@ -890,6 +887,23 @@ input#task_assignee_id {
   position: relative;
   top: -3px;
   margin-right: 5px;
+}
+
+.task-form-icon-wrapper {
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
+  &:hover {
+    background: #f0ad4e;
+    color: white;
+  }
+  label {
+    font-size: 0.8em;
+  }
+
+  .form-icon {
+    font-size: 1.5em;
+  }
 }
 
 

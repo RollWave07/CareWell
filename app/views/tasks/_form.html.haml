@@ -5,61 +5,61 @@
   .col-xs-12.col-md-12
     .card.padded.overflow-hidden
       =form_for [@group, @task] do |task|
-        %h4.new-task-h4 Task Title
-        =task.text_field :title, placeholder: "What is the task?", autofocus: true, :class => 'form-control input-lg'
-        %h4.new-task-h4
-          Category
         .row
-          .col-xs-6.col-md-3
+          %h4.new-task-h4
+            Category
+          .aside
+            Choosing a category gives your team members a visual way to pick the tasks they want to do.
+          .col-xs-3.col-md-1
             .task-form-icon-wrapper{title: "The doctor's, out around town, to the store, etc."}
               %i.fa.fa-truck.form-icon
               %br
-              =task.label(:getting_places, "getting places")
+              =task.label(:getting_places, "transport")
               %br
               =task.radio_button(:category, "getting places", :class => "task-form-radio-button", title: "The doctor's, out around town, to the store, etc.")
-          .col-xs-6.col-md-3
+          .col-xs-3.col-md-1
             .task-form-icon-wrapper
               %i.fa.fa-home.form-icon
               %br
-              =task.label(:around_home, "around the home")
+              =task.label(:around_home, "around home")
               %br
               =task.radio_button(:category, "around the home", :class => "task-form-radio-button")
-          .col-xs-6.col-md-3
+          .col-xs-3.col-md-1
             .task-form-icon-wrapper
               %i.fa.fa-shopping-cart.form-icon
               %br
               =task.label(:shopping, "shopping")
               %br
               =task.radio_button(:category, "shopping", :class => "task-form-radio-button")
-          .col-xs-6.col-md-3
+          .col-xs-3.col-md-1
             .task-form-icon-wrapper
               %i.fa.fa-cutlery.form-icon
               %br
               =task.label(:meals, "meals")
               %br
               =task.radio_button(:category, "meals", :class => "task-form-radio-button")
-          .col-xs-6.col-md-3
+          .col-xs-3.col-md-1
             .task-form-icon-wrapper
               %i.fa.fa-stethoscope.form-icon
               %br
               =task.label(:personal_care, "personal care")
               %br
               =task.radio_button(:category, "personal care", :class => "task-form-radio-button")
-          .col-xs-6.col-md-3
+          .col-xs-3.col-md-1
             .task-form-icon-wrapper.selected-category
               %i.fa.fa-wrench.form-icon
               %br
               =task.label(:odds_and_ends, "odds & ends")
               %br
               =task.radio_button(:category, "odds & ends", :class => "task-form-radio-button", :checked => true)
-          .col-xs-6.col-md-3
+          .col-xs-3.col-md-1
             .task-form-icon-wrapper
               %i.fa.fa-users.form-icon
               %br
-              =task.label(:visits_and_outings, "visits & outings")
+              =task.label(:visits_and_outings, "visits & trips")
               %br
               =task.radio_button(:category, "visits & outings", :class => "task-form-radio-button")
-          .col-xs-6.col-md-3
+          .col-xs-3.col-md-1
             .task-form-icon-wrapper
               %i.fa.fa-phone.form-icon
               %br
@@ -67,29 +67,45 @@
               %br
               =task.radio_button(:category, "remote", :class => "task-form-radio-button")
         .row
+          %h4.new-task-h4 Task Title
+
+          =task.text_field :title, placeholder: "What is the task?", autofocus: true, :class => 'form-control input-lg'
+          .aside
+            A brief description of what you or
+            =@group.name
+            could use a hand with.
           .col-xs-12.time-details
             %h4.new-task-h4 When
           .col-xs-12.time-details
             =task.text_field :task_date, placeholder: "tomorrow, in 3 days, by next Saturday, Jan 14, 5PM", :class => 'form-control input-lg'
+            .aside
+              When does this need to be done on or by?
           .col-xs-12.start-time
             =task.time_field :start_time, :class => 'input-lg form-control'
           .col-xs-12
             %h4.new-task-h4 How long
             %p=task.select :duration, options_for_select([['15 minutes', 15], ['30 minutes', 30], ['45 minutes', 45], ['1 hour', 60], ['75 minutes', 75], ['an hour and a half', 90], ['2 hours', 120]]), {}, {class: 'form-control input-lg'}
+            .aside
+              How long with this take from start to finish?  This is to help volunteers estimate if they'll be able to take on the responsibility.
           .col-xs-12
             %h4.new-task-h4 Where
           .col-xs-12
             %p=task.text_field :location, placeholder: "Home", class: 'form-control input-lg'
-
+            .aside
+              Where does this need to be done?  If not applicable, you can leave blank.
           .col-xs-12
             %h4.new-task-h4 Helpful Notes/Preferences
             %p=task.text_field :information, placeholder: "e.g., The key is under the matt.", rows: 4, class: 'form-control input-lg'
-
+            .aside
+              What would help make this go well for you or
+              =@group.name
+              ?
           .col-xs-12
             %h4.new-task-h4 Assign (optional)
           .col-xs-12
             =task.select :assignee_id, @users.all.collect {|u| [u.first_name, u.id]},{include_blank: true}, {class: 'form-control input-lg'}
-
+            .aside
+              You can assign this to yourself, others, or let team members sign up on their own.  We will contact everyone to let them know there are open tasks.
           .col-xs-12
             =task.hidden_field :group_id, value: (current_user.group_id)
             =link_to "Cancel", group_tasks_path(@group), :class => "cancel"

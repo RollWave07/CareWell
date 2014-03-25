@@ -39,10 +39,10 @@
                   -else
                     %li.navbar-link
                       = link_to "Sign in", new_user_session_path
-      -if flash[:notice]
-        = content_tag :div, flash[:notice], class: "alert alert-success"
-      -if flash[:alert]
-        = content_tag :div, flash[:alert], class: "alert alert-warning"
-      -if flash[:error]
-        = content_tag :div, flash[:error], class: "alert alert-danger"
-      = yield
+    -if flash[:notice]
+      = content_tag :div, flash[:notice], class: "alert alert-success"
+    -if flash[:alert]
+      = content_tag :div, flash[:alert], class: "alert alert-warning"
+    -if flash[:error]
+      = content_tag :div, flash[:error], class: "alert alert-danger"
+    = yield
