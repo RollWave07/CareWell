@@ -6,19 +6,18 @@
 - diff = task_date.to_i - Time.now.to_i
 .task-card{"data-task-id" => "#{task.id}", :class => "category-#{task.category}"}
   .row
-    .col-xs-2.col-md-1
+    .col-xs-2.col-md-2
       -if task.assignee
         -assignee_picture_url = task.assignee.picture_url(:sq_thumb)
         -if assignee_picture_url
           =image_tag(assignee_picture_url, :class=>"group-picture")
         -else
           %h4="#{task.assignee.first_name}"
-    .col-xs-7.col-md-8.summary
-      =link_to group_task_path(group, task_id) do
-        %h3.card-title
-          =render 'tasks/icon', task: task
-          =task.title.truncate(25)
-          .arrow
+    .col-xs-7.col-md-7.summary
+      %h3.card-title
+        =render 'tasks/icon', task: task
+        =task.title.truncate(25)
+        .arrow
       %h4
         =task_date.strftime('%A')
         ="(#{distance_of_time_in_words(diff)} ago)"
