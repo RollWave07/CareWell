@@ -4,12 +4,20 @@
       Care tasks for
       =best_in_place @group, :name
       %span.edit-indicator.glyphicon.glyphicon-pencil
+    =link_to new_group_task_path(current_user.group) do
+      %h4.add-new Add Task
   .row
     .col-xs-12.col-md-6
       .card
         .section-title
           My Care Tasks
           ="(#{@my_tasks.count})"
+          -if @my_tasks.count < 1
+            .aside
+              You currently have no scheduled commitments.  Volunteer for open tasks (below on mobile, to the right on a desktop).
+          -else
+            .aside
+              Your upcoming commitments.  Click on the task name to show details. Check the box to mark it complete!
         .section-contents
           -unless @my_tasks.empty?
             -@my_tasks.sort_by(&:task_date).each do |task|
@@ -17,6 +25,8 @@
       .card
         .section-title
           Recent Care Tasks
+          .aside
+            The most recent tasks completed by your team.  Click on the task name or the downward facing triangle to see and post comments, photos, and thank the helper for their efforts. They'll receive a text message or email when you do!
         .section-contents
           -unless @past_tasks.empty?
             -@past_tasks.sort_by(&:task_date).reverse.each do |task|
@@ -36,19 +46,21 @@
             %a{href: "#open", 'data-toggle' => "pill"}
               Open
               ="(#{@open_tasks.count})"
-        =link_to new_group_task_path(current_user.group) do
-          %h4.add-new Add
       .section-contents
         .tab-content
           .tab-pane.active{id: "all"}
             -unless @others_tasks.empty?
+              .aside.padded
+                These are all upcoming care tasks for your team that are assigned.  Browse, comment, and encourage the helper for their efforts!
               -@others_tasks.each do |task|
                 =render 'all_task', task: task, group: @group
             -else
-              .padded
-                There are no upcoming tasks covered by other team members.
+              .aside.padded
+                There are no upcoming care tasks covered by other team members.
           .tab-pane{id: "open"}
             -unless @open_tasks.empty?
+              .aside.padded
+                Here are upcoming care tasks that don't yet have someone covering them.  Click on the title to see or share information about it.  Click 'volunteer' to add it to your list - we'll let the caregiver know when you volunteer.
               -@open_tasks.sort_by(&:task_date).each do |task|
                 =render 'open_task', task: task, group: @group
             -else

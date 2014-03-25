@@ -64,7 +64,7 @@ $bgc: #ded8ce;
     padding: 10px;
     padding-left: 0;
   }
-  
+
 
 }
 
@@ -86,6 +86,20 @@ margin: 15px 15px 20px 0;
 .add-new {
   float: right;
   display: inline-block;
+  background-color: #ef5e5a;
+  margin: 15px;
+  margin-right: 0;
+  padding: 20px;
+  color: white;
+  border: 1px solid #bc4a4a;
+  border-radius: 5px;
+  a {
+    color: white;
+    text-decoration: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 //application-section-header
@@ -267,6 +281,8 @@ li.covered {
     margin: 0 auto;
     font-size: 15px;
     background: #f0ad4e;
+    border: 1px solid #ce9045;
+    border-radius: 5px;
     a {
       text-decoration: none;
       color: white;

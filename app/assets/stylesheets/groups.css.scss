@@ -85,23 +85,6 @@ input.update-group-button {
   display: none;
 }
 
-#addmember {
-  background: #ff615b;
-  cursor: pointer;
-  height: 60px;
-  width: 60px;
-  border-radius: 3px;
-  display: inline-block;
-  float: left;
-  line-height: 60px;
-  text-align: center;
-  // margin-right: 7px;
-  a {
-    text-decoration: none;
-    color: white;
-  }
-}
-
 .group-member {
   display: inline-block;
   float: left;

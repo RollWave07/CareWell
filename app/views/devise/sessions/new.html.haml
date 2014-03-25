@@ -18,16 +18,40 @@
       .row
         .col-xs-4.col-sm-2.col-md-3
         .col-xs-12.col-sm-8.col-md-6
-          .sign-up-login
-            Register now to get started.
-          .register-form
-            =form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-              = devise_error_messages!
-              =text_field_tag :group_name, nil, placeholder: "Who are you caring for?", autofocus: true, class: 'form-control input-lg'
-              =f.text_field :first_name, placeholder: "What's your first name?", value: params[:first_name], class: 'form-control input-lg'
-              =f.email_field :email, placeholder: "email", value: params[:email], class: 'form-control input-lg'
-              =f.hidden_field :role, value: 'caregiver'
-              =f.hidden_field :admin, value: true
-              =f.password_field :password, placeholder: "Password", class: 'form-control input-lg'
-              =f.submit "Sign Up", class: 'register-button'
+          .sign-up-or-in
+            %ul.nav.nav-pills
+              %li
+                %a{href: "#register", 'data-toggle' => "pill"}
+                  Register
+              %li.active
+                %a{href: "#sign-in", 'data-toggle' => "pill"}
+                  Sign In
+            .sign-up-login
+              to get started.
+            .tab-content
+              .tab-pane{id: "register"}
+                .card
+                  .register-form
+                    =form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+                      = devise_error_messages!
+                      =text_field_tag :group_name, nil, placeholder: "Who are you caring for?", autofocus: true, class: 'form-control input-lg'
+                      =f.text_field :first_name, placeholder: "What's your first name?", value: params[:first_name], class: 'form-control input-lg'
+                      =f.email_field :email, placeholder: "email", value: params[:email], class: 'form-control input-lg'
+                      =f.hidden_field :role, value: 'caregiver'
+                      =f.hidden_field :admin, value: true
+                      =f.password_field :password, placeholder: "Create Password", class: 'form-control input-lg'
+                      =f.password_field :password_confirmation, placeholder: "Confirm Password", class: 'form-control input-lg'
+                      =check_box_tag :remember_me, 1, params[:remember_me]
+                      =label_tag :remember_me
+                      =f.submit "Sign Up", class: 'register-button'
+              .tab-pane.active{id: "sign-in"}
+                .card
+                  .sign-in-form
+                    =form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+                      =f.email_field :email, :autofocus => true, :placeholder => "Email Address", class: 'form-control input-lg'
+                      =f.password_field :password, :placeholder => "Password", class: 'form-control input-lg'
+                      =check_box_tag :remember_me, 1, params[:remember_me]
+                      =label_tag :remember_me
+                      = f.submit "Sign in", :class => 'register-button'
+                      =link_to "forgot?", new_user_password_path
         .col-xs-4.col-sm-2.col-md-3

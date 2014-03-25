@@ -1,8 +1,11 @@
 .container
-  .row
+  .row.task-index-header
     %h1.application-section-header
-      My Group Activity
-
+      ="#{@group.name}'s Team"
+    %h4.add-new
+      %a{'data-toggle' => 'modal', 'data-target' => '#myModal'}
+        Invite New Teammate
+    =render 'tasks/modal'
   .row
     .col-md-8.col-xs-12
       .card
@@ -72,7 +75,7 @@
               = f.submit "Change Photo"
             %i.fa.fa-camera.fa-3x.choose-group-photo
         .section-contents.padded.overflow-hidden
-          .section-subtitle
+          .section-subtitle.clear
             Members
           -@users.each do |user|
             .squarelinks
@@ -81,10 +84,7 @@
                   =image_tag("mickey-mouse.jpg", class: "group-user-photo")
                 -else
                   =image_tag(user.picture_url(:sq_thumb), :class => "group-user-photo")
-          #addmember.squarelinks
-            %a{'data-toggle' => 'modal', 'data-target' => '#myModal'}
-              Invite
-          =render 'tasks/modal'
+
 
 = javascript_include_tag "Chart.js"
 
