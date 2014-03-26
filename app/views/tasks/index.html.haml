@@ -4,8 +4,9 @@
       Care tasks for
       =best_in_place @group, :name
       %span.edit-indicator.glyphicon.glyphicon-pencil
-    =link_to new_group_task_path(current_user.group) do
-      %h4.add-new Add Task
+    -if current_user.admin?
+      =link_to new_group_task_path(current_user.group) do
+        %h4.add-new Add Task
   .row
     .my-inner
       .col-xs-12.col-md-6
