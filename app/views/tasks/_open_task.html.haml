@@ -9,7 +9,7 @@
     .col-xs-8.col-md-8.summary
       %h3.card-title
         =render 'tasks/icon', task: task
-        =task.title.truncate(25)
+        =task.title
         .arrow
       %h4
         =task_date.strftime('%A')
