@@ -83,6 +83,10 @@ margin: 15px 15px 20px 0;
     padding: 20px;
   }
 
+img.group-picture {
+  border-radius: 50%;
+}
+
 .add-new {
   float: right;
   display: inline-block;
@@ -841,10 +845,12 @@ top: -10px;
         margin-right: 0;
       }
 
-    .group-picture {
+    img.group-picture {
       display: block;
       margin: 0 auto;
+      border-radius: 50%;
     }
+
     .card-right-arrow {
       position: static;
       padding: 10px;

@@ -35,17 +35,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :sm_thumb do
     process :resize_to_fill => [50,50]
   end
-  version :thumb do
-    process :resize_to_fill => [50, 75]
-  end
-  version :sq_thumb do
-    process :resize_to_fill => [60, 60]
-  end
-  version :medium do
-    process :resize_to_fill => [70, 100]
-  end
   version :sq_medium do
     process :resize_to_fill => [75, 75]
+  end
+  version :sq_lg do
+    process :resize_to_fill => [150, 150]
   end
   version :wide do
     process :resize_to_fit => [400, 300]

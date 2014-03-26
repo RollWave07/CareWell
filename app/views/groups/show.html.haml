@@ -72,9 +72,9 @@
               = f.file_field :picture, :required => true
             .actions
               -if @group.picture_url == nil
-                = f.submit "Add Photo"
+                = f.submit "Add Photo", class: "sign-up"
               -else
-                = f.submit "Change Photo"
+                = f.submit "Change Photo", class: "sign-up"
               %i.fa.fa-camera.fa-3x.choose-group-photo
         .section-contents.padded.overflow-hidden
           .section-subtitle.clear.padded
@@ -85,7 +85,7 @@
                 -if user.picture_url == nil
                   =image_tag("mickey-mouse.jpg", class: "group-user-photo")
                 -else
-                  =image_tag(user.picture_url(:sq_thumb), :class => "group-user-photo")
+                  =image_tag(user.picture_url(:sq_medium), :class => "group-picture")
 
 
 = javascript_include_tag "Chart.js"

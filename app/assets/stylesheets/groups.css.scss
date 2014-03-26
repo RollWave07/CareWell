@@ -59,10 +59,17 @@
     float: right;
     margin-top: 20px;
     margin-right: 20px;
-    color: white;
-    background-color: orange;
-    border: 1px solid #e0881b;
+    color: #656D78;
+    background-color: #E6E9ED;
     padding: 5px 10px;
+    border: 1px solid #E6E9ED;
+    &:hover {
+      background-color: #05C29B;
+      border: 1px solid #05A57F;
+      a {
+        color: white;
+      }
+    }
   }
 }
 .graph-background {

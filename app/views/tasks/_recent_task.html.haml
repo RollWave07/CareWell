@@ -8,7 +8,7 @@
   .row
     .col-xs-2.col-md-2
       -if task.assignee
-        -assignee_picture_url = task.assignee.picture_url(:sq_thumb)
+        -assignee_picture_url = task.assignee.picture_url(:sm_thumb)
         -if assignee_picture_url
           =image_tag(assignee_picture_url, :class=>"group-picture")
         -else
