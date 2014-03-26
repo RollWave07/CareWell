@@ -48,6 +48,10 @@ font-weight: 700;
 text-shadow:2px 2px 2px rgba(255,255,255, 1);
 }
 
+.my-inner-container {
+  padding: 0 20px 0 0;
+}
+
 .alert {
   margin-bottom: 0;
 }
@@ -121,6 +125,10 @@ hr {
 @media all and (max-width: 480px) {
   body {
     font-family: 'Lato', sans-serif;
+  }
+
+  .my-inner-container {
+    padding: 0;
   }
 
   .navbar {

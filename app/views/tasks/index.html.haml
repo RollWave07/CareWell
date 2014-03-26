@@ -8,8 +8,8 @@
       =link_to new_group_task_path(current_user.group) do
         %h4.add-new Add Task
   .row
-    .my-inner
-      .col-xs-12.col-md-6
+    .col-xs-12.col-md-6
+      .my-inner-container
         .card
           .section-title
             My Care Tasks
@@ -36,8 +36,8 @@
             -else
               %h3.card-title.padded
                 ="No tasks have been completed yet!"
-    .my-inner
-      .col-xs-12.col-md-5.card{style: 'margin-bottom: 15px'}
+    .col-xs-12.col-md-6.card{style: 'margin-bottom: 15px'}
+      .my-inner-container
         .section-title
           %ul.nav.nav-pills
             %li.active

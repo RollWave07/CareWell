@@ -8,45 +8,46 @@
         Invite New Teammate
   .row
     .col-md-8.col-xs-12
-      .card
-        .section-title
-          The Week By Numbers
-        .section-contents.overflow-hidden
-          .col-xs-4.col-md-4.center
-            .number-summary-stats
-              =@counts_arrays.first
-            %p.number-summary Tasks Completed
-          .col-xs-4.col-md-4.center
-            .number-summary-stats
-              =@active_users
-            %p.number-summary Active Members
-          .col-xs-4.col-md-4.center
-            .number-summary-stats.green
-              =@duration_week
-            %p.number-summary Hours Caring
-      .card.clear
-        .section-title
-          %ul.nav.nav-pills
-            %li.active
-              %a{href: "#assigned_per_week", 'data-toggle' => "pill"}
-                Tasks Per Week
-            %li
-              %a{href: "#average_time_per_task", 'data-toggle' => "pill"}
-                Average Time
-            %li
-              %a{href: "#tasks_by_category", 'data-toggle' => "pill"}
-                Tasks by Category
-        .section-contents
-          .tab-content
-            .tab-pane.active{id: "assigned_per_week"}
-              .greentext.text-center
-                %canvas#lineChart{height: "400", width: "400"}
-            .tab-pane{id: "average_time_per_task"}
-              .greentext.text-center
-                %canvas#durationChart{height: "400", width: "400"}
-            .tab-pane{id: "tasks_by_category"}
-              .greentext.text-center
-                %canvas#barChart{height: "400", width: "400"}
+      .my-inner-container
+        .card
+          .section-title
+            The Week By Numbers
+          .section-contents.overflow-hidden
+            .col-xs-4.col-md-4.center
+              .number-summary-stats
+                =@counts_arrays.first
+              %p.number-summary Tasks Completed
+            .col-xs-4.col-md-4.center
+              .number-summary-stats
+                =@active_users
+              %p.number-summary Active Members
+            .col-xs-4.col-md-4.center
+              .number-summary-stats.green
+                =@duration_week
+              %p.number-summary Hours Caring
+        .card.clear
+          .section-title
+            %ul.nav.nav-pills
+              %li.active
+                %a{href: "#assigned_per_week", 'data-toggle' => "pill"}
+                  Tasks Per Week
+              %li
+                %a{href: "#average_time_per_task", 'data-toggle' => "pill"}
+                  Average Time
+              %li
+                %a{href: "#tasks_by_category", 'data-toggle' => "pill"}
+                  Tasks by Category
+          .section-contents
+            .tab-content
+              .tab-pane.active{id: "assigned_per_week"}
+                .greentext.text-center
+                  %canvas#lineChart{height: "400", width: "400"}
+              .tab-pane{id: "average_time_per_task"}
+                .greentext.text-center
+                  %canvas#durationChart{height: "400", width: "400"}
+              .tab-pane{id: "tasks_by_category"}
+                .greentext.text-center
+                  %canvas#barChart{height: "400", width: "400"}
 
     .col-md-4.col-xs-12
       .card
