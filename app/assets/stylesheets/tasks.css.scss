@@ -268,12 +268,26 @@ li.covered {
     padding: 10px 20px;
     margin: 0 auto;
     font-size: 15px;
-    background: #f0ad4e;
-    border: 1px solid #ce9045;
+    background-color: #E6E9ED;
     border-radius: 5px;
     a {
       text-decoration: none;
-      color: white;
+      color: #656D78;
+    }
+
+    &:hover {
+      background-color: #05C29B;
+      border: 1px solid #05A57F;
+      a {
+        color: white;
+      }
+    }
+    &:active {
+      background-color: #05C29B;
+      border: 1px solid #05A57F;
+      a {
+        color: white;
+      }
     }
   }
 
