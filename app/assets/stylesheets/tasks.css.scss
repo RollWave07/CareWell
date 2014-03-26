@@ -434,6 +434,10 @@ li.covered {
   }
 }
 
+.open-tasks .task-card:nth-of-type(1) {
+  border: 1px solid #eee;
+}
+
 .row {
   margin-left: 0px;
   margin-right: 0px;

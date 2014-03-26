@@ -37,37 +37,36 @@
               %h3.card-title.padded
                 ="No tasks have been completed yet!"
     .col-xs-12.col-md-6.card{style: 'margin-bottom: 15px'}
-      .my-inner-container
-        .section-title
-          %ul.nav.nav-pills
-            %li.active
-              %a{href: "#all", 'data-toggle' => "pill"}
-                Upcoming
-                ="(#{@others_tasks.count})"
-            %li
-              %a{href: "#open", 'data-toggle' => "pill"}
-                Open
-                ="(#{@open_tasks.count})"
-        .section-contents
-          .tab-content
-            .tab-pane.active{id: "all"}
-              -unless @others_tasks.empty?
-                .aside.padded
-                  These are all upcoming care tasks for your team that are assigned.  Browse, comment, and encourage the helper for their efforts!
-                -@others_tasks.each do |task|
-                  =render 'all_task', task: task, group: @group
-              -else
-                .aside.padded
-                  There are no upcoming care tasks covered by other team members.
-            .tab-pane{id: "open"}
-              -unless @open_tasks.empty?
-                .aside.padded
-                  Here are upcoming care tasks that don't yet have someone covering them.  Click on the title to see or share information about it.  Click 'volunteer' to add it to your list - we'll let the caregiver know when you volunteer.
-                -@open_tasks.sort_by(&:task_date).each do |task|
-                  =render 'open_task', task: task, group: @group
-              -else
-                .padded
-                  There are no open tasks for this month!
+      .section-title
+        %ul.nav.nav-pills
+          %li.active
+            %a{href: "#all", 'data-toggle' => "pill"}
+              Upcoming
+              ="(#{@others_tasks.count})"
+          %li
+            %a{href: "#open", 'data-toggle' => "pill"}
+              Open
+              ="(#{@open_tasks.count})"
+      .section-contents
+        .tab-content
+          .tab-pane.active{id: "all"}
+            -unless @others_tasks.empty?
+              .aside.padded{style: "border-bottom: 1px solid #eee"}
+                These are all upcoming care tasks for your team that are assigned.  Browse, comment, and encourage the helper for their efforts!
+              -@others_tasks.each do |task|
+                =render 'all_task', task: task, group: @group
+            -else
+              .aside.padded{style: "border-bottom: 1px solid #eee"}
+                There are no upcoming care tasks covered by other team members.
+          .tab-pane.open-tasks{id: "open"}
+            -unless @open_tasks.empty?
+              .aside.padded{style: "border-bottom: 1px solid #eee"}
+                Here are upcoming care tasks that don't yet have someone covering them.  Click on the title to see or share information about it.  Click 'volunteer' to add it to your list - we'll let the caregiver know when you volunteer.
+              -@open_tasks.sort_by(&:task_date).each do |task|
+                =render 'open_task', task: task, group: @group
+            -else
+              .padded
+                There are no open tasks for this month!
 
 #first-time-user.modal.fade
   .modal-dialog
