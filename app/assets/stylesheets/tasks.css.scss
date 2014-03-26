@@ -89,6 +89,7 @@ margin: 15px 15px 20px 0;
   background-color: #ef5e5a;
   margin: 15px;
   margin-right: 0;
+  width: auto;
   padding: 20px;
   color: white;
   border: 1px solid #bc4a4a;
@@ -719,6 +720,26 @@ top: -10px;
     margin: 0 auto;
     padding: 0;
     width: 95%;
+  }
+
+  .add-new {
+    float: right;
+    display: block;
+    background-color: #ef5e5a;
+    margin: 5px auto;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    border: 1px solid #bc4a4a;
+    border-radius: 5px;
+    a {
+      color: white;
+      text-decoration: none;
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 
   .card {

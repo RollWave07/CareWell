@@ -1,44 +1,39 @@
 .container
   .row
-    %h1.application-section-header
-      My Profile
-    .col-xs-12.col-md-12
-      .card
-        .section-title
-          Details
-          .edit
-            -if current_user == @user
-              =link_to edit_user_registration_path do
-                .edit.glyphicon.glyphicon-pencil
-        .section-contents.overflow-hidden
-          .col-xs-12.col-md-6
-            -if @user.picture_url == nil
-              =image_tag("mickey-mouse-large.jpg", class: "group-user-photo")
-            -else
-              =image_tag(@user.picture_url(:wide))
-          .col-xs-12.col-md-5
-            %h3
-              ="#{@user.first_name} #{@user.last_name}"
+    .task-index-header
+      %h1.application-section-header
+        -if @user == current_user
+          My Profile
+        -else
+          = "#{@user.first_name}'s Profile"
+    -if @user == current_user
+      %h4.add-new
+        =link_to "Edit Profile", edit_user_registration_path
+  .row
+    .card
+      .section-title
+        Basic Profile Details
+      .section-contents.overflow-hidden
+        .col-xs-12.col-md-6
+          -if @user.picture_url == nil
+            =image_tag("mickey-mouse-large.jpg", class: "group-user-photo")
+          -else
+            =image_tag(@user.picture_url(:wide))
+        .col-xs-12.col-md-5
+          %h3
+            ="#{@user.first_name} #{@user.last_name}"
 
-            .phone="Phone: #{number_to_phone(@user.phone, area_code: true)}"
-            .email="Email: #{@user.email}"
+          .phone="Phone: #{number_to_phone(@user.phone, area_code: true)}"
+          .email="Email: #{@user.email}"
 
-      .card
-        .section-title
-          Task Preferences
-          .edit
-            -if current_user == @user
-              =link_to edit_user_registration_path do
-                .edit.glyphicon.glyphicon-pencil
-        .section-contents{style: "padding: 20px;"}
-          Here is where task preferences will go.
+    .card
+      .section-title
+        Task Preferences
+      .section-contents{style: "padding: 20px;"}
+        Here is where task preferences will go.
 
-      .card{style: "margin-bottom: 20px"}
-        .section-title
-          Contact Preferences
-          .edit
-            -if current_user == @user
-              =link_to edit_user_registration_path do
-                .edit.glyphicon.glyphicon-pencil
-        .section-contents.padded{style: "padding: 20px;"}
-          Here is where contact preferences will go.
+    .card{style: "margin-bottom: 20px"}
+      .section-title
+        Contact Preferences
+      .section-contents.padded{style: "padding: 20px;"}
+        Here is where contact preferences will go.
