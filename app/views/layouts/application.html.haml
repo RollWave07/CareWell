@@ -18,11 +18,9 @@
               -else
                 =link_to image_tag('carewell-green-logo.png', :class=>"logo")
 
-              %button.navbar-toggle.collapsed{type: 'button', 'data-toggle'=> 'collapse', 'data-target' => '#bs-example-navbar-collapse-6'}
+              %button.navbar-toggle.collapsed{type: 'button', 'data-toggle'=> 'collapse', 'data-target' => '#bs-example-navbar-collapse-6', style: 'color: white;'}
                 %span.sr-only Toggle Navigation
-                %span.icon-bar{style: "color: white;"}
-                %span.icon-bar
-                %span.icon-bar
+                Menu
 
             .navbar-collapse.collapse{id: 'bs-example-navbar-collapse-6'}
               -if current_user

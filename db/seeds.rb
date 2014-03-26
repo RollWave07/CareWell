@@ -12,6 +12,8 @@ User.create!([
   {first_name: "Jessica",last_name: "British", email: "jessica@british.com", password:"password", phone: 6175158907, group_id: 2, admin: false }
 ])
 
+User.create(first_name: "Aldie",last_name: "Boggs", email: "aldiejboggs@gmail.com", password:"password", phone: 6174486590, group_id: 3, admin: true)
+User.create(first_name: "Dave",last_name: "Boggs", email: "dboggs@syberworks.com", password:"password", phone: 7812546159, group_id: 3, admin: true)
 
 
 category_array = [
