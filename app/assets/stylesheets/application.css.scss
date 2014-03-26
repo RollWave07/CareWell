@@ -264,6 +264,12 @@ li.navbar-link {
   text-align: center;
 }
 
+//BOOTSTRAP OVERRIDES
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  background-color: #3498DB;
+}
+
 // this is hacky but used to compensate for interior padding+margin
 @media all and (max-width: 767px) {
         .navbar-nav {
