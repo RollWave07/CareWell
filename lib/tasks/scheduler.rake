@@ -23,7 +23,7 @@ desc "This sends a message to the owner if no one is assigned within 2 days."
 task :not_covered_decision => :environment do
   time_from = Time.now
   time_to = Time.now+2.days
-  tasks = Task.where(task_date:(time_from..time_to), :group_id =>! nil)
+  tasks = Task.where(task_date:(time_from..time_to))
 
   tasks.each do |task|
     if task.user.phone.empty?
