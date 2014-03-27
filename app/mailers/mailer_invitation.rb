@@ -51,7 +51,15 @@ class MailerInvitation < ActionMailer::Base
     @subject_line = "Reminder for Your Upcoming Task, #{task.title}!"
 
     mail(:to => @user.email, :subject => @subject_line)
+  end
 
+  def not_covered_upcoming_task(task)
+    @group = task.group_id
+    @task = task
+    @user = task.user
+    @subject_line = "Heads Up! #{task.title} is coming up but isn't covered."
+
+    mail(:to => @user.email, :subject => @subject_line)
   end
 
 end

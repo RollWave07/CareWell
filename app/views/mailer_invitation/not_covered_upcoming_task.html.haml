@@ -1,0 +1,17 @@
+%h1
+  ="Hi, #{@user},"
+="#{@task.title} is coming up but isn't covered."
+We have three recommendations to help in this instance.
+%ul
+  %li
+    You can assign the task in the system directly.  If you edit the task, you can pick and assignee, which might be someone you've already talked to over the phone - you can also assign it directly to yourself.
+  %li
+    You can reschedule the task in the system.  Maybe the exact upcoming date isn't required.  We'd advise pushing it out approximately a week, if possible, to let individuals find and sign up for it.
+  %li
+    You can delete the task.  Maybe it doesn't need to be done at this time.  If you click the task for more information once in the system, you can then click the "delete" link to remove it.
+
+To take action, please visit your main tasks page
+=link_to "here", group_tasks_path(@group)
+
+Sincerely,
+The CareWell Team

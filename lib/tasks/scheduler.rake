@@ -18,6 +18,29 @@ desc "This task will send a message"
 #   puts count
 # end
 
+desc "This sends a message to the owner if no one is assigned within 2 days."
+
+task :not_covered_decision => :environment do
+  time_from = Time.now
+  time_to = Time.now+2.days
+  tasks = Task.where(task_date:(time_from..time_to), :group_id =>! nil)
+
+  tasks.each do |task|
+    if task.user.phone.empty?
+      MailerInvitation.not_covered_upcoming_task(task).deliver
+    else
+      account_sid = ENV['TWILIO_ACCOUNT_SID']
+      auth_token = ENV['TWILIO_ACCOUNT_TOKEN']
+      @client = Twilio::REST::Client.new account_sid, auth_token
+      message = @client.account.sms.messages.create(
+        :to => "#{task.user.phone}",
+        :from => "8588668901",
+        :body => "Heads Up! From CareWell: Hi #{task.user.first_name}, the task: #{task.title} is coming up but isn't covered. Modify it at carewell.herokuapp.com."
+        )
+    end
+  end
+end
+
 task :send_reminders => :environment do
 
   time_from = Time.now+1.day
