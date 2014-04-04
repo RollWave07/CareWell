@@ -35,12 +35,12 @@ people = User.all.count-3
 
 index = 1
 while index<12
-  Task.create!({title: "Task number #{index}", groupid: 1, category: category_array.sample, duration: duration_array.sample, task_date: Time.now-rand(30).day, user_id: rand(people)+1})
+  Task.create!({title: "Task number #{index}", group_id: 1, category: category_array.sample, duration: duration_array.sample, task_date: Time.now-rand(30).day, user_id: rand(people)+1})
   index += 1
 end
 
 while index<27
-  Task.create!({title: "Task number #{index}", groupid: 1, category: category_array.sample, duration: duration_array.sample, task_date: Time.now+rand(30).day, user_id: rand(people)+1})
+  Task.create!({title: "Task number #{index}", group_id: 1, category: category_array.sample, duration: duration_array.sample, task_date: Time.now+rand(30).day, user_id: rand(people)+1})
   index += 1
 end
 
@@ -54,9 +54,9 @@ end
 
 
 Task.create!([
-  {title: "Task number 300", groupid: 2, category: category_array.sample, duration: duration_array.sample, task_date: Time.now-rand(30).day, user_id: 16, assignee_id: 17},
-  {title: "Task number 301", groupid: 2, category: category_array.sample, duration: duration_array.sample, task_date: Time.now+rand(30).day, user_id: 16, assignee_id: 18},
-  {title: "Task number 302", groupid: 2, category: category_array.sample, duration: duration_array.sample, task_date: Time.now+rand(30).day, user_id: 17, assignee_id: 18}
+  {title: "Task number 300", group_id: 2, category: category_array.sample, duration: duration_array.sample, task_date: Time.now-rand(30).day, user_id: 16, assignee_id: 17},
+  {title: "Task number 301", group_id: 2, category: category_array.sample, duration: duration_array.sample, task_date: Time.now+rand(30).day, user_id: 16, assignee_id: 18},
+  {title: "Task number 302", group_id: 2, category: category_array.sample, duration: duration_array.sample, task_date: Time.now+rand(30).day, user_id: 17, assignee_id: 18}
   ])
 
 
