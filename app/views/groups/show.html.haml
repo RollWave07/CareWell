@@ -25,29 +25,29 @@
               .number-summary-stats.green
                 =@duration_week
               %p.number-summary Hours Caring
-        .card.clear
-          .section-title
-            %ul.nav.nav-pills
-              %li.active
-                %a{href: "#assigned_per_week", 'data-toggle' => "pill"}
-                  Tasks Per Week
-              %li
-                %a{href: "#average_time_per_task", 'data-toggle' => "pill"}
-                  Average Time
-              %li
-                %a{href: "#tasks_by_category", 'data-toggle' => "pill"}
-                  Tasks by Category
-          .section-contents
-            .tab-content
-              .tab-pane.active{id: "assigned_per_week"}
-                .greentext.text-center
-                  %canvas#lineChart{height: "400", width: "400"}
-              .tab-pane{id: "average_time_per_task"}
-                .greentext.text-center
-                  %canvas#durationChart{height: "400", width: "400"}
-              .tab-pane{id: "tasks_by_category"}
-                .greentext.text-center
-                  %canvas#barChart{height: "400", width: "400"}
+        / .card.clear
+        /   .section-title
+        /     %ul.nav.nav-pills
+        /       %li.active
+        /         %a{href: "#assigned_per_week", 'data-toggle' => "pill"}
+        /           Tasks Per Week
+        /       %li
+        /         %a{href: "#average_time_per_task", 'data-toggle' => "pill"}
+        /           Average Time
+        /       %li
+        /         %a{href: "#tasks_by_category", 'data-toggle' => "pill"}
+        /           Tasks by Category
+        /   .section-contents
+        /     .tab-content
+        /       .tab-pane.active{id: "assigned_per_week"}
+        /         .greentext.text-center
+        /           %canvas#lineChart{height: "400", width: "400"}
+        /       .tab-pane{id: "average_time_per_task"}
+        /         .greentext.text-center
+        /           %canvas#durationChart{height: "400", width: "400"}
+        /       .tab-pane{id: "tasks_by_category"}
+        /         .greentext.text-center
+        /           %canvas#barChart{height: "400", width: "400"}
 
     .col-md-4.col-xs-12
       .card
@@ -88,9 +88,9 @@
                   =image_tag(user.picture_url(:sq_medium), :class => "group-picture")
 
 
-= javascript_include_tag "Chart.js"
+/ = javascript_include_tag "Chart.js"
 
-=render 'tasks/modal'
-=render "linechart"
-=render "barchart"
-=render "durationchart"
+/ =render 'tasks/modal'
+/ =render "linechart"
+/ =render "barchart"
+/ =render "durationchart"
