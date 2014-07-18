@@ -54,12 +54,6 @@ class TasksController < ApplicationController
     date = Chronic.parse(task_params[:task_date])
     @task.task_date = date ? date : Time.now+7.days
 
-    if @task.assignee_id == 1
-      @task.assignee_id = current_user.id
-    else
-      @task.assignee_id = nil
-    end
-
     respond_to do |format|
       if @task.save
         format.html { redirect_to group_tasks_path(@group), notice: 'Task was successfully created.' }
