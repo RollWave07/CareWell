@@ -23,49 +23,49 @@
               %br
               =task.label(:around_home, "around home")
               %br
-              =task.radio_button(:category, "around the home", :class => "task-form-radio-button")
+              =task.radio_button(:category, "around the home", :class => "task-form-radio-button", title: "Water the plants, Mow the lawn, Clean the stove, etc.")
           .col-xs-3.col-md-1
             .task-form-icon-wrapper
               %i.fa.fa-shopping-cart.form-icon
               %br
               =task.label(:shopping, "shopping")
               %br
-              =task.radio_button(:category, "shopping", :class => "task-form-radio-button")
+              =task.radio_button(:category, "shopping", :class => "task-form-radio-button", title: "Buy clothes, Buy goods")
           .col-xs-3.col-md-1
             .task-form-icon-wrapper
               %i.fa.fa-cutlery.form-icon
               %br
               =task.label(:meals, "meals")
               %br
-              =task.radio_button(:category, "meals", :class => "task-form-radio-button")
+              =task.radio_button(:category, "meals", :class => "task-form-radio-button", title: "Bring a warm meal, lunch, dinner, weekly grocery shopping")
           .col-xs-3.col-md-1
             .task-form-icon-wrapper
               %i.fa.fa-stethoscope.form-icon
               %br
               =task.label(:personal_care, "personal care")
               %br
-              =task.radio_button(:category, "personal care", :class => "task-form-radio-button")
+              =task.radio_button(:category, "personal care", :class => "task-form-radio-button", title: "prepare a bath, wash, prepare medicine, etc.")
           .col-xs-3.col-md-1
             .task-form-icon-wrapper.selected-category
               %i.fa.fa-wrench.form-icon
               %br
               =task.label(:odds_and_ends, "odds & ends")
               %br
-              =task.radio_button(:category, "odds & ends", :class => "task-form-radio-button", :checked => true)
+              =task.radio_button(:category, "odds & ends", :class => "task-form-radio-button", :checked => true, title: "change a light bulb, fix the sink, etc.")
           .col-xs-3.col-md-1
             .task-form-icon-wrapper
               %i.fa.fa-users.form-icon
               %br
               =task.label(:visits_and_outings, "visits & trips")
               %br
-              =task.radio_button(:category, "visits & outings", :class => "task-form-radio-button")
+              =task.radio_button(:category, "visits & outings", :class => "task-form-radio-button", title: "see a play, take a walk, go to senior center, etc.")
           .col-xs-3.col-md-1
             .task-form-icon-wrapper
               %i.fa.fa-phone.form-icon
               %br
               =task.label(:remote, "remote")
               %br
-              =task.radio_button(:category, "remote", :class => "task-form-radio-button")
+              =task.radio_button(:category, "remote", :class => "task-form-radio-button", title: "call, do paperwork remotely, call insurance, etc.")
         .row
           %h4.new-task-h4 Task Title
 
