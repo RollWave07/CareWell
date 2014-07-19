@@ -41,11 +41,11 @@
         %ul.nav.nav-pills
           %li.active
             %a{href: "#all", 'data-toggle' => "pill"}
-              Upcoming
+              Team Upcoming
               ="(#{@others_tasks.count})"
           %li
             %a{href: "#open", 'data-toggle' => "pill"}
-              Open
+              Not Covered
               ="(#{@open_tasks.count})"
       .section-contents
         .tab-content

@@ -16,51 +16,51 @@
               %br
               =task.label(:getting_places, "transport")
               %br
-              =task.radio_button(:category, "getting places", :class => "task-form-radio-button", title: "The doctor's, out around town, to the store, etc.")
+              =task.radio_button(:category, "getting places", :class => "task-form-radio-button")
           .col-xs-3.col-md-1
-            .task-form-icon-wrapper
+            .task-form-icon-wrapper{title: "Water the plants, pick-up the mail, Clean the sink"}
               %i.fa.fa-home.form-icon
               %br
               =task.label(:around_home, "around home")
               %br
               =task.radio_button(:category, "around the home", :class => "task-form-radio-button")
           .col-xs-3.col-md-1
-            .task-form-icon-wrapper
+            .task-form-icon-wrapper{title: "Buy clothes, Buy goods"}
               %i.fa.fa-shopping-cart.form-icon
               %br
               =task.label(:shopping, "shopping")
               %br
               =task.radio_button(:category, "shopping", :class => "task-form-radio-button")
           .col-xs-3.col-md-1
-            .task-form-icon-wrapper
+            .task-form-icon-wrapper{title: "Bring a warm meal, lunch, dinner, weekly grocery shopping"}
               %i.fa.fa-cutlery.form-icon
               %br
               =task.label(:meals, "meals")
               %br
               =task.radio_button(:category, "meals", :class => "task-form-radio-button")
           .col-xs-3.col-md-1
-            .task-form-icon-wrapper
+            .task-form-icon-wrapper{title: "prepare a bath, wash, prepare medicine, etc."}
               %i.fa.fa-stethoscope.form-icon
               %br
               =task.label(:personal_care, "personal care")
               %br
               =task.radio_button(:category, "personal care", :class => "task-form-radio-button")
           .col-xs-3.col-md-1
-            .task-form-icon-wrapper.selected-category
+            .task-form-icon-wrapper.selected-category{title: "change a light bulb, fix the sink, etc."}
               %i.fa.fa-wrench.form-icon
               %br
               =task.label(:odds_and_ends, "odds & ends")
               %br
               =task.radio_button(:category, "odds & ends", :class => "task-form-radio-button", :checked => true)
           .col-xs-3.col-md-1
-            .task-form-icon-wrapper
+            .task-form-icon-wrapper{title: "see a play, take a walk, go to senior center, etc."}
               %i.fa.fa-users.form-icon
               %br
               =task.label(:visits_and_outings, "visits & trips")
               %br
               =task.radio_button(:category, "visits & outings", :class => "task-form-radio-button")
           .col-xs-3.col-md-1
-            .task-form-icon-wrapper
+            .task-form-icon-wrapper{title: "call, do paperwork remotely, call insurance, etc."}
               %i.fa.fa-phone.form-icon
               %br
               =task.label(:remote, "remote")
@@ -70,33 +70,38 @@
           %h4.new-task-h4 Task Title
 
           =task.text_field :title, placeholder: "What is the task?", autofocus: true, :class => 'form-control input-lg'
-          .aside
+          /
+            .aside
             A brief description of what you or
             =@group.name
             could use a hand with.
           .col-xs-12.time-details
-            %h4.new-task-h4 When
+            %h4.new-task-h4 When does it need to be done?
           .col-xs-12.time-details
             =task.text_field :task_date, placeholder: "tomorrow, in 3 days, by next Saturday, Jan 14, 5PM", :class => 'form-control input-lg'
-            .aside
+            /
+              .aside
               When does this need to be done on or by?
           .col-xs-12.start-time
             =task.time_field :start_time, :class => 'input-lg form-control'
           .col-xs-12
-            %h4.new-task-h4 How long
+            %h4.new-task-h4 How long will it take?
             %p=task.select :duration, options_for_select([['15 minutes', 15], ['30 minutes', 30], ['45 minutes', 45], ['1 hour', 60], ['75 minutes', 75], ['an hour and a half', 90], ['2 hours', 120]]), {}, {class: 'form-control input-lg'}
-            .aside
+            /
+              .aside
               How long with this take from start to finish?  This is to help volunteers estimate if they'll be able to take on the responsibility.
           .col-xs-12
-            %h4.new-task-h4 Where
+            %h4.new-task-h4 Where?
           .col-xs-12
             %p=task.text_field :location, placeholder: "Home", class: 'form-control input-lg'
-            .aside
+            /
+              .aside
               Where does this need to be done?  If not applicable, you can leave blank.
           .col-xs-12
             %h4.new-task-h4 Helpful Notes/Preferences
             %p=task.text_field :information, placeholder: "e.g., The key is under the matt.", rows: 4, class: 'form-control input-lg'
-            .aside
+            /
+              .aside
               What would help make this go well for you or
               =@group.name
               ?
