@@ -20,7 +20,5 @@ $(document).ready(function() {
     // console.log(status)
     $(this).text("Assignee: "+data.assignee_name);
 
-    // console.log("#vote" + data.vote_id)
   });
-
 });

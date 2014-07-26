@@ -56,7 +56,7 @@
               -@others_tasks.each do |task|
                 =render 'all_task', task: task, group: @group
             -else
-              .aside.padded{style: "border-bottom: 1px solid #eee"}
+              .padded{style: "border-bottom: 1px solid #eee"}
                 There are no upcoming care tasks covered by other team members.
           .tab-pane.open-tasks{id: "open"}
             -unless @open_tasks.empty?
