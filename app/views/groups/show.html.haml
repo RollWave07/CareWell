@@ -3,9 +3,12 @@
     .task-index-header
       %h1.application-section-header
         ="#{@group.name}'s Team"
-    %h4.add-new
-      %a{'data-toggle' => 'modal', 'data-target' => '#myModal'}
-        Invite New Teammate
+      =link_to '#invite-modal', 'data-toggle' => 'modal' do
+        %h4.add-new Invite New Teammate
+
+    / %h4.add-new
+    /   %a{'data-toggle' => 'modal', 'data-target' => '#myModal'}
+    /     Invite New Teammate
   .row
     .col-md-8.col-xs-12
       .my-inner-container
@@ -87,6 +90,10 @@
                 -else
                   =image_tag(user.picture_url(:sq_medium), :class => "group-picture")
 
+
+/ modal for inviting a new member to the group
+=render 'invite_modal'
+      
 
 / = javascript_include_tag "Chart.js"
 
