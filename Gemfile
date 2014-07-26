@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'twilio-ruby'
 gem 'rails_12factor', group: :production
+gem 'better_errors'
 
 group :development do
   gem 'better_errors'

@@ -41,9 +41,9 @@
         Comments
     .row.updates{"data-id" => "#{task.id}"}
       -task.ordered_updates.each do |update|
-        =render "updates/update", update: update
+        =render partial: "updates/update", locals: {update: update}
     .row
-      =render "updates/form", group: @group, task: task, update: @update
+      =render partial: "updates/form", locals: {task:task, group:@group, update:@update}
 
     .section-subtitle
       Actions
