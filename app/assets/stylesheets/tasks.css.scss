@@ -939,6 +939,15 @@ input#task_assignee_id {
   }
 }
 
+// for placekitten in empty "not-covered" tasks
+#placekitten {
+  padding: 10px;
+  img {
+    margin: 5px;
+  }
+}
+
+
 
 // CSS for Welcome modal
 #first-time-user {
