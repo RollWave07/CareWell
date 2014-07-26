@@ -21,6 +21,5 @@ $(document).on("ajax:success", ".signup", function(e, data, status, xhr){
   $(this).text("Assignee: "+data.assignee_name);
 
   // console.log("#vote" + data.vote_id)
-});
-
+  });
 });
