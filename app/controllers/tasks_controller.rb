@@ -86,8 +86,9 @@ class TasksController < ApplicationController
           format.html { redirect_to group_tasks_path(@group), notice: 'task was successfully updated.' }
           format.js { render layout: false, notice: "You've signed up for #{@task.title}."}
           if @task.assignee_id != old_assignee_id && @task.assignee != nil
-            MailerInvitation.calendar_invite(@task).deliver
-            MailerInvitation.task_sign_up_notification(@task).deliver
+            # commented out during testing.
+            # MailerInvitation.calendar_invite(@task).deliver
+            # MailerInvitation.task_sign_up_notification(@task).deliver
           end
         end
       else

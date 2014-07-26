@@ -10,8 +10,8 @@
   .row
     .col-xs-12.col-md-6
       .my-inner-container
-        .card
-          .section-title
+        .card#mytasks
+          .section-title.my-task-count
             My Care Tasks
             ="(#{@my_tasks.count})"
             -if @my_tasks.count < 1
@@ -44,7 +44,7 @@
               Team Upcoming
               ="(#{@others_tasks.count})"
           %li
-            %a{href: "#open", 'data-toggle' => "pill"}
+            %a{href: "#open", 'data-toggle' => "pill", class: 'open-task-count'}
               Not Covered
               ="(#{@open_tasks.count})"
       .section-contents
