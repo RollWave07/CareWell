@@ -15,12 +15,12 @@ $(document).ready(function() {
     $(this).find('.arrow').toggleClass('spin-180');
   });
 
-$(document).on("ajax:success", ".signup", function(e, data, status, xhr){
-  // console.log(data)
-  // console.log(status)
-  $(this).text("Assignee: "+data.assignee_name);
+  $(document).on("ajax:success", ".signup", function(e, data, status, xhr){
+    // console.log(data)
+    // console.log(status)
+    $(this).text("Assignee: "+data.assignee_name);
 
-  // console.log("#vote" + data.vote_id)
-});
+    // console.log("#vote" + data.vote_id)
+  });
 
 });
