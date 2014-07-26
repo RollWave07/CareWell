@@ -9,6 +9,11 @@
   $('.open-task-count').text("Not Covered (<%=@open_tasks.count - 1%>)")
   $('.my-task-count').text("My Care Tasks (<%=@my_tasks.count + 1%>)")
 
+  $('.task-card[data-task-id="<%= @task.id %>"]').click( function() {
+    $(this).find('.task-details').slideToggle();
+    $(this).find('.arrow').toggleClass('spin-180');
+  });
+
   // if assignee id has changed, do the other thing.
 })();
 
