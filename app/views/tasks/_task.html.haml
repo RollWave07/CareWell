@@ -47,7 +47,7 @@
       -task.ordered_updates.each do |update|
         =render "updates/update", update: update
     .row
-      / =render partial: "updates/form", locals: {task:task, group:@group, update:@update}
+      =render partial: "updates/form", locals: {task:task, group:@group, update:@update}
     .section-subtitle
       Actions
     -if current_user.admin?
