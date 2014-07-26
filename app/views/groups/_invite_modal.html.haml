@@ -1,0 +1,31 @@
+#invite-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel.modal-title
+          Send An Invite To #{@group.name}
+        .aside Fill out the form below to send an invitation to a new team member. They will receive a standard email welcoming them to CareWell with a personal message, if you choose to enter one below.
+      .modal-body
+        = form_tag send_email_path(@group.id) do
+          .name_form
+            = label_tag(:first_name, "First Name")
+            %br/
+            = text_field_tag 'first_name', nil, class: 'form-control input-lg'
+          .name_form
+            = label_tag(:last_name, "Last Name")
+            %br/
+            = text_field_tag 'last_name', nil, class: 'form-control input-lg'
+          .email_form
+            = label_tag(:email, "Email")
+            %br/
+            = text_field_tag 'email', nil, class: 'form-control input-lg'
+          .email_form
+            = label_tag(:message, "Personalized message")
+            %br/
+            = text_area_tag 'message', nil, placeholder: "Hi Joe, I'm glad we talked about dad and I think I could really use your help from time to time. Our family is using CareWell, a service to automate some of the back and forth regarding care tasks.  I'd love it if you could specifically do x,y, and z.  The system will follow up with you so I don't bother you.", size: "75x5", class: 'form-control input-lg'
+          %div
+            = hidden_field_tag 'inviter', current_user
+          .modal-footer
+            = submit_tag "Invite", class: 'btn btn-primary'
+            %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close

@@ -7,8 +7,8 @@
         -else
           = "#{@user.first_name}'s Profile"
     -if @user == current_user
-      %h4.add-new
-        =link_to "Edit Profile", edit_user_registration_path
+      =link_to edit_user_registration_path do
+        %h4.add-new Edit Profile
   .row
     .card
       .section-title
