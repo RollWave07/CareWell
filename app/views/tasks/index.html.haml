@@ -2,7 +2,8 @@
   .row.task-index-header
     %h1.application-section-header
       Care tasks for
-      =best_in_place @group, :name
+      =@group.name
+      / =best_in_place @group, :name
       %span.edit-indicator.glyphicon.glyphicon-pencil
     -if current_user.admin?
       =link_to new_group_task_path(current_user.group) do
@@ -66,7 +67,7 @@
                 =render 'open_task', task: task, group: @group
             -else
               .padded
-                There are no open tasks for this month!
+                There are no open care tasks for this month!
 
 #first-time-user.modal.fade
   .modal-dialog
@@ -76,6 +77,48 @@
         %h1 Hello, First-Timer!
       .modal-body
         %h4 This is a sweet CareWell modal!
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+
+/ test code for a modal
+
+%button.btn.btn-primary.btn-lg{"data-toggle" => "modal", "data-target" => "#myModal"}
+  Launch demo modal
+
+#myModal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"}
+        %h1 Hello, First-Timer!
+      .modal-body
+        %h4 This is a sweet CareWell modal!
+        #carousel-example-generic.carousel.slide{"data-ride" => "carousel"}
+          %ol.carousel-indicators
+            %li{'data-target' => '#carousel-example-generic', 'data-slide-to' => "0", class: "active"}
+            %li{'data-target' => "#carousel-example-generic", 'data-slide-to'=> "1"}
+            %li{'data-target' => "#carousel-example-generic", 'data-slide-to' => "2"}
+
+          .carousel-inner
+            .item.active
+              =image_tag "caregiver.jpg"
+              .carousel-caption
+                %h3
+                  One
+                %p
+                  Here is some more text!
+            .item
+              =image_tag "caregiver.jpg"
+              .carousel-caption
+                %h3
+                  Two
+                %p
+                  Here is more text.
+
+          %a.left.carousel-control{href: "#carousel-example-generic", role: "button", 'data-slide' => "prev"}
+            %span.glyphicon.glyphicon-chevron-left
+          %a.right.carousel-control{href: "#carousel-example-generic", role: "button", 'data-slide' => "prev"}
+            %span.glyphicon.glyphicon-chevron-right
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
 
