@@ -3,7 +3,7 @@ class RegistrationsController < Devise::RegistrationsController
   def join
     @group = Group.find(params[:group_id])
     build_resource(sign_up_params)
-    resource.group = @group
+    # resource.group = @group
 
 
   end
@@ -23,8 +23,8 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
     new_group = params[:group_name].to_s.downcase.capitalize
-    if params[:group_id]
-      @group = Group.find(params[:group_id])
+    if params[:user][:group_id]
+      @group = Group.find(params[:user][:group_id])
     elsif params[:group_name]
       @group = Group.where(name: params[:group_name]).create
     end
