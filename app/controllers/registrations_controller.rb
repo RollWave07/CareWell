@@ -1,5 +1,13 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  def join
+    @group = Group.find(params[:group_id])
+    build_resource(sign_up_params)
+    resource.group = @group
+
+
+  end
+
   def after_sign_up_path_for(resource)
     # if resource.group
       group_tasks_path(resource.group)
