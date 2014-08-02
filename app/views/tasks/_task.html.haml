@@ -39,7 +39,7 @@
     .col-xs-12
       .section-subtitle
         Notes
-      =task.information.nil? ? "No additional notes." : task.information
+      =task.information.empty? ? "No additional notes." : task.information
     .row
       .section-subtitle
         Comments
