@@ -8,7 +8,8 @@ class TasksController < ApplicationController
     first_name = params[:first_name]
     last_name = params[:last_name]
     email = params[:email]
-    result = Userinvite.invite(@group, inviter_first, inviter_last, first_name, last_name, email).deliver
+    message = params [:message]
+    result = Userinvite.invite(@group, inviter_first, inviter_last, first_name, last_name, email, message).deliver
     respond_to do |format|
       if result
         format.html { redirect_to :back, notice: 'Message sent successfully' }

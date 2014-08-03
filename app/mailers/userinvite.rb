@@ -6,7 +6,7 @@ class Userinvite < ActionMailer::Base
   #
   #   en.userinvite.invite.subject
   #
-  def invite(group, inviter_first, inviter_last, first_name, last_name, email)
+  def invite(group, inviter_first, inviter_last, first_name, last_name, email, message)
     @group_id = group.id
     @group_name = group.name
     @inviter_first = inviter_first
@@ -14,6 +14,7 @@ class Userinvite < ActionMailer::Base
     @first_name = first_name
     @last_name = last_name
     @email = email
+    @message = message
     mail( to: email, subject: "CareWell Invitation from #{@inviter_first} #{@inviter_last}")
   end
 
