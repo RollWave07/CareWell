@@ -3,6 +3,7 @@
   var commentHtml = "<%= j render(partial: 'update', locals: {update: @update})%>";
   $('.updates[data-id="<%=@update.task.id%>"]').append(commentHtml);
   $('#update_comment').val('');
+  $('#photo-preview').empty();
   // $(".like-button").on("click", function (e) {
   //   e.preventDefault();
   //   console.log("click");
