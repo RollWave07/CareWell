@@ -1,12 +1,12 @@
 =form_for [@group, task, Update.new], remote: true do |f|
-  =f.text_field :comment, placeholder: "Anything to share, #{current_user.first_name}?", class: 'form-control input-lg'
+  =f.text_field :comment, placeholder: "Anything to share, #{current_user.first_name}?", class: 'form-control input-lg update-comment'
 
   =f.file_field :picture, value: "Add picture update"
   =f.submit "Post It", class: "submit-update"
-  %a#fileSelect{href: "#"}
+  %a.fileSelect{href: "#"}
     %i.fa.fa-camera.fa-3x.choose-photo
 
-  %input#update_picture{accept: "image/*", onchange: "handleFiles(this.files)", style: "display:none", type: "file", name: "update[picture]"}
+  %input.update_picture{accept: "image/*", onchange: "handleFiles(this)", style: "display:none", type: "file", name: "update[picture]"}
 
+  .photo-preview
   =f.hidden_field(:task_id, value: task.id)
-  #photo-preview

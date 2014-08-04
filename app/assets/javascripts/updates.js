@@ -10,18 +10,6 @@ $(document).ready( function() {
 
   addPhotoUpload();
 
-  // no-JQuery cut-and-paste from Mozilla tutorial
-  // to use photo icon as file-upload button
-  // var fileSelect = document.getElementById("fileSelect");
-  // var fileElem = document.getElementById("update_picture");
-  // fileSelect.addEventListener("click", function (e) {
-  //   if (fileElem) {
-  //     fileElem.click();
-  //   }
-  //   e.preventDefault(); // prevent navigation to "#"
-  // }, false);
-
-
   $('.choose-group-photo').on('click', function() {
     $('input#group_picture').click();
   });//end click
@@ -32,8 +20,10 @@ $(document).ready( function() {
 // Gets data from photo in upload form and produces 
 // a preview image without uploading to the server yet.
 // source: Mozilla file upload tutorial.
-function handleFiles(files) {
-  $("#photo-preview").empty();
+function handleFiles(forminput) {
+  var files = forminput.files;
+  var preview = $(forminput).next();
+  preview.empty();
   for (var i = 0; i < files.length; i++) {
     var file = files[i];
     var imageType = /image.*/;
@@ -46,7 +36,7 @@ function handleFiles(files) {
     img.classList.add("obj");
     img.file = file;
     // console.log("img: ", img.file);
-    $('#photo-preview').append(img); // Assuming that "preview" is a the div output where the content will be displayed.
+    preview.append(img); // Assuming that "preview" is a the div output where the content will be displayed.
     
     var reader = new FileReader();
     reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
@@ -54,18 +44,13 @@ function handleFiles(files) {
   }
 };
 
-// no-JQuery cut-and-paste from Mozilla tutorial
-// to use photo icon as file-upload button
+
+// Assigns the photo icon click event to the hidden input field next in the DOM.
 function addPhotoUpload() {
-  var fileSelect = document.getElementById("fileSelect");
-  var fileElem = document.getElementById("update_picture");
-  fileSelect.addEventListener("click", function (e) {
-    if (fileElem) {
-      fileElem.click();
-    }
+  $('.fileSelect').on('click', function (e) {
     e.preventDefault(); // prevent navigation to "#"
-  }, false);
+    var next = $(this).next(); // gets the next element, the form file input
+    next.click();
+  });
 };
-
-
 
