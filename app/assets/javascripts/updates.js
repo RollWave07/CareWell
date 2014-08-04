@@ -7,7 +7,7 @@ $(document).on("ajax:success", ".like-it-now", function(e, data, status, xhr){
 });
 
 $(document).ready( function() {
-
+  
   addPhotoUpload();
 
   $('.choose-group-photo').on('click', function() {
@@ -47,10 +47,12 @@ function handleFiles(forminput) {
 
 // Assigns the photo icon click event to the hidden input field next in the DOM.
 function addPhotoUpload() {
+  $('.fileSelect').off();  // clear previous click handlers if any
   $('.fileSelect').on('click', function (e) {
     e.preventDefault(); // prevent navigation to "#"
     var next = $(this).next(); // gets the next element, the form file input
     next.click();
   });
 };
+
 
