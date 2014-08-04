@@ -47,8 +47,7 @@ end
 
 
 
-
-
+# Routes as of 3 Aug 2014
 #                   Prefix Verb   URI Pattern                                                 Controller#Action
 #       receivetexts_index GET    /receivetexts/index(.:format)                               receivetexts#index
 #                send_text POST   /sendtexts/send_text_message(.:format)                      sendtexts#send_text_message
@@ -69,6 +68,7 @@ end
 #                          DELETE /users(.:format)                                            registrations#destroy
 #       authenticated_root GET    /                                                           tasks#index
 #     unauthenticated_root GET    /                                                           registrations#new
+#                     join GET    /users/join(.:format)                                       registrations#join
 #             group_events GET    /groups/:group_id/events(.:format)                          events#index
 #                          POST   /groups/:group_id/events(.:format)                          events#create
 #          new_group_event GET    /groups/:group_id/events/new(.:format)                      events#new
@@ -120,3 +120,6 @@ end
 #              users_index GET    /users/index(.:format)                                      users#index
 #          sendtexts_index GET    /sendtexts/index(.:format)                                  sendtexts#index
 #    users_email_available GET    /users/email_available(.:format)                            users#email_available
+
+
+
