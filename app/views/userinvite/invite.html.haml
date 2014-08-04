@@ -3,5 +3,5 @@
 =@message
 
 %p For more information, click the link below:
-= link_to "Register", new_user_registration_url(params: {group_id: @group_id, first_name: @first_name, last_name: @last_name, email: @email} )
+= link_to "Register", join_url(params: {group_id: @group_id, first_name: @first_name, last_name: @last_name, email: @email} )
 %br

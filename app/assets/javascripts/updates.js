@@ -8,16 +8,18 @@ $(document).on("ajax:success", ".like-it-now", function(e, data, status, xhr){
 
 $(document).ready( function() {
 
+  addPhotoUpload();
+
   // no-JQuery cut-and-paste from Mozilla tutorial
   // to use photo icon as file-upload button
-  var fileSelect = document.getElementById("fileSelect");
-  var fileElem = document.getElementById("update_picture");
-  fileSelect.addEventListener("click", function (e) {
-    if (fileElem) {
-      fileElem.click();
-    }
-    e.preventDefault(); // prevent navigation to "#"
-  }, false);
+  // var fileSelect = document.getElementById("fileSelect");
+  // var fileElem = document.getElementById("update_picture");
+  // fileSelect.addEventListener("click", function (e) {
+  //   if (fileElem) {
+  //     fileElem.click();
+  //   }
+  //   e.preventDefault(); // prevent navigation to "#"
+  // }, false);
 
 
   $('.choose-group-photo').on('click', function() {
@@ -50,4 +52,20 @@ function handleFiles(files) {
     reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
     reader.readAsDataURL(file);
   }
-}
+};
+
+// no-JQuery cut-and-paste from Mozilla tutorial
+// to use photo icon as file-upload button
+function addPhotoUpload() {
+  var fileSelect = document.getElementById("fileSelect");
+  var fileElem = document.getElementById("update_picture");
+  fileSelect.addEventListener("click", function (e) {
+    if (fileElem) {
+      fileElem.click();
+    }
+    e.preventDefault(); // prevent navigation to "#"
+  }, false);
+};
+
+
+
