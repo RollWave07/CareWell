@@ -75,13 +75,10 @@
           .col-xs-12.time-details
             %h4.new-task-h4 When does it need to be done?
           .col-xs-12.time-details
-            .form-group
-              .input-group.date#datetimepicker1
-                %input{type: "text", class: "form-control input-lg"}
-                %span.input-group-addon
-                  %span.glyphicon.glyphicon-calendar
-            =task.text_field :task_date, placeholder: "tomorrow, in 3 days, by next Saturday, Jan 14, 5PM", :class => 'form-control input-lg'
-
+            .input-group.date#datetimepicker1
+              =task.text_field :task_date, placeholder: "tomorrow, in 3 days", :class => 'form-control input-lg'
+              %span.input-group-addon
+                %span.glyphicon.glyphicon-calendar
             /
               .aside
               When does this need to be done on or by?
