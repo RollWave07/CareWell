@@ -19,11 +19,11 @@
             .col-xs-4.col-md-4.center
               .number-summary-stats
                 =@counts_arrays.first
-              %p.number-summary Tasks Completed
+              %p.number-summary Care Tasks Completed
             .col-xs-4.col-md-4.center
               .number-summary-stats
                 =@active_users
-              %p.number-summary Active Members
+              %p.number-summary Active CareWellians
             .col-xs-4.col-md-4.center
               .number-summary-stats.green
                 =@duration_week
@@ -93,7 +93,7 @@
 
 / modal for inviting a new member to the group
 =render 'invite_modal'
-      
+
 
 / = javascript_include_tag "Chart.js"
 

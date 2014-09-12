@@ -4,6 +4,8 @@ ruby '2.0.0'
 gem 'twilio-ruby'
 gem 'rails_12factor', group: :production
 gem 'better_errors'
+gem 'momentjs-rails', '>= 2.8.1'
+gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
 
 group :development do
   gem 'better_errors'
