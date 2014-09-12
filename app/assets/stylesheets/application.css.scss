@@ -96,6 +96,22 @@ hr {
 .full-screen-header {
   display: inline-block;
 }
+.menu-stats {
+  display: inline-block;
+  padding: 10px;
+}
+
+.menu-summary-stats {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #05C29B;
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
 
 .navbar {
   ul {
@@ -122,6 +138,7 @@ hr {
       }
     }
   }
+
 
 @media all and (max-width: 480px) {
   body {
