@@ -16,15 +16,16 @@
               -if current_user
                 =link_to image_tag('carewell-green-logo.png', :class=>"logo"),group_tasks_path(current_user.group_id)
                 .menu-stats
-                  Week of Jan 5th
-                  .menu-summary-stats
-                    =@counts_arrays.first
-                    %i.fa.fa-check-square-o
-                  Care Tasks Complete
-                  .menu-summary-stats
-                    =@duration_week
-                    %i.fa.fa-heart-o
-                  Hours Caring
+                  ="#{@group.name}'s Team, "
+                  Jan 7-14
+                  .menu-stat-container
+                    .menu-summary-stats{title: "Care Tasks Complete"}
+                      =@counts_arrays.first
+                      %i.fa.fa-check-square-o
+                  .menu-stat-container
+                    .menu-summary-stats{title: "Hours Caring"}
+                      =@duration_week
+                      %i.fa.fa-heart-o
               -else
                 =link_to image_tag('carewell-green-logo.png', :class=>"logo")
 
@@ -37,11 +38,11 @@
                 %ul.nav.navbar-nav.pull-right
                   -if current_user.group != nil && user_signed_in?
                     %li.navbar-link
-                      = link_to 'Tasks', group_tasks_path(current_user.group_id), {class: nav_links_class("index", "tasks")}
+                      = link_to 'Care Tasks', group_tasks_path(current_user.group_id), {class: nav_links_class("index", "tasks")}
                     %li.navbar-link
-                      = link_to 'Team', group_path(current_user.group_id), {class: nav_links_class("show", "groups")}
+                      = link_to 'Conference Center', group_path(current_user.group_id), {class: nav_links_class("show", "groups")}
                     %li.navbar-link
-                      = link_to 'Profile', group_user_path(current_user.group_id, current_user.id), {class: nav_links_class("show", "users")}
+                      = link_to 'My Preferences', group_user_path(current_user.group_id, current_user.id), {class: nav_links_class("show", "users")}
                     %li.navbar-link.last
                       = link_to 'Sign Out', destroy_user_session_path, method: :delete
                   -else

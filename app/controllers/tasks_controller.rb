@@ -24,6 +24,12 @@ class TasksController < ApplicationController
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     @user = User.find(current_user.id)
     @tasks = Task.tasks(@group).future
+
+    # for menu dashboard
+    @assigned_tasks = Task.assigned(@group)
+    @counts_arrays = Task.count_per_period(@assigned_tasks)
+    @duration_week = Task.duration_total_past_week(@assigned_tasks)
+
     @past_tasks = Task.tasks(@group).past.limit(5)
     @others_tasks = Task.tasks(@group).future.where.not(assignee_id: nil, assignee_id: current_user)
     @my_tasks = Task.assigned_to_specific_user(@tasks.future, current_user)

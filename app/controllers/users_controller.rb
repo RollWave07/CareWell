@@ -13,6 +13,11 @@ class UsersController < ApplicationController
     @tasks = Task.tasks(@group)
     @past_user_tasks = Task.assigned_to_specific_user(@tasks.past, @user)
     @future_user_tasks = Task.assigned_to_specific_user(@tasks.future, @user)
+
+    # for menu dashboard
+    @assigned_tasks = Task.assigned(@group)
+    @counts_arrays = Task.count_per_period(@assigned_tasks)
+    @duration_week = Task.duration_total_past_week(@assigned_tasks)
   end
 
   # Checks the database to see if email is available on sign-up
