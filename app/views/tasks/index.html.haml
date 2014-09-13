@@ -1,13 +1,12 @@
 .container.my-container
   .row.task-index-header
     %h1.application-section-header
-      Care tasks for
-      =@group.name
+      Care Tasks
       / =best_in_place @group, :name
       %span.edit-indicator.glyphicon.glyphicon-pencil
     -if current_user.admin?
       =link_to new_group_task_path(current_user.group) do
-        %h4.add-new Add Task
+        %h4.add-new Add Care Task
   .row
     .col-xs-12.col-md-6
       .my-inner-container

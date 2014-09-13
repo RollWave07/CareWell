@@ -104,6 +104,17 @@ hr {
     display: inline-block;
     margin: 0 10px;
   }
+  .team-header {
+    display: inline-block;
+    font-weight: 700;
+    height: 40px;
+    vertical-align: middle;
+    margin: 0 10px 0 30px;
+    .subtext {
+      font-weight: 200;
+      font-size: 1em;
+    }
+  }
 }
 
 .menu-summary-stats {

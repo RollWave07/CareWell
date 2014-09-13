@@ -3,12 +3,12 @@
     .task-index-header
       %h1.application-section-header
         -if @user == current_user
-          My Profile
+          My Preferences
         -else
           = "#{@user.first_name}'s Profile"
     -if @user == current_user
       =link_to edit_user_registration_path do
-        %h4.add-new Edit Profile
+        %h4.add-new Edit Preferences
   .row
     .card
       .section-title
