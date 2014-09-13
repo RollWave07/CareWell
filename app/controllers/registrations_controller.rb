@@ -4,8 +4,6 @@ class RegistrationsController < Devise::RegistrationsController
     @group = Group.find(params[:group_id])
     build_resource(sign_up_params)
     # resource.group = @group
-
-
   end
 
   def after_sign_up_path_for(resource)
@@ -14,6 +12,15 @@ class RegistrationsController < Devise::RegistrationsController
     # else
     #   new_group_path
     # end
+  end
+
+  def edit
+    @group = current_user.group
+
+     # for menu dashboard
+    @assigned_tasks = Task.assigned(@group)
+    @counts_arrays = Task.count_per_period(@assigned_tasks)
+    @duration_week = Task.duration_total_past_week(@assigned_tasks)
   end
 
   def after_inactive_sign_up_path_for(resource)

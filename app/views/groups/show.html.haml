@@ -14,20 +14,20 @@
       .my-inner-container
         .card
           .section-title
-            The Week By Numbers
-          .section-contents.overflow-hidden
-            .col-xs-4.col-md-4.center
-              .number-summary-stats
-                =@counts_arrays.first
-              %p.number-summary Care Tasks Completed
-            .col-xs-4.col-md-4.center
-              .number-summary-stats
-                =@active_users
-              %p.number-summary Active CareWellians
-            .col-xs-4.col-md-4.center
-              .number-summary-stats.green
-                =@duration_week
-              %p.number-summary Hours Caring
+            Thoughts
+          / .section-contents.overflow-hidden
+          /   .col-xs-4.col-md-4.center
+          /     .number-summary-stats
+          /       =@counts_arrays.first
+          /     %p.number-summary Care Tasks Completed
+          /   .col-xs-4.col-md-4.center
+          /     .number-summary-stats
+          /       =@active_users
+          /     %p.number-summary Active CareWellians
+          /   .col-xs-4.col-md-4.center
+          /     .number-summary-stats.green
+          /       =@duration_week
+          /     %p.number-summary Hours Caring
         / .card.clear
         /   .section-title
         /     %ul.nav.nav-pills
@@ -56,39 +56,50 @@
       .card
         .section-title
           Our Team
+        /***commenting out group photo
 
-        -if @group.picture_url == nil
-          %img{src: "http://placehold.it/400x250/f2f2f2/ef5e5a&text=Add+Your+Group+Photo!", class: 'group-photo'}
-        -else
-          =image_tag(@group.picture_url(:group), :class=>'group-photo')
-        .photo-form
-          = form_for(@group) do |f|
-            - if @group.errors.any?
-              #error_explanation
-                %h2
-                  = pluralize(@group.errors.count, "error")
-                  prohibited this picture from being saved:
-                %ul
-                  - @group.errors.full_messages.each do |msg|
-                    %li= msg
-            .field
-              = f.file_field :picture, :required => true
-            .actions
-              -if @group.picture_url == nil
-                = f.submit "Add Photo", class: "sign-up"
-              -else
-                = f.submit "Change Photo", class: "sign-up"
-              %i.fa.fa-camera.fa-3x.choose-group-photo
-        .section-contents.padded.overflow-hidden
-          .section-subtitle.clear.padded
-            Members
-          -@users.each do |user|
-            .squarelinks
-              =link_to group_user_path(@group, user.id) do
-                -if user.picture_url == nil
-                  =image_tag("mickey-mouse.jpg", class: "group-user-photo")
-                -else
-                  =image_tag(user.picture_url(:sq_medium), :class => "group-picture")
+        / -if @group.picture_url == nil
+        /   %img{src: "http://placehold.it/400x250/f2f2f2/ef5e5a&text=Add+Your+Group+Photo!", class: 'group-photo'}
+        / -else
+        /   =image_tag(@group.picture_url(:group), :class=>'group-photo')
+
+
+        /*** commenting out group photo addition section
+
+        / .photo-form
+        /   = form_for(@group) do |f|
+        /     - if @group.errors.any?
+        /       #error_explanation
+        /         %h2
+        /           = pluralize(@group.errors.count, "error")
+        /           prohibited this picture from being saved:
+        /         %ul
+        /           - @group.errors.full_messages.each do |msg|
+        /             %li= msg
+        /     .field
+        /       = f.file_field :picture, :required => true
+        /     .actions
+        /       -if @group.picture_url == nil
+        /         = f.submit "Add Photo", class: "sign-up"
+        /       -else
+        /         = f.submit "Change Photo", class: "sign-up"
+        /       %i.fa.fa-camera.fa-3x.choose-group-photo
+        -@users.each do |user|
+          .row.team-card
+            .col-md-2
+              .squarelinks
+                =link_to group_user_path(@group, user.id) do
+                  -if user.picture_url == nil
+                    =image_tag("mickey-mouse.jpg", class: "group-user-photo")
+                  -else
+                    =image_tag(user.picture_url(:sq_medium), :class => "group-picture")
+            .col-md-10
+              %span.bold=user.first_name
+              %br
+              Prefers: Phone/Text
+              %br
+              Here is the rest of the details.
+
 
 
 / modal for inviting a new member to the group

@@ -1,0 +1,65 @@
+.container
+  .row
+    .task-index-header
+      %h1.application-section-header
+        Edit Preferences
+
+  .row
+    .card
+      .section-title
+        Basic Profile Details
+      .section-contents.overflow-hidden{style: "padding: 20px;"}
+        =form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+        =devise_error_messages!
+          .col-xs-6.col-md-3
+            -if @user.picture_url == nil
+              =image_tag("mickey-mouse-large.jpg", class: "group-user-photo")
+            -else
+              =image_tag(@user.picture_url(:sq_lg), class: "group-picture")
+            =f.label :picture
+            =f.file_field :picture
+          .col-xs-6.col-md-9
+            %h3
+              = f.label :first_name
+              = f.text_field :first_name, :autofocus => true
+              = f.label :last_name
+              = f.text_field :last_name, :autofocus => true
+            = f.label :phone
+            = f.text_field :phone, placeholder: "858-886-9929", :autofocus => true
+            %br
+            = f.label :email
+            = f.text_field :email, :autofocus => true
+            = f.label :
+
+      .card{style: "margin-bottom: 20px"}
+        .section-title
+          Contact Preferences
+        .section-contents.padded{style: "padding: 20px;"}
+          Here is where contact preferences will go.
+
+      .card
+        .section-title
+          Task Preferences
+        .section-contents{style: "padding: 20px;"}
+          Here is where task preferences will go.
+
+
+
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+
+            <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+            <%= f.password_field :password, :autocomplete => "off", placeholder: "password" %>
+            <%= f.password_field :password_confirmation, placeholder: "confirm password" %></div>
+
+            <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+            <%= f.password_field :current_password %></div>
+
+            <div><%= f.submit "Update" %></div>
+          <% end %>
+
+          <h3>Cancel my account</h3>
+
+            Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>
