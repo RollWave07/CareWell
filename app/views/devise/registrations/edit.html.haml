@@ -9,55 +9,55 @@
       .section-title
         Basic Profile Details
       .section-contents.overflow-hidden{style: "padding: 20px;"}
-        / =form_for (resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-        /   =f.label :picture
-        /   =f.file_field :picture
-          / =devise_error_messages!
-        /   .col-xs-6.col-md-3
-        /   -if @user.picture_url == nil
-        /     =image_tag("mickey-mouse-large.jpg", class: "group-user-photo")
-        /   -else
-        /     =image_tag(@user.picture_url(:sq_lg), class: "group-picture")
+        =form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+          =f.label :picture
+          =f.file_field :picture
+          =devise_error_messages!
+          .col-xs-6.col-md-3
+          -if @user.picture_url == nil
+            =image_tag("mickey-mouse-large.jpg", class: "group-user-photo")
+          -else
+            =image_tag(@user.picture_url(:sq_lg), class: "group-picture")
 
-        / .col-xs-6.col-md-9
-        /   %h3
-        /     = f.label :first_name
-        /     = f.text_field :first_name, :autofocus => true
-        /     = f.label :last_name
-        /     = f.text_field :last_name, :autofocus => true
-        /   = f.label :phone
-        /   = f.text_field :phone, placeholder: "858-886-9929", :autofocus => true
-        /   %br
-        /   = f.label :email
-        /   = f.text_field :email, :autofocus => true
-        /   %br
-        /   = f.label :contact_preference
-        /   = f.text_field :contact_preference
-        /   %br
-        /   = f.label :notes
-        /   = f.text_field :notes
+          .col-xs-6.col-md-9
+            %h3
+              = f.label :first_name
+              = f.text_field :first_name, :autofocus => true
+              = f.label :last_name
+              = f.text_field :last_name, :autofocus => true
+            = f.label :phone
+            = f.text_field :phone, placeholder: "858-886-9929", :autofocus => true
+            %br
+            = f.label :email
+            = f.text_field :email, :autofocus => true
+            %br
+            = f.label :contact_preference
+            = f.text_field :contact_preference
+            %br
+            = f.label :notes
+            = f.text_field :notes
 
-        /   -if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        /     ="Currently waiting confirmation for: #{resource.unconfirmed_email}"
+          -if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            ="Currently waiting confirmation for: #{resource.unconfirmed_email}"
 
-        /   = f.label :password
-        /   (leave blank if you don't want to change it)
-        /   %br
-        /   = f.password_field :password, :autocomplete => "off", placeholder: "password"
-        /   = f.password_field :password_confirmation, placeholder: "confirm password"
-        /   %div
-        /     = f.label :current_password
-        /     (we need your current password to confirm your changes)
-        /     %br
-        /     = f.password_field :current_password
+          = f.label :password
+          (leave blank if you don't want to change it)
+          %br
+          = f.password_field :password, :autocomplete => "off", placeholder: "password"
+          = f.password_field :password_confirmation, placeholder: "confirm password"
+          %div
+            = f.label :current_password
+            (we need your current password to confirm your changes)
+            %br
+            = f.password_field :current_password
 
           = f.submit "Update"
 
-        / %h3
-        /   Cancel my account
+        %h3
+          Cancel my account
 
-        / Unhappy?
-        / = button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete
+        Unhappy?
+        = button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete
 
     .card{style: "margin-bottom: 20px"}
       .section-title
