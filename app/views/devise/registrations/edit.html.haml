@@ -3,71 +3,63 @@
     .task-index-header
       %h1.application-section-header
         Edit Preferences
+      =link_to group_path(@group) do
+        %h4.add-new Cancel
 
   .row
-    .card
-      .section-title
-        Basic Profile Details
-      .section-contents.overflow-hidden{style: "padding: 20px;"}
-        =form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-          =f.label :picture
-          =f.file_field :picture
+    =form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+      .card
+        .section-title
+          Basic Profile Details
+        .section-contents.overflow-hidden{style: "padding: 20px;"}
           =devise_error_messages!
-          .col-xs-6.col-md-3
-          -if @user.picture_url == nil
-            =image_tag("mickey-mouse-large.jpg", class: "group-user-photo")
-          -else
-            =image_tag(@user.picture_url(:sq_lg), class: "group-picture")
-
-          .col-xs-6.col-md-9
-            %h3
-              = f.label :first_name
-              = f.text_field :first_name, :autofocus => true
-              = f.label :last_name
-              = f.text_field :last_name, :autofocus => true
-            = f.label :phone
-            = f.text_field :phone, placeholder: "858-886-9929", :autofocus => true
+          .col-xs-12.col-md-2
+            -if @user.picture_url == nil
+              =image_tag("mickey-mouse-large.jpg", class: "group-user-photo")
+            -else
+              =image_tag(@user.picture_url(:sq_lg), class: "group-picture")
             %br
-            = f.label :email
-            = f.text_field :email, :autofocus => true
+            =f.label :picture
+            =f.file_field :picture
+          .col-xs-6.col-md-10
+            = f.text_field :first_name, :class => 'form-control input-lg', placeholder: "First Name"
             %br
-            = f.label :contact_preference
-            = f.text_field :contact_preference
+            = f.text_field :last_name, :class => 'form-control input-lg', placeholder: "Last Name"
             %br
-            = f.label :notes
-            = f.text_field :notes
-
+            = f.text_field :phone, placeholder: "858-886-9929", :class => 'form-control input-lg'
+            %br
+            = f.text_field :email, :class => 'form-control input-lg'
           -if devise_mapping.confirmable? && resource.pending_reconfirmation?
             ="Currently waiting confirmation for: #{resource.unconfirmed_email}"
 
-          = f.label :password
-          (leave blank if you don't want to change it)
-          %br
-          = f.password_field :password, :autocomplete => "off", placeholder: "password"
-          = f.password_field :password_confirmation, placeholder: "confirm password"
-          %div
-            = f.label :current_password
-            (we need your current password to confirm your changes)
-            %br
-            = f.password_field :current_password
+      .card{style: "margin-bottom: 20px"}
+        .section-title
+          Contact Preferences
+        .section-contents.padded{style: "padding: 20px;"}
+          = f.select :contact_preference, options_for_select([['Text', 'Text'], ['Email', 'Email']]), {}, {class: 'form-control input-lg'}
 
-          = f.submit "Update"
+      .card
+        .section-title
+          Task Preferences
+        .section-contents{style: "padding: 20px;"}
+          = f.text_field :notes, :class => 'form-control input-lg', placeholder: "Are there things you like to do, or restrictions related to what you can't do?"
 
-        %h3
-          Cancel my account
+      / .card{style: "margin-bottom: 40px"}
+      /   .section-title
+      /     Confirm Changes
+      /   .section-contents{style: "padding: 20px;"}
+      /     = f.label :password
+      /     (leave blank if you don't want to change it)
+      /     %br
+      /     = f.password_field :password, :autocomplete => "off", placeholder: "password", :class => 'form-control input-lg'
+      /     %br
+      /     = f.password_field :password_confirmation, placeholder: "confirm password", :class => 'form-control input-lg'
+      /     %br
+      /     %div
+      /       = f.label :current_password
+      /       (we need your current password to confirm your changes)
+      /       %br
+      /       = f.password_field :current_password, :class => 'form-control input-lg'
 
-        Unhappy?
-        = button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete
-
-    .card{style: "margin-bottom: 20px"}
-      .section-title
-        Contact Preferences
-      .section-contents.padded{style: "padding: 20px;"}
-        Here is where contact preferences will go.
-
-    .card
-      .section-title
-        Task Preferences
-      .section-contents{style: "padding: 20px;"}
-        Here is where task preferences will go.
+      = f.submit "Update", :class => 'btn new-task-button'
 

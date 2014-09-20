@@ -14,12 +14,12 @@
       .section-title
         Basic Profile Details
       .section-contents.overflow-hidden{style: "padding: 20px;"}
-        .col-xs-12.col-md-6
+        .col-xs-12.col-md-2
           -if @user.picture_url == nil
             =image_tag("mickey-mouse-large.jpg", class: "group-user-photo")
           -else
             =image_tag(@user.picture_url(:sq_lg), class: "group-picture")
-        .col-xs-12.col-md-5
+        .col-xs-12.col-md-10
           %h3
             ="#{@user.first_name} #{@user.last_name}"
 
@@ -30,10 +30,10 @@
       .section-title
         Contact Preferences
       .section-contents.padded{style: "padding: 20px;"}
-        Here is where contact preferences will go.
+        =@user.contact_preference
 
     .card
       .section-title
         Task Preferences
       .section-contents{style: "padding: 20px;"}
-        Here is where task preferences will go.
+        =@user.notes
