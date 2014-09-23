@@ -14,6 +14,11 @@ class RegistrationsController < Devise::RegistrationsController
     # end
   end
 
+  def update
+    @group = current_user.group
+    redirect_to group_tasks_path(@group)
+  end
+
   def edit
     @group = current_user.group
 
