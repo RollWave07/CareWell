@@ -15,8 +15,15 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update
+    # @user = User.find(current_user.id)
     @group = current_user.group
-    redirect_to group_tasks_path(@group)
+  #   if @user.update(user_params)
+  #   if @user.save
+  #     format.html { redirect_to group_tasks_path(@group), notice: 'task was successfully updated.' }
+  #   else
+  #     format.html { render action: 'edit' }
+  #   end
+  # end
   end
 
   def edit
@@ -62,6 +69,12 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to unauthenticated_root_path
     end
   end
+
+  private
+
+  def user_params
+    params.fetch(:user, {}).permit(:first_name, :last_name, :phone, :picture, :role, :admin, :notes, :group_id, :email, :contact_preference)
+   end
 
 end
 
