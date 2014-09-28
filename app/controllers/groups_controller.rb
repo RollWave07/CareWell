@@ -29,6 +29,10 @@ class GroupsController < ApplicationController
     @duration_chart_data = Task.bar_chart_array(@category_avg)
 
     @duration_week = Task.duration_total_past_week(@assigned_tasks)
+
+    @message = Message.new
+
+    @messages = Message.where(group_id: @group) 
   end
 
   def edit

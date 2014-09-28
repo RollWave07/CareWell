@@ -15,6 +15,25 @@
         .card
           .section-title
             Thoughts
+            %h4 New Message
+            =form_for [@group, @message] do |f|
+              =f.text_field :message_text, placeholder: "Anything to share, #{current_user.first_name}?", class: 'form-control input-lg update-comment'
+
+              =f.file_field :photo, value: "Add picture update"
+              =f.submit "Post It", class: "submit-update"
+              %a.fileSelect{href: "#"}
+                %i.fa.fa-camera.fa-3x.choose-photo
+
+              %input.update_picture{accept: "image/*", onchange: "handleFiles(this)", style: "display:none", type: "file", name: "update[picture]"}
+
+              .photo-preview
+              =f.hidden_field(:group_id, value: @group.id)
+
+
+
+            -@messages.each do |message|
+              %p 
+                =message.message_text
           / .section-contents.overflow-hidden
           /   .col-xs-4.col-md-4.center
           /     .number-summary-stats
