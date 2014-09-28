@@ -52,6 +52,11 @@ class TasksController < ApplicationController
   def new
     @task = current_user.tasks.new
     @users = User.users_in_group(@group)
+
+    # for menu dashboard
+    @assigned_tasks = Task.assigned(@group)
+    @counts_arrays = Task.count_per_period(@assigned_tasks)
+    @duration_week = Task.duration_total_past_week(@assigned_tasks)
   end
 
   def create

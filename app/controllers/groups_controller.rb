@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
     @top3 = User.top_users_per_week(@group)
 
     @active_users = User.active_users_per_week(@group)
-    
+
     @assigned_tasks = Task.assigned(@group)
 
     @counts_arrays = Task.count_per_period(@assigned_tasks)
@@ -29,6 +29,8 @@ class GroupsController < ApplicationController
     @duration_chart_data = Task.bar_chart_array(@category_avg)
 
     @duration_week = Task.duration_total_past_week(@assigned_tasks)
+
+    @message = Message.new
   end
 
   def edit
