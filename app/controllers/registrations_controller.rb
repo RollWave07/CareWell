@@ -15,15 +15,15 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    # @user = User.find(current_user.id)
+    @user = User.find(current_user.id)
     @group = current_user.group
-  #   if @user.update(user_params)
-  #   if @user.save
-  #     format.html { redirect_to group_tasks_path(@group), notice: 'task was successfully updated.' }
-  #   else
-  #     format.html { render action: 'edit' }
-  #   end
-  # end
+    if @user.update(user_params)
+    if @user.save
+      redirect_to group_path(@group), notice: 'Your preferences were successfully updated.'
+    else
+      format.html { render action: 'edit' }
+    end
+  end
   end
 
   def edit
