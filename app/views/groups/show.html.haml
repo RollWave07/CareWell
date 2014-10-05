@@ -23,10 +23,10 @@
           .row#conf-message-form
             .col-xs-12
               =form_for [@group, @message] do |f|
-                =f.text_field :message_text, placeholder: "Anything to discuss, #{current_user.first_name}?", class: 'form-control input-lg update-comment'
+                =f.text_field :message_text, placeholder: "Anything to discuss, #{current_user.first_name}?", class: 'form-control input-lg conf-message'
 
                 =f.file_field :photo, value: "Add picture update"
-                =f.submit "Post It", class: "submit-update"
+                =f.submit "Post It", class: "submit-message"
                 %a.fileSelect{href: "#"}
                   %i.fa.fa-camera.fa-3x.choose-photo
 
@@ -34,6 +34,7 @@
 
                 .photo-preview
                 =f.hidden_field(:group_id, value: @group.id)
+            %hr
 
           .row
             .col-xs-12
