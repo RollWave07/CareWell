@@ -222,10 +222,32 @@ input.update-group-button {
     margin-left: 15px;
   }
   .photo-preview {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 }
 
 // for discussion display
+
+#message-board {
+    margin: 15px;
+    font-size: 1.3em;
+    hr{
+      width: 90%;
+      margin-left: 15px;
+    }
+    #message-user {
+      font-weight: bold;
+      font-style: italic;
+    }
+    #message-date {
+      font-size: 0.7em;
+    }
+    #message-photo{
+      margin-top: 10px;
+      img{
+        width: 95%;
+      }
+    }
+}
 
 

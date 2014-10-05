@@ -30,18 +30,25 @@
                 %a.fileSelect{href: "#"}
                   %i.fa.fa-camera.fa-3x.choose-photo
 
-                %input.update_picture{accept: "image/*", onchange: "handleFiles(this)", style: "display:none", type: "file", name: "update[picture]"}
+                %input.message_photo{accept: "image/*", onchange: "handleFiles(this)", style: "display:none", type: "file", name: "message[photo]"}
 
                 .photo-preview
                 =f.hidden_field(:group_id, value: @group.id)
             %hr
 
-          .row
-            .col-xs-12
-            -@messages.each do |message|
-              %p 
-                =message.message_text
-
+          -@messages.each do |message|
+            .row#message-board
+              .row
+                .col-xs-2#message-user
+                  =@users.find_by_id(message.user_id).first_name 
+                .col-xs-8#message-text
+                  =message.message_text
+                .col-xs-2#message-date
+                  =message.updated_at.strftime("%b %d, '%y")
+              .row
+                .col-xs-10.col-xs-offset-2#message-photo
+                  =image_tag(message.photo)
+              %hr
 
 
 
