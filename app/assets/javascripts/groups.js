@@ -6,5 +6,9 @@ $(document).ready(function() {
       e.preventDefault()
       $(this).tab('show');
       });
+
+    $(".message-new").click(function(e) {
+      $("#conf-message-form").slideToggle(200);
+    });
 });//end ready
 

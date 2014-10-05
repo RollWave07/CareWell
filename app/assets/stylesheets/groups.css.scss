@@ -172,3 +172,36 @@ input.update-group-button {
     line-height: 100px;
   }
 }
+
+// for discussion form
+
+#message_photo {
+  display: none;
+}
+
+.message-new {
+  float: right;
+  display: inline-block;
+  background-color: #05C29B;
+  margin: 10px;
+  margin-right: 0;
+  width: auto;
+  padding: 15px;
+  color: white;
+  border-radius: 5px;
+  a {
+    color: white;
+    text-decoration: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+#conf-message-form {
+  display: none;
+}
+
+// for discussion display
+
+
