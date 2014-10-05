@@ -5,6 +5,8 @@ class CreateMessages < ActiveRecord::Migration
       t.references :group, index: true
       t.references :user, index: true
       t.string :photo
+      t.datetime :created_at
+      t.datetime :updated_at
     end
   end
 end

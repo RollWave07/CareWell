@@ -172,3 +172,82 @@ input.update-group-button {
     line-height: 100px;
   }
 }
+
+// for discussion form
+
+#message_photo {
+  display: none;
+}
+
+.message-new {
+  float: right;
+  display: inline-block;
+  background-color: #05C29B;
+  margin: 10px;
+  margin-right: 0;
+  width: auto;
+  padding: 15px;
+  color: white;
+  border-radius: 5px;
+  a {
+    color: white;
+    text-decoration: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+#conf-message-form {
+  display: none;
+
+  #message_message_text {
+    width: 95%;
+    margin: 15px;
+  }
+
+  .submit-message {
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 1px;
+    margin-right: 15px;
+    float: right;
+    background-color: orange;
+    color: white;
+    border: 0;
+    display: inline-block;
+  }
+  hr{
+    width: 90%;
+    margin-left: 15px;
+  }
+  .photo-preview {
+    margin-bottom: 10px;
+  }
+}
+
+// for discussion display
+
+#message-board {
+    margin: 15px;
+    font-size: 1.3em;
+    hr{
+      width: 90%;
+      margin-left: 15px;
+    }
+    #message-user {
+      font-weight: bold;
+      font-style: italic;
+    }
+    #message-date {
+      font-size: 0.7em;
+    }
+    #message-photo{
+      margin-top: 10px;
+      img{
+        width: 95%;
+      }
+    }
+}
+
+
