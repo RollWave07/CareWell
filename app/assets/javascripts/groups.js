@@ -8,6 +8,7 @@ $(document).ready(function() {
       });
 
     $(".message-new").click(function(e) {
+      e.preventDefault();
       $("#conf-message-form").slideToggle(200);
     });
 });//end ready
