@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140928215602) do
+ActiveRecord::Schema.define(version: 20140928214744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,10 +56,10 @@ ActiveRecord::Schema.define(version: 20140928215602) do
   end
 
   create_table "messages", force: true do |t|
+    t.text    "message_text"
     t.integer "group_id"
     t.integer "user_id"
     t.string  "photo"
-    t.text    "message_text"
   end
 
   add_index "messages", ["group_id"], name: "index_messages_on_group_id", using: :btree
