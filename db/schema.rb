@@ -56,19 +56,12 @@ ActiveRecord::Schema.define(version: 20140928214744) do
   end
 
   create_table "messages", force: true do |t|
-<<<<<<< HEAD
-    t.text    "message_text"
-    t.integer "group_id"
-    t.integer "user_id"
-    t.string  "photo"
-=======
     t.text     "message_text"
     t.integer  "group_id"
     t.integer  "user_id"
     t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
->>>>>>> a8e43232a57038707f2f0291d7c96a6c31dafce2
   end
 
   add_index "messages", ["group_id"], name: "index_messages_on_group_id", using: :btree

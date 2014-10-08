@@ -26,7 +26,7 @@
             %br
             = f.text_field :last_name, :class => 'form-control input-lg', placeholder: "Last Name"
             %br
-            = f.text_field :phone, placeholder: "858-886-9929", :class => 'form-control input-lg'
+            = f.text_field :phone, placeholder: "123-456-7890", :class => 'form-control input-lg'
             %br
             = f.text_field :email, :class => 'form-control input-lg'
           -if devise_mapping.confirmable? && resource.pending_reconfirmation?
@@ -36,7 +36,7 @@
         .section-title
           Contact Preferences
         .section-contents.padded{style: "padding: 20px;"}
-          = f.select :contact_preference, options_for_select([['Text Message', 'Text Message'], ['Email', 'Email']]), {}, {class: 'form-control input-lg'}
+          = f.select :contact_preference, options_for_select([['Text Message', 'Text Message'], ['Email', 'Email']]), {prompt: "Select something"}, {class: 'form-control input-lg'}
 
       .card
         .section-title
