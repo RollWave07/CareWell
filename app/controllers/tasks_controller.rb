@@ -130,10 +130,36 @@ class TasksController < ApplicationController
       @task.status = "incomplete"
     elsif @task.status == "incomplete"
       @task.status = "complete"
-      MailerInvitation.task_completed(@task).deliver
+      if @task.user != @task.assignee
+        if @task.user.contact_preference == "Text Message"
+          account_sid = ENV['TWILIO_ACCOUNT_SID']
+          auth_token = ENV['TWILIO_ACCOUNT_TOKEN']
+          @client = Twilio::REST::Client.new account_sid, auth_token
+          message = @client.account.sms.messages.create(
+            :to => "#{@task.user.phone}",
+            :from => "8588668901",
+            :body => "From CareWell: Hi #{@task.user.first_name}, #{@task.assignee.first_name} completed #{@task.title}. Hooray!"
+            )
+        else
+          MailerInvitation.task_completed(@task).deliver
+        end
+      end
     else
       @task.status = "complete"
-      MailerInvitation.task_completed(@task).deliver
+      if @task.user != @task.assignee
+        if @task.user.contact_preference == "Text Message"
+          account_sid = ENV['TWILIO_ACCOUNT_SID']
+          auth_token = ENV['TWILIO_ACCOUNT_TOKEN']
+          @client = Twilio::REST::Client.new account_sid, auth_token
+          message = @client.account.sms.messages.create(
+            :to => "#{@task.user.phone}",
+            :from => "8588668901",
+            :body => "From CareWell: Hi #{@task.user.first_name}, #{@task.assignee.first_name} completed #{@task.title}. Hooray!"
+            )
+        else
+          MailerInvitation.task_completed(@task).deliver
+        end
+      end
     end
     @task.save
     respond_to do |format|
