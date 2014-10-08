@@ -47,6 +47,11 @@ class TasksController < ApplicationController
   def edit
     @task = Task.find(params[:id])
     @users = User.users_in_group(@group)
+
+    # for menu dashboard
+    @assigned_tasks = Task.assigned(@group)
+    @counts_arrays = Task.count_per_period(@assigned_tasks)
+    @duration_week = Task.duration_total_past_week(@assigned_tasks)
   end
 
   def new
@@ -125,8 +130,10 @@ class TasksController < ApplicationController
       @task.status = "incomplete"
     elsif @task.status == "incomplete"
       @task.status = "complete"
+      MailerInvitation.task_completed(@task).deliver
     else
       @task.status = "complete"
+      MailerInvitation.task_completed(@task).deliver
     end
     @task.save
     respond_to do |format|
