@@ -40,7 +40,8 @@
       .section-subtitle
         Notes
       =task.information.empty? ? "No additional notes." : task.information
-      =image_tag(task.photo)
+      .task-image
+        =image_tag(task.photo)
     .row
       .section-subtitle
         Comments

@@ -87,6 +87,10 @@ img.group-picture {
   border-radius: 50%;
 }
 
+.task-image img {
+  max-width: 100%;
+}
+
 .add-new {
   float: right;
   display: inline-block;
