@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  addPhotoUpload();
+
   $('.task-form-icon-wrapper').click(function() {
     $(this).find('input:radio').prop("checked", true);
     $('.task-form-icon-wrapper').removeClass('selected-category');
@@ -22,3 +24,13 @@ $(document).ready(function() {
 
   });
 });
+
+// Assigns the photo icon click event to the hidden input field next in the DOM.
+function addPhotoUpload() {
+  $('.fileSelect').off();  // clear previous click handlers if any
+  $('.fileSelect').on('click', function (e) {
+    e.preventDefault(); // prevent navigation to "#"
+    var next = $(this).next(); // gets the next element, the form file input
+    next.click();
+  });
+};
