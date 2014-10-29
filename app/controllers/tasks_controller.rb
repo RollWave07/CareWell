@@ -8,7 +8,7 @@ class TasksController < ApplicationController
     first_name = params[:first_name]
     last_name = params[:last_name]
     email = params[:email]
-    message = params [:message]
+    message = params[:message]
     result = Userinvite.invite(@group, inviter_first, inviter_last, first_name, last_name, email, message).deliver
     respond_to do |format|
       if result
