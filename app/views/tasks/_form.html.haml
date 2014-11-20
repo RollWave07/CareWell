@@ -119,6 +119,14 @@
             =task.select :assignee_id, @users.all.collect {|u| [u.first_name, u.id]},{include_blank: true}, {class: 'form-control input-lg'}
             .aside
               You can assign this to yourself, others, or let team members sign up on their own.  We will contact everyone to let them know there are open tasks.
+
+          .col-xs-12
+            %h4.new-task-h4 Suggested
+          .col-xs-12
+            =task.select :assignee_id, @users.all.collect {|u| [u.first_name, u.id]},{include_blank: true}, {class: 'form-control input-lg'}
+            .aside
+              You can assign this to yourself, others, or let team members sign up on their own.  We will contact everyone to let them know there are open tasks.
+
           .col-xs-12
             =task.hidden_field :group_id, value: (current_user.group_id)
             =link_to "Cancel", group_tasks_path(@group), :class => "cancel"
