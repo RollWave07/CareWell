@@ -28,6 +28,13 @@ class MailerInvitation < ActionMailer::Base
        end
      end
 
+  def suggested_task(task, suggested_user)
+    @task = task
+    @suggested_user = suggested_user
+    @subject_line = "Could you help with #{task.title}?"
+    mail(:to => @suggested_user.email, :subject => @subject_line)
+  end
+
   def task_created(task, user)
     @task = task
     @user = user

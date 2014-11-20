@@ -66,6 +66,11 @@ class TasksController < ApplicationController
 
   def create
 
+    # for menu dashboard
+    @assigned_tasks = Task.assigned(@group)
+    @counts_arrays = Task.count_per_period(@assigned_tasks)
+    @duration_week = Task.duration_total_past_week(@assigned_tasks)
+
     @users = User.where(group_id: @group)
     @task = current_user.tasks.new(task_params)
     date = Chronic.parse(task_params[:task_date])
@@ -81,6 +86,8 @@ class TasksController < ApplicationController
           # MailerInvitation.task_sign_up_notification(@task).deliver
         end
         if params[:suggested] != nil
+          @suggested_user = @users.find_by_id(params[:suggested])
+          MailerInvitation.suggested_task(@task, @suggested_user).deliver
           # commented out during testing.
           # MailerInvitation.calendar_invite(@task).deliver
           # MailerInvitation.task_sign_up_notification(@task).deliver
