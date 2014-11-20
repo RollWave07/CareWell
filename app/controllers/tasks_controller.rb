@@ -75,9 +75,16 @@ class TasksController < ApplicationController
       if @task.save
         format.html { redirect_to group_tasks_path(@group), notice: 'Task was successfully created.' }
         format.json { render action: 'show', status: :created, location: @task }
-        # @users.each do |user|
-        # MailerInvitation.task_created(@task, user).deliver
-        # end
+        if @task.assignee != nil
+          # commented out during testing.
+          MailerInvitation.calendar_invite(@task).deliver
+          # MailerInvitation.task_sign_up_notification(@task).deliver
+        end
+        if params[:suggested] != nil
+          # commented out during testing.
+          # MailerInvitation.calendar_invite(@task).deliver
+          # MailerInvitation.task_sign_up_notification(@task).deliver
+        end
       else
         format.html { render action: 'new', alert: 'Unable to add the task.  Please try again.' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -104,8 +111,12 @@ class TasksController < ApplicationController
           format.js { render layout: false, notice: "You've signed up for #{@task.title}."}
           if @task.assignee != nil
             # commented out during testing.
-          MailerInvitation.calendar_invite(@task).deliver
-          MailerInvitation.task_sign_up_notification(@task).deliver
+            MailerInvitation.calendar_invite(@task).deliver
+            MailerInvitation.task_sign_up_notification(@task).deliver
+          end
+          if params[:suggested]
+            MailerInvitation
+            MailerInvitation
           end
         end
       else
