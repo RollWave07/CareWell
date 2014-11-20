@@ -120,6 +120,7 @@ right: 21px;
       display: block;
       margin: 0 auto;
     }
+
   }
 
   // .delete-update {
@@ -139,6 +140,13 @@ right: 21px;
   display: inline-block;
   float: right;
 }
+
+#update-user-pic{
+  img{
+    padding-bottom: 10px;
+  }
+}
+
 //set up mobile overrides
 
 @media all and (max-width: 480px) {

@@ -100,11 +100,19 @@
           .col-xs-12
             %h4.new-task-h4 Helpful Notes/Preferences
             %p=task.text_field :information, placeholder: "e.g., The key is under the matt.", rows: 4, class: 'form-control input-lg'
-            /
-              .aside
-              What would help make this go well for you or
-              =@group.name
-              ?
+
+          .col-xs-12
+            %h4.new-task-h4 Photo
+            / =task.file_field :photo
+            =task.file_field :photo, style: "display:none"
+            %a.fileSelect{href: "#"}
+              %i.fa.fa-camera.fa-3x#task-photo
+
+            %input.task_photo{accept: "image/*", onchange: "handleFiles(this)", style: "display:none", type: "file", name: "task[photo]"}
+
+            .task-photo-preview
+
+
           .col-xs-12
             %h4.new-task-h4 Assign (optional)
           .col-xs-12

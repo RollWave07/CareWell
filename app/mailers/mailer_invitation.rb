@@ -53,6 +53,14 @@ class MailerInvitation < ActionMailer::Base
     mail(:to => @user.email, :subject => @subject_line)
   end
 
+  def task_completed(task)
+    @group = task.group_id
+    @task = task
+    @task_owner = task.user
+    @subject_line = "The task '#{task.title}' was completed by #{task.assignee.first_name}!"
+    mail(:to => @task_owner.email, :subject => @subject_line)
+  end
+
   def not_covered_upcoming_task(task)
     @group = task.group_id
     @task = task

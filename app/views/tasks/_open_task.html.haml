@@ -26,7 +26,7 @@
           =likes_count
         %i.fa.fa-heart.task-card-icon.heart-icon-color
     .col-xs-4.col-md-4
-      %h4.sign-up=link_to "Volunteer?", group_task_path(group, task_id, params: { task: {assignee_id: current_user_id}}), method: :patch, remote: true
+      %h4.sign-up=link_to "Volunteer?", group_task_path(group, task_id, params: { task: {assignee_id: current_user_id}}), method: :patch
   .row.task-details
     .col-xs-12
       .section-subtitle
@@ -36,6 +36,8 @@
       .section-subtitle
         Notes
       =task.information.empty? ? "No additional notes." : task.information
+      .task-image
+        =image_tag(task.photo)
     .row
       .section-subtitle
         Comments

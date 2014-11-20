@@ -1,0 +1,4 @@
+%h1
+  ="Hi, #{@task_owner.first_name}!"
+="This is a notice from CareWell that a task, #{@task.title} was completed. To see your CareWell, click"
+=link_to "here", group_tasks_url(@group)

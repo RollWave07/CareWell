@@ -87,6 +87,10 @@ img.group-picture {
   border-radius: 50%;
 }
 
+.task-image img {
+  max-width: 100%;
+}
+
 .add-new {
   float: right;
   display: inline-block;
@@ -257,6 +261,10 @@ li.covered {
       display: inline-block;
       }
     }
+  }
+
+  .updates {
+    margin-bottom: 10px;
   }
 
   select {
@@ -654,6 +662,26 @@ li.covered {
       color: #bc4a4a;
     }
   }
+
+// style the photo upload button and preveiw on new task
+#task-photo {
+  float: left;
+  color: #656D78;
+  padding: 10px;
+  padding-top: 3px;
+  &:hover {
+    cursor: pointer;
+    color: #434A54;
+  }
+} 
+
+.task-photo-preview {
+  float: left;
+  img.obj {
+    max-width: 100px;
+    max-height: 100px;
+  }
+} 
 
 //set up task show page
 

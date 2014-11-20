@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
     @top3 = User.top_users_per_week(@group)
 
     @active_users = User.active_users_per_week(@group)
-    
+
     @assigned_tasks = Task.assigned(@group)
 
     @counts_arrays = Task.count_per_period(@assigned_tasks)
@@ -32,7 +32,8 @@ class GroupsController < ApplicationController
 
     @message = Message.new
 
-    @messages = Message.where(group_id: @group) 
+    @messages = Message.where(group_id: @group)
+
   end
 
   def edit

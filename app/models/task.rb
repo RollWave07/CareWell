@@ -9,6 +9,7 @@ class Task < ActiveRecord::Base
 
   validates :title, presence: true
 
+  mount_uploader :photo, ImageUploader
 
   scope :completed_recently, lambda { where(task_date: 1.day.ago..Time.now) }
 

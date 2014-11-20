@@ -47,11 +47,21 @@ class TasksController < ApplicationController
   def edit
     @task = Task.find(params[:id])
     @users = User.users_in_group(@group)
+
+    # for menu dashboard
+    @assigned_tasks = Task.assigned(@group)
+    @counts_arrays = Task.count_per_period(@assigned_tasks)
+    @duration_week = Task.duration_total_past_week(@assigned_tasks)
   end
 
   def new
     @task = current_user.tasks.new
     @users = User.users_in_group(@group)
+
+    # for menu dashboard
+    @assigned_tasks = Task.assigned(@group)
+    @counts_arrays = Task.count_per_period(@assigned_tasks)
+    @duration_week = Task.duration_total_past_week(@assigned_tasks)
   end
 
   def create
@@ -120,8 +130,36 @@ class TasksController < ApplicationController
       @task.status = "incomplete"
     elsif @task.status == "incomplete"
       @task.status = "complete"
+      if @task.user != @task.assignee
+        if @task.user.contact_preference == "Text Message"
+          account_sid = ENV['TWILIO_ACCOUNT_SID']
+          auth_token = ENV['TWILIO_ACCOUNT_TOKEN']
+          @client = Twilio::REST::Client.new account_sid, auth_token
+          message = @client.account.sms.messages.create(
+            :to => "#{@task.user.phone}",
+            :from => "8588668901",
+            :body => "From CareWell: Hi #{@task.user.first_name}, #{@task.assignee.first_name} completed #{@task.title}. Hooray!"
+            )
+        else
+          MailerInvitation.task_completed(@task).deliver
+        end
+      end
     else
       @task.status = "complete"
+      if @task.user != @task.assignee
+        if @task.user.contact_preference == "Text Message"
+          account_sid = ENV['TWILIO_ACCOUNT_SID']
+          auth_token = ENV['TWILIO_ACCOUNT_TOKEN']
+          @client = Twilio::REST::Client.new account_sid, auth_token
+          message = @client.account.sms.messages.create(
+            :to => "#{@task.user.phone}",
+            :from => "8588668901",
+            :body => "From CareWell: Hi #{@task.user.first_name}, #{@task.assignee.first_name} completed #{@task.title}. Hooray!"
+            )
+        else
+          MailerInvitation.task_completed(@task).deliver
+        end
+      end
     end
     @task.save
     respond_to do |format|
@@ -140,6 +178,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.fetch(:task, {}).permit(:category, :title, :information, :start_time, :duration, :location, :task_date, :user_id, :assignee_id, :group_id)
+    params.fetch(:task, {}).permit(:category, :title, :information, :start_time, :duration, :location, :task_date, :user_id, :assignee_id, :group_id, :photo)
    end
 end

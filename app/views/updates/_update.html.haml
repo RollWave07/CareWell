@@ -5,7 +5,7 @@
 
 .update{"data-id" => update_id}
   .row.photo-comment-header
-    .col-md-2.col-xs-2
+    .col-md-2.col-xs-2#update-user-pic
       -if user.picture_url
         =image_tag(user.picture_url(:sq_medium))
       -else
@@ -16,9 +16,8 @@
     .col-md-2.col-xs-2
       .time-diffy
         ="#{distance_of_time_in_words(diff)}"
-  -if update.picture
-    .col-md-12.col-xs-12.image-update
-      %img{src: update.picture_url(:wide)}
-  .col-xs-12.col-md-12
-
+    -if update.picture
+      .col-md-12.col-xs-12.image-update
+        %img{src: update.picture_url(:wide)}
+    
 
